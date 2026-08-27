@@ -262,6 +262,62 @@ code {
   padding: 12px 16px 30px;
 }
 
+/* About modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(32, 33, 34, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 16px;
+}
+.modal[hidden] { display: none; }
+body.modal-open { overflow: hidden; }
+.modal-card {
+  background: #fff;
+  border-radius: 8px;
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 24px 28px 20px;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+.modal-card h2 { margin: 0 0 8px; }
+.modal-card h3 { margin: 18px 0 6px; font-size: 15px; }
+.modal-card p, .modal-card li { font-size: 14px; }
+.modal-card ol, .modal-card ul { padding-left: 22px; }
+.modal-card li { margin-bottom: 5px; }
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--muted);
+}
+.modal-close:hover { color: var(--fg); }
+.modal-blockquote {
+  border-left: 3px solid var(--border);
+  margin: 8px 0;
+  padding: 2px 14px;
+  color: #404244;
+  font-size: 14px;
+}
+.verdict-chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 10px; }
+.chip.verdict-recommend { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); font-weight: 600; }
+.chip.verdict-none { background: var(--none-bg); border-color: var(--none); color: var(--none); font-weight: 600; }
+.chip.verdict-weak { background: var(--weak-bg); border-color: var(--weak); color: var(--weak); font-weight: 600; }
+.c-ok { color: var(--ok); }
+.c-none { color: var(--none); }
+.c-weak { color: var(--weak); }
+
 @media (max-width: 600px) {
   .dist-name { width: 130px; }
   .sc-label { width: 110px; }

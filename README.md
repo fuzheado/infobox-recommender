@@ -80,6 +80,15 @@ npm run serve        # http://localhost:3000
 - `/analyze?title=X&output=json` → API mode: full analysis JSON, CORS-enabled (missing title → 400)
 - `/` → search + examples
 
+While the analysis runs, an **article digest** appears immediately (clickable
+title, short description, lead paragraph from the REST summary, thumbnail,
+and infobox status) so there is something to read — and click out to the
+article — during the wait. It also sits atop the final report. Every
+template name in the report (verdict, distribution, sub-cluster dominants,
+boxed peers) links to its Template: page for inspection. An **About** box
+(header/footer link; auto-opens on first visit) explains the method and the
+three verdicts for new users.
+
 Speed: cold analyses run in ~5–15s (down from 30–90s) thanks to bigger
 census batches with continuation, per-class Wikidata sample caching (shared
 across every article of the same class), parallel discovery stages, and lazy

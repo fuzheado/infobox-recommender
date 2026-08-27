@@ -414,3 +414,31 @@ if (initial) {
 } else {
   renderHome();
 }
+
+// --- About modal ---
+const $about = document.getElementById('about-modal');
+const openAbout = () => {
+  $about.hidden = false;
+  document.body.classList.add('modal-open');
+};
+const closeAbout = () => {
+  $about.hidden = true;
+  document.body.classList.remove('modal-open');
+  history.replaceState(null, '', location.pathname + location.search);
+};
+document.getElementById('about-close')?.addEventListener('click', closeAbout);
+$about?.addEventListener('click', (e) => {
+  if (e.target === $about) closeAbout(); // click on the backdrop
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !$about.hidden) closeAbout();
+});
+window.addEventListener('hashchange', () => {
+  if (location.hash === '#about') openAbout();
+});
+if (location.hash === '#about') openAbout();
+// first visit: open the About box once so new users see the method
+if (!localStorage.getItem('infobox-recommender-about-seen')) {
+  localStorage.setItem('infobox-recommender-about-seen', '1');
+  openAbout();
+}

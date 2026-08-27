@@ -11,7 +11,7 @@
 <body>
 <header class="site-header">
   <h1>Infobox recommender</h1>
-  <p class="tagline">Peer-census analysis for English Wikipedia articles — which infobox, if any?</p>
+  <p class="tagline">Peer-census analysis for English Wikipedia articles — which infobox, if any? <a href="#about" id="about-link">About this tool</a></p>
   <form id="search" autocomplete="off">
     <input id="title" type="text" placeholder="Article title, e.g. Small-signal model" required>
     <button type="submit">Analyze</button>
@@ -21,10 +21,87 @@
 <footer class="site-footer">
   <p>
     Advisory analysis based on peer-article observation — evidence for editorial
-    consensus (MOS:INFOBOXUSE), not an authority. Read the
+    consensus (MOS:INFOBOXUSE), not an authority.
+    <a href="#about">About this tool</a> ·
     <a href="https://github.com/fuzheado/infobox-recommender">methodology</a>.
   </p>
 </footer>
+
+<div id="about-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden>
+  <div class="modal-card">
+    <button id="about-close" class="modal-close" aria-label="Close">×</button>
+    <h2 id="about-title">About the infobox recommender</h2>
+
+    <p>This tool helps answer a question every Wikipedia editor eventually faces:
+    <em>“this article has no infobox — should it have one, and if so which
+    template?”</em> Rather than guessing from the article itself, it runs a
+    <strong>census over the article’s peers</strong> — the articles most like it — and
+    reports what infobox practice actually looks like there.</p>
+
+    <h3>How it works</h3>
+    <ol>
+      <li><strong>Discover peers</strong> from three signals: Wikidata
+        <strong>P31 (instance-of) siblings</strong> (articles of the same class,
+        across languages), the article’s <strong>most specific categories</strong>
+        (smallest by member count — the sharpest genre pointers), and
+        <strong>WikiProject banners</strong> on the talk page (which project
+        standardizes this subject’s infobox).</li>
+      <li><strong>Census</strong>: for every peer, fetch its template list and count
+        infobox-family templates — what share of peers have any infobox, and which
+        templates dominate.</li>
+      <li><strong>Decide</strong>: turn the census into one of three verdicts, each
+        shipped with its evidence.</li>
+    </ol>
+
+    <h3>The three verdicts</h3>
+    <div class="verdict-chips">
+      <span class="chip verdict-recommend">Recommend: {{Infobox election}}</span>
+      <span class="chip verdict-none">No infobox customary</span>
+      <span class="chip verdict-weak">Weak signal</span>
+    </div>
+    <ul>
+      <li><strong class="c-ok">Recommend</strong> — a strong majority of same-class
+        peers use this specific template (e.g. 30 of 31 imperial-election articles
+        use {{Infobox election}}).</li>
+      <li><strong class="c-none">No infobox customary</strong> — peers are
+        overwhelmingly bare; adding one would make the article the outlier (trace
+        fossils: 1% of peers boxed).</li>
+      <li><strong class="c-weak">Weak signal</strong> — evidence is mixed or too
+        thin; the tool abstains rather than guesses and points you to the
+        WikiProject banner for the standardized answer.</li>
+    </ul>
+
+    <h3>Reading the report</h3>
+    <p>Every verdict carries its evidence: the share of peers with an infobox
+    (coverage), the template distribution with bars, the same-class vs
+    category-only split, and examples of boxed and bare peers — so you can weigh
+    the argument yourself. Every template name links to its documentation, and
+    every report has a shareable URL you can paste into a talk-page discussion.</p>
+
+    <h3>Why is this advisory?</h3>
+    <blockquote class="modal-blockquote">“The use of infoboxes is neither required nor prohibited for any article.
+    Whether to include an infobox… is determined through discussion and consensus
+    among the editors at each individual article.”<br>
+    <span class="muted small">— Wikipedia:Manual of Style/Infoboxes (MOS:INFOBOXUSE)</span></blockquote>
+    <p>MOS explicitly weighs arguments based on what similar articles do. This tool
+    produces exactly that evidence — it <strong>never edits articles and never
+    decides</strong>. About 77% of enwiki articles have an infobox; the remaining
+    ~23% include many that are appropriately without one.</p>
+
+    <h3>How well does it work?</h3>
+    <p>The pipeline is evaluated against 64 labeled cases drawn from the
+    infobox-request backlog (labels = templates editors actually chose):
+    <strong>35 correct / 6 near-miss or defensible disagreements / 23 honest
+    abstentions — 85% accuracy on decisive verdicts</strong>. The full methodology,
+    hypotheses, and evaluation are in the repo:</p>
+    <ul class="small">
+      <li><a href="https://github.com/fuzheado/infobox-recommender" target="_blank" rel="noopener">github.com/fuzheado/infobox-recommender</a></li>
+      <li><code>signals.md</code> — signal landscape &amp; hypotheses</li>
+      <li><code>test/EVALUATION.md</code> — evaluation campaigns &amp; failure analysis</li>
+      <li><code>engineering-notes.md</code> — API gotchas &amp; methodology lessons</li>
+    </ul>
+  </div>
+</div>
 <script src="/app.js"></script>
 </body>
 </html>
