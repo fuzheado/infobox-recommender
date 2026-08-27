@@ -132,6 +132,16 @@ returns BOTH the redirect map and the template's direct transclusions
 (which reveal specializations: {{Infobox U.S. state}} transcludes
 {{Infobox settlement}}). Cost: one call per run, cached.
 
+**Embedded child boxes**: many articles stack supporting panels that are
+*children* of the real box — {{Infobox region symbols}} inside {{Infobox
+U.S. state}}, {{Infobox UNESCO World Heritage Site}} on Mount Everest,
+{{Infobox designation list}} inside {{Infobox historic site}}, per-element
+isotope tables inside {{Infobox element}}. Their templates start with
+`{{Infobox | child = …` — detectable when fetching template content — and
+must never win primary selection (they are longer than the box they live
+in). They are curated in `SUPPORTING_INFOBOXES` + suffix rules (`(meta)`,
+` isotopes`); auto-detection via the `child` pattern is future work.
+
 ### 1.12 Per-value SPARQL caching beats one mixed query
 
 For same-type pointer discovery (P39/P179/P361), run one query PER value

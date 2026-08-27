@@ -717,17 +717,17 @@
         "coverage": 0.8018867924528302,
         "dominant": {
           "template": "Infobox building",
-          "count": 25
+          "count": 29
         },
         "distribution": {
-          "Infobox building": 25,
-          "Infobox designation list": 13,
+          "Infobox building": 29,
           "Infobox shopping mall": 7,
+          "Infobox historic site": 6,
           "Infobox settlement": 5,
+          "Infobox bridge": 5,
           "Infobox park": 3,
           "Infobox zoo": 3,
-          "Infobox station": 3,
-          "Infobox road": 3
+          "Infobox station": 3
         },
         "subCluster": {
           "byClass": null,
@@ -737,9 +737,9 @@
             "coverage": 0.8018867924528302,
             "dominant": {
               "template": "Infobox building",
-              "count": 25
+              "count": 29
             },
-            "dominantShare": 0.29411764705882354
+            "dominantShare": 0.3411764705882353
           }
         },
         "bareCluster": [],
@@ -1208,7 +1208,7 @@
           "Infobox street": 15,
           "Infobox church": 6,
           "Infobox bridge": 3,
-          "Infobox designation list": 1,
+          "Infobox historic site": 1,
           "Infobox station": 1,
           "Infobox settlement": 1
         },
@@ -3087,12 +3087,11 @@
         "coverage": 0.7575757575757576,
         "dominant": {
           "template": "Infobox church",
-          "count": 21
+          "count": 23
         },
         "distribution": {
-          "Infobox church": 21,
-          "Infobox religious building": 2,
-          "Infobox designation list": 2
+          "Infobox church": 23,
+          "Infobox religious building": 2
         },
         "subCluster": {
           "byClass": null,
@@ -3102,9 +3101,9 @@
             "coverage": 0.7575757575757576,
             "dominant": {
               "template": "Infobox church",
-              "count": 21
+              "count": 23
             },
-            "dominantShare": 0.84
+            "dominantShare": 0.92
           }
         },
         "bareCluster": [],
@@ -3291,10 +3290,10 @@
         "coverage": 0.9591836734693877,
         "dominant": {
           "template": "Infobox officeholder",
-          "count": 120
+          "count": 121
         },
         "distribution": {
-          "Infobox officeholder": 120,
+          "Infobox officeholder": 121,
           "Infobox person": 5,
           "Infobox military person": 4,
           "Infobox comics character": 3,
@@ -3311,9 +3310,9 @@
             "coverage": 0.9591836734693877,
             "dominant": {
               "template": "Infobox officeholder",
-              "count": 120
+              "count": 121
             },
-            "dominantShare": 0.851063829787234
+            "dominantShare": 0.8581560283687943
           }
         },
         "bareCluster": [],
@@ -3341,10 +3340,10 @@
         "coverage": 0.9387755102040817,
         "dominant": {
           "template": "Infobox officeholder",
-          "count": 72
+          "count": 73
         },
         "distribution": {
-          "Infobox officeholder": 72,
+          "Infobox officeholder": 73,
           "Infobox person": 23,
           "Infobox scientist": 18,
           "Infobox military person": 11,
@@ -3361,9 +3360,9 @@
             "coverage": 0.9387755102040817,
             "dominant": {
               "template": "Infobox officeholder",
-              "count": 72
+              "count": 73
             },
-            "dominantShare": 0.5217391304347826
+            "dominantShare": 0.5289855072463768
           }
         },
         "bareCluster": [],
@@ -3718,9 +3717,9 @@
         },
         "distribution": {
           "Infobox river": 22,
-          "Infobox protected area": 5,
+          "Infobox protected area": 6,
           "Infobox settlement": 4,
-          "Infobox designation list": 3,
+          "Infobox body of water": 2,
           "Infobox mountain": 1,
           "Infobox company": 1,
           "Infobox port": 1
@@ -4073,16 +4072,16 @@
         "coverage": 0.9466666666666667,
         "dominant": {
           "template": "Infobox settlement",
-          "count": 98
+          "count": 104
         },
         "distribution": {
-          "Infobox settlement": 98,
+          "Infobox settlement": 104,
           "Infobox Russian inhabited locality": 13,
-          "Infobox designation list": 8,
           "Infobox Chinese": 4,
           "Infobox Romanian subdivision": 4,
           "Infobox Italian comune": 3,
           "Infobox political division": 2,
+          "Infobox historic site": 2,
           "Infobox German place": 1
         },
         "subCluster": {
@@ -4092,9 +4091,9 @@
             "coverage": 0.9466666666666667,
             "dominant": {
               "template": "Infobox settlement",
-              "count": 98
+              "count": 104
             },
-            "dominantShare": 0.6901408450704225
+            "dominantShare": 0.7323943661971831
           },
           "byCategoryOnly": null
         },
@@ -4311,7 +4310,7 @@
         },
         "distribution": {
           "Infobox settlement": 46,
-          "Infobox German place": 43,
+          "Infobox German place": 44,
           "Infobox UK place": 34,
           "Infobox Switzerland municipality": 8,
           "Infobox Italian comune": 3,

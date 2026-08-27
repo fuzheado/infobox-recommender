@@ -337,12 +337,17 @@ truth case):
    generic {{Infobox settlement}} despite being shorter — "U.S." is 3
    chars).
 4. **Supporting boxes**: embedded child boxes ({{Infobox region symbols}}
-   on US states, {{Infobox UNESCO World Heritage Site}} on Everest),
-   meta-templates (names ending `(meta)` or ` isotopes` — the per-element
-   isotope tables), and medal wrappers never win primary selection.
+   on US states, {{Infobox UNESCO World Heritage Site}} on Everest,
+   {{Infobox designation list}} on historic sites), meta-templates (names
+   ending `(meta)` or ` isotopes` — the per-element isotope tables), and
+   medal wrappers never win primary selection.
 5. **byClass override hardened**: now requires dominanceShare ≥ 0.5 — a
    count-1 plurality (Oxygen's fragmented element class) can no longer
    fire a recommendation.
+6. **Peer-sample display**: the boxed-peers list shows each peer's PRIMARY
+   template (a user report exposed it showing the raw first template —
+   usually the generic {{Infobox}} — while the bar chart showed primaries,
+   which looked contradictory).
 
 **Result**: old 64-case corpus exactly preserved (35/6/23); canonical set
 21/23 (2 honest abstains: Oxygen — per-element wrapper boxes fragment the
