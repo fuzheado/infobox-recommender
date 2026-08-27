@@ -1,6 +1,6 @@
 # Infobox Recommender — Evaluation
 
-**Date:** 2026-08-27 (two campaigns) · **Scope:** POC pipeline (Stages A–C) · **Corpus:** 64 labeled cases
+**Date:** 2026-08-27 (six campaigns) · **Scope:** POC pipeline (Stages A–C) · **Corpus:** 87 cases (64 backlog + 23 canonical)
 **Result: 56 pass / 6 fail / 25 abstain — 90% accuracy on decisive verdicts** (after canonical ground-truth corpus + Wikidata pointer peers)
 
 This document is the full writeup of the evaluation campaigns: how the test
@@ -160,6 +160,9 @@ confidence for every case.
 | fail → **abstain** (campaign 2) | Golden Bull of 1356 (P31-polluted override no longer fires) |
 | abstain → **pass** (3, campaign 3) | Piazza dell'Esquilino, Piazzale Roma, Serena Morena (maintenance-category filter cleaned the peer sets) |
 | abstain → abstain (cleaner evidence, campaign 2) | Prince-elector, Declaration of Rhense, Coronation (concept genres got tighter on-genre peer sets) |
+| pass → **abstain** (4, campaign 4) | Brooke Hodge, Robert N. Charrette, Shari McMahan, Tony Greenstein — honest corrections: their peers stack {{Infobox person}} with longer boxes, which the old all-boxes counting double-counted past the 50% bar (§5.7) |
+| abstain → **pass** (3, campaign 5) | Robert N. Charrette, Sushirrito, Tony Greenstein — tiered-neighborhood rescues (§5.8) |
+| abstain → **pass** (1, campaign 6) | Roberta Gropper — rescued by P39 pointer peers (§5.9) |
 
 (6 of the 8 baseline fails remain: the two person/officeholder judgment
 calls, the two none-warranted-vs-outlier cases, the weak-label Sayfo case,
@@ -293,7 +296,58 @@ abstain→pass flips (Piazza dell'Esquilino, Piazzale Roma, Serena Morena),
 zero regressions, and no maintenance categories left in any evidence. See
 `engineering-notes.md` §1.8 for the API lesson.
 
-### 5.7 Wikidata same-type pointer peers + canonical corpus (campaign 6)
+### 5.7 Primary-infobox selection (campaign 4)
+
+Gaelic games articles exposed the stack problem: a single peer can transclude
+six infobox-family templates (generic {{Infobox}}, legacy {{Infobox3cols}},
+{{Infobox Gaelic games biography}}, {{Infobox Gaelic games player}},
+{{Infobox medal templates}}, {{Infobox sportsperson}}) and the medal-record
+wrapper was winning as the "dominant". Fix: each peer contributes exactly
+one PRIMARY box — supporting templates (generic/legacy wrappers, medal
+wrappers, embedded child boxes, `(meta)`/` isotopes` meta-tables) are never
+candidates, and the most specific candidate (longest name, with a
+curated generic-place penalty for {{Infobox settlement}}/{{Infobox
+subdivision}}) wins. Paul Grimley now correctly recommends {{Infobox Gaelic
+games biography}} (41/44) instead of the medal wrapper.
+
+Eval cost: 85% → **84%** — four people cases (Brooke Hodge, Charrette,
+McMahan, Greenstein) moved to honest abstains. Their peers stack {{Infobox
+person}} with longer boxes (scientist, officeholder, academic); the old
+code counted person in every stack, inflating it past the 50% dominance
+bar. The abstains are corrections, not regressions — the labels are
+single-choice and the stacks genuinely lack a dominant primary.
+
+### 5.8 Tiered neighborhoods (campaign 5)
+
+**Dallas Cowboys (validate)**: "Inconclusive" despite 31/31 NFL-team peers
+being unanimous — the pool was diluted by intersection categories
+("1960 establishments in Texas" mixes radio stations, schools and football
+teams) and by a wide flat census that could not see the tight circle. The
+user's "start small and adapt" instinct is standard locality practice in
+proximity search: the tightest coherent neighborhood is the informative
+one. Implemented:
+- **Intersection categories excluded** from discovery (lifecycle/year
+  groupings: `established in YYYY`, `YYYY establishments in X` — but event
+  "X in YYYY" categories stay, they ARE genre for events).
+- **Tier strata**: every peer is tagged with the tightest group containing
+  it (P31 classes and categories ranked by size); the report shows
+  cumulative per-tier stats (Neighborhood tiers panel); the CLI prints a
+  tiers line.
+- **Tiered rescue**: when the flat logic abstains, a decisive tight circle
+  (≥80% coverage, ≥70% dominance, consistent with the wider pool top-2)
+  can produce the verdict. Flat logic keeps authority — tiers never
+  override a flat verdict. That guard matters: tiers-with-authority
+  produced false positives (a declaration inside an imperial-election
+  category confidently recommended as an election event — membership ≠
+  genre) and label-divergent overrides (badminton player vs person).
+- Result: 84% → **85%**; Dallas Cowboys validate flips to **consistent**
+  ({{Infobox gridiron football team}} — note {{Infobox NFL team}} is a
+  redirect to it, and Dallas transcludes both, a migration leftover).
+  Currently zero fixtures exercise the tiered rescue (the Dallas-class
+  cases are handled by the flat path post-exclusion); the mechanism is
+  kept as the safety net for abstentions with strong tight circles.
+
+### 5.9 Wikidata same-type pointer peers + canonical corpus (campaign 6)
 
 **The insight** (proposed by the user, validated empirically): Wikidata
 properties like *part of* (P361), *part of the series* (P179), and
@@ -332,10 +386,12 @@ truth case):
    `redirects=1` call canonicalizes them (comparisons, primaries,
    distribution).
 3. **Transclusion facts** (same batched call): template A transcluding
-   template B means A is the specialization — used by the primary
-   selection's generic-place penalty ({{Infobox U.S. state}} beats the
-   generic {{Infobox settlement}} despite being shorter — "U.S." is 3
-   chars).
+   template B reveals the specialization ({{Infobox U.S. state}} is built
+   on {{Infobox settlement}}). Currently the fetch is cached for the
+   future specificity ladder; the primary selection uses a curated
+   generic-place penalty instead — transclusion-based ranking proved
+   label-divergent for person-family stacks (writer/artist boxes, built on
+   person, would beat {{Infobox person}}).
 4. **Supporting boxes**: embedded child boxes ({{Infobox region symbols}}
    on US states, {{Infobox UNESCO World Heritage Site}} on Everest,
    {{Infobox designation list}} on historic sites), meta-templates (names
@@ -344,10 +400,14 @@ truth case):
 5. **byClass override hardened**: now requires dominanceShare ≥ 0.5 — a
    count-1 plurality (Oxygen's fragmented element class) can no longer
    fire a recommendation.
-6. **Peer-sample display**: the boxed-peers list shows each peer's PRIMARY
-   template (a user report exposed it showing the raw first template —
-   usually the generic {{Infobox}} — while the bar chart showed primaries,
-   which looked contradictory).
+6. **Peer-sample display** (Blue Lagoon (geothermal spa) user report): the
+   boxed-peers list showed each peer's raw first template (usually the
+   generic {{Infobox}}) while the bar chart showed primaries — a
+   contradiction the user caught. Now shows the primary. The same report
+   exposed {{Infobox designation list}} as another embedded child box
+   (inside {{Infobox historic site}}) that was winning primaries by length;
+   added to the supporting set, so the bar chart correctly shows
+   Infobox historic site (7).
 
 **Result**: old 64-case corpus exactly preserved (35/6/23); canonical set
 21/23 (2 honest abstains: Oxygen — per-element wrapper boxes fragment the
@@ -360,22 +420,29 @@ class; Yankees — mixed MLB/seasons pool); overall **56/6/25 — 90%**.
 1. **Specificity ladder** (doc Stage C): pick the most specific template via
    the template-category taxonomy (publisher ⊂ company, officeholder ⊂
    person). Would convert several near-miss fails and abstains into correct
-   high-confidence recommends.
-2. **P31 pollution** (Golden Bull case): byClass override needs a
-   discrimination check against category-only coverage.
-3. **Noisy category peers**: the 150-peer cap and name-length category
-   heuristic admit wrong-genre peers (enzymes in Venice campos sets,
-   firearm-cartridge articles in a physics-concept set). Sub-clustering by
-   second-order category overlap is the doc's stated next step.
+   high-confidence recommends. The transclusion facts already fetched per
+   run are the seed for this.
+2. **Per-element wrapper merge** (Oxygen): element articles use per-element
+   boxes ({{Infobox americium}} wraps {{Infobox element}}), fragmenting the
+   class distribution (element 33 + ~44 wrappers). A transclusion-based
+   merge would unify them; today Oxygen honestly abstains with Infobox
+   element as the visible dominant.
+3. **Noisy category peers**: the 150-peer cap and member-count category
+   selection still admit wrong-genre peers (enzymes in Venice campos sets;
+   the mixed spa genre around Blue Lagoon). Sub-clustering by second-order
+   category overlap is the doc's stated next step.
 4. **Label set skew**: stale-tag labels skew person/officeholder/company;
    genres like concepts/institutions (the "none" class) are underrepresented
    (3 manual cases only, all abstaining — the machine can't yet separate the
    concept sub-genre without deeper signals).
 5. **Stage D** (Wikidata fill-rate draft preview) not implemented.
-6. Fresh live check — `node cli.js "Secular equilibrium"` (physics concept,
-   not in fixtures): weak-signal (medium), 36% coverage, same-class 6% —
-   honest abstention; the displayed dominant (`Infobox firearm cartridge`) is
-   category noise, correctly not recommended.
+6. **Child-box auto-detection**: supporting boxes are curated
+   (SUPPORTING_INFOBOXES + `(meta)`/` isotopes` suffix rules); templates
+   whose content starts with `{{Infobox | child = …` could be detected
+   automatically when fetching template content.
+7. Fresh live check — `node cli.js "Secular equilibrium"` (physics concept):
+   **none-warranted (medium)** — 9% of 85 peers boxed, usable P31 class (31
+   same-class peers) — an honest "no infobox customary" for the genre.
 
 ## 7. Artifacts
 

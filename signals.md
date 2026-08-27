@@ -16,8 +16,8 @@ the evidence (what infoboxes peers actually carry) decides.
 
 | # | Signal | Mechanics | Eval receipts (64-case corpus, 2026-08-27) |
 |---|---|---|---|
-| 1 | **Wikidata P31 siblings** | SPARQL: same "instance of" class, cross-language; classes >500 instances dropped (too heterogeneous, e.g. Q5 human); per-class sample queries are cached per class, so the cost amortizes across every article of that class | Fired in only **12/64** cases — the backlog skews to people/objects whose classes are huge. When it fires it is the strongest signal: imperial elections at **97% unanimous class → high confidence** |
-| 2 | **Categories** | Article's non-maintenance categories ranked by **member count** (`categoryinfo`, fewest = most specific; `clshow=!hidden` + an ignorable set), top 5, members (ns=0, ≤50 each) become peers | The **workhorse: 33 of 35 passes rode category-only peer sets** (people, companies, galaxies, TV series). Also the main noise source: enzymes in Venice-campo sets, firearm-cartridge articles in a physics-concept set |
+| 1 | **Wikidata P31 siblings** | SPARQL: same "instance of" class, cross-language; classes >500 instances dropped (too heterogeneous, e.g. Q5 human); per-class sample queries are cached per class, so the cost amortizes across every article of that class | Fired in **23/87** cases (usable same-class group); **11 of 56 passes are class-driven** (both imperial elections + 9 canonical: states, countries, foods, planets…). When it fires it is the strongest signal: 100% unanimous classes → high confidence |
+| 2 | **Categories** | Article's non-maintenance categories ranked by **member count** (`categoryinfo`, fewest = most specific; `clshow=!hidden` + an ignorable set), top 5, members (ns=0, ≤50 each) become peers | The **workhorse: 45 of 56 passes rode category-only peer sets** (people, companies, TV series). Also the main noise source: enzymes in Venice-campo sets, the mixed spa genre around Blue Lagoon |
 | 3 | **WikiProject banners** | Detected on the talk page and displayed in evidence (the doc's "standardized infobox pointer") | **Not yet used to find peers** — detected but unused as a peer source |
 
 **Deliberately not used:** short description, lead paragraph, wikitext,
@@ -30,17 +30,21 @@ that into recommend / none-warranted / weak-signal.
 
 ## 2. What the eval says about signal contribution
 
-From `test/results/latest.json` (campaign 3, 2026-08-27):
+From `test/results/latest.json` (campaign 6, 2026-08-27, 87-case corpus):
 
-- **35/35 passes** break down as **33 category-driven, 2 class-driven**
-  (the two imperial elections). Categories are doing ~94% of the work.
-- **12/64** cases had a usable same-class group (n≥3). For the rest, P31 was
-  either absent or the class exceeded the 500-instance cap (people).
+- **56/56 passes** break down as **45 category-driven, 11 class-driven**
+  (both imperial elections + 9 canonical set cases). Categories are doing
+  ~80% of the work; the tiered-neighborhood rescue currently fires on zero
+  fixtures (the Dallas-class cases are handled by the flat path after the
+  intersection-category exclusion).
+- **23/87** cases had a usable same-class group (n≥3). For the rest, P31 was
+  either absent, huge (people), or heterogeneous (Oxygen's element
+  wrappers) — the same-type pointer properties (H7) fill some of the gap.
 - The 6 fails split: 2 judgment calls (person vs officeholder for
   politicians), 2 where the recommender is arguably right and the editor
   label is the outlier (Noronha 9%, Piscichnus 1%), 1 weak label (Sayfo), 1
   specificity-ladder gap (publisher ⊂ company).
-- The 23 abstains are the honest middle band — mixed peer signals.
+- The 25 abstains are the honest middle band — mixed peer signals.
 
 **Consequences:**
 1. Category peer quality dominates overall accuracy → improving category
@@ -128,10 +132,11 @@ Sushirrito, Greenstein), zero regressions.
 **After (campaign 6): 56 pass / 6 fail / 25 abstain — 90% decisive (87-case
 corpus).** Wikidata same-type pointer peers (P39/P179/P361/P155/P156, H7)
 plus the 23-case canonical validate corpus (sets with universal boxes:
-presidents, states, foods, …). The canonical cases flushed out five real
+presidents, states, foods, …). The canonical cases flushed out six real
 defects (Speciesbox family gap, redirect normalization, transclusion-based
-primary rules, supporting-box rules, byClass share requirement) — see
-`test/EVALUATION.md` §1.5/§5.7. Old 64-case corpus exactly preserved. — primary-infobox
+primary rules, supporting-box rules, byClass share requirement, peer-sample
+display + the designation-list child box) — see
+`test/EVALUATION.md` §1.5/§5.9. Old 64-case corpus exactly preserved. — primary-infobox
 selection (each boxed peer contributes its PRIMARY box only; supporting
 boxes — generic {{Infobox}}, legacy Infobox3cols, {{Infobox medal templates}}
 — never win). Gaelic games case fixed (Infobox Gaelic games biography 41/44
