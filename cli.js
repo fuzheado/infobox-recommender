@@ -26,6 +26,14 @@ for (const t of titles) {
     results.push(r);
     if (jsonOnly) continue;
     console.log(`  qid: ${r.qid ?? '(none)'}`);
+    if (r.wikidata) {
+      const w = r.wikidata;
+      const used =
+        w.classesTotal > 0
+          ? `classes ${w.classesUsed}/${w.classesTotal} usable`
+          : 'no P31 classes';
+      console.log(`  wikidata: P31 ×${w.p31} · P279 ×${w.p279} · ${used} · ${w.sparqlPeers} same-class peers`);
+    }
     if (r.comparison) {
       const c = r.comparison;
       console.log(

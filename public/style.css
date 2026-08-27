@@ -134,6 +134,7 @@ code {
 .digest-infobox { font-size: 12px; }
 .digest-infobox.none { color: var(--muted); }
 .digest-extract { font-size: 13.5px; color: #404244; margin: 8px 0 0; }
+.digest-wd { font-size: 12px; color: var(--muted); margin-top: 3px; font-family: var(--mono); }
 
 /* clickable template names */
 .tpl-link {

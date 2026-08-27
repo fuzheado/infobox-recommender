@@ -109,7 +109,13 @@ From `test/results/latest.json` (campaign 3, 2026-08-27):
 Re-ran the full 64-case eval with both cheap wins in place (2026-08-27):
 
 **Before: 24 pass / 8 fail / 32 abstain — 75% decisive**
-**After: 35 pass / 6 fail / 23 abstain — 85% decisive**
+**After (campaign 4): 31 pass / 6 fail / 27 abstain — 84% decisive** — primary-infobox
+selection (each boxed peer contributes its PRIMARY box only; supporting
+boxes — generic {{Infobox}}, legacy Infobox3cols, {{Infobox medal templates}}
+— never win). Gaelic games case fixed (Infobox Gaelic games biography 41/44
+instead of the medal wrapper), and 4 people cases moved to honest abstains:
+their peers stack {{Infobox person}} with longer boxes, which the old code
+double-counted to cross the 50% bar.
 
 (Campaign 3: a **maintenance-category filter** — hidden categories were
 leaking through because `prop=categories` returns no `hidden` flag in

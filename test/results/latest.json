@@ -12,12 +12,12 @@
     "pipeline": "infobox-recommender POC"
   },
   "summary": {
-    "pass": 35,
+    "pass": 31,
     "fail": 6,
-    "abstain": 23,
+    "abstain": 27,
     "excluded": 0,
-    "decisive": 41,
-    "accuracy": 85
+    "decisive": 37,
+    "accuracy": 84
   },
   "results": [
     {
@@ -26,19 +26,19 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox person",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "evidence": {
         "total": 150,
         "coverage": 0.5133333333333333,
         "dominant": {
           "template": "Infobox person",
-          "count": 50
+          "count": 22
         },
         "distribution": {
-          "Infobox person": 50,
+          "Infobox person": 22,
           "Infobox artist": 19,
           "Infobox academic": 5,
           "Infobox museum": 5,
@@ -55,9 +55,9 @@
             "coverage": 0.5133333333333333,
             "dominant": {
               "template": "Infobox person",
-              "count": 50
+              "count": 22
             },
-            "dominantShare": 0.6493506493506493
+            "dominantShare": 0.2857142857142857
           }
         },
         "bareCluster": [],
@@ -85,17 +85,17 @@
         "coverage": 0.831081081081081,
         "dominant": {
           "template": "Infobox person",
-          "count": 74
+          "count": 65
         },
         "distribution": {
-          "Infobox person": 74,
+          "Infobox person": 65,
           "Infobox officeholder": 41,
-          "Infobox writer": 12,
-          "Infobox scientist": 5,
+          "Infobox scientist": 4,
           "Infobox military person": 3,
-          "Infobox medal templates": 3,
           "Infobox academic": 2,
-          "Infobox gridiron football biography": 2
+          "Infobox gridiron football biography": 2,
+          "Infobox musical artist": 2,
+          "Infobox college coach": 2
         },
         "subCluster": {
           "byClass": null,
@@ -105,9 +105,9 @@
             "coverage": 0.831081081081081,
             "dominant": {
               "template": "Infobox person",
-              "count": 74
+              "count": 65
             },
-            "dominantShare": 0.6016260162601627
+            "dominantShare": 0.5284552845528455
           }
         },
         "bareCluster": [],
@@ -350,10 +350,10 @@
         "coverage": 1,
         "dominant": {
           "template": "Infobox settlement",
-          "count": 54
+          "count": 52
         },
         "distribution": {
-          "Infobox settlement": 54,
+          "Infobox settlement": 52,
           "Infobox U.S. county": 2,
           "Infobox golf facility": 1
         },
@@ -365,9 +365,9 @@
             "coverage": 1,
             "dominant": {
               "template": "Infobox settlement",
-              "count": 54
+              "count": 52
             },
-            "dominantShare": 0.9818181818181818
+            "dominantShare": 0.9454545454545454
           }
         },
         "bareCluster": [],
@@ -469,24 +469,24 @@
       },
       "verdict": "recommend",
       "template": "Infobox person",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "evidence": {
         "total": 97,
         "coverage": 0.7628865979381443,
         "dominant": {
           "template": "Infobox person",
-          "count": 62
+          "count": 49
         },
         "distribution": {
-          "Infobox person": 62,
-          "Infobox officeholder": 11,
-          "Infobox writer": 4,
-          "Infobox criminal": 4,
-          "Infobox COA wide": 4,
+          "Infobox person": 49,
+          "Infobox officeholder": 10,
           "Infobox scientist": 3,
+          "Infobox criminal": 2,
           "Infobox academic": 2,
-          "Infobox serial killer": 1
+          "Infobox serial killer": 1,
+          "Infobox Christian leader": 1,
+          "Infobox cricketer": 1
         },
         "subCluster": {
           "byClass": null,
@@ -496,9 +496,9 @@
             "coverage": 0.7628865979381443,
             "dominant": {
               "template": "Infobox person",
-              "count": 62
+              "count": 49
             },
-            "dominantShare": 0.8378378378378378
+            "dominantShare": 0.6621621621621622
           }
         },
         "bareCluster": [],
@@ -565,20 +565,20 @@
         "labelSource": "editor-choice (stale tag)"
       },
       "verdict": "weak-signal",
-      "template": "Infobox person",
+      "template": "Infobox military person",
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
         "total": 67,
         "coverage": 0.5074626865671642,
         "dominant": {
-          "template": "Infobox person",
-          "count": 15
+          "template": "Infobox military person",
+          "count": 14
         },
         "distribution": {
-          "Infobox person": 15,
           "Infobox military person": 14,
-          "Infobox officeholder": 10,
+          "Infobox officeholder": 9,
+          "Infobox person": 6,
           "Infobox royalty": 4,
           "Infobox noble": 1
         },
@@ -589,10 +589,10 @@
             "boxed": 34,
             "coverage": 0.5074626865671642,
             "dominant": {
-              "template": "Infobox person",
-              "count": 15
+              "template": "Infobox military person",
+              "count": 14
             },
-            "dominantShare": 0.4411764705882353
+            "dominantShare": 0.4117647058823529
           }
         },
         "bareCluster": [],
@@ -625,6 +625,7 @@
         "distribution": {
           "Infobox song": 121,
           "Infobox musical composition": 4,
+          "Infobox": 2,
           "Infobox anthem": 1,
           "Infobox album": 1
         },
@@ -658,24 +659,24 @@
         "labelSource": "editor-choice (stale tag)"
       },
       "verdict": "weak-signal",
-      "template": "Infobox person",
+      "template": "Infobox musical artist",
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
         "total": 150,
         "coverage": 0.4533333333333333,
         "dominant": {
-          "template": "Infobox person",
-          "count": 34
+          "template": "Infobox musical artist",
+          "count": 32
         },
         "distribution": {
-          "Infobox person": 34,
           "Infobox musical artist": 32,
+          "Infobox person": 29,
+          "Infobox": 2,
           "Infobox NRHP": 1,
           "Infobox academic": 1,
           "Infobox classical composer": 1,
           "Infobox officeholder": 1,
-          "Infobox Chinese": 1,
           "Infobox record label": 1
         },
         "subCluster": {
@@ -685,10 +686,10 @@
             "boxed": 68,
             "coverage": 0.4533333333333333,
             "dominant": {
-              "template": "Infobox person",
-              "count": 34
+              "template": "Infobox musical artist",
+              "count": 32
             },
-            "dominantShare": 0.5
+            "dominantShare": 0.47058823529411764
           }
         },
         "bareCluster": [],
@@ -716,17 +717,17 @@
         "coverage": 0.8018867924528302,
         "dominant": {
           "template": "Infobox building",
-          "count": 29
+          "count": 25
         },
         "distribution": {
-          "Infobox building": 29,
-          "Infobox designation list": 15,
+          "Infobox building": 25,
+          "Infobox designation list": 13,
           "Infobox shopping mall": 7,
-          "Infobox historic site": 6,
           "Infobox settlement": 5,
-          "Infobox bridge": 5,
-          "Infobox park": 4,
-          "Infobox hotel": 3
+          "Infobox park": 3,
+          "Infobox zoo": 3,
+          "Infobox station": 3,
+          "Infobox road": 3
         },
         "subCluster": {
           "byClass": null,
@@ -736,9 +737,9 @@
             "coverage": 0.8018867924528302,
             "dominant": {
               "template": "Infobox building",
-              "count": 29
+              "count": 25
             },
-            "dominantShare": 0.3411764705882353
+            "dominantShare": 0.29411764705882354
           }
         },
         "bareCluster": [],
@@ -758,25 +759,25 @@
         "labelSource": "editor-choice (stale tag)"
       },
       "verdict": "weak-signal",
-      "template": "Infobox person",
+      "template": "Infobox military person",
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
         "total": 133,
         "coverage": 0.849624060150376,
         "dominant": {
-          "template": "Infobox person",
-          "count": 41
+          "template": "Infobox military person",
+          "count": 38
         },
         "distribution": {
-          "Infobox person": 41,
-          "Infobox officeholder": 41,
           "Infobox military person": 38,
+          "Infobox officeholder": 37,
+          "Infobox person": 31,
           "Infobox astronaut": 1,
-          "Infobox judge": 1,
           "Infobox musical artist": 1,
           "Infobox religious biography": 1,
-          "Infobox police officer": 1
+          "Infobox police officer": 1,
+          "Infobox criminal": 1
         },
         "subCluster": {
           "byClass": null,
@@ -785,10 +786,10 @@
             "boxed": 113,
             "coverage": 0.849624060150376,
             "dominant": {
-              "template": "Infobox person",
-              "count": 41
+              "template": "Infobox military person",
+              "count": 38
             },
-            "dominantShare": 0.36283185840707965
+            "dominantShare": 0.336283185840708
           }
         },
         "bareCluster": [],
@@ -816,17 +817,17 @@
         "coverage": 0.9696969696969697,
         "dominant": {
           "template": "Infobox musical artist",
-          "count": 39
+          "count": 37
         },
         "distribution": {
-          "Infobox musical artist": 39,
-          "Infobox medal templates": 29,
-          "Infobox person": 28,
+          "Infobox musical artist": 37,
           "Infobox football biography": 17,
-          "Infobox sportsperson": 8,
+          "Infobox person": 14,
+          "Infobox sportsperson": 6,
           "Infobox martial artist": 3,
           "Infobox officeholder": 3,
-          "Infobox artist": 3
+          "Infobox artist": 3,
+          "Infobox social media personality": 3
         },
         "subCluster": {
           "byClass": null,
@@ -836,9 +837,9 @@
             "coverage": 0.9696969696969697,
             "dominant": {
               "template": "Infobox musical artist",
-              "count": 39
+              "count": 37
             },
-            "dominantShare": 0.40625
+            "dominantShare": 0.3854166666666667
           }
         },
         "bareCluster": [],
@@ -869,7 +870,6 @@
         "distribution": {
           "Infobox television": 101,
           "Infobox comedian": 1,
-          "Infobox person": 1,
           "Infobox programming block": 1,
           "Infobox video game series": 1
         },
@@ -911,17 +911,17 @@
         "coverage": 0.6836734693877551,
         "dominant": {
           "template": "Infobox person",
-          "count": 41
+          "count": 35
         },
         "distribution": {
-          "Infobox person": 41,
+          "Infobox person": 35,
           "Infobox officeholder": 12,
-          "Infobox medal templates": 11,
-          "Infobox sportsperson": 9,
-          "Infobox writer": 4,
+          "Infobox sportsperson": 8,
           "Infobox scientist": 2,
           "Infobox military person": 2,
-          "Infobox tennis biography": 2
+          "Infobox tennis biography": 2,
+          "Infobox saint": 2,
+          "Infobox criminal": 1
         },
         "subCluster": {
           "byClass": null,
@@ -931,9 +931,9 @@
             "coverage": 0.6836734693877551,
             "dominant": {
               "template": "Infobox person",
-              "count": 41
+              "count": 35
             },
-            "dominantShare": 0.6119402985074627
+            "dominantShare": 0.5223880597014925
           }
         },
         "bareCluster": [],
@@ -961,17 +961,17 @@
         "coverage": 0.32,
         "dominant": {
           "template": "Infobox person",
-          "count": 26
+          "count": 21
         },
         "distribution": {
-          "Infobox person": 26,
+          "Infobox person": 21,
           "Infobox officeholder": 7,
           "Infobox musical artist": 5,
           "Infobox classical composer": 3,
           "Infobox royalty": 3,
           "Infobox military person": 3,
           "Infobox noble": 2,
-          "Infobox composer": 1
+          "Infobox artist": 1
         },
         "subCluster": {
           "byClass": null,
@@ -981,9 +981,9 @@
             "coverage": 0.32,
             "dominant": {
               "template": "Infobox person",
-              "count": 26
+              "count": 21
             },
-            "dominantShare": 0.5416666666666666
+            "dominantShare": 0.4375
           }
         },
         "bareCluster": [],
@@ -1011,17 +1011,17 @@
         "coverage": 0.8428571428571429,
         "dominant": {
           "template": "Infobox officeholder",
-          "count": 81
+          "count": 77
         },
         "distribution": {
-          "Infobox officeholder": 81,
-          "Infobox person": 20,
+          "Infobox officeholder": 77,
+          "Infobox person": 16,
           "Infobox military person": 5,
           "Infobox cabinet members": 3,
           "Infobox saint": 3,
           "Infobox Political post": 2,
-          "Infobox official post": 2,
-          "Infobox artist": 2
+          "Infobox artist": 2,
+          "Infobox Christian leader": 2
         },
         "subCluster": {
           "byClass": null,
@@ -1031,9 +1031,9 @@
             "coverage": 0.8428571428571429,
             "dominant": {
               "template": "Infobox officeholder",
-              "count": 81
+              "count": 77
             },
-            "dominantShare": 0.6864406779661016
+            "dominantShare": 0.652542372881356
           }
         },
         "bareCluster": [],
@@ -1061,10 +1061,10 @@
         "coverage": 0.5066666666666667,
         "dominant": {
           "template": "Infobox person",
-          "count": 47
+          "count": 44
         },
         "distribution": {
-          "Infobox person": 47,
+          "Infobox person": 44,
           "Infobox musical artist": 30,
           "Infobox artist": 1,
           "Infobox military person": 1
@@ -1077,9 +1077,9 @@
             "coverage": 0.5066666666666667,
             "dominant": {
               "template": "Infobox person",
-              "count": 47
+              "count": 44
             },
-            "dominantShare": 0.618421052631579
+            "dominantShare": 0.5789473684210527
           }
         },
         "bareCluster": [],
@@ -1111,13 +1111,10 @@
         },
         "distribution": {
           "Infobox officeholder": 59,
-          "Infobox person": 18,
-          "Infobox COA wide": 2,
+          "Infobox person": 16,
           "Infobox academic": 1,
-          "Infobox scholar": 1,
-          "Infobox judge": 1,
           "Infobox football biography": 1,
-          "Infobox medal templates": 1
+          "Infobox royalty": 1
         },
         "subCluster": {
           "byClass": null,
@@ -1157,16 +1154,14 @@
         "coverage": 0.8733333333333333,
         "dominant": {
           "template": "Infobox person",
-          "count": 127
+          "count": 118
         },
         "distribution": {
-          "Infobox person": 127,
-          "Infobox writer": 42,
+          "Infobox person": 118,
           "Infobox comedian": 4,
           "Infobox officeholder": 4,
           "Infobox musical artist": 3,
           "Infobox military person": 1,
-          "Infobox model": 1,
           "Infobox artist": 1
         },
         "subCluster": {
@@ -1177,9 +1172,9 @@
             "coverage": 0.8733333333333333,
             "dominant": {
               "template": "Infobox person",
-              "count": 127
+              "count": 118
             },
-            "dominantShare": 0.9694656488549618
+            "dominantShare": 0.9007633587786259
           }
         },
         "bareCluster": [],
@@ -1214,7 +1209,6 @@
           "Infobox church": 6,
           "Infobox bridge": 3,
           "Infobox designation list": 1,
-          "Infobox historic site": 1,
           "Infobox station": 1,
           "Infobox settlement": 1
         },
@@ -1357,10 +1351,10 @@
         "coverage": 0.6923076923076923,
         "dominant": {
           "template": "Infobox person",
-          "count": 9
+          "count": 7
         },
         "distribution": {
-          "Infobox person": 9,
+          "Infobox person": 7,
           "Infobox artist": 1,
           "Infobox scientist": 1
         },
@@ -1372,9 +1366,9 @@
             "coverage": 0.6923076923076923,
             "dominant": {
               "template": "Infobox person",
-              "count": 9
+              "count": 7
             },
-            "dominantShare": 1
+            "dominantShare": 0.7777777777777778
           }
         },
         "bareCluster": [],
@@ -1405,13 +1399,13 @@
         },
         "distribution": {
           "Infobox Australian electorate": 37,
-          "Infobox Australian Electorate": 33,
           "Infobox company": 26,
-          "Infobox rail": 20,
+          "Infobox rail": 18,
           "Infobox government agency": 7,
           "Infobox UK legislation": 6,
           "Infobox rail line": 3,
-          "Infobox government cabinet": 2
+          "Infobox government cabinet": 2,
+          "Infobox architectural practice": 1
         },
         "subCluster": {
           "byClass": null,
@@ -1451,17 +1445,17 @@
         "coverage": 0.8584070796460177,
         "dominant": {
           "template": "Infobox person",
-          "count": 55
+          "count": 52
         },
         "distribution": {
-          "Infobox person": 55,
+          "Infobox person": 52,
           "Infobox officeholder": 36,
-          "Infobox medal templates": 3,
-          "Infobox sportsperson": 3,
-          "Infobox politician": 3,
           "Infobox academic": 2,
           "Infobox musical artist": 2,
-          "Infobox writer": 2
+          "Infobox chess biography": 2,
+          "Infobox sportsperson": 1,
+          "Infobox Christian leader": 1,
+          "Infobox comedian": 1
         },
         "subCluster": {
           "byClass": null,
@@ -1471,9 +1465,9 @@
             "coverage": 0.8584070796460177,
             "dominant": {
               "template": "Infobox person",
-              "count": 55
+              "count": 52
             },
-            "dominantShare": 0.5670103092783505
+            "dominantShare": 0.5360824742268041
           }
         },
         "bareCluster": [],
@@ -1501,17 +1495,17 @@
         "coverage": 0.8421052631578947,
         "dominant": {
           "template": "Infobox person",
-          "count": 44
+          "count": 41
         },
         "distribution": {
-          "Infobox person": 44,
-          "Infobox medal templates": 31,
-          "Infobox sportsperson": 24,
+          "Infobox person": 41,
           "Infobox badminton player": 12,
+          "Infobox sportsperson": 10,
           "Infobox football biography": 4,
-          "Infobox rugby biography": 2,
           "Infobox rugby league biography": 2,
-          "Infobox ice hockey biography": 2
+          "Infobox ice hockey biography": 2,
+          "Infobox table tennis player": 1,
+          "Infobox handball biography": 1
         },
         "subCluster": {
           "byClass": null,
@@ -1521,9 +1515,9 @@
             "coverage": 0.8421052631578947,
             "dominant": {
               "template": "Infobox person",
-              "count": 44
+              "count": 41
             },
-            "dominantShare": 0.55
+            "dominantShare": 0.5125
           }
         },
         "bareCluster": [],
@@ -1555,13 +1549,13 @@
         },
         "distribution": {
           "Infobox galaxy": 91,
-          "Infobox Galaxy": 21,
           "Infobox planet": 3,
           "Infobox quasar": 3,
           "Infobox galaxy cluster": 3,
-          "Infobox nebula": 3,
           "Infobox open cluster": 2,
-          "Infobox constellation": 1
+          "Infobox nebula": 2,
+          "Infobox constellation": 1,
+          "Infobox planetary nebula": 1
         },
         "subCluster": {
           "byClass": null,
@@ -1600,13 +1594,12 @@
         "total": 43,
         "coverage": 0.09302325581395349,
         "dominant": {
-          "template": "Infobox name",
+          "template": "Infobox surname",
           "count": 2
         },
         "distribution": {
-          "Infobox name": 2,
           "Infobox surname": 2,
-          "Infobox family": 2,
+          "Infobox family": 1,
           "Infobox noble house": 1
         },
         "subCluster": {
@@ -1616,7 +1609,7 @@
             "boxed": 4,
             "coverage": 0.09302325581395349,
             "dominant": {
-              "template": "Infobox name",
+              "template": "Infobox surname",
               "count": 2
             },
             "dominantShare": 0.5
@@ -1732,7 +1725,6 @@
         },
         "distribution": {
           "Infobox galaxy": 51,
-          "Infobox Galaxy": 4,
           "Infobox quasar": 2,
           "Infobox galaxy cluster": 2,
           "Infobox constellation": 1
@@ -1775,11 +1767,10 @@
         "coverage": 0.6701030927835051,
         "dominant": {
           "template": "Infobox galaxy",
-          "count": 58
+          "count": 57
         },
         "distribution": {
-          "Infobox galaxy": 58,
-          "Infobox Galaxy": 8,
+          "Infobox galaxy": 57,
           "Infobox quasar": 3,
           "Infobox galaxy cluster": 2,
           "Infobox constellation": 1,
@@ -1794,9 +1785,9 @@
             "coverage": 0.6701030927835051,
             "dominant": {
               "template": "Infobox galaxy",
-              "count": 58
+              "count": 57
             },
-            "dominantShare": 0.8923076923076924
+            "dominantShare": 0.8769230769230769
           }
         },
         "bareCluster": [],
@@ -1828,7 +1819,6 @@
         },
         "distribution": {
           "Infobox galaxy": 40,
-          "Infobox Galaxy": 5,
           "Infobox planet": 4,
           "Infobox quasar": 3,
           "Infobox galaxy cluster": 2,
@@ -1878,7 +1868,6 @@
         "distribution": {
           "Infobox urban feature": 26,
           "Infobox street": 4,
-          "Infobox Hill of Rome": 2,
           "Infobox hill of Rome": 2,
           "Infobox museum": 1,
           "Infobox monument": 1
@@ -2023,10 +2012,10 @@
         "distribution": {
           "Infobox urban feature": 8,
           "Infobox station": 2,
-          "Infobox rail line": 2,
           "Infobox airport": 1,
           "Infobox company": 1,
           "Infobox islands": 1,
+          "Infobox rail line": 1,
           "Infobox public transit": 1,
           "Infobox public transit accident": 1
         },
@@ -2073,7 +2062,6 @@
         "distribution": {
           "Infobox company": 11,
           "Infobox publisher": 1,
-          "Infobox Brand": 1,
           "Infobox brand": 1,
           "Infobox toy": 1
         },
@@ -2106,26 +2094,26 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox person",
-      "confidence": "high",
-      "outcome": "pass",
+      "confidence": "medium",
+      "outcome": "abstain",
       "evidence": {
         "total": 149,
         "coverage": 0.8322147651006712,
         "dominant": {
           "template": "Infobox person",
-          "count": 99
+          "count": 60
         },
         "distribution": {
-          "Infobox person": 99,
+          "Infobox person": 60,
           "Infobox artist": 36,
           "Infobox comics creator": 22,
-          "Infobox writer": 20,
           "Infobox organization": 2,
           "Infobox scientist": 1,
           "Infobox officeholder": 1,
-          "Infobox academic": 1
+          "Infobox academic": 1,
+          "Infobox author": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2135,9 +2123,9 @@
             "coverage": 0.8322147651006712,
             "dominant": {
               "template": "Infobox person",
-              "count": 99
+              "count": 60
             },
-            "dominantShare": 0.7983870967741935
+            "dominantShare": 0.4838709677419355
           }
         },
         "bareCluster": [],
@@ -2157,20 +2145,19 @@
         "labelSource": "editor-choice (stale tag)"
       },
       "verdict": "weak-signal",
-      "template": "Infobox person",
+      "template": "Infobox officeholder",
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
         "total": 132,
         "coverage": 0.7196969696969697,
         "dominant": {
-          "template": "Infobox person",
+          "template": "Infobox officeholder",
           "count": 44
         },
         "distribution": {
-          "Infobox person": 44,
           "Infobox officeholder": 44,
-          "Infobox medal templates": 5,
+          "Infobox person": 41,
           "Infobox sportsperson": 5,
           "Infobox artist": 2,
           "Infobox Christian leader": 1,
@@ -2184,7 +2171,7 @@
             "boxed": 95,
             "coverage": 0.7196969696969697,
             "dominant": {
-              "template": "Infobox person",
+              "template": "Infobox officeholder",
               "count": 44
             },
             "dominantShare": 0.4631578947368421
@@ -2221,10 +2208,10 @@
           "Infobox television": 21,
           "Infobox television episode": 17,
           "Infobox concert": 4,
-          "Infobox television season": 2,
           "Infobox film": 2,
           "Infobox company": 1,
           "Infobox reality competition season": 1,
+          "Infobox television season": 1,
           "Infobox television crossover episode": 1
         },
         "subCluster": {
@@ -2310,12 +2297,12 @@
         "distribution": {
           "Infobox civilian attack": 72,
           "Infobox military conflict": 10,
-          "Infobox Holocaust event": 4,
           "Infobox holocaust event": 4,
-          "Infobox event": 3,
           "Infobox civil conflict": 3,
-          "Infobox Former Subdivision": 3,
-          "Infobox former subdivision": 3
+          "Infobox former subdivision": 3,
+          "Infobox event": 2,
+          "Infobox": 2,
+          "Infobox military operation": 1
         },
         "subCluster": {
           "byClass": {
@@ -2357,24 +2344,22 @@
       },
       "verdict": "recommend",
       "template": "Infobox person",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "evidence": {
         "total": 32,
         "coverage": 0.90625,
         "dominant": {
           "template": "Infobox person",
-          "count": 22
+          "count": 17
         },
         "distribution": {
-          "Infobox person": 22,
+          "Infobox person": 17,
           "Infobox officeholder": 4,
           "Infobox artist": 3,
           "Infobox pageant titleholder": 2,
-          "Infobox medal templates": 2,
           "Infobox professional wrestler": 2,
-          "Infobox sportsperson": 2,
-          "Infobox writer": 1
+          "Infobox Christian leader": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2384,9 +2369,9 @@
             "coverage": 0.90625,
             "dominant": {
               "template": "Infobox person",
-              "count": 22
+              "count": 17
             },
-            "dominantShare": 0.7586206896551724
+            "dominantShare": 0.5862068965517241
           }
         },
         "bareCluster": [],
@@ -2403,26 +2388,26 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox person",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "evidence": {
         "total": 148,
         "coverage": 0.7297297297297297,
         "dominant": {
           "template": "Infobox person",
-          "count": 81
+          "count": 44
         },
         "distribution": {
-          "Infobox person": 81,
+          "Infobox person": 44,
           "Infobox scientist": 16,
-          "Infobox musical artist": 10,
-          "Infobox medal templates": 10,
-          "Infobox academic": 10,
+          "Infobox musical artist": 9,
           "Infobox officeholder": 9,
+          "Infobox academic": 8,
           "Infobox artist": 6,
-          "Infobox writer": 5
+          "Infobox college coach": 3,
+          "Infobox sportsperson": 3
         },
         "subCluster": {
           "byClass": null,
@@ -2432,9 +2417,9 @@
             "coverage": 0.7297297297297297,
             "dominant": {
               "template": "Infobox person",
-              "count": 81
+              "count": 44
             },
-            "dominantShare": 0.75
+            "dominantShare": 0.4074074074074074
           }
         },
         "bareCluster": [],
@@ -2462,17 +2447,15 @@
         "coverage": 0.935064935064935,
         "dominant": {
           "template": "Infobox officeholder",
-          "count": 67
+          "count": 63
         },
         "distribution": {
-          "Infobox officeholder": 67,
-          "Infobox incumbency": 6,
-          "Infobox person": 6,
-          "Infobox premiership": 5,
-          "Infobox Japanese": 2,
+          "Infobox officeholder": 63,
+          "Infobox person": 4,
           "Infobox military person": 2,
-          "Infobox writer": 2,
-          "Infobox criminal": 1
+          "Infobox administration": 1,
+          "Infobox manner of address": 1,
+          "Infobox military conflict": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2482,9 +2465,9 @@
             "coverage": 0.935064935064935,
             "dominant": {
               "template": "Infobox officeholder",
-              "count": 67
+              "count": 63
             },
-            "dominantShare": 0.9305555555555556
+            "dominantShare": 0.875
           }
         },
         "bareCluster": [],
@@ -2512,17 +2495,17 @@
         "coverage": 0.6413793103448275,
         "dominant": {
           "template": "Infobox person",
-          "count": 84
+          "count": 76
         },
         "distribution": {
-          "Infobox person": 84,
-          "Infobox writer": 14,
+          "Infobox person": 76,
           "Infobox officeholder": 5,
           "Infobox film": 2,
           "Infobox artist": 2,
           "Infobox academic": 2,
           "Infobox civilian attack": 1,
-          "Infobox actor": 1
+          "Infobox scientist": 1,
+          "Infobox clergy": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2532,9 +2515,9 @@
             "coverage": 0.6413793103448275,
             "dominant": {
               "template": "Infobox person",
-              "count": 84
+              "count": 76
             },
-            "dominantShare": 0.9032258064516129
+            "dominantShare": 0.8172043010752689
           }
         },
         "bareCluster": [],
@@ -2562,17 +2545,17 @@
         "coverage": 0.7064220183486238,
         "dominant": {
           "template": "Infobox U.S. legislation",
-          "count": 57
+          "count": 54
         },
         "distribution": {
-          "Infobox U.S. legislation": 57,
+          "Infobox U.S. legislation": 54,
           "Infobox book": 5,
           "Infobox legislation": 4,
-          "Infobox treaty": 3,
           "Infobox United States federal proposed legislation": 3,
-          "Infobox NRHP": 1,
-          "Infobox dim": 1,
-          "Infobox protected area": 1
+          "Infobox treaty": 2,
+          "Infobox US Supreme Court case": 1,
+          "Infobox SCC": 1,
+          "Infobox film": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2582,9 +2565,9 @@
             "coverage": 0.7064220183486238,
             "dominant": {
               "template": "Infobox U.S. legislation",
-              "count": 57
+              "count": 54
             },
-            "dominantShare": 0.7402597402597403
+            "dominantShare": 0.7012987012987013
           }
         },
         "bareCluster": [],
@@ -2616,13 +2599,11 @@
         },
         "distribution": {
           "Infobox restaurant": 74,
-          "Infobox company": 28,
-          "Infobox NRHP": 4,
+          "Infobox company": 27,
+          "Infobox NRHP": 3,
           "Infobox civilian attack": 1,
           "Infobox venue": 1,
-          "Infobox chef": 1,
-          "Infobox culinary career": 1,
-          "Infobox person": 1
+          "Infobox culinary career": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2662,13 +2643,12 @@
         "coverage": 0.8677685950413223,
         "dominant": {
           "template": "Infobox book",
-          "count": 104
+          "count": 103
         },
         "distribution": {
-          "Infobox book": 104,
+          "Infobox book": 103,
           "Infobox graphic novel": 1,
-          "Infobox novel": 1,
-          "Infobox Book": 1
+          "Infobox novel": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2678,9 +2658,9 @@
             "coverage": 0.8677685950413223,
             "dominant": {
               "template": "Infobox book",
-              "count": 104
+              "count": 103
             },
-            "dominantShare": 0.9904761904761905
+            "dominantShare": 0.9809523809523809
           }
         },
         "bareCluster": [],
@@ -2762,9 +2742,9 @@
           "Infobox food": 4,
           "Infobox venue": 2,
           "Infobox settlement": 1,
-          "Infobox chef": 1,
           "Infobox culinary career": 1,
-          "Infobox person": 1
+          "Infobox NRHP": 1,
+          "Infobox performing arts company": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2804,17 +2784,17 @@
         "coverage": 0.5072463768115942,
         "dominant": {
           "template": "Infobox person",
-          "count": 56
+          "count": 53
         },
         "distribution": {
-          "Infobox person": 56,
+          "Infobox person": 53,
           "Infobox officeholder": 9,
-          "Infobox royalty": 3,
-          "Infobox medal templates": 2,
-          "Infobox sportsperson": 2,
+          "Infobox royalty": 2,
           "Infobox islands": 1,
           "Infobox monarch": 1,
-          "Infobox chess biography": 1
+          "Infobox chess biography": 1,
+          "Infobox scientist": 1,
+          "Infobox social media personality": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2824,9 +2804,9 @@
             "coverage": 0.5072463768115942,
             "dominant": {
               "template": "Infobox person",
-              "count": 56
+              "count": 53
             },
-            "dominantShare": 0.8
+            "dominantShare": 0.7571428571428571
           }
         },
         "bareCluster": [],
@@ -2887,26 +2867,26 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox person",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "evidence": {
         "total": 98,
         "coverage": 0.9183673469387755,
         "dominant": {
           "template": "Infobox person",
-          "count": 59
+          "count": 42
         },
         "distribution": {
-          "Infobox person": 59,
+          "Infobox person": 42,
           "Infobox officeholder": 31,
-          "Infobox musical artist": 5,
-          "Infobox academic": 4,
-          "Infobox writer": 3,
+          "Infobox musical artist": 3,
           "Infobox scientist": 3,
           "Infobox philosopher": 2,
-          "Infobox criminal": 2
+          "Infobox academic": 2,
+          "Infobox social media personality": 2,
+          "Infobox artist": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2916,9 +2896,9 @@
             "coverage": 0.9183673469387755,
             "dominant": {
               "template": "Infobox person",
-              "count": 59
+              "count": 42
             },
-            "dominantShare": 0.6555555555555556
+            "dominantShare": 0.4666666666666667
           }
         },
         "bareCluster": [],
@@ -2955,8 +2935,8 @@
           "Infobox church": 2,
           "Infobox earthquake": 1,
           "Infobox civilian attack": 1,
-          "Infobox university": 1,
-          "Infobox university rankings": 1
+          "Infobox university rankings": 1,
+          "Infobox royalty": 1
         },
         "subCluster": {
           "byClass": {
@@ -3067,12 +3047,11 @@
         "distribution": {
           "Infobox document": 4,
           "Infobox military conflict": 2,
-          "Infobox COA wide": 1,
-          "Infobox family": 1,
           "Infobox noble house": 1,
           "Infobox country": 1,
           "Infobox earthquake": 1,
-          "Infobox manuscript": 1
+          "Infobox manuscript": 1,
+          "Infobox court": 1
         },
         "subCluster": {
           "byClass": null,
@@ -3112,13 +3091,13 @@
         "coverage": 0.7575757575757576,
         "dominant": {
           "template": "Infobox church",
-          "count": 23
+          "count": 21
         },
         "distribution": {
-          "Infobox church": 23,
-          "Infobox religious building": 2,
+          "Infobox church": 21,
           "Infobox designation list": 2,
-          "Infobox UNESCO World Heritage Site": 1
+          "Infobox UNESCO World Heritage Site": 1,
+          "Infobox religious building": 1
         },
         "subCluster": {
           "byClass": null,
@@ -3128,9 +3107,9 @@
             "coverage": 0.7575757575757576,
             "dominant": {
               "template": "Infobox church",
-              "count": 23
+              "count": 21
             },
-            "dominantShare": 0.92
+            "dominantShare": 0.84
           }
         },
         "bareCluster": [],
@@ -3162,13 +3141,13 @@
         },
         "distribution": {
           "Infobox former monarchy": 3,
-          "Infobox monarchy": 3,
           "Infobox royalty": 3,
           "Infobox legislature": 3,
           "Infobox European Parliament constituency": 3,
-          "Infobox country": 2,
+          "Infobox": 2,
           "Infobox former country": 2,
-          "Infobox Chinese": 2
+          "Infobox family": 1,
+          "Infobox diocese": 1
         },
         "subCluster": {
           "byClass": null,
@@ -3215,10 +3194,10 @@
           "Infobox summit meeting": 14,
           "Infobox event": 11,
           "Infobox military conflict": 7,
-          "Infobox German place": 7,
-          "Infobox settlement": 7,
           "Infobox German location": 5,
-          "Infobox Chinese": 3
+          "Infobox royalty": 3,
+          "Infobox Chinese": 2,
+          "Infobox military installation": 2
         },
         "subCluster": {
           "byClass": {
@@ -3272,12 +3251,12 @@
         "distribution": {
           "Infobox election": 26,
           "Infobox Christian leader": 7,
-          "Infobox country": 6,
-          "Infobox Antipope": 5,
           "Infobox former country": 3,
-          "Infobox event": 3,
+          "Infobox country": 3,
           "Infobox church": 2,
-          "Infobox royalty": 2
+          "Infobox event": 2,
+          "Infobox royalty": 2,
+          "Infobox diocese": 1
         },
         "subCluster": {
           "byClass": null,

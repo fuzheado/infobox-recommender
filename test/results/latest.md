@@ -1,10 +1,10 @@
 # Eval results — 2026-08-27 (64 cases)
 
-Summary: **35 pass / 6 fail / 23 abstain** — accuracy on decisive verdicts: **85%** (35/41)
+Summary: **31 pass / 6 fail / 27 abstain** — accuracy on decisive verdicts: **84%** (31/37)
 
 | outcome | title | expected | verdict | confidence |
 |---|---|---|---|---|
-| ✅ PASS | Brooke Hodge | Infobox person | recommend:Infobox person(medium) | medium |
+| — abstain | Brooke Hodge | Infobox person | weak-signal | medium |
 | ✅ PASS | Brad Gilmore | Infobox person | recommend:Infobox person(medium) | medium |
 | — abstain | Campo San Barnaba | Infobox urban feature | weak-signal | medium |
 | — abstain | Campo della Salute | Infobox urban feature | weak-signal | medium |
@@ -13,7 +13,7 @@ Summary: **35 pass / 6 fail / 23 abstain** — accuracy on decisive verdicts: **
 | ✅ PASS | Casco (town), Wisconsin | Infobox settlement | recommend:Infobox settlement(high) | high |
 | — abstain | Cashew Research Station, Madakkathara | Infobox laboratory | weak-signal | medium |
 | ✅ PASS | Chilton (town), Wisconsin | Infobox settlement | recommend:Infobox settlement(medium) | medium |
-| ✅ PASS | Christopher Edwards (businessman) | Infobox person | recommend:Infobox person(high) | high |
+| ✅ PASS | Christopher Edwards (businessman) | Infobox person | recommend:Infobox person(medium) | medium |
 | ✅ PASS | ClueQuest | Infobox company | recommend:Infobox company(medium) | medium |
 | — abstain | Convictolitavis | Infobox officeholder | weak-signal | medium |
 | ✅ PASS | Cowboys Are Frequently, Secretly Fond of Each Other | Infobox song | recommend:Infobox song(high) | high |
@@ -44,13 +44,13 @@ Summary: **35 pass / 6 fail / 23 abstain** — accuracy on decisive verdicts: **
 | ❌ FAIL | Piscichnus | Infobox fossil | none-warranted | high |
 | ✅ PASS | Piazzale Roma | Infobox urban feature | recommend:Infobox urban feature(medium) | medium |
 | ✅ PASS | Playadito | Infobox company | recommend:Infobox company(medium) | medium |
-| ✅ PASS | Robert N. Charrette | Infobox person | recommend:Infobox person(high) | high |
+| — abstain | Robert N. Charrette | Infobox person | weak-signal | medium |
 | — abstain | Roberta Gropper | Infobox officeholder | weak-signal | medium |
 | — abstain | RuPaul's Drag Race: Corona Can't Keep a Good Queen Down | Infobox television | weak-signal | medium |
 | — abstain | Sabrina Dallafior | Infobox officeholder | weak-signal | low |
 | ❌ FAIL | Sayfo | Infobox | recommend:Infobox civilian attack(high) | high |
-| ✅ PASS | Serena Morena | Infobox person | recommend:Infobox person(high) | high |
-| ✅ PASS | Shari McMahan | Infobox person | recommend:Infobox person(medium) | medium |
+| ✅ PASS | Serena Morena | Infobox person | recommend:Infobox person(medium) | medium |
+| — abstain | Shari McMahan | Infobox person | weak-signal | medium |
 | ✅ PASS | Shigeru Yoshida | Infobox officeholder | recommend:Infobox officeholder(high) | high |
 | ✅ PASS | Simon de Waal | Infobox person | recommend:Infobox person(medium) | medium |
 | ✅ PASS | Small Business Liability Relief and Brownfields Revitalization Act | Infobox U.S. legislation | recommend:Infobox U.S. legislation(medium) | medium |
@@ -60,7 +60,7 @@ Summary: **35 pass / 6 fail / 23 abstain** — accuracy on decisive verdicts: **
 | — abstain | Sushirrito | Infobox restaurant | weak-signal | medium |
 | ✅ PASS | Svend Foyn | Infobox person | recommend:Infobox person(medium) | medium |
 | ✅ PASS | Trans-Ocean News Service | Infobox company | recommend:Infobox company(medium) | medium |
-| ✅ PASS | Tony Greenstein | Infobox person | recommend:Infobox person(medium) | medium |
+| — abstain | Tony Greenstein | Infobox person | weak-signal | medium |
 | ✅ PASS | 1346 imperial election | Infobox election | recommend:Infobox election(high) | high |
 | ✅ PASS | May 1400 imperial election | Infobox election | recommend:Infobox election(high) | high |
 | — abstain | Golden Bull of 1356 | Infobox document | weak-signal | medium |

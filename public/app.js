@@ -78,8 +78,23 @@ const panel = (title, html) =>
   `<section class="panel"><h3>${esc(title)}</h3>${html}</section>`;
 
 // Article digest card: clickable title, short description, lead extract,
-// thumbnail, infobox status — shown while the census runs and in the report.
-function digestHtml(d) {
+// thumbnail, infobox status, Wikidata statement presence — shown while the
+// census runs and in the report. `wd` (optional) carries the post-discovery
+// Wikidata contribution (usable classes, same-class peers).
+function wdLine(d, wd) {
+  const w = wd ?? d?.wikidata;
+  if (!w) return '';
+  let line = `Wikidata: ${w.qid ?? '—'} · P31 ×${w.p31} · P279 ×${w.p279}`;
+  if (wd) {
+    line +=
+      w.classesTotal > 0
+        ? ` · ${w.classesUsed}/${w.classesTotal} P31 classes usable · ${w.sparqlPeers} same-class peers`
+        : ' · no P31 class on the item — categories carry the census';
+  }
+  return `<div class="digest-wd" id="wd-line">${esc(line)}</div>`;
+}
+
+function digestHtml(d, wd) {
   if (!d) return '';
   const thumb = d.thumbnail
     ? `<img class="digest-thumb" src="${esc(d.thumbnail)}" alt="" loading="lazy">`
@@ -97,6 +112,7 @@ function digestHtml(d) {
         <div class="digest-title"><a href="${articleUrl(d.title)}" target="_blank" rel="noopener">${esc(d.title)}</a></div>
         ${d.shortdesc ? `<div class="digest-desc">${esc(d.shortdesc)}</div>` : ''}
         ${box}
+        ${wdLine(d, wd)}
       </div>
     </div>
     ${extract}
@@ -274,7 +290,7 @@ function renderReport(r) {
 
   $view.innerHTML = `
     <div class="report">
-      ${digestHtml(r.digest)}
+      ${digestHtml(r.digest, r.wikidata)}
       ${verdictHtml}
       ${evidenceHtml}
       <section class="panel actions">
@@ -346,6 +362,12 @@ function renderLoading(title) {
       // census runs (clickable title, short description, lead extract)
       const slot = document.getElementById('digest');
       if (slot) slot.innerHTML = digestHtml(ev);
+      return;
+    }
+    if (ev.stage === 'wikidata') {
+      // post-discovery contribution: update the digest's Wikidata line
+      const el = document.getElementById('wd-line');
+      if (el) el.innerHTML = wdLine(null, ev);
       return;
     }
     const row = document.querySelector(`.stage[data-stage="${ev.stage}"]`);
