@@ -33,8 +33,10 @@ function setTitleParam(title) {
   history.pushState({}, '', u.pathname + u.search);
 }
 
-async function fetchAnalysis(title) {
-  const res = await fetch('analyze?title=' + encodeURIComponent(title));
+const isValidate = () => qs().get('validate') === '1';
+
+async function fetchAnalysis(title, validate) {
+  const res = await fetch('analyze?title=' + encodeURIComponent(title) + (validate ? '&validate=1' : ''));
   if (!res.ok) {
     let msg = `HTTP ${res.status}`;
     try {
@@ -47,15 +49,15 @@ async function fetchAnalysis(title) {
 }
 
 // Live progress via SSE; falls back to a plain fetch if the stream fails.
-function streamAnalysis(title, onStage) {
+function streamAnalysis(title, validate, onStage) {
   return new Promise((resolve, reject) => {
-    const es = new EventSource('analyze/stream?title=' + encodeURIComponent(title));
+    const es = new EventSource('analyze/stream?title=' + encodeURIComponent(title) + (validate ? '&validate=1' : ''));
     let settled = false;
     const timer = setTimeout(() => {
       if (settled) return;
       settled = true;
       es.close();
-      fetchAnalysis(title).then(resolve, reject); // stream unsupported — fall back
+      fetchAnalysis(title, validate).then(resolve, reject); // stream unsupported — fall back
     }, 4000);
     es.addEventListener('stage', (e) => onStage(JSON.parse(e.data)));
     es.addEventListener('result', (e) => {
@@ -200,6 +202,21 @@ function weakSignalNote(r, ev) {
   return `<p class="note weak-note">Peer signals are mixed (coverage ${cov}% in the ambiguous band). The evidence below shows what exists; a WikiProject banner may point to the standardized infobox for this subject.</p>`;
 }
 
+// Comparison card (validate mode): the article already has an infobox and
+// we ran the census to check the choice against peer practice.
+function comparisonCard(c) {
+  const cfg = {
+    consistent: { cls: 'v-ok', title: 'The current infobox matches peer practice' },
+    atypical: { cls: 'v-weak', title: 'Atypical choice — peers differ' },
+    inconclusive: { cls: 'v-none', title: 'Inconclusive — peer evidence is mixed' },
+  }[c.status] ?? { cls: 'v-info', title: c.status };
+  const note = esc(c.note ?? '').replace(/\{\{([^}]+)\}\}/g, (_, n) => tplLink(n));
+  return `<div class="verdict ${cfg.cls}">
+    <div class="verdict-title">${cfg.title}</div>
+    <div class="verdict-reason">${note}</div>
+  </div>`;
+}
+
 function renderReport(r) {
   const ev = r.evidence ?? {};
   let cardClass, verdictTitle, badge = '';
@@ -247,20 +264,25 @@ function renderReport(r) {
       ${skippedNote(ev)}`;
   }
 
+  // validate mode: the comparison card replaces the plain verdict card
+  const verdictHtml = r.comparison ? comparisonCard(r.comparison) : `
+    <div class="verdict ${cardClass}">
+      <div class="verdict-title">${verdictTitle} ${badge}</div>
+      <div class="verdict-reason">${esc(r.reason ?? '')}</div>
+      ${weakSignalNote(r, ev)}
+    </div>`;
+
   $view.innerHTML = `
     <div class="report">
       ${digestHtml(r.digest)}
-      <div class="verdict ${cardClass}">
-        <div class="verdict-title">${verdictTitle} ${badge}</div>
-        <div class="verdict-reason">${esc(r.reason ?? '')}</div>
-        ${weakSignalNote(r, ev)}
-      </div>
+      ${verdictHtml}
       ${evidenceHtml}
       <section class="panel actions">
         <h3>Report</h3>
         <div class="action-row">
           <a href="${articleLink}" target="_blank" rel="noopener">View article</a>
           <a href="${talkLink}" target="_blank" rel="noopener">Talk page</a>
+          ${r.verdict === 'already-has-infobox' ? '<button id="validate-btn">Run peer census to check this choice</button>' : ''}
           <button id="copy-json">Copy JSON</button>
           <button id="share">Share link</button>
         </div>
@@ -278,6 +300,12 @@ function renderReport(r) {
       () => { flash('Link copied'); },
       () => { flash('Copy failed'); }
     );
+  });
+  document.getElementById('validate-btn')?.addEventListener('click', () => {
+    const u = new URL(location.href);
+    u.searchParams.set('validate', '1');
+    history.pushState({}, '', u.pathname + u.search);
+    run(r.title, true);
   });
 }
 
@@ -378,11 +406,16 @@ function renderHome() {
     </section>`;
 }
 
-async function run(title) {
+async function run(title, validate) {
   setTitleParam(title);
+  if (!validate) {
+    const u = new URL(location.href);
+    u.searchParams.delete('validate');
+    history.replaceState({}, '', u.pathname + u.search);
+  }
   renderLoading(title);
   try {
-    const r = await streamAnalysis(title, (ev) => onStageRef?.(ev));
+    const r = await streamAnalysis(title, validate, (ev) => onStageRef?.(ev));
     clearInterval(elapsedTimer);
     renderReport(r);
   } catch (e) {
@@ -394,13 +427,13 @@ async function run(title) {
 $form.addEventListener('submit', (e) => {
   e.preventDefault();
   const t = $input.value.trim();
-  if (t) run(t);
+  if (t) run(t, false);
 });
 window.addEventListener('popstate', () => {
   const t = qs().get('title');
   if (t) {
     $input.value = t;
-    run(t);
+    run(t, isValidate());
   } else {
     $input.value = '';
     renderHome();
@@ -410,7 +443,7 @@ window.addEventListener('popstate', () => {
 const initial = qs().get('title');
 if (initial) {
   $input.value = initial;
-  run(initial);
+  run(initial, isValidate());
 } else {
   renderHome();
 }

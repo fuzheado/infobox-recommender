@@ -104,6 +104,7 @@ const server = createServer(async (req, res) => {
       if (!title) {
         return send(res, 400, { error: 'missing "title" parameter' }, 'application/json; charset=utf-8');
       }
+      const validate = url.searchParams.get('validate') === '1';
       const ip = req.socket.remoteAddress ?? '?';
       if (throttled(ip)) {
         return send(
@@ -126,7 +127,7 @@ const server = createServer(async (req, res) => {
       };
       try {
         const result = await withSlot(() =>
-          analyze(api, title, { log: (ev) => emit('stage', ev) })
+          analyze(api, title, { skipExisting: !validate, log: (ev) => emit('stage', ev) })
         );
         emit('result', result);
       } catch (e) {
@@ -145,6 +146,7 @@ const server = createServer(async (req, res) => {
       if (!title) {
         return send(res, 400, { error: 'missing "title" parameter' }, 'application/json; charset=utf-8');
       }
+      const validate = url.searchParams.get('validate') === '1';
       const ip = req.socket.remoteAddress ?? '?';
       if (throttled(ip)) {
         return send(
@@ -157,7 +159,7 @@ const server = createServer(async (req, res) => {
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Access-Control-Allow-Methods', 'GET');
       try {
-        const result = await withSlot(() => analyze(api, title));
+        const result = await withSlot(() => analyze(api, title, { skipExisting: !validate }));
         return send(res, 200, result, 'application/json; charset=utf-8');
       } catch (e) {
         return send(res, 500, { error: e?.message ?? String(e) }, 'application/json; charset=utf-8');

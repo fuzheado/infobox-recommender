@@ -13,16 +13,25 @@ import { analyze } from './lib/analyze.js';
 
 const titles = process.argv.slice(2).filter((t) => !t.startsWith('--'));
 const jsonOnly = process.argv.includes('--json');
+// --validate: article already has an infobox — run the census anyway and
+// compare the existing choice against peer practice.
+const validate = process.argv.includes('--validate');
 
 const api = createApi({ cacheDir: 'cache', paceMs: 1000 });
 const results = [];
 for (const t of titles) {
   if (!jsonOnly) console.log(`\n=== ${t} ===`);
   try {
-    const r = await analyze(api, t);
+    const r = await analyze(api, t, { skipExisting: !validate });
     results.push(r);
     if (jsonOnly) continue;
     console.log(`  qid: ${r.qid ?? '(none)'}`);
+    if (r.comparison) {
+      const c = r.comparison;
+      console.log(
+        `  validate: ${c.status} — ${c.note}`
+      );
+    }
     if (r.digest) {
       const d = r.digest;
       console.log(
