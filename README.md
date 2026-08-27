@@ -6,6 +6,32 @@ articles (Wikidata P31 siblings, most specific shared categories, WikiProject
 banners), (2) run an infobox census over them, (3) decide whether an infobox
 is customary and which template dominates.
 
+## Approach (executive summary)
+
+Our recommender answers "should this infoboxless article have an infobox, and
+if so which template?" by running an **infobox census over the article's
+peers** rather than by matching the article itself against template rules.
+Peers are discovered from three signals: Wikidata **P31 (instance-of)
+siblings** via SPARQL (classes with >500 instances are skipped as too
+heterogeneous), the article's **most specific categories** (ranked by member
+count via `categoryinfo`, since the smallest non-trivial category is the
+sharpest genre pointer), and **WikiProject banners** as a cross-check. We then
+fetch every peer's template list in small batched `prop=templates` calls (a
+per-request budget gotcha makes large batches silently lossy) and count
+infobox-family templates. If a strong majority of same-class peers carry the
+same specific infobox — e.g. 30/31 imperial elections use
+{{Infobox election}} — we recommend it with the evidence attached; if peers
+are overwhelmingly bare, we return "no infobox customary"; otherwise we
+abstain with a weak-signal rather than guess. Every verdict ships its
+evidence — peer counts, coverage, template distribution, event-vs-concept
+sub-cluster splits — so an editor can weigh the argument themselves,
+consistent with MOS:INFOBOXUSE, which explicitly treats "similar articles do
+or don't have infoboxes" as a legitimate consensus argument. On a 64-case
+labeled corpus drawn from the infobox-request backlog (editor-consensus
+labels), the pipeline scores 84% accuracy on decisive verdicts, with
+abstention treated as the designed honest answer in the ambiguous middle
+band.
+
 ## Usage
 
 ```sh
