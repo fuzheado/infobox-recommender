@@ -79,6 +79,19 @@ Multi-title queries return pages **alphabetically**, not in request order —
 never assume position == request order (this is why the budget starvation in
 §1.1 hits "random" pages from the caller's perspective).
 
+### 1.7 Continuation: `tltitle` vs `tlcontinue` (two different mechanisms)
+
+A single-prop query (`prop=templates` alone) continues with **`tltitle`**.
+But as soon as a query has **multiple props** (`prop=templates|pageprops|info`)
+— which the census uses — the API switches to the GENERIC continuation:
+`continue: '||pageprops|info'` plus the module param **`tlcontinue`**
+(`pageid|ns|title`). Checking only `cont.tltitle` silently breaks the loop:
+the truncated page's remaining templates (e.g. an infobox that sorts after
+"!") are never fetched. Cost a real regression during the web-UI work:
+1440 imperial election lost its infobox until `tlcontinue` was honored.
+Rule: check `cont.tltitle ?? cont.tlcontinue`, echo back the WHOLE continue
+object (`Object.assign(params, cont)`).
+
 ### 1.7 paraminfo is stripped on enwiki
 
 `action=paraminfo` descriptions come back empty on en.wikipedia.org

@@ -61,24 +61,32 @@ enwiki, `origin=*` CORS for Wikidata).
 ## Web UI (experimental)
 
 Zero-dependency analysis service — the same pipeline as the CLI, with a rich
-report renderer and an API mode:
+report renderer, an API mode, and live progress:
 
 ```sh
 npm run serve        # http://localhost:3000
 ```
 
 - `/?title=Small-signal+model` → auto-runs the analysis and renders the report (shareable URL)
+- `/analyze/stream?title=X` → SSE stream: live stage events (resolve → peers → census i/n → decision), then the result
 - `/analyze?title=X&output=json` → API mode: full analysis JSON, CORS-enabled (missing title → 400)
 - `/` → search + examples
 
-Cold analyses take 30–90s (WDQS); repeat analyses are instant (disk cache).
+Speed: cold analyses run in ~5–15s (down from 30–90s) thanks to bigger
+census batches with continuation, per-class Wikidata sample caching (shared
+across every article of the same class), parallel discovery stages, and lazy
+sub-cluster analysis — all within the ≥1s request-pacing etiquette (request
+starts stay 1s apart; latencies overlap). Repeat analyses are instant (disk
+cache). The page shows a live stage checklist with an elapsed timer while
+the analysis runs.
+
 Server guards: 2 concurrent analyses max (queue), per-IP throttle (30/5 min),
 title sanitization, path-traversal protection.
 
 Deployment: Toolforge node22 webservice (tool creation is web-UI only at
 toolsadmin; OSI `LICENSE` included). Caveat: Toolforge proxy timeouts may
-bite cold 60–90s analyses — if so, the fix is a job/polling pattern, not a
-longer request.
+bite cold analyses — if so, the fix is a job/polling pattern, not a longer
+request (the SSE stream is a step toward that).
 
 ## Docs
 

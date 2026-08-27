@@ -39,6 +39,32 @@ async function fetchAnalysis(title) {
   return res.json();
 }
 
+// Live progress via SSE; falls back to a plain fetch if the stream fails.
+function streamAnalysis(title, onStage) {
+  return new Promise((resolve, reject) => {
+    const es = new EventSource('analyze/stream?title=' + encodeURIComponent(title));
+    let settled = false;
+    const timer = setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      es.close();
+      fetchAnalysis(title).then(resolve, reject); // stream unsupported — fall back
+    }, 4000);
+    es.addEventListener('stage', (e) => onStage(JSON.parse(e.data)));
+    es.addEventListener('result', (e) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      es.close();
+      resolve(JSON.parse(e.data));
+    });
+    es.addEventListener('error', () => {
+      if (settled) return;
+      // EventSource retries automatically; only fall back if it never opens.
+    });
+  });
+}
+
 const panel = (title, html) =>
   `<section class="panel"><h3>${esc(title)}</h3>${html}</section>`;
 
@@ -129,9 +155,16 @@ function skippedNote(ev) {
 function weakSignalNote(r, ev) {
   if (r.verdict !== 'weak-signal') return '';
   const few = (ev.total ?? 0) < 5;
-  return `<p class="note weak-note">${few
-    ? `Only ${ev.total} evaluable peers — too few for a reliable census. The article's Wikidata class may be too broad or its categories too sparse.`
-    : `Peer signals are mixed (coverage in the ambiguous band, ${Math.round((ev.coverage ?? 0) * 100)}%). The evidence below shows what exists; a WikiProject banner may point to the standardized infobox for this subject.`}</p>`;
+  const cov = Math.round((ev.coverage ?? 0) * 100);
+  const dom = ev.dominant;
+  const domShare = dom ? Math.round((dom.count / (ev.withInfobox || 1)) * 100) : 0;
+  if (few) {
+    return `<p class="note weak-note">Only ${ev.total} evaluable peers — too few for a reliable census. The article's Wikidata class may be too broad or its categories too sparse.</p>`;
+  }
+  if (cov >= 50 && domShare < 50) {
+    return `<p class="note weak-note">Most peers have an infobox, but no single template dominates (best candidate: ${esc(dom.template)} at ${domShare}% of boxed peers). The genre may be mixed — a WikiProject banner may point to the standardized infobox for this subject.</p>`;
+  }
+  return `<p class="note weak-note">Peer signals are mixed (coverage ${cov}% in the ambiguous band). The evidence below shows what exists; a WikiProject banner may point to the standardized infobox for this subject.</p>`;
 }
 
 function renderReport(r) {
@@ -227,9 +260,45 @@ function renderLoading(title) {
     <div class="report loading">
       <div class="spinner"></div>
       <h2>Running the peer census for “${esc(title)}”…</h2>
-      <p class="muted">First analysis of an article takes 30–90s (Wikidata queries). Repeat analyses are instant.</p>
+      <p class="muted" id="elapsed">First analysis of an article takes 30–90s (Wikidata queries). Repeat analyses are instant.</p>
+      <div class="progress-panel" id="progress">
+        <div class="stage" data-stage="resolve"><span class="dot"></span>Resolving article</div>
+        <div class="stage" data-stage="peers"><span class="dot"></span>Discovering peers (Wikidata class, categories, WikiProject banners)</div>
+        <div class="stage" data-stage="census"><span class="dot"></span>Peer infobox census <span class="census-count"></span></div>
+        <div class="stage" data-stage="clusters"><span class="dot"></span>Sub-cluster analysis</div>
+        <div class="stage" data-stage="decide"><span class="dot"></span>Decision</div>
+      </div>
     </div>`;
+
+  const started = Date.now();
+  if (elapsedTimer) clearInterval(elapsedTimer);
+  elapsedTimer = setInterval(() => {
+    const el = document.getElementById('elapsed');
+    if (el) el.textContent = `Elapsed: ${Math.round((Date.now() - started) / 1000)}s — live progress below.`;
+  }, 1000);
+
+  onStageRef = (ev) => {
+    const row = document.querySelector(`.stage[data-stage="${ev.stage}"]`);
+    if (row) {
+      if (ev.stage === 'census' && typeof ev.done === 'number') {
+        const count = row.querySelector('.census-count');
+        if (count) count.textContent = `— ${ev.done} of ${ev.total} peers`;
+      }
+      if (ev.stage === 'peers' && ev.label === 'Peer set ready') {
+        const note = document.createElement('span');
+        note.className = 'stage-note';
+        note.textContent = `— ${ev.sparql ?? 0} same-class, ${ev.category ?? 0} category peers`;
+        row.appendChild(note);
+      }
+    }
+    for (const r of document.querySelectorAll('.stage')) r.classList.remove('active');
+    const cur = document.querySelector(`.stage[data-stage="${ev.stage}"]`);
+    if (cur) cur.classList.add('active');
+  };
 }
+
+let onStageRef = null;
+let elapsedTimer = null;
 
 function renderError(title, msg) {
   $view.innerHTML = `
@@ -271,9 +340,11 @@ async function run(title) {
   setTitleParam(title);
   renderLoading(title);
   try {
-    const r = await fetchAnalysis(title);
+    const r = await streamAnalysis(title, (ev) => onStageRef?.(ev));
+    clearInterval(elapsedTimer);
     renderReport(r);
   } catch (e) {
+    clearInterval(elapsedTimer);
     renderError(title, e.message);
   }
 }

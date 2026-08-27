@@ -95,6 +95,47 @@ const server = createServer(async (req, res) => {
       return serveAsset(res, 'index.html');
     }
 
+    if (path === '/analyze/stream') {
+      const title = (url.searchParams.get('title') ?? '')
+        .replace(/[\u0000-\u001f\u007f]/g, '')
+        .trim()
+        .slice(0, 300);
+      if (!title) {
+        return send(res, 400, { error: 'missing "title" parameter' }, 'application/json; charset=utf-8');
+      }
+      const ip = req.socket.remoteAddress ?? '?';
+      if (throttled(ip)) {
+        return send(
+          res,
+          429,
+          { error: `rate limit: ${RATE_LIMIT.max} analyses per ${RATE_LIMIT.windowMs / 60000} minutes` },
+          'application/json; charset=utf-8'
+        );
+      }
+      res.writeHead(200, {
+        'Content-Type': 'text/event-stream; charset=utf-8',
+        'Cache-Control': 'no-cache, no-transform',
+        Connection: 'keep-alive',
+        'Access-Control-Allow-Origin': '*',
+        'X-Accel-Buffering': 'no', // keep nginx/proxies from buffering the stream
+      });
+      const emit = (event, data) => {
+        if (res.writableEnded) return;
+        res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+      };
+      try {
+        const result = await withSlot(() =>
+          analyze(api, title, { log: (ev) => emit('stage', ev) })
+        );
+        emit('result', result);
+      } catch (e) {
+        emit('error', { error: e?.message ?? String(e) });
+      } finally {
+        res.end();
+      }
+      return;
+    }
+
     if (path === '/analyze') {
       const title = (url.searchParams.get('title') ?? '')
         .replace(/[\u0000-\u001f\u007f]/g, '')
