@@ -7,6 +7,7 @@
 // Routes:
 //   /                               -> search page + examples (HTML)
 //   /?title=Small-signal+model      -> same page, auto-runs the analysis
+//   /analyze/stream?title=X         -> SSE: live stage events, then the result
 //   /analyze?title=X&output=json    -> API mode: full analysis JSON (CORS *)
 //   /style.css, /app.js             -> static assets from public/
 //

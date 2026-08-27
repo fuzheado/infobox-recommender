@@ -122,13 +122,15 @@ confidence for every case.
 
 | Change | Cases |
 |---|---|
-| abstain → **pass** (8) | Brad Gilmore, Izabella Pawelczynska, John Darrenkamp, Maani Petgar, Svend Foyn (Infobox person — tighter peer sets crossed the coverage bar), Frankfurt Cathedral (Infobox church) |
-| fail → **abstain** (2) | Golden Bull of 1356 (P31-polluted override no longer fires), |
-| abstain → abstain (cleaner evidence) | Prince-elector, Declaration of Rhense, Coronation (concept genres got tighter on-genre peer sets) |
+| abstain → **pass** (8, campaign 2) | Brad Gilmore, Izabella Pawelczynska, John Darrenkamp, Maani Petgar, Svend Foyn (Infobox person — tighter peer sets crossed the coverage bar), Frankfurt Cathedral (Infobox church) |
+| fail → **abstain** (campaign 2) | Golden Bull of 1356 (P31-polluted override no longer fires) |
+| abstain → **pass** (3, campaign 3) | Piazza dell'Esquilino, Piazzale Roma, Serena Morena (maintenance-category filter cleaned the peer sets) |
+| abstain → abstain (cleaner evidence, campaign 2) | Prince-elector, Declaration of Rhense, Coronation (concept genres got tighter on-genre peer sets) |
 
-(Only 2 of the 8 baseline fails remain among the current 6; both are
-judgment-call person/officeholder cases, now joined by the same two
-none-warranted-vs-outlier cases and the weak-label Sayfo case.)
+(6 of the 8 baseline fails remain: the two person/officeholder judgment
+calls, the two none-warranted-vs-outlier cases, the weak-label Sayfo case,
+and the Strengholt specificity gap. Golden Bull of 1356 and Felix Greissle
+now abstain — Golden Bull's evidence correctly surfaces Infobox document.)
 
 ---
 
@@ -182,10 +184,12 @@ Brad Gilmore — returned empty lists). Bare `{{Infobox}}` sorts early
 alphabetically, so it was also systematically over-represented while specific
 boxes were starved.
 
-*Fix (lib/census.js):* batch size 5 + `tltitle` continuation for mid-page
-truncation + **self-healing**: any page that comes back empty is re-queried
-individually (a single-title query cannot be starved). Zero results are now
-trustworthy.
+*Fix (lib/census.js, campaign 1):* batch size 5 + `tltitle` continuation
+for mid-page truncation + **self-healing**: any page that comes back empty
+is re-queried individually (a single-title query cannot be starved). Zero
+results are now trustworthy. *Evolved since:* 50-title batches
++ continuation rounds (`tltitle` **or** `tlcontinue` — engineering-notes
+§1.7) + suspect-only re-queue passes + a final individual pass.
 
 ### 5.2 Bare `{{Infobox}}` was winning as the "recommended" template
 

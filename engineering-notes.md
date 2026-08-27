@@ -25,10 +25,13 @@ request. Consequences:
   indistinguishable from genuinely bare pages. Verified: 15 pages consumed
   exactly 500 templates; the last 4 (alphabetically) returned 0.
 
-Mitigation used in `lib/census.js`: batch size 5 + `tltitle` continuation
-(mid-page truncation returns a continue token; echo it back along with the
-generic `continue` value) + **self-heal**: any page that comes back empty is
-re-queried individually — a single-title query cannot be starved. Zero
+Mitigation used in `lib/census.js`: 50-title batches + continuation rounds
+(mid-page truncation returns a continue token — `tltitle` for single-prop
+queries, `tlcontinue` for multi-prop; echo the WHOLE continue object back)
++ **suspect-only re-queue passes**: a batch whose cumulative template count
+reached the 500 cap may have starved its trailing pages, so empty results
+there are re-queried in 10-title batches; anything still suspect is resolved
+with individual queries (a single-title query cannot be starved). Zero
 results are only trustworthy after that.
 
 ### 1.2 `tltemplates` (the templates filter) — exact names only, no wildcards
@@ -150,5 +153,10 @@ Document label provenance (see `test/fixtures.json` `labelSource`).
 - **Userscript path**: the libs are dual-runtime (global `fetch`); in the
   browser use `{ cacheDir: null, paceMs: 0 }` — enwiki calls are same-origin
   (no CORS), Wikidata works with anonymous `origin=*`.
+- **Canonical repo**: github.com/fuzheado/infobox-recommender (private as of
+  2026-08-27; flip visibility when ready). Toolforge deployment: tool
+  creation is web-UI only (toolsadmin), then
+  `webservice --backend=kubernetes node22 start`; an OSI `LICENSE` (MIT) is
+  included.
 - Disk cache (`cache/`, SHA1-URL-keyed JSON) is the default; re-runs are
   deterministic and instant. Bust it when API semantics change.

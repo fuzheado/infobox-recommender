@@ -16,8 +16,8 @@ the evidence (what infoboxes peers actually carry) decides.
 
 | # | Signal | Mechanics | Eval receipts (64-case corpus, 2026-08-27) |
 |---|---|---|---|
-| 1 | **Wikidata P31 siblings** | SPARQL: same "instance of" class, cross-language; classes >500 instances dropped (too heterogeneous, e.g. Q5 human) | Fired in only **12/64** cases — the backlog skews to people/objects whose classes are huge. When it fires it is the strongest signal: imperial elections at **97% unanimous class → high confidence** |
-| 2 | **Categories** | Article's own non-maintenance categories, sorted by name *length* (specificity heuristic), top 5, members (ns=0, ≤50 each) become peers | The **workhorse: 22 of 24 passes rode category-only peer sets** (people, companies, galaxies, TV series). Also the main noise source: enzymes in Venice-campo sets, firearm-cartridge articles in a physics-concept set |
+| 1 | **Wikidata P31 siblings** | SPARQL: same "instance of" class, cross-language; classes >500 instances dropped (too heterogeneous, e.g. Q5 human); per-class sample queries are cached per class, so the cost amortizes across every article of that class | Fired in only **12/64** cases — the backlog skews to people/objects whose classes are huge. When it fires it is the strongest signal: imperial elections at **97% unanimous class → high confidence** |
+| 2 | **Categories** | Article's non-maintenance categories ranked by **member count** (`categoryinfo`, fewest = most specific; `clshow=!hidden` + an ignorable set), top 5, members (ns=0, ≤50 each) become peers | The **workhorse: 33 of 35 passes rode category-only peer sets** (people, companies, galaxies, TV series). Also the main noise source: enzymes in Venice-campo sets, firearm-cartridge articles in a physics-concept set |
 | 3 | **WikiProject banners** | Detected on the talk page and displayed in evidence (the doc's "standardized infobox pointer") | **Not yet used to find peers** — detected but unused as a peer source |
 
 **Deliberately not used:** short description, lead paragraph, wikitext,
@@ -30,16 +30,17 @@ that into recommend / none-warranted / weak-signal.
 
 ## 2. What the eval says about signal contribution
 
-From `test/results/2026-08-27.json`:
+From `test/results/latest.json` (campaign 3, 2026-08-27):
 
-- **24/24 passes** break down as **22 category-driven, 2 class-driven**
-  (the two imperial elections). Categories are doing ~90% of the work.
+- **35/35 passes** break down as **33 category-driven, 2 class-driven**
+  (the two imperial elections). Categories are doing ~94% of the work.
 - **12/64** cases had a usable same-class group (n≥3). For the rest, P31 was
   either absent or the class exceeded the 500-instance cap (people).
-- The 8 fails split: 2 genuine algorithm gaps (P31 pollution on Golden Bull of
-  1356; specificity ladder missing), 3 judgment calls, 3 where the recommender
-  is arguably right and the editor label is the outlier.
-- The 32 abstains are the honest middle band — mixed peer signals.
+- The 6 fails split: 2 judgment calls (person vs officeholder for
+  politicians), 2 where the recommender is arguably right and the editor
+  label is the outlier (Noronha 9%, Piscichnus 1%), 1 weak label (Sayfo), 1
+  specificity-ladder gap (publisher ⊂ company).
+- The 23 abstains are the honest middle band — mixed peer signals.
 
 **Consequences:**
 1. Category peer quality dominates overall accuracy → improving category

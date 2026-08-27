@@ -16,9 +16,11 @@ siblings** via SPARQL (classes with >500 instances are skipped as too
 heterogeneous), the article's **most specific categories** (ranked by member
 count via `categoryinfo`, since the smallest non-trivial category is the
 sharpest genre pointer), and **WikiProject banners** as a cross-check. We then
-fetch every peer's template list in small batched `prop=templates` calls (a
-per-request budget gotcha makes large batches silently lossy) and count
-infobox-family templates. If a strong majority of same-class peers carry the
+fetch every peer's template list in 50-title batched `prop=templates` calls
+(a per-request template budget makes naive large batches silently lossy —
+the census uses continuation rounds plus re-queue passes to guarantee
+completeness) and count infobox-family templates. If a strong majority of
+same-class peers carry the
 same specific infobox — e.g. 30/31 imperial elections use
 {{Infobox election}} — we recommend it with the evidence attached; if peers
 are overwhelmingly bare, we return "no infobox customary"; otherwise we
@@ -39,19 +41,25 @@ node cli.js "1346 imperial election"
 node cli.js "Prince-elector" "May 1400 imperial election" --json
 ```
 
-First run does live API calls (~10 requests/article, ≥1s apart); everything is
-disk-cached in `cache/` (SHA1-URL-keyed JSON) so re-runs are instant.
+First run does live API calls (tens of requests/article, ≥1s apart);
+everything is disk-cached in `cache/` (SHA1-URL-keyed JSON) so re-runs are
+instant.
 
 ## Architecture (dual-runtime JS)
 
 ```
 lib/api.js     Action API + WDQS client: UA etiquette, pacing, retry/backoff,
                cache-first disk cache. Uses global fetch (Node ≥18 / browser).
-lib/peers.js   Stage A: P31 siblings (SPARQL), deepest categories, banners
-lib/census.js  Stage B: batched prop=templates census, infobox-family filter,
-               peer pruning, sub-cluster split (same-class vs category-only)
-lib/decide.js  Stage C: thresholds, exclusions, confidence
+lib/peers.js   Stage A: P31 siblings (per-class cached SPARQL samples),
+               member-count category selection (clshow=!hidden), banners
+lib/census.js  Stage B: 50-title batched prop=templates census (continuation
+               + re-queue passes), infobox-family filter, peer pruning,
+               sub-cluster split (same-class vs category-only)
+lib/decide.js  Stage C: thresholds, exclusions, confidence, evidence
+lib/analyze.js Full pipeline for one title (shared by CLI, server, userscript)
 cli.js         Node CLI harness (exploration / batch runs)
+server.mjs     Zero-dependency web service (report UI + SSE progress + JSON API)
+public/        Report renderer (app.js), styles, page shell
 ```
 
 The libs are pure logic + a thin `fetch` layer — the same code will back the
@@ -139,59 +147,36 @@ node cli.js "A" "B" "C" --json       # multiple titles, machine-readable only
 - Stage D (Wikidata fill-rate draft preview) not implemented.
 - Sidebars are detected and reported but don't yet veto a recommendation.
 
-## Live findings (2026-08-27)
+## Findings & history (2026-08-27)
 
-### Evaluation-driven fixes
+Three evaluation campaigns took the pipeline from 11% to 85% decisive
+accuracy (24 → 35 pass, 32 → 23 abstain): census correctness fixes, decision
+logic hardening, signal upgrades, and the maintenance-category filter. Key
+verified cases: `1346 imperial election` → **recommend Infobox election
+(high)** (97% same-class, matches the research doc's demo); `May 1400
+imperial election` → **recommend** (the doc's orphaned sibling, correctly
+caught); `Prince-elector` / `Amathlai` / `1696 Jacobite assassination plot` →
+honest weak-signals (concept genre, P31=human, mixed peers).
 
-- The eval caught a second census bug: tllimit's per-request 500-template
-  budget silently starves trailing pages when it lands exactly on a page
-  boundary (alphabetical processing, NO continue token). Fixed with small
-  batches (5) + tltitle continuation + self-healing re-query of any page that
-  comes back empty (single-title queries cannot be starved).
-- Bare {{Infobox}} (the generic meta-template) is now excluded from
-  recommendation candidates (kept in coverage) — it was winning as the
-  "dominant" template on noisy peer sets.
-- `none-warranted` now requires very low coverage (<15%) or a small coherent
-  peer set, or a strong bare sub-genre cluster within the doc's 25% band —
-  the doc's "peers share the no-infobox trait" condition made structural.
-  This stopped false "no infobox customary" claims on mixed genres (e.g.
-  Jeremiah Clarke: 25% coverage, scattered bare peers → now honest abstain).
+The full history — every bug found and fixed, the campaign progression
+(11% → 83% → 71% → 73% → 75% → 84% → 85%), and per-case results — lives in
+`test/EVALUATION.md` (writeup), `test/results/latest.md` (current per-case
+table), and `engineering-notes.md` (API gotchas).
 
-### Case results
+## Next steps
 
-- `1346 imperial election` → **recommend Infobox election (high)**: 97%
-  same-class coverage (30/31, unanimous among boxed); matches the research
-  doc's demo.
-- `May 1400 imperial election` → **recommend Infobox election (high)**: the
-  doc's "orphaned sibling" — correctly caught.
-- `Prince-elector` → **weak-signal**: P31 classes genuinely too big
-  ("historical position" 1,302, "noble title") so only the category signal
-  fires; member-count category selection tightened the peer set (102→51
-  peers, coverage 38%→43%); the concept sub-genre stays below the
-  none-warranted bar, so the verdict stays honest.
-- `Amathlai` (biblical person, P31=human) → weak-signal 26% coverage:
-  category signal only; many peers bare, some Infobox saint / religious
-  biography.
-- `1696 Jacobite assassination plot` → weak-signal 43%: same-class census
-  surfaces "Infobox civilian attack" as the in-class dominant — right
-  template in evidence, coverage under the 50% bar.
-- `Allied High Commission` → weak-signal 30%: class (377 instances) mostly
-  bare; genre in transition.
-- Disambiguation and list pages → instant exclusions before any discovery.
-- Bugs found & fixed during POC: `tllimit` is a per-request TOTAL (not
-  per-page) for prop=templates — truncated lists silently lost infoboxes;
-  continuation (`tltitle`) + batch size 20 required. Redirect peers must not
-  be resolved (`redirects=1` pollutes the census with wrong-genre targets) —
-  detect via the `redirect` key from prop=info. SPARQL returns class values
-  as full URLs (strip to bare QID). 4xx (except 429) are permanent — no
-  retry. Fetch needs a timeout (WDQS can hang). Exclusions must run before
-  discovery. Instance counting via COUNT() is slow on huge classes — use an
-  early-terminating LIMIT sample and count client-side.
-
-## Next steps (userscript path)
-
-- The libs are pure logic + `fetch` — same files run in a browser userscript
-  with `{ cacheDir: null, paceMs: 0 }`; enwiki calls are same-origin, Wikidata
-  needs `origin=*` (anonymous read-only, supported).
-- Personal script (User:Fuzheado/common.js) or gadget; UI = a "recommend
-  infobox" affordance on article/talk pages using the same `decide()` output.
+- **Deploy to Toolforge** (tool creation is web-UI only; then
+  `webservice --backend=kubernetes node22 start`) so shareable report URLs
+  work on-wiki; canonical repo: github.com/fuzheado/infobox-recommender
+  (private — flip visibility when ready to share).
+- **Semantic sub-clustering** (lead/extract embeddings or ORES topics) — the
+  main lever for the remaining abstains and the concept-genre cases
+  (signals.md H3).
+- **Template specificity ladder** — pick the most specific template via the
+  template taxonomy (publisher ⊂ company; fixes near-miss fails).
+- **Stage D** — Wikidata fill-rate draft infobox preview.
+- **Userscript**: the libs are pure logic + `fetch` — same files run in a
+  browser userscript with `{ cacheDir: null, paceMs: 0 }`; enwiki calls are
+  same-origin, Wikidata needs `origin=*` (anonymous read-only, supported).
+  Personal script (User:Fuzheado/common.js) or gadget; the web UI's report
+  renderer transfers directly.
