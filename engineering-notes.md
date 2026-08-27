@@ -92,7 +92,21 @@ the truncated page's remaining templates (e.g. an infobox that sorts after
 Rule: check `cont.tltitle ?? cont.tlcontinue`, echo back the WHOLE continue
 object (`Object.assign(params, cont)`).
 
-### 1.7 paraminfo is stripped on enwiki
+### 1.8 `prop=categories` returns no `hidden` flag — use `clshow=!hidden`
+
+`prop=categories` responses contain only `{ns, title}` (plus `hidden` in some
+legacy formats — empirically absent in formatversion=2), so `c.hidden`
+checks are dead code: hidden maintenance categories (All stub articles,
+Webarchive template wayback links, …) leak straight through into peer sets
+and bare-cluster evidence. Exclude them at the API with `clshow: '!hidden'`
+and additionally regex-filter non-hidden maintenance families (stub
+categories are NOT hidden on enwiki — e.g. "Physics stubs" has
+`hidden: false` — so a pattern like `/ stubs?$/` is still required).
+
+The ignorable-category set lives in `MAINTENANCE_CATEGORY_RE`
+(`lib/peers.js`) — extend it rather than sprinkling filters.
+
+### 1.9 paraminfo is stripped on enwiki
 
 `action=paraminfo` descriptions come back empty on en.wikipedia.org
 (`"helpformat":"none"`) — consult mediawiki.org docs for semantics, or

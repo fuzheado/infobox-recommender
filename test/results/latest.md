@@ -1,6 +1,6 @@
 # Eval results — 2026-08-27 (64 cases)
 
-Summary: **32 pass / 6 fail / 26 abstain** — accuracy on decisive verdicts: **84%** (32/38)
+Summary: **35 pass / 6 fail / 23 abstain** — accuracy on decisive verdicts: **85%** (35/41)
 
 | outcome | title | expected | verdict | confidence |
 |---|---|---|---|---|
@@ -38,23 +38,23 @@ Summary: **32 pass / 6 fail / 26 abstain** — accuracy on decisive verdicts: **
 | ✅ PASS | NGC 5475 | Infobox galaxy | recommend:Infobox galaxy(medium) | medium |
 | ❌ FAIL | Noronha | Infobox family | none-warranted | medium |
 | ✅ PASS | NGC 5642 | Infobox galaxy | recommend:Infobox galaxy(medium) | medium |
-| ✅ PASS | NGC 7706 | Infobox galaxy | recommend:Infobox galaxy(high) | high |
+| ✅ PASS | NGC 7706 | Infobox galaxy | recommend:Infobox galaxy(medium) | medium |
 | ✅ PASS | NGC 7311 | Infobox galaxy | recommend:Infobox galaxy(medium) | medium |
-| — abstain | Piazza dell'Esquilino | Infobox urban feature | weak-signal | medium |
+| ✅ PASS | Piazza dell'Esquilino | Infobox urban feature | recommend:Infobox urban feature(high) | high |
 | ❌ FAIL | Piscichnus | Infobox fossil | none-warranted | high |
-| — abstain | Piazzale Roma | Infobox urban feature | weak-signal | medium |
+| ✅ PASS | Piazzale Roma | Infobox urban feature | recommend:Infobox urban feature(medium) | medium |
 | ✅ PASS | Playadito | Infobox company | recommend:Infobox company(medium) | medium |
 | ✅ PASS | Robert N. Charrette | Infobox person | recommend:Infobox person(high) | high |
 | — abstain | Roberta Gropper | Infobox officeholder | weak-signal | medium |
 | — abstain | RuPaul's Drag Race: Corona Can't Keep a Good Queen Down | Infobox television | weak-signal | medium |
-| — abstain | Sabrina Dallafior | Infobox officeholder | weak-signal | medium |
+| — abstain | Sabrina Dallafior | Infobox officeholder | weak-signal | low |
 | ❌ FAIL | Sayfo | Infobox | recommend:Infobox civilian attack(high) | high |
-| — abstain | Serena Morena | Infobox person | weak-signal | medium |
+| ✅ PASS | Serena Morena | Infobox person | recommend:Infobox person(high) | high |
 | ✅ PASS | Shari McMahan | Infobox person | recommend:Infobox person(medium) | medium |
 | ✅ PASS | Shigeru Yoshida | Infobox officeholder | recommend:Infobox officeholder(high) | high |
 | ✅ PASS | Simon de Waal | Infobox person | recommend:Infobox person(medium) | medium |
 | ✅ PASS | Small Business Liability Relief and Brownfields Revitalization Act | Infobox U.S. legislation | recommend:Infobox U.S. legislation(medium) | medium |
-| ✅ PASS | Solly's Grille | Infobox restaurant | recommend:Infobox restaurant(high) | high |
+| ✅ PASS | Solly's Grille | Infobox restaurant | recommend:Infobox restaurant(medium) | medium |
 | ✅ PASS | Strait Is the Gate | Infobox book | recommend:Infobox book(high) | high |
 | ❌ FAIL | Strengholt Holding | Infobox company | recommend:Infobox publisher(medium) | medium |
 | — abstain | Sushirrito | Infobox restaurant | weak-signal | medium |

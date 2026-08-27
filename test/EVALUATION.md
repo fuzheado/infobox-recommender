@@ -1,7 +1,7 @@
 # Infobox Recommender — Evaluation
 
 **Date:** 2026-08-27 (two campaigns) · **Scope:** POC pipeline (Stages A–C) · **Corpus:** 64 labeled cases
-**Result: 32 pass / 6 fail / 26 abstain — 84% accuracy on decisive verdicts** (after signal upgrades)
+**Result: 35 pass / 6 fail / 23 abstain — 85% accuracy on decisive verdicts** (after signal upgrades + maintenance-category filter)
 
 This document is the full writeup of the evaluation campaigns: how the test
 set was built, how scoring works, per-case results, an analysis of every
@@ -13,7 +13,8 @@ npm run eval       # run all cases; persists test/results/<date>.json|.md
 ```
 
 **Campaign 1 (baseline): 24/8/32 — 75%.** **Campaign 2 (signal upgrades,
-see §5.5): 32/6/26 — 84%.** The full per-case table is regenerated on every
+see §5.5): 32/6/26 — 84%.** **Campaign 3 (maintenance-category
+filter, §5.6): 35/6/23 — 85%.** The full per-case table is regenerated on every
 run in `test/results/2026-08-27.md` (canonical); §3.2 below lists only the
 cases whose outcome changed between campaigns.
 
@@ -213,7 +214,8 @@ category, ≥40% of all bare peers) within the 25% band.
 | 3 — full corpus, before 5.3 | 64 | 24 | 10 | 30 | 71% |
 | 4 — after 5.3 (structural none-warranted) | 64 | 24 | 9 | 31 | 73% |
 | 5 — cluster ceiling tightened to 25% band | 64 | 24 | 8 | 32 | 75% |
-| 6 — signal upgrades (5.5 below) | 64 | **32** | **6** | **26** | **84%** |
+| 6 — signal upgrades (5.5 below) | 64 | 32 | 6 | 26 | 84% |
+| 7 — maintenance-category filter (5.6) | 64 | **35** | **6** | **23** | **85%** |
 
 ### 5.5 Signal upgrades (campaign 2 — see `signals.md` for hypotheses)
 
@@ -235,6 +237,20 @@ Result: 75% → **84%** decisive accuracy; +8 abstain→pass, Golden Bull of
 1356 fail→abstain; the remaining 6 fails are unchanged in character
 (judgment calls, defensible disagreements, one weak label, one specificity
 gap). Full hypothesis writeup: `signals.md`.
+
+### 5.6 Maintenance-category filter (campaign 3)
+
+Hidden maintenance categories (All stub articles, Webarchive template wayback
+links, …) were leaking into peer sets and — visibly — into the bare-cluster
+evidence, because **`prop=categories` returns no `hidden` flag** in
+formatversion=2 (the `c.hidden` checks were dead code). Non-hidden stub
+categories (Physics stubs, Trace fossil stubs) needed regex coverage too.
+Fixes: `clshow='!hidden'` on both categories queries + an expanded
+`MAINTENANCE_CATEGORY_RE` (stub suffixes, Webarchive/All pages/All stub
+prefixes, Use … English). Result: **84% → 85% (35/6/23)** — three
+abstain→pass flips (Piazza dell'Esquilino, Piazzale Roma, Serena Morena),
+zero regressions, and no maintenance categories left in any evidence. See
+`engineering-notes.md` §1.8 for the API lesson.
 
 ---
 

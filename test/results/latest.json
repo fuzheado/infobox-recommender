@@ -12,12 +12,12 @@
     "pipeline": "infobox-recommender POC"
   },
   "summary": {
-    "pass": 32,
+    "pass": 35,
     "fail": 6,
-    "abstain": 26,
+    "abstain": 23,
     "excluded": 0,
-    "decisive": 38,
-    "accuracy": 84
+    "decisive": 41,
+    "accuracy": 85
   },
   "results": [
     {
@@ -131,21 +131,21 @@
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
-        "total": 69,
-        "coverage": 0.5217391304347826,
+        "total": 34,
+        "coverage": 0.5294117647058824,
         "dominant": {
           "template": "Infobox urban feature",
           "count": 8
         },
         "distribution": {
           "Infobox urban feature": 8,
-          "Infobox building": 6,
-          "Infobox Observatory": 3,
-          "Infobox observatory": 3,
-          "Infobox bridge": 3,
           "Infobox church": 2,
           "Infobox museum": 2,
-          "Infobox religious building": 2
+          "Infobox religious building": 2,
+          "Infobox islands": 1,
+          "Infobox bridge": 1,
+          "Infobox building": 1,
+          "Infobox canal": 1
         },
         "subCluster": {
           "byClass": {
@@ -159,14 +159,14 @@
             "dominantShare": 1
           },
           "byCategoryOnly": {
-            "n": 55,
-            "boxed": 31,
-            "coverage": 0.5636363636363636,
+            "n": 20,
+            "boxed": 13,
+            "coverage": 0.65,
             "dominant": {
-              "template": "Infobox building",
-              "count": 6
+              "template": "Infobox urban feature",
+              "count": 3
             },
-            "dominantShare": 0.1935483870967742
+            "dominantShare": 0.23076923076923078
           }
         },
         "bareCluster": [],
@@ -174,8 +174,8 @@
           "Peggy Guggenheim Collection",
           "Dorsoduro",
           "Campo San Polo",
-          "Aqua Augusta (Rome)",
-          "Acqua Pia Antica Marcia"
+          "Scuola Grande dei Carmini",
+          "Liston (square)"
         ]
       }
     },
@@ -190,21 +190,14 @@
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
-        "total": 56,
-        "coverage": 0.48214285714285715,
+        "total": 20,
+        "coverage": 0.4,
         "dominant": {
           "template": "Infobox urban feature",
           "count": 8
         },
         "distribution": {
-          "Infobox urban feature": 8,
-          "Infobox building": 5,
-          "Infobox Observatory": 3,
-          "Infobox observatory": 3,
-          "Infobox bridge": 3,
-          "Infobox restaurant": 2,
-          "Infobox settlement": 2,
-          "Infobox Bridge": 1
+          "Infobox urban feature": 8
         },
         "subCluster": {
           "byClass": {
@@ -218,23 +211,23 @@
             "dominantShare": 1
           },
           "byCategoryOnly": {
-            "n": 42,
-            "boxed": 22,
-            "coverage": 0.5238095238095238,
+            "n": 6,
+            "boxed": 3,
+            "coverage": 0.5,
             "dominant": {
-              "template": "Infobox building",
-              "count": 5
+              "template": "Infobox urban feature",
+              "count": 3
             },
-            "dominantShare": 0.22727272727272727
+            "dominantShare": 1
           }
         },
         "bareCluster": [],
         "bare": [
           "Campo San Polo",
-          "Aqua Augusta (Rome)",
-          "Acqua Pia Antica Marcia",
-          "Baths of Licinius Sura",
-          "Liston (square)"
+          "Liston (square)",
+          "Campo Santa Maria Formosa",
+          "Campo San Bartolomeo",
+          "Campo (Venice)"
         ]
       }
     },
@@ -245,25 +238,18 @@
         "labelSource": "editor-choice (stale tag)"
       },
       "verdict": "weak-signal",
-      "template": "Infobox animal breed",
+      "template": "Infobox urban feature",
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
-        "total": 62,
-        "coverage": 0.6290322580645161,
+        "total": 20,
+        "coverage": 0.4,
         "dominant": {
-          "template": "Infobox animal breed",
-          "count": 16
+          "template": "Infobox urban feature",
+          "count": 8
         },
         "distribution": {
-          "Infobox animal breed": 16,
-          "Infobox urban feature": 8,
-          "Infobox goat breed": 8,
-          "Infobox sheep breed": 6,
-          "Infobox flag": 4,
-          "Infobox settlement": 2,
-          "Infobox ethnic group": 2,
-          "Infobox European Parliament constituency": 1
+          "Infobox urban feature": 8
         },
         "subCluster": {
           "byClass": {
@@ -277,23 +263,23 @@
             "dominantShare": 1
           },
           "byCategoryOnly": {
-            "n": 48,
-            "boxed": 34,
-            "coverage": 0.7083333333333334,
+            "n": 6,
+            "boxed": 3,
+            "coverage": 0.5,
             "dominant": {
-              "template": "Infobox animal breed",
-              "count": 16
+              "template": "Infobox urban feature",
+              "count": 3
             },
-            "dominantShare": 0.47058823529411764
+            "dominantShare": 1
           }
         },
         "bareCluster": [],
         "bare": [
-          "Amalfian Laws",
-          "Catasto",
           "Campo San Polo",
-          "Adoption in Italy",
-          "Albracca"
+          "Liston (square)",
+          "Campo Santa Maria Formosa",
+          "Campo San Bartolomeo",
+          "Campo (Venice)"
         ]
       }
     },
@@ -308,21 +294,14 @@
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
-        "total": 56,
-        "coverage": 0.48214285714285715,
+        "total": 20,
+        "coverage": 0.4,
         "dominant": {
           "template": "Infobox urban feature",
           "count": 8
         },
         "distribution": {
-          "Infobox urban feature": 8,
-          "Infobox building": 5,
-          "Infobox Observatory": 3,
-          "Infobox observatory": 3,
-          "Infobox bridge": 3,
-          "Infobox restaurant": 2,
-          "Infobox settlement": 2,
-          "Infobox Bridge": 1
+          "Infobox urban feature": 8
         },
         "subCluster": {
           "byClass": {
@@ -336,23 +315,23 @@
             "dominantShare": 1
           },
           "byCategoryOnly": {
-            "n": 42,
-            "boxed": 22,
-            "coverage": 0.5238095238095238,
+            "n": 6,
+            "boxed": 3,
+            "coverage": 0.5,
             "dominant": {
-              "template": "Infobox building",
-              "count": 5
+              "template": "Infobox urban feature",
+              "count": 3
             },
-            "dominantShare": 0.22727272727272727
+            "dominantShare": 1
           }
         },
         "bareCluster": [],
         "bare": [
           "Campo San Polo",
-          "Aqua Augusta (Rome)",
-          "Acqua Pia Antica Marcia",
-          "Baths of Licinius Sura",
-          "Liston (square)"
+          "Liston (square)",
+          "Campo Santa Maria Formosa",
+          "Campo San Bartolomeo",
+          "Campo (Venice)"
         ]
       }
     },
@@ -590,32 +569,30 @@
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
-        "total": 110,
-        "coverage": 0.39090909090909093,
+        "total": 67,
+        "coverage": 0.5074626865671642,
         "dominant": {
           "template": "Infobox person",
-          "count": 21
+          "count": 15
         },
         "distribution": {
-          "Infobox person": 21,
+          "Infobox person": 15,
           "Infobox military person": 14,
           "Infobox officeholder": 10,
-          "Infobox royalty": 7,
-          "Infobox noble": 1,
-          "Infobox writer": 1,
-          "Infobox pirate": 1
+          "Infobox royalty": 4,
+          "Infobox noble": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 110,
-            "boxed": 43,
-            "coverage": 0.39090909090909093,
+            "n": 67,
+            "boxed": 34,
+            "coverage": 0.5074626865671642,
             "dominant": {
               "template": "Infobox person",
-              "count": 21
+              "count": 15
             },
-            "dominantShare": 0.4883720930232558
+            "dominantShare": 0.4411764705882353
           }
         },
         "bareCluster": [],
@@ -831,46 +808,44 @@
         "labelSource": "editor-choice (stale tag)"
       },
       "verdict": "weak-signal",
-      "template": "Infobox person",
+      "template": "Infobox musical artist",
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
-        "total": 127,
-        "coverage": 0.84251968503937,
+        "total": 99,
+        "coverage": 0.9696969696969697,
         "dominant": {
-          "template": "Infobox person",
-          "count": 37
+          "template": "Infobox musical artist",
+          "count": 39
         },
         "distribution": {
-          "Infobox person": 37,
-          "Infobox military unit": 35,
-          "Infobox military person": 25,
-          "Infobox officeholder": 11,
-          "Infobox spy": 1,
-          "Infobox military operation": 1,
-          "Infobox criminal": 1,
-          "Infobox military aviation unit": 1
+          "Infobox musical artist": 39,
+          "Infobox medal templates": 29,
+          "Infobox person": 28,
+          "Infobox football biography": 17,
+          "Infobox sportsperson": 8,
+          "Infobox martial artist": 3,
+          "Infobox officeholder": 3,
+          "Infobox artist": 3
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 127,
-            "boxed": 107,
-            "coverage": 0.84251968503937,
+            "n": 99,
+            "boxed": 96,
+            "coverage": 0.9696969696969697,
             "dominant": {
-              "template": "Infobox person",
-              "count": 37
+              "template": "Infobox musical artist",
+              "count": 39
             },
-            "dominantShare": 0.34579439252336447
+            "dominantShare": 0.40625
           }
         },
         "bareCluster": [],
         "bare": [
-          "Hossam Mohammed Amin",
-          "Mustafa Hamdan",
-          "Nathan Elbaz",
-          "Saadoun Ghaidan",
-          "Johnny Abdo"
+          "2boys.tv",
+          "\"Tempress\" Chasity Moore",
+          "Ahmad Abdulatif"
         ]
       }
     },
@@ -885,14 +860,14 @@
       "confidence": "high",
       "outcome": "pass",
       "evidence": {
-        "total": 146,
-        "coverage": 0.7876712328767124,
+        "total": 125,
+        "coverage": 0.832,
         "dominant": {
           "template": "Infobox television",
-          "count": 112
+          "count": 101
         },
         "distribution": {
-          "Infobox television": 112,
+          "Infobox television": 101,
           "Infobox comedian": 1,
           "Infobox person": 1,
           "Infobox programming block": 1,
@@ -901,14 +876,14 @@
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 146,
-            "boxed": 115,
-            "coverage": 0.7876712328767124,
+            "n": 125,
+            "boxed": 104,
+            "coverage": 0.832,
             "dominant": {
               "template": "Infobox television",
-              "count": 112
+              "count": 101
             },
-            "dominantShare": 0.9739130434782609
+            "dominantShare": 0.9711538461538461
           }
         },
         "bareCluster": [],
@@ -932,16 +907,16 @@
       "confidence": "medium",
       "outcome": "pass",
       "evidence": {
-        "total": 148,
-        "coverage": 0.7094594594594594,
+        "total": 98,
+        "coverage": 0.6836734693877551,
         "dominant": {
           "template": "Infobox person",
-          "count": 59
+          "count": 41
         },
         "distribution": {
-          "Infobox person": 59,
-          "Infobox officeholder": 18,
-          "Infobox medal templates": 13,
+          "Infobox person": 41,
+          "Infobox officeholder": 12,
+          "Infobox medal templates": 11,
           "Infobox sportsperson": 9,
           "Infobox writer": 4,
           "Infobox scientist": 2,
@@ -951,14 +926,14 @@
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 148,
-            "boxed": 105,
-            "coverage": 0.7094594594594594,
+            "n": 98,
+            "boxed": 67,
+            "coverage": 0.6836734693877551,
             "dominant": {
               "template": "Infobox person",
-              "count": 59
+              "count": 41
             },
-            "dominantShare": 0.5619047619047619
+            "dominantShare": 0.6119402985074627
           }
         },
         "bareCluster": [],
@@ -1286,21 +1261,14 @@
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
-        "total": 93,
-        "coverage": 0.6236559139784946,
+        "total": 43,
+        "coverage": 0.3488372093023256,
         "dominant": {
           "template": "Infobox street",
           "count": 15
         },
         "distribution": {
-          "Infobox street": 15,
-          "Infobox musical artist": 4,
-          "Infobox company": 3,
-          "Infobox person": 3,
-          "Infobox game score": 2,
-          "Infobox concert": 2,
-          "Infobox book": 2,
-          "Infobox baseball championship series": 2
+          "Infobox street": 15
         },
         "subCluster": {
           "byClass": {
@@ -1313,24 +1281,15 @@
             },
             "dominantShare": 1
           },
-          "byCategoryOnly": {
-            "n": 52,
-            "boxed": 43,
-            "coverage": 0.8269230769230769,
-            "dominant": {
-              "template": "Infobox musical artist",
-              "count": 4
-            },
-            "dominantShare": 0.09302325581395349
-          }
+          "byCategoryOnly": null
         },
         "bareCluster": [],
         "bare": [
-          "Twenty-second Amendment to the United States Constitution",
-          "1849 in Switzerland",
           "Lungotevere in Augusta",
           "Lungotevere",
-          "Lungotevere Maresciallo Diaz"
+          "Lungotevere Maresciallo Diaz",
+          "Lungotevere Flaminio",
+          "Lungotevere Della Vittoria"
         ]
       }
     },
@@ -1589,41 +1548,41 @@
       "outcome": "pass",
       "evidence": {
         "total": 148,
-        "coverage": 0.7364864864864865,
+        "coverage": 0.7162162162162162,
         "dominant": {
           "template": "Infobox galaxy",
-          "count": 99
+          "count": 91
         },
         "distribution": {
-          "Infobox galaxy": 99,
-          "Infobox Galaxy": 18,
+          "Infobox galaxy": 91,
+          "Infobox Galaxy": 21,
           "Infobox planet": 3,
           "Infobox quasar": 3,
-          "Infobox galaxy cluster": 2,
-          "Infobox cluster": 1,
-          "Infobox open cluster": 1,
+          "Infobox galaxy cluster": 3,
+          "Infobox nebula": 3,
+          "Infobox open cluster": 2,
           "Infobox constellation": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
             "n": 148,
-            "boxed": 109,
-            "coverage": 0.7364864864864865,
+            "boxed": 106,
+            "coverage": 0.7162162162162162,
             "dominant": {
               "template": "Infobox galaxy",
-              "count": 99
+              "count": 91
             },
-            "dominantShare": 0.908256880733945
+            "dominantShare": 0.8584905660377359
           }
         },
         "bareCluster": [],
         "bare": [
-          "NGC 5485",
-          "4 Ursae Majoris",
           "List of stars in Ursa Major",
           "2 Ursae Majoris",
-          "1SWASP J093010.78+533859.5"
+          "1SWASP J093010.78+533859.5",
+          "NGC 5485",
+          "Alioth"
         ]
       }
     },
@@ -1665,28 +1624,8 @@
         },
         "bareCluster": [
           {
-            "category": "All set index articles",
-            "n": 14,
-            "members": [
-              "Andrade",
-              "Álvares",
-              "Azevedo",
-              "Baptista",
-              "Acácio",
-              "Alencar",
-              "Assunção",
-              "Almeida (surname)",
-              "Araújo",
-              "Agostinho",
-              "Alves da Silva",
-              "Abril",
-              "Águas",
-              "Arantes"
-            ]
-          },
-          {
             "category": "Portuguese-language surnames",
-            "n": 14,
+            "n": 28,
             "members": [
               "Andrade",
               "Álvares",
@@ -1701,12 +1640,26 @@
               "Alves da Silva",
               "Abril",
               "Águas",
-              "Arantes"
+              "Arantes",
+              "Abreu (surname)",
+              "Amorim",
+              "Americo",
+              "Alemão",
+              "Aguiar",
+              "Alcantara (surname)",
+              "Alexandre (surname)",
+              "Aranha",
+              "Abrahão",
+              "Bandeira (surname)",
+              "Amaro (surname)",
+              "Alarcão",
+              "Aquino (surname)",
+              "Arruda"
             ]
           },
           {
             "category": "Surnames",
-            "n": 13,
+            "n": 28,
             "members": [
               "Andrade",
               "Álvares",
@@ -1720,7 +1673,34 @@
               "Agostinho",
               "Alves da Silva",
               "Abril",
-              "Águas"
+              "Águas",
+              "Arantes",
+              "Abreu (surname)",
+              "Amorim",
+              "Americo",
+              "Alemão",
+              "Aguiar",
+              "Alcantara (surname)",
+              "Alexandre (surname)",
+              "Aranha",
+              "Abrahão",
+              "Bandeira (surname)",
+              "Amaro (surname)",
+              "Alarcão",
+              "Aquino (surname)",
+              "Arruda"
+            ]
+          },
+          {
+            "category": "Galician-language surnames",
+            "n": 6,
+            "members": [
+              "Andrade",
+              "Álvares",
+              "Almeida (surname)",
+              "Araújo",
+              "Aguiar",
+              "Agra (surname)"
             ]
           }
         ],
@@ -1744,15 +1724,15 @@
       "confidence": "medium",
       "outcome": "pass",
       "evidence": {
-        "total": 143,
-        "coverage": 0.7202797202797203,
+        "total": 96,
+        "coverage": 0.5833333333333334,
         "dominant": {
           "template": "Infobox galaxy",
-          "count": 98
+          "count": 51
         },
         "distribution": {
-          "Infobox galaxy": 98,
-          "Infobox Galaxy": 8,
+          "Infobox galaxy": 51,
+          "Infobox Galaxy": 4,
           "Infobox quasar": 2,
           "Infobox galaxy cluster": 2,
           "Infobox constellation": 1
@@ -1760,23 +1740,23 @@
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 143,
-            "boxed": 103,
-            "coverage": 0.7202797202797203,
+            "n": 96,
+            "boxed": 56,
+            "coverage": 0.5833333333333334,
             "dominant": {
               "template": "Infobox galaxy",
-              "count": 98
+              "count": 51
             },
-            "dominantShare": 0.9514563106796117
+            "dominantShare": 0.9107142857142857
           }
         },
         "bareCluster": [],
         "bare": [
           "Arcturus",
           "Ampelos",
-          "Elliptical galaxy",
           "38 Boötis",
-          "18 Boötis"
+          "18 Boötis",
+          "46 Boötis"
         ]
       }
     },
@@ -1788,45 +1768,44 @@
       },
       "verdict": "recommend",
       "template": "Infobox galaxy",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "evidence": {
-        "total": 143,
-        "coverage": 0.7622377622377622,
+        "total": 97,
+        "coverage": 0.6701030927835051,
         "dominant": {
           "template": "Infobox galaxy",
-          "count": 85
+          "count": 58
         },
         "distribution": {
-          "Infobox galaxy": 85,
-          "Infobox Galaxy": 19,
-          "Infobox quasar": 18,
-          "Infobox galaxy cluster": 4,
+          "Infobox galaxy": 58,
+          "Infobox Galaxy": 8,
+          "Infobox quasar": 3,
+          "Infobox galaxy cluster": 2,
           "Infobox constellation": 1,
-          "Infobox nebula": 1,
           "Infobox astronomical event": 1,
           "Infobox planet": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 143,
-            "boxed": 109,
-            "coverage": 0.7622377622377622,
+            "n": 97,
+            "boxed": 65,
+            "coverage": 0.6701030927835051,
             "dominant": {
               "template": "Infobox galaxy",
-              "count": 85
+              "count": 58
             },
-            "dominantShare": 0.7798165137614679
+            "dominantShare": 0.8923076923076924
           }
         },
         "bareCluster": [],
         "bare": [
-          "List of stars in Pisces",
-          "BzK galaxy",
-          "Angular correlation function",
           "First point of Aries",
-          "Lenticular galaxy"
+          "107 Piscium",
+          "101 Piscium",
+          "54 Piscium",
+          "Alpha Piscium"
         ]
       }
     },
@@ -1841,15 +1820,15 @@
       "confidence": "medium",
       "outcome": "pass",
       "evidence": {
-        "total": 140,
-        "coverage": 0.65,
+        "total": 100,
+        "coverage": 0.51,
         "dominant": {
           "template": "Infobox galaxy",
-          "count": 80
+          "count": 40
         },
         "distribution": {
-          "Infobox galaxy": 80,
-          "Infobox Galaxy": 10,
+          "Infobox galaxy": 40,
+          "Infobox Galaxy": 5,
           "Infobox planet": 4,
           "Infobox quasar": 3,
           "Infobox galaxy cluster": 2,
@@ -1859,23 +1838,23 @@
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 140,
-            "boxed": 91,
-            "coverage": 0.65,
+            "n": 100,
+            "boxed": 51,
+            "coverage": 0.51,
             "dominant": {
               "template": "Infobox galaxy",
-              "count": 80
+              "count": 40
             },
-            "dominantShare": 0.8791208791208791
+            "dominantShare": 0.7843137254901961
           }
         },
         "bareCluster": [],
         "bare": [
-          "Spiral galaxy",
           "51 Pegasi",
           "Alpheratz",
           "Alpha Pegasi",
-          "Epsilon Pegasi"
+          "Epsilon Pegasi",
+          "Beta Pegasi"
         ]
       }
     },
@@ -1885,47 +1864,45 @@
         "expected": "Infobox urban feature",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
+      "verdict": "recommend",
       "template": "Infobox urban feature",
-      "confidence": "medium",
-      "outcome": "abstain",
+      "confidence": "high",
+      "outcome": "pass",
       "evidence": {
-        "total": 86,
-        "coverage": 0.7906976744186046,
+        "total": 39,
+        "coverage": 0.8717948717948718,
         "dominant": {
           "template": "Infobox urban feature",
-          "count": 29
+          "count": 26
         },
         "distribution": {
-          "Infobox urban feature": 29,
-          "Infobox animal breed": 16,
-          "Infobox goat breed": 8,
-          "Infobox sheep breed": 6,
+          "Infobox urban feature": 26,
           "Infobox street": 4,
-          "Infobox flag": 4,
           "Infobox Hill of Rome": 2,
-          "Infobox hill of Rome": 2
+          "Infobox hill of Rome": 2,
+          "Infobox museum": 1,
+          "Infobox monument": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 86,
-            "boxed": 68,
-            "coverage": 0.7906976744186046,
+            "n": 39,
+            "boxed": 34,
+            "coverage": 0.8717948717948718,
             "dominant": {
               "template": "Infobox urban feature",
-              "count": 29
+              "count": 26
             },
-            "dominantShare": 0.4264705882352941
+            "dominantShare": 0.7647058823529411
           }
         },
         "bareCluster": [],
         "bare": [
-          "Amalfian Laws",
           "List of obelisks in Rome",
-          "Adoption in Italy",
           "Piazza di San Macuto",
-          "Albracca"
+          "Piazza della Libertà, Rome",
+          "Piazza Trilussa",
+          "Piazza Benedetto Cairoli"
         ]
       }
     },
@@ -1940,8 +1917,8 @@
       "confidence": "high",
       "outcome": "fail",
       "evidence": {
-        "total": 144,
-        "coverage": 0.013888888888888888,
+        "total": 139,
+        "coverage": 0.014388489208633094,
         "dominant": {
           "template": "Infobox rockunit",
           "count": 1
@@ -1959,9 +1936,9 @@
             "dominantShare": 0
           },
           "byCategoryOnly": {
-            "n": 50,
+            "n": 45,
             "boxed": 2,
-            "coverage": 0.04,
+            "coverage": 0.044444444444444446,
             "dominant": {
               "template": "Infobox rockunit",
               "count": 1
@@ -1971,52 +1948,49 @@
         },
         "bareCluster": [
           {
-            "category": "All stub articles",
-            "n": 11,
-            "members": [
-              "Treptichnus",
-              "Thalassinoides",
-              "Rhizocorallium",
-              "Oldhamia",
-              "Radulichnus",
-              "Amblydactylus",
-              "Rusophycus",
-              "Purbeckopus",
-              "Planolites",
-              "Scoyenia",
-              "Phycosiphon"
-            ]
-          },
-          {
-            "category": "Trace fossil stubs",
-            "n": 11,
-            "members": [
-              "Treptichnus",
-              "Thalassinoides",
-              "Rhizocorallium",
-              "Oldhamia",
-              "Radulichnus",
-              "Amblydactylus",
-              "Rusophycus",
-              "Purbeckopus",
-              "Planolites",
-              "Scoyenia",
-              "Phycosiphon"
-            ]
-          },
-          {
             "category": "Ichnotaxa",
-            "n": 9,
+            "n": 12,
             "members": [
               "Protichnites",
               "Thalassinoides",
               "Trypanites",
+              "Atreipus",
+              "Entobia",
+              "Magnoavipes",
               "Otozoum",
               "Paleodictyon",
               "Purbeckopus",
               "Petroxestes",
               "Rogerella",
               "Prorotodactylus"
+            ]
+          },
+          {
+            "category": "Trace fossils",
+            "n": 8,
+            "members": [
+              "Trace fossil",
+              "Treptichnus",
+              "Radulichnus",
+              "Nihilichnus",
+              "Ancorichnus",
+              "Macaronichnus",
+              "Planolites",
+              "Phycosiphon"
+            ]
+          },
+          {
+            "category": "Theropod trace fossils",
+            "n": 8,
+            "members": [
+              "Megalosauripus",
+              "Komlosaurus",
+              "Anatopus",
+              "Brontozoum",
+              "Hispanosauropus",
+              "Magnoavipes",
+              "Minisauripus",
+              "Ornithomimipus"
             ]
           }
         ],
@@ -2035,47 +2009,47 @@
         "expected": "Infobox urban feature",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
-      "template": "Infobox station",
+      "verdict": "recommend",
+      "template": "Infobox urban feature",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "pass",
       "evidence": {
-        "total": 150,
-        "coverage": 0.6733333333333333,
+        "total": 28,
+        "coverage": 0.5714285714285714,
         "dominant": {
-          "template": "Infobox station",
-          "count": 42
+          "template": "Infobox urban feature",
+          "count": 8
         },
         "distribution": {
-          "Infobox station": 42,
-          "Infobox bridge": 12,
-          "Infobox rail line": 11,
           "Infobox urban feature": 8,
-          "Infobox company": 6,
-          "Infobox airline": 5,
-          "Infobox Bridge": 5,
-          "Infobox building": 4
+          "Infobox station": 2,
+          "Infobox rail line": 2,
+          "Infobox airport": 1,
+          "Infobox company": 1,
+          "Infobox islands": 1,
+          "Infobox public transit": 1,
+          "Infobox public transit accident": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 150,
-            "boxed": 101,
-            "coverage": 0.6733333333333333,
+            "n": 28,
+            "boxed": 16,
+            "coverage": 0.5714285714285714,
             "dominant": {
-              "template": "Infobox station",
-              "count": 42
+              "template": "Infobox urban feature",
+              "count": 8
             },
-            "dominantShare": 0.4158415841584158
+            "dominantShare": 0.5
           }
         },
         "bareCluster": [],
         "bare": [
           "Campo San Polo",
-          "Bangor Transportation Center",
-          "East Jerusalem Central Bus Station",
-          "Achimota Transport Terminal",
-          "Liston (square)"
+          "Liston (square)",
+          "Campo Santa Maria Formosa",
+          "Campo San Bartolomeo",
+          "Campo (Venice)"
         ]
       }
     },
@@ -2284,40 +2258,35 @@
       },
       "verdict": "weak-signal",
       "template": "Infobox officeholder",
-      "confidence": "medium",
+      "confidence": "low",
       "outcome": "abstain",
       "evidence": {
-        "total": 67,
-        "coverage": 0.4626865671641791,
+        "total": 4,
+        "coverage": 0.75,
         "dominant": {
           "template": "Infobox officeholder",
-          "count": 27
+          "count": 2
         },
         "distribution": {
-          "Infobox officeholder": 27,
-          "Infobox person": 4,
-          "Infobox Officeholder": 1
+          "Infobox officeholder": 2,
+          "Infobox person": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 67,
-            "boxed": 31,
-            "coverage": 0.4626865671641791,
+            "n": 4,
+            "boxed": 3,
+            "coverage": 0.75,
             "dominant": {
               "template": "Infobox officeholder",
-              "count": 27
+              "count": 2
             },
-            "dominantShare": 0.8709677419354839
+            "dominantShare": 0.6666666666666666
           }
         },
         "bareCluster": [],
         "bare": [
-          "Ernst Brugger",
-          "Roger Bonvin",
-          "Jean Bourgknecht",
-          "Simeon Bavier",
-          "Fridolin Anderwert"
+          "José Bustani"
         ]
       }
     },
@@ -2386,46 +2355,44 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
+      "verdict": "recommend",
       "template": "Infobox person",
-      "confidence": "medium",
-      "outcome": "abstain",
+      "confidence": "high",
+      "outcome": "pass",
       "evidence": {
-        "total": 71,
-        "coverage": 0.6901408450704225,
+        "total": 32,
+        "coverage": 0.90625,
         "dominant": {
           "template": "Infobox person",
           "count": 22
         },
         "distribution": {
           "Infobox person": 22,
-          "Infobox ethnic group": 9,
           "Infobox officeholder": 4,
           "Infobox artist": 3,
-          "Infobox settlement": 2,
           "Infobox pageant titleholder": 2,
           "Infobox medal templates": 2,
-          "Infobox professional wrestler": 2
+          "Infobox professional wrestler": 2,
+          "Infobox sportsperson": 2,
+          "Infobox writer": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 71,
-            "boxed": 49,
-            "coverage": 0.6901408450704225,
+            "n": 32,
+            "boxed": 29,
+            "coverage": 0.90625,
             "dominant": {
               "template": "Infobox person",
               "count": 22
             },
-            "dominantShare": 0.4489795918367347
+            "dominantShare": 0.7586206896551724
           }
         },
         "bareCluster": [],
         "bare": [
-          "Calderón Hinojosa family",
           "Anders Stone",
           "José Julio Gaona",
-          "Aspidoscelis ceralbensis",
           "Gustavo Vázquez-Lozano"
         ]
       }
@@ -2591,18 +2558,18 @@
       "confidence": "medium",
       "outcome": "pass",
       "evidence": {
-        "total": 148,
-        "coverage": 0.5202702702702703,
+        "total": 109,
+        "coverage": 0.7064220183486238,
         "dominant": {
           "template": "Infobox U.S. legislation",
-          "count": 58
+          "count": 57
         },
         "distribution": {
-          "Infobox U.S. legislation": 58,
+          "Infobox U.S. legislation": 57,
           "Infobox book": 5,
           "Infobox legislation": 4,
           "Infobox treaty": 3,
-          "Infobox United States federal proposed legislation": 2,
+          "Infobox United States federal proposed legislation": 3,
           "Infobox NRHP": 1,
           "Infobox dim": 1,
           "Infobox protected area": 1
@@ -2610,14 +2577,14 @@
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 148,
+            "n": 109,
             "boxed": 77,
-            "coverage": 0.5202702702702703,
+            "coverage": 0.7064220183486238,
             "dominant": {
               "template": "Infobox U.S. legislation",
-              "count": 58
+              "count": 57
             },
-            "dominantShare": 0.7532467532467533
+            "dominantShare": 0.7402597402597403
           }
         },
         "bareCluster": [],
@@ -2638,18 +2605,18 @@
       },
       "verdict": "recommend",
       "template": "Infobox restaurant",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "evidence": {
-        "total": 146,
-        "coverage": 0.8904109589041096,
+        "total": 118,
+        "coverage": 0.9067796610169492,
         "dominant": {
           "template": "Infobox restaurant",
-          "count": 94
+          "count": 74
         },
         "distribution": {
-          "Infobox restaurant": 94,
-          "Infobox company": 31,
+          "Infobox restaurant": 74,
+          "Infobox company": 28,
           "Infobox NRHP": 4,
           "Infobox civilian attack": 1,
           "Infobox venue": 1,
@@ -2660,14 +2627,14 @@
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 146,
-            "boxed": 130,
-            "coverage": 0.8904109589041096,
+            "n": 118,
+            "boxed": 107,
+            "coverage": 0.9067796610169492,
             "dominant": {
               "template": "Infobox restaurant",
-              "count": 94
+              "count": 74
             },
-            "dominantShare": 0.7230769230769231
+            "dominantShare": 0.6915887850467289
           }
         },
         "bareCluster": [],

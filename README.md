@@ -110,8 +110,8 @@ infobox-request backlog:
 
 `npm run eval` runs the pipeline over all fixtures (warm-cache = fast), scores
 verdicts against expectations, and persists per-case results to
-`test/results/` (`<date>.json|.md` + `latest.*`). Current: **32 pass / 6 fail
-/ 26 abstain — 84% accuracy on decisive verdicts** (weak-signal counts as
+`test/results/` (`<date>.json|.md` + `latest.*`). Current: **35 pass / 6 fail
+/ 23 abstain — 85% accuracy on decisive verdicts** (weak-signal counts as
 honest abstention).
 
 **Full writeup: `test/EVALUATION.md`** — dataset construction, scoring rules,
