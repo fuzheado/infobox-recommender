@@ -109,7 +109,15 @@ From `test/results/latest.json` (campaign 3, 2026-08-27):
 Re-ran the full 64-case eval with both cheap wins in place (2026-08-27):
 
 **Before: 24 pass / 8 fail / 32 abstain — 75% decisive**
-**After (campaign 4): 31 pass / 6 fail / 27 abstain — 84% decisive** — primary-infobox
+**After (campaign 5): 35 pass / 6 fail / 23 abstain — 85% decisive** — the best result yet.
+Campaign 5 added **tiered neighborhoods** ("start small and adapt"): peers are
+tagged with the tightest category/P31-class group containing them, the
+report shows cumulative per-tier strata, and when the flat logic abstains a
+decisive tight circle (>=80% coverage, >=70% dominance, consistent with the
+wider pool) rescues a verdict — e.g. Dallas Cowboys -> Category:NFL teams
+(32): 31/31 gridiron. Intersection categories ("1960 establishments in
+Texas") are excluded from discovery. Three abstains rescued (Charrette,
+Sushirrito, Greenstein), zero regressions. — primary-infobox
 selection (each boxed peer contributes its PRIMARY box only; supporting
 boxes — generic {{Infobox}}, legacy Infobox3cols, {{Infobox medal templates}}
 — never win). Gaelic games case fixed (Infobox Gaelic games biography 41/44

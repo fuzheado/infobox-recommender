@@ -149,6 +149,26 @@ function distributionPanel(ev) {
     </div>`);
 }
 
+// Neighborhood tiers: cumulative stats as the peer pool expands from the
+// tightest circle outward ("start small and adapt").
+function tiersPanel(ev) {
+  const ts = ev.tierStats ?? [];
+  if (!ts.length) return '';
+  return panel('Neighborhood tiers (tightest first)', `
+    <div class="tiers">
+      ${ts
+        .map(
+          (t) => `<div class="tier-row">
+        <span class="tier-idx">t${t.tier}</span>
+        ${t.added ? `<span class="tier-added">${t.added.kind === 'class' ? 'P31' : 'Category:'}${esc(t.added.name)} (${t.added.size})</span>` : ''}
+        <span class="muted">${t.n} peers · ${t.coverage}% boxed</span>
+        ${t.dominant ? `${tplLink(t.dominant)} <span class="muted">(${t.dominantShare}%)</span>` : '<span class="muted">no dominant</span>'}
+      </div>`
+        )
+        .join('')}
+    </div>`);
+}
+
 function subClusterPanel(ev) {
   const sc = ev.subCluster ?? {};
   const rows = [];
@@ -273,6 +293,7 @@ function renderReport(r) {
     evidenceHtml = `
       ${coverageBar(ev)}
       ${distributionPanel(ev)}
+      ${tiersPanel(ev)}
       ${subClusterPanel(ev)}
       ${clustersPanel(ev)}
       ${ev.banners && ev.banners.length ? panel('WikiProject banners', chips(ev.banners, 'none')) : ''}

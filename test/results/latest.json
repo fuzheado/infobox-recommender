@@ -12,12 +12,12 @@
     "pipeline": "infobox-recommender POC"
   },
   "summary": {
-    "pass": 31,
+    "pass": 35,
     "fail": 6,
-    "abstain": 27,
+    "abstain": 23,
     "excluded": 0,
-    "decisive": 37,
-    "accuracy": 84
+    "decisive": 41,
+    "accuracy": 85
   },
   "results": [
     {
@@ -381,37 +381,37 @@
         "labelSource": "editor-choice (stale tag)"
       },
       "verdict": "weak-signal",
-      "template": "Infobox organization",
+      "template": "Infobox laboratory",
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
-        "total": 39,
-        "coverage": 0.8205128205128205,
+        "total": 20,
+        "coverage": 0.65,
         "dominant": {
-          "template": "Infobox organization",
-          "count": 6
+          "template": "Infobox laboratory",
+          "count": 4
         },
         "distribution": {
-          "Infobox organization": 6,
-          "Infobox laboratory": 5,
-          "Infobox company": 5,
-          "Infobox dam": 3,
-          "Infobox university": 3,
-          "Infobox protected area": 2,
-          "Infobox government agency": 2,
-          "Infobox geographical indication": 2
+          "Infobox laboratory": 4,
+          "Infobox university": 2,
+          "Infobox geographical indication": 2,
+          "Infobox organization": 1,
+          "Infobox settlement": 1,
+          "Infobox government agency": 1,
+          "Infobox company": 1,
+          "Infobox building": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 39,
-            "boxed": 32,
-            "coverage": 0.8205128205128205,
+            "n": 20,
+            "boxed": 13,
+            "coverage": 0.65,
             "dominant": {
-              "template": "Infobox organization",
-              "count": 6
+              "template": "Infobox laboratory",
+              "count": 4
             },
-            "dominantShare": 0.1875
+            "dominantShare": 0.3076923076923077
           }
         },
         "bareCluster": [],
@@ -1386,38 +1386,36 @@
         "expected": "Infobox company",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
-      "template": "Infobox Australian electorate",
+      "verdict": "recommend",
+      "template": "Infobox company",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "pass",
       "evidence": {
-        "total": 121,
-        "coverage": 0.859504132231405,
+        "total": 43,
+        "coverage": 0.8604651162790697,
         "dominant": {
-          "template": "Infobox Australian electorate",
-          "count": 37
+          "template": "Infobox company",
+          "count": 20
         },
         "distribution": {
-          "Infobox Australian electorate": 37,
-          "Infobox company": 26,
-          "Infobox rail": 18,
+          "Infobox company": 20,
           "Infobox government agency": 7,
-          "Infobox UK legislation": 6,
+          "Infobox rail": 5,
           "Infobox rail line": 3,
-          "Infobox government cabinet": 2,
-          "Infobox architectural practice": 1
+          "Infobox bus company": 1,
+          "Infobox rail service": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 121,
-            "boxed": 104,
-            "coverage": 0.859504132231405,
+            "n": 43,
+            "boxed": 37,
+            "coverage": 0.8604651162790697,
             "dominant": {
-              "template": "Infobox Australian electorate",
-              "count": 37
+              "template": "Infobox company",
+              "count": 20
             },
-            "dominantShare": 0.3557692307692308
+            "dominantShare": 0.5405405405405406
           }
         },
         "bareCluster": [],
@@ -2053,29 +2051,28 @@
       "confidence": "medium",
       "outcome": "pass",
       "evidence": {
-        "total": 25,
-        "coverage": 0.56,
+        "total": 23,
+        "coverage": 0.5217391304347826,
         "dominant": {
           "template": "Infobox company",
-          "count": 11
+          "count": 10
         },
         "distribution": {
-          "Infobox company": 11,
+          "Infobox company": 10,
           "Infobox publisher": 1,
-          "Infobox brand": 1,
-          "Infobox toy": 1
+          "Infobox brand": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 25,
-            "boxed": 14,
-            "coverage": 0.56,
+            "n": 23,
+            "boxed": 12,
+            "coverage": 0.5217391304347826,
             "dominant": {
               "template": "Infobox company",
-              "count": 11
+              "count": 10
             },
-            "dominantShare": 0.7857142857142857
+            "dominantShare": 0.8333333333333334
           }
         },
         "bareCluster": [],
@@ -2094,10 +2091,10 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
+      "verdict": "recommend",
       "template": "Infobox person",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "pass",
       "evidence": {
         "total": 149,
         "coverage": 0.8322147651006712,
@@ -2725,10 +2722,10 @@
         "expected": "Infobox restaurant",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
-      "template": "Infobox company",
-      "confidence": "medium",
-      "outcome": "abstain",
+      "verdict": "recommend",
+      "template": "Infobox restaurant",
+      "confidence": "high",
+      "outcome": "pass",
       "evidence": {
         "total": 131,
         "coverage": 0.8625954198473282,
@@ -2867,10 +2864,10 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
+      "verdict": "recommend",
       "template": "Infobox person",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "pass",
       "evidence": {
         "total": 98,
         "coverage": 0.9183673469387755,
@@ -3133,8 +3130,8 @@
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
-        "total": 51,
-        "coverage": 0.43137254901960786,
+        "total": 58,
+        "coverage": 0.3103448275862069,
         "dominant": {
           "template": "Infobox former monarchy",
           "count": 3
@@ -3145,30 +3142,30 @@
           "Infobox legislature": 3,
           "Infobox European Parliament constituency": 3,
           "Infobox": 2,
-          "Infobox former country": 2,
           "Infobox family": 1,
-          "Infobox diocese": 1
+          "Infobox referendum": 1,
+          "Infobox Chinese": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 51,
-            "boxed": 22,
-            "coverage": 0.43137254901960786,
+            "n": 58,
+            "boxed": 18,
+            "coverage": 0.3103448275862069,
             "dominant": {
               "template": "Infobox former monarchy",
               "count": 3
             },
-            "dominantShare": 0.13636363636363635
+            "dominantShare": 0.16666666666666666
           }
         },
         "bareCluster": [],
         "bare": [
           "List of monarchs of Germany",
           "Electoral college",
+          "Burgrave",
           "Fürst",
-          "Electoral College (Pakistan)",
-          "Imperial Estate"
+          "Freiherr"
         ]
       }
     },

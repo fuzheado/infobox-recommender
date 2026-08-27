@@ -167,6 +167,19 @@ code {
 .sc-row { display: flex; gap: 10px; align-items: baseline; padding: 4px 0; font-size: 14px; }
 .sc-label { width: 160px; color: var(--muted); }
 
+.tier-row { display: flex; gap: 10px; align-items: baseline; padding: 4px 0; font-size: 13.5px; flex-wrap: wrap; }
+.tier-idx {
+  font-family: var(--mono);
+  font-size: 12px;
+  background: var(--info-bg);
+  color: var(--info);
+  border-radius: 4px;
+  padding: 1px 6px;
+  flex: none;
+}
+.tier-added { color: #404244; }
+.tier-row .tpl-link { font-size: 12.5px; }
+
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip {
   display: inline-block;

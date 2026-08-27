@@ -1,6 +1,6 @@
 # Eval results — 2026-08-27 (64 cases)
 
-Summary: **31 pass / 6 fail / 27 abstain** — accuracy on decisive verdicts: **84%** (31/37)
+Summary: **35 pass / 6 fail / 23 abstain** — accuracy on decisive verdicts: **85%** (35/41)
 
 | outcome | title | expected | verdict | confidence |
 |---|---|---|---|---|
@@ -32,7 +32,7 @@ Summary: **31 pass / 6 fail / 27 abstain** — accuracy on decisive verdicts: **
 | — abstain | Lungotevere Prati | Infobox street | weak-signal | medium |
 | — abstain | Lungotevere Gianicolense | Infobox street | weak-signal | medium |
 | ✅ PASS | Maani Petgar | Infobox person | recommend:Infobox person(medium) | medium |
-| — abstain | Melbourne, Mount Alexander and Murray River Railway Company | Infobox company | weak-signal | medium |
+| ✅ PASS | Melbourne, Mount Alexander and Murray River Railway Company | Infobox company | recommend:Infobox company(medium) | medium |
 | ❌ FAIL | Mercy Faith Lakisa | Infobox officeholder | recommend:Infobox person(medium) | medium |
 | ✅ PASS | Miko Kongstad | Infobox person | recommend:Infobox person(medium) | medium |
 | ✅ PASS | NGC 5475 | Infobox galaxy | recommend:Infobox galaxy(medium) | medium |
@@ -44,7 +44,7 @@ Summary: **31 pass / 6 fail / 27 abstain** — accuracy on decisive verdicts: **
 | ❌ FAIL | Piscichnus | Infobox fossil | none-warranted | high |
 | ✅ PASS | Piazzale Roma | Infobox urban feature | recommend:Infobox urban feature(medium) | medium |
 | ✅ PASS | Playadito | Infobox company | recommend:Infobox company(medium) | medium |
-| — abstain | Robert N. Charrette | Infobox person | weak-signal | medium |
+| ✅ PASS | Robert N. Charrette | Infobox person | recommend:Infobox person(medium) | medium |
 | — abstain | Roberta Gropper | Infobox officeholder | weak-signal | medium |
 | — abstain | RuPaul's Drag Race: Corona Can't Keep a Good Queen Down | Infobox television | weak-signal | medium |
 | — abstain | Sabrina Dallafior | Infobox officeholder | weak-signal | low |
@@ -57,10 +57,10 @@ Summary: **31 pass / 6 fail / 27 abstain** — accuracy on decisive verdicts: **
 | ✅ PASS | Solly's Grille | Infobox restaurant | recommend:Infobox restaurant(medium) | medium |
 | ✅ PASS | Strait Is the Gate | Infobox book | recommend:Infobox book(high) | high |
 | ❌ FAIL | Strengholt Holding | Infobox company | recommend:Infobox publisher(medium) | medium |
-| — abstain | Sushirrito | Infobox restaurant | weak-signal | medium |
+| ✅ PASS | Sushirrito | Infobox restaurant | recommend:Infobox restaurant(high) | high |
 | ✅ PASS | Svend Foyn | Infobox person | recommend:Infobox person(medium) | medium |
 | ✅ PASS | Trans-Ocean News Service | Infobox company | recommend:Infobox company(medium) | medium |
-| — abstain | Tony Greenstein | Infobox person | weak-signal | medium |
+| ✅ PASS | Tony Greenstein | Infobox person | recommend:Infobox person(medium) | medium |
 | ✅ PASS | 1346 imperial election | Infobox election | recommend:Infobox election(high) | high |
 | ✅ PASS | May 1400 imperial election | Infobox election | recommend:Infobox election(high) | high |
 | — abstain | Golden Bull of 1356 | Infobox document | weak-signal | medium |

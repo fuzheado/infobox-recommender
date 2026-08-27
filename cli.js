@@ -60,6 +60,14 @@ for (const t of titles) {
             ? `; same-class ${Math.round(r.evidence.subCluster.byClass.coverage * 100)}%`
             : '')
       );
+      if (r.evidence.tierStats?.length) {
+        console.log(
+          '  tiers: ' +
+            r.evidence.tierStats
+              .map((t) => `t${t.tier}${t.added ? '+' + t.added.name : ''}:${t.n}@${t.coverage}% ${t.dominant ?? '-'}`)
+              .join(' | ')
+        );
+      }
       if (r.evidence.banners?.length) {
         console.log(`  WikiProject banners: ${r.evidence.banners.slice(0, 4).join(', ')}${r.evidence.banners.length > 4 ? '…' : ''}`);
       }
