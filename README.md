@@ -125,6 +125,7 @@ web UI only (toolsadmin); OSI `LICENSE` (MIT) included.
 
 | Doc | Contents |
 |---|---|
+| `HANDOFF.md` | **Start here** — status, quick start, deployment, open threads |
 | `infobox-recommendation.md` | Original research: guidance, backlog, tool landscape, algorithm spec (Stages A–D) |
 | `signals.md` | Signal landscape & hypotheses — what finds "birds of a feather", candidate signals, H1–H6 verdicts |
 | `test/EVALUATION.md` | Evaluation campaigns: dataset construction, scoring, per-case results, failure analysis |

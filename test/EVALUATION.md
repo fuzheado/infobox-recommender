@@ -109,7 +109,7 @@ primary-infobox selection, the infobox-family filter (Speciesbox,
 Automatic taxobox), redirect normalization (prepared food → food, beverage →
 drink), supporting-box rules (UNESCO child box on Everest, region-symbols on
 states, per-element isotope tables on elements), and the Wikidata pointer
-discovery (§5.7). Result: **21/23 pass; 2 honest abstains** — Oxygen (per-
+discovery (§5.9). Result: **21/23 pass; 2 honest abstains** — Oxygen (per-
 element wrapper boxes fragment the element class) and New York Yankees
 (mixed MLB/seasons pool) — both show the correct template as the visible
 dominant.
