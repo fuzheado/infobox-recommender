@@ -56,6 +56,19 @@ for (const c of cases) {
   } else if (r.verdict === 'weak-signal') {
     outcome = 'abstain'; // weak-signal is an honest abstention, not an error
     stats.abstain++;
+  } else if (typeof expected === 'string' && expected.startsWith('consistent')) {
+    // canonical validate-mode ground truth: the article HAS an infobox and
+    // peer practice should confirm it (optionally the exact template)
+    const want = expected.split(':')[1] ?? null;
+    const cmp = r.comparison;
+    if (cmp?.status === 'consistent' && (!want || cmp.current === want)) {
+      outcome = 'pass';
+      stats.pass++;
+    } else {
+      outcome = 'fail';
+      failures.push({ title: c.title, expected, got: r, outcome: 'validate-inconsistent' });
+      stats.fail++;
+    }
   } else if (r.verdict === 'recommend') {
     if (expected === r.template) {
       outcome = 'pass';

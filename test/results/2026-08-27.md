@@ -1,6 +1,6 @@
-# Eval results — 2026-08-27 (64 cases)
+# Eval results — 2026-08-27 (87 cases)
 
-Summary: **35 pass / 6 fail / 23 abstain** — accuracy on decisive verdicts: **85%** (35/41)
+Summary: **56 pass / 6 fail / 25 abstain** — accuracy on decisive verdicts: **90%** (56/62)
 
 | outcome | title | expected | verdict | confidence |
 |---|---|---|---|---|
@@ -45,7 +45,7 @@ Summary: **35 pass / 6 fail / 23 abstain** — accuracy on decisive verdicts: **
 | ✅ PASS | Piazzale Roma | Infobox urban feature | recommend:Infobox urban feature(medium) | medium |
 | ✅ PASS | Playadito | Infobox company | recommend:Infobox company(medium) | medium |
 | ✅ PASS | Robert N. Charrette | Infobox person | recommend:Infobox person(medium) | medium |
-| — abstain | Roberta Gropper | Infobox officeholder | weak-signal | medium |
+| ✅ PASS | Roberta Gropper | Infobox officeholder | recommend:Infobox officeholder(medium) | medium |
 | — abstain | RuPaul's Drag Race: Corona Can't Keep a Good Queen Down | Infobox television | weak-signal | medium |
 | — abstain | Sabrina Dallafior | Infobox officeholder | weak-signal | low |
 | ❌ FAIL | Sayfo | Infobox | recommend:Infobox civilian attack(high) | high |
@@ -68,3 +68,26 @@ Summary: **35 pass / 6 fail / 23 abstain** — accuracy on decisive verdicts: **
 | — abstain | Prince-elector | none | weak-signal | medium |
 | — abstain | Declaration of Rhense | none | weak-signal | medium |
 | — abstain | Coronation of the Holy Roman Emperor | none | weak-signal | medium |
+| ✅ PASS | Abraham Lincoln | consistent:Infobox officeholder | recommend:Infobox officeholder(high) | high |
+| ✅ PASS | George Washington | consistent:Infobox officeholder | recommend:Infobox officeholder(medium) | medium |
+| ✅ PASS | Wyoming | consistent:Infobox U.S. state | recommend:Infobox U.S. state(high) | high |
+| ✅ PASS | California | consistent:Infobox U.S. state | recommend:Infobox U.S. state(high) | high |
+| ✅ PASS | Hot dog | consistent:Infobox food | recommend:Infobox food(high) | high |
+| ✅ PASS | Hamburger | consistent:Infobox food | recommend:Infobox food(high) | high |
+| ✅ PASS | The Beatles | consistent:Infobox musical artist | recommend:Infobox musical artist(high) | high |
+| ✅ PASS | Mount Everest | consistent:Infobox mountain | recommend:Infobox mountain(medium) | medium |
+| ✅ PASS | Nile | consistent:Infobox river | recommend:Infobox river(medium) | medium |
+| ✅ PASS | Venus | consistent:Infobox planet | recommend:Infobox planet(medium) | medium |
+| — abstain | Oxygen | consistent:Infobox element | weak-signal | medium |
+| ✅ PASS | Coca-Cola | consistent:Infobox drink | recommend:Infobox drink(medium) | medium |
+| ✅ PASS | The Naked Now | consistent:Infobox television episode | recommend:Infobox television episode(high) | high |
+| ✅ PASS | Tyrannosaurus | consistent:Automatic taxobox | recommend:Automatic taxobox(medium) | medium |
+| ✅ PASS | France | consistent:Infobox country | recommend:Infobox country(high) | high |
+| ✅ PASS | New York City | consistent:Infobox settlement | recommend:Infobox settlement(medium) | medium |
+| — abstain | New York Yankees | consistent:Infobox MLB | weak-signal | medium |
+| ✅ PASS | Star Wars (film) | consistent:Infobox film | recommend:Infobox film(high) | high |
+| ✅ PASS | Minecraft | consistent:Infobox video game | recommend:Infobox video game(high) | high |
+| ✅ PASS | Mona Lisa | consistent:Infobox artwork | recommend:Infobox artwork(high) | high |
+| — abstain | Oxford | consistent:Infobox settlement | weak-signal | medium |
+| ✅ PASS | United States | consistent:Infobox country | recommend:Infobox country(high) | high |
+| ✅ PASS | FIFA World Cup | consistent:Infobox football tournament | recommend:Infobox football tournament(medium) | medium |

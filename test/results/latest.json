@@ -7,17 +7,17 @@
       "queueSize": 601,
       "staleCount": 57
     },
-    "cases": 64,
-    "limit": 64,
+    "cases": 87,
+    "limit": 87,
     "pipeline": "infobox-recommender POC"
   },
   "summary": {
-    "pass": 35,
+    "pass": 56,
     "fail": 6,
-    "abstain": 23,
+    "abstain": 25,
     "excluded": 0,
-    "decisive": 41,
-    "accuracy": 85
+    "decisive": 62,
+    "accuracy": 90
   },
   "results": [
     {
@@ -476,17 +476,17 @@
         "coverage": 0.7628865979381443,
         "dominant": {
           "template": "Infobox person",
-          "count": 49
+          "count": 50
         },
         "distribution": {
-          "Infobox person": 49,
+          "Infobox person": 50,
           "Infobox officeholder": 10,
+          "Infobox criminal": 3,
           "Infobox scientist": 3,
-          "Infobox criminal": 2,
           "Infobox academic": 2,
-          "Infobox serial killer": 1,
           "Infobox Christian leader": 1,
-          "Infobox cricketer": 1
+          "Infobox cricketer": 1,
+          "Infobox musical artist": 1
         },
         "subCluster": {
           "byClass": null,
@@ -496,9 +496,9 @@
             "coverage": 0.7628865979381443,
             "dominant": {
               "template": "Infobox person",
-              "count": 49
+              "count": 50
             },
-            "dominantShare": 0.6621621621621622
+            "dominantShare": 0.6756756756756757
           }
         },
         "bareCluster": [],
@@ -771,7 +771,7 @@
         },
         "distribution": {
           "Infobox military person": 38,
-          "Infobox officeholder": 37,
+          "Infobox officeholder": 38,
           "Infobox person": 31,
           "Infobox astronaut": 1,
           "Infobox musical artist": 1,
@@ -822,7 +822,7 @@
         "distribution": {
           "Infobox musical artist": 37,
           "Infobox football biography": 17,
-          "Infobox person": 14,
+          "Infobox person": 15,
           "Infobox sportsperson": 6,
           "Infobox martial artist": 3,
           "Infobox officeholder": 3,
@@ -1007,33 +1007,33 @@
       "confidence": "medium",
       "outcome": "pass",
       "evidence": {
-        "total": 140,
-        "coverage": 0.8428571428571429,
+        "total": 149,
+        "coverage": 0.8523489932885906,
         "dominant": {
           "template": "Infobox officeholder",
-          "count": 77
+          "count": 83
         },
         "distribution": {
-          "Infobox officeholder": 77,
-          "Infobox person": 16,
+          "Infobox officeholder": 83,
+          "Infobox person": 19,
           "Infobox military person": 5,
           "Infobox cabinet members": 3,
           "Infobox saint": 3,
-          "Infobox Political post": 2,
+          "Infobox official post": 2,
           "Infobox artist": 2,
           "Infobox Christian leader": 2
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 140,
-            "boxed": 118,
-            "coverage": 0.8428571428571429,
+            "n": 149,
+            "boxed": 127,
+            "coverage": 0.8523489932885906,
             "dominant": {
               "template": "Infobox officeholder",
-              "count": 77
+              "count": 83
             },
-            "dominantShare": 0.652542372881356
+            "dominantShare": 0.6535433070866141
           }
         },
         "bareCluster": [],
@@ -1439,15 +1439,15 @@
       "confidence": "medium",
       "outcome": "fail",
       "evidence": {
-        "total": 113,
-        "coverage": 0.8584070796460177,
+        "total": 149,
+        "coverage": 0.8859060402684564,
         "dominant": {
           "template": "Infobox person",
-          "count": 52
+          "count": 73
         },
         "distribution": {
-          "Infobox person": 52,
-          "Infobox officeholder": 36,
+          "Infobox person": 73,
+          "Infobox officeholder": 50,
           "Infobox academic": 2,
           "Infobox musical artist": 2,
           "Infobox chess biography": 2,
@@ -1458,14 +1458,14 @@
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 113,
-            "boxed": 97,
-            "coverage": 0.8584070796460177,
+            "n": 149,
+            "boxed": 132,
+            "coverage": 0.8859060402684564,
             "dominant": {
               "template": "Infobox person",
-              "count": 52
+              "count": 73
             },
-            "dominantShare": 0.5360824742268041
+            "dominantShare": 0.553030303030303
           }
         },
         "bareCluster": [],
@@ -1550,10 +1550,9 @@
           "Infobox planet": 3,
           "Infobox quasar": 3,
           "Infobox galaxy cluster": 3,
+          "Infobox nebula": 3,
           "Infobox open cluster": 2,
-          "Infobox nebula": 2,
-          "Infobox constellation": 1,
-          "Infobox planetary nebula": 1
+          "Infobox constellation": 1
         },
         "subCluster": {
           "byClass": null,
@@ -1592,13 +1591,12 @@
         "total": 43,
         "coverage": 0.09302325581395349,
         "dominant": {
-          "template": "Infobox surname",
+          "template": "Infobox name",
           "count": 2
         },
         "distribution": {
-          "Infobox surname": 2,
-          "Infobox family": 1,
-          "Infobox noble house": 1
+          "Infobox name": 2,
+          "Infobox family": 2
         },
         "subCluster": {
           "byClass": null,
@@ -1607,7 +1605,7 @@
             "boxed": 4,
             "coverage": 0.09302325581395349,
             "dominant": {
-              "template": "Infobox surname",
+              "template": "Infobox name",
               "count": 2
             },
             "dominantShare": 0.5
@@ -1715,14 +1713,14 @@
       "confidence": "medium",
       "outcome": "pass",
       "evidence": {
-        "total": 96,
-        "coverage": 0.5833333333333334,
+        "total": 99,
+        "coverage": 0.5858585858585859,
         "dominant": {
           "template": "Infobox galaxy",
-          "count": 51
+          "count": 53
         },
         "distribution": {
-          "Infobox galaxy": 51,
+          "Infobox galaxy": 53,
           "Infobox quasar": 2,
           "Infobox galaxy cluster": 2,
           "Infobox constellation": 1
@@ -1730,14 +1728,14 @@
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 96,
-            "boxed": 56,
-            "coverage": 0.5833333333333334,
+            "n": 99,
+            "boxed": 58,
+            "coverage": 0.5858585858585859,
             "dominant": {
               "template": "Infobox galaxy",
-              "count": 51
+              "count": 53
             },
-            "dominantShare": 0.9107142857142857
+            "dominantShare": 0.9137931034482759
           }
         },
         "bareCluster": [],
@@ -1905,14 +1903,16 @@
       "outcome": "fail",
       "evidence": {
         "total": 139,
-        "coverage": 0.014388489208633094,
+        "coverage": 0.07194244604316546,
         "dominant": {
-          "template": "Infobox rockunit",
-          "count": 1
+          "template": "Automatic taxobox",
+          "count": 7
         },
         "distribution": {
+          "Automatic taxobox": 7,
           "Infobox rockunit": 1,
-          "Taxobox": 1
+          "Taxobox": 1,
+          "Speciesbox": 1
         },
         "subCluster": {
           "byClass": {
@@ -1924,13 +1924,13 @@
           },
           "byCategoryOnly": {
             "n": 45,
-            "boxed": 2,
-            "coverage": 0.044444444444444446,
+            "boxed": 10,
+            "coverage": 0.2222222222222222,
             "dominant": {
-              "template": "Infobox rockunit",
-              "count": 1
+              "template": "Automatic taxobox",
+              "count": 7
             },
-            "dominantShare": 0.5
+            "dominantShare": 0.7
           }
         },
         "bareCluster": [
@@ -2052,13 +2052,14 @@
       "outcome": "pass",
       "evidence": {
         "total": 23,
-        "coverage": 0.5217391304347826,
+        "coverage": 0.5652173913043478,
         "dominant": {
           "template": "Infobox company",
           "count": 10
         },
         "distribution": {
           "Infobox company": 10,
+          "Speciesbox": 1,
           "Infobox publisher": 1,
           "Infobox brand": 1
         },
@@ -2066,22 +2067,22 @@
           "byClass": null,
           "byCategoryOnly": {
             "n": 23,
-            "boxed": 12,
-            "coverage": 0.5217391304347826,
+            "boxed": 13,
+            "coverage": 0.5652173913043478,
             "dominant": {
               "template": "Infobox company",
               "count": 10
             },
-            "dominantShare": 0.8333333333333334
+            "dominantShare": 0.7692307692307693
           }
         },
         "bareCluster": [],
         "bare": [
-          "Yerba mate",
           "List of tea companies",
           "Tanganda Tea",
           "Bombilla",
-          "Matófono"
+          "Matófono",
+          "History of yerba mate"
         ]
       }
     },
@@ -2100,17 +2101,16 @@
         "coverage": 0.8322147651006712,
         "dominant": {
           "template": "Infobox person",
-          "count": 60
+          "count": 61
         },
         "distribution": {
-          "Infobox person": 60,
+          "Infobox person": 61,
           "Infobox artist": 36,
           "Infobox comics creator": 22,
           "Infobox organization": 2,
           "Infobox scientist": 1,
           "Infobox officeholder": 1,
-          "Infobox academic": 1,
-          "Infobox author": 1
+          "Infobox academic": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2120,9 +2120,9 @@
             "coverage": 0.8322147651006712,
             "dominant": {
               "template": "Infobox person",
-              "count": 60
+              "count": 61
             },
-            "dominantShare": 0.4838709677419355
+            "dominantShare": 0.49193548387096775
           }
         },
         "bareCluster": [],
@@ -2141,37 +2141,38 @@
         "expected": "Infobox officeholder",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
+      "verdict": "recommend",
       "template": "Infobox officeholder",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "pass",
       "evidence": {
-        "total": 132,
-        "coverage": 0.7196969696969697,
+        "total": 149,
+        "coverage": 0.738255033557047,
         "dominant": {
           "template": "Infobox officeholder",
-          "count": 44
+          "count": 57
         },
         "distribution": {
-          "Infobox officeholder": 44,
-          "Infobox person": 41,
+          "Infobox officeholder": 57,
+          "Infobox person": 42,
           "Infobox sportsperson": 5,
           "Infobox artist": 2,
           "Infobox Christian leader": 1,
           "Infobox motorcycle rider": 1,
-          "Infobox criminal": 1
+          "Infobox criminal": 1,
+          "Infobox military person": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 132,
-            "boxed": 95,
-            "coverage": 0.7196969696969697,
+            "n": 149,
+            "boxed": 110,
+            "coverage": 0.738255033557047,
             "dominant": {
               "template": "Infobox officeholder",
-              "count": 44
+              "count": 57
             },
-            "dominantShare": 0.4631578947368421
+            "dominantShare": 0.5181818181818182
           }
         },
         "bareCluster": [],
@@ -2285,19 +2286,19 @@
       "confidence": "high",
       "outcome": "fail",
       "evidence": {
-        "total": 115,
-        "coverage": 0.8956521739130435,
+        "total": 117,
+        "coverage": 0.8974358974358975,
         "dominant": {
           "template": "Infobox civilian attack",
-          "count": 72
+          "count": 73
         },
         "distribution": {
-          "Infobox civilian attack": 72,
+          "Infobox civilian attack": 73,
           "Infobox military conflict": 10,
-          "Infobox holocaust event": 4,
+          "Infobox Holocaust event": 4,
+          "Infobox event": 4,
           "Infobox civil conflict": 3,
           "Infobox former subdivision": 3,
-          "Infobox event": 2,
           "Infobox": 2,
           "Infobox military operation": 1
         },
@@ -2313,14 +2314,14 @@
             "dominantShare": 0.788235294117647
           },
           "byCategoryOnly": {
-            "n": 22,
-            "boxed": 18,
-            "coverage": 0.8181818181818182,
+            "n": 24,
+            "boxed": 20,
+            "coverage": 0.8333333333333334,
             "dominant": {
               "template": "Infobox civilian attack",
-              "count": 5
+              "count": 6
             },
-            "dominantShare": 0.2777777777777778
+            "dominantShare": 0.3
           }
         },
         "bareCluster": [],
@@ -2440,31 +2441,30 @@
       "confidence": "high",
       "outcome": "pass",
       "evidence": {
-        "total": 77,
-        "coverage": 0.935064935064935,
+        "total": 150,
+        "coverage": 0.9666666666666667,
         "dominant": {
           "template": "Infobox officeholder",
-          "count": 63
+          "count": 136
         },
         "distribution": {
-          "Infobox officeholder": 63,
-          "Infobox person": 4,
+          "Infobox officeholder": 136,
+          "Infobox person": 5,
           "Infobox military person": 2,
-          "Infobox administration": 1,
           "Infobox manner of address": 1,
           "Infobox military conflict": 1
         },
         "subCluster": {
           "byClass": null,
           "byCategoryOnly": {
-            "n": 77,
-            "boxed": 72,
-            "coverage": 0.935064935064935,
+            "n": 150,
+            "boxed": 145,
+            "coverage": 0.9666666666666667,
             "dominant": {
               "template": "Infobox officeholder",
-              "count": 63
+              "count": 136
             },
-            "dominantShare": 0.875
+            "dominantShare": 0.9379310344827586
           }
         },
         "bareCluster": [],
@@ -2542,17 +2542,17 @@
         "coverage": 0.7064220183486238,
         "dominant": {
           "template": "Infobox U.S. legislation",
-          "count": 54
+          "count": 57
         },
         "distribution": {
-          "Infobox U.S. legislation": 54,
+          "Infobox U.S. legislation": 57,
           "Infobox book": 5,
           "Infobox legislation": 4,
-          "Infobox United States federal proposed legislation": 3,
           "Infobox treaty": 2,
           "Infobox US Supreme Court case": 1,
           "Infobox SCC": 1,
-          "Infobox film": 1
+          "Infobox film": 1,
+          "Infobox oil spill": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2562,9 +2562,9 @@
             "coverage": 0.7064220183486238,
             "dominant": {
               "template": "Infobox U.S. legislation",
-              "count": 54
+              "count": 57
             },
-            "dominantShare": 0.7012987012987013
+            "dominantShare": 0.7402597402597403
           }
         },
         "bareCluster": [],
@@ -2640,12 +2640,11 @@
         "coverage": 0.8677685950413223,
         "dominant": {
           "template": "Infobox book",
-          "count": 103
+          "count": 104
         },
         "distribution": {
-          "Infobox book": 103,
-          "Infobox graphic novel": 1,
-          "Infobox novel": 1
+          "Infobox book": 104,
+          "Infobox graphic novel": 1
         },
         "subCluster": {
           "byClass": null,
@@ -2655,9 +2654,9 @@
             "coverage": 0.8677685950413223,
             "dominant": {
               "template": "Infobox book",
-              "count": 103
+              "count": 104
             },
-            "dominantShare": 0.9809523809523809
+            "dominantShare": 0.9904761904761905
           }
         },
         "bareCluster": [],
@@ -2786,12 +2785,12 @@
         "distribution": {
           "Infobox person": 53,
           "Infobox officeholder": 9,
-          "Infobox royalty": 2,
+          "Infobox royalty": 3,
           "Infobox islands": 1,
-          "Infobox monarch": 1,
           "Infobox chess biography": 1,
           "Infobox scientist": 1,
-          "Infobox social media personality": 1
+          "Infobox social media personality": 1,
+          "Infobox sportsperson": 1
         },
         "subCluster": {
           "byClass": null,
@@ -3044,7 +3043,7 @@
         "distribution": {
           "Infobox document": 4,
           "Infobox military conflict": 2,
-          "Infobox noble house": 1,
+          "Infobox family": 1,
           "Infobox country": 1,
           "Infobox earthquake": 1,
           "Infobox manuscript": 1,
@@ -3092,9 +3091,8 @@
         },
         "distribution": {
           "Infobox church": 21,
-          "Infobox designation list": 2,
-          "Infobox UNESCO World Heritage Site": 1,
-          "Infobox religious building": 1
+          "Infobox religious building": 2,
+          "Infobox designation list": 2
         },
         "subCluster": {
           "byClass": null,
@@ -3126,18 +3124,18 @@
         "labelSource": "doc-demo (institution, 0/7 boxed)"
       },
       "verdict": "weak-signal",
-      "template": "Infobox former monarchy",
+      "template": "Infobox monarchy",
       "confidence": "medium",
       "outcome": "abstain",
       "evidence": {
         "total": 58,
         "coverage": 0.3103448275862069,
         "dominant": {
-          "template": "Infobox former monarchy",
+          "template": "Infobox monarchy",
           "count": 3
         },
         "distribution": {
-          "Infobox former monarchy": 3,
+          "Infobox monarchy": 3,
           "Infobox royalty": 3,
           "Infobox legislature": 3,
           "Infobox European Parliament constituency": 3,
@@ -3153,7 +3151,7 @@
             "boxed": 18,
             "coverage": 0.3103448275862069,
             "dominant": {
-              "template": "Infobox former monarchy",
+              "template": "Infobox monarchy",
               "count": 3
             },
             "dominantShare": 0.16666666666666666
@@ -3191,7 +3189,7 @@
           "Infobox summit meeting": 14,
           "Infobox event": 11,
           "Infobox military conflict": 7,
-          "Infobox German location": 5,
+          "Infobox German place": 7,
           "Infobox royalty": 3,
           "Infobox Chinese": 2,
           "Infobox military installation": 2
@@ -3248,12 +3246,12 @@
         "distribution": {
           "Infobox election": 26,
           "Infobox Christian leader": 7,
-          "Infobox former country": 3,
-          "Infobox country": 3,
+          "Infobox country": 6,
+          "Infobox event": 3,
           "Infobox church": 2,
-          "Infobox event": 2,
           "Infobox royalty": 2,
-          "Infobox diocese": 1
+          "Infobox diocese": 1,
+          "Infobox": 1
         },
         "subCluster": {
           "byClass": null,
@@ -3275,6 +3273,1183 @@
           "Pleissnerland",
           "Kaiserpfalz",
           "Imperial election"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Abraham Lincoln",
+        "expected": "consistent:Infobox officeholder",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox officeholder",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 147,
+        "coverage": 0.9591836734693877,
+        "dominant": {
+          "template": "Infobox officeholder",
+          "count": 120
+        },
+        "distribution": {
+          "Infobox officeholder": 120,
+          "Infobox person": 5,
+          "Infobox military person": 4,
+          "Infobox comics character": 3,
+          "Infobox G.I. Joe character": 2,
+          "Infobox criminal": 1,
+          "Infobox manner of address": 1,
+          "Infobox college coach": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 147,
+            "boxed": 141,
+            "coverage": 0.9591836734693877,
+            "dominant": {
+              "template": "Infobox officeholder",
+              "count": 120
+            },
+            "dominantShare": 0.851063829787234
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Mark Harris (Maine politician)",
+          "Peter Sharpe",
+          "Henry English Read",
+          "Ralph Jones (racing driver)",
+          "Wattie Boone"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "George Washington",
+        "expected": "consistent:Infobox officeholder",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox officeholder",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 147,
+        "coverage": 0.9387755102040817,
+        "dominant": {
+          "template": "Infobox officeholder",
+          "count": 72
+        },
+        "distribution": {
+          "Infobox officeholder": 72,
+          "Infobox person": 23,
+          "Infobox scientist": 18,
+          "Infobox military person": 11,
+          "Infobox comics character": 3,
+          "Infobox G.I. Joe character": 2,
+          "Infobox gridiron football biography": 1,
+          "Infobox SCOTUS Appointments": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 147,
+            "boxed": 138,
+            "coverage": 0.9387755102040817,
+            "dominant": {
+              "template": "Infobox officeholder",
+              "count": 72
+            },
+            "dominantShare": 0.5217391304347826
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "John Bush (provincial soldier)",
+          "Moses Dow",
+          "Charles Lynch (judge)",
+          "Friedrich Baethgen",
+          "Friedrich Schmidt-Ott"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Wyoming",
+        "expected": "consistent:Infobox U.S. state",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox U.S. state",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 89,
+        "coverage": 0.7415730337078652,
+        "dominant": {
+          "template": "Infobox U.S. state",
+          "count": 47
+        },
+        "distribution": {
+          "Infobox U.S. state": 47,
+          "Infobox settlement": 4,
+          "Infobox network service provider": 2,
+          "Infobox subdivision type": 2,
+          "Infobox recurring event": 1,
+          "Infobox event": 1,
+          "Infobox historical era": 1,
+          "Infobox former subdivision": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 49,
+            "boxed": 49,
+            "coverage": 1,
+            "dominant": {
+              "template": "Infobox U.S. state",
+              "count": 47
+            },
+            "dominantShare": 0.9591836734693877
+          },
+          "byCategoryOnly": {
+            "n": 40,
+            "boxed": 17,
+            "coverage": 0.425,
+            "dominant": {
+              "template": "Infobox settlement",
+              "count": 4
+            },
+            "dominantShare": 0.23529411764705882
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Contiguous United States",
+          "Four Corners",
+          "Chinook wind",
+          "Indigenous peoples of the Great Basin",
+          "Plains Indians"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "California",
+        "expected": "consistent:Infobox U.S. state",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox U.S. state",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 94,
+        "coverage": 0.7340425531914894,
+        "dominant": {
+          "template": "Infobox U.S. state",
+          "count": 47
+        },
+        "distribution": {
+          "Infobox U.S. state": 47,
+          "Infobox settlement": 4,
+          "Infobox network service provider": 2,
+          "Infobox subdivision type": 2,
+          "Infobox recurring event": 1,
+          "Infobox event": 1,
+          "Infobox historical era": 1,
+          "Infobox former subdivision": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 49,
+            "boxed": 49,
+            "coverage": 1,
+            "dominant": {
+              "template": "Infobox U.S. state",
+              "count": 47
+            },
+            "dominantShare": 0.9591836734693877
+          },
+          "byCategoryOnly": {
+            "n": 45,
+            "boxed": 20,
+            "coverage": 0.4444444444444444,
+            "dominant": {
+              "template": "Infobox settlement",
+              "count": 4
+            },
+            "dominantShare": 0.2
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Lois Jordan",
+          "Contiguous United States",
+          "Four Corners",
+          "Chinook wind",
+          "Indigenous peoples of the Great Basin"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Hot dog",
+        "expected": "consistent:Infobox food",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox food",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 65,
+        "coverage": 0.9076923076923077,
+        "dominant": {
+          "template": "Infobox food",
+          "count": 49
+        },
+        "distribution": {
+          "Infobox food": 49,
+          "Infobox company": 4,
+          "Infobox restaurant": 4,
+          "Infobox nutritional value": 1,
+          "Subinfobox bodystyle": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 65,
+            "boxed": 59,
+            "coverage": 0.9076923076923077,
+            "dominant": {
+              "template": "Infobox food",
+              "count": 49
+            },
+            "dominantShare": 0.8305084745762712
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Pot roast",
+          "Bologna sausage",
+          "Pit beef",
+          "Dollar Cravings",
+          "Dürüm"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Hamburger",
+        "expected": "consistent:Infobox food",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox food",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 143,
+        "coverage": 0.8251748251748252,
+        "dominant": {
+          "template": "Infobox food",
+          "count": 95
+        },
+        "distribution": {
+          "Infobox food": 95,
+          "Infobox nutritional value": 5,
+          "Infobox brand": 4,
+          "Infobox Japanese snack": 3,
+          "Subinfobox bodystyle": 3,
+          "Infobox company": 3,
+          "Infobox product": 1,
+          "Infobox restaurant": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 65,
+            "boxed": 54,
+            "coverage": 0.8307692307692308,
+            "dominant": {
+              "template": "Infobox food",
+              "count": 42
+            },
+            "dominantShare": 0.7777777777777778
+          },
+          "byCategoryOnly": {
+            "n": 78,
+            "boxed": 64,
+            "coverage": 0.8205128205128205,
+            "dominant": {
+              "template": "Infobox food",
+              "count": 53
+            },
+            "dominantShare": 0.828125
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Fruit by the Foot",
+          "Retort pouch",
+          "Twistees",
+          "Pitzuchim",
+          "Plantain mosa"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "The Beatles",
+        "expected": "consistent:Infobox musical artist",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox musical artist",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 64,
+        "coverage": 0.890625,
+        "dominant": {
+          "template": "Infobox musical artist",
+          "count": 42
+        },
+        "distribution": {
+          "Infobox musical artist": 42,
+          "Infobox person": 8,
+          "Infobox company": 2,
+          "Infobox book": 2,
+          "Infobox song": 1,
+          "Infobox cultivar": 1,
+          "Infobox film": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 64,
+            "boxed": 57,
+            "coverage": 0.890625,
+            "dominant": {
+              "template": "Infobox musical artist",
+              "count": 42
+            },
+            "dominantShare": 0.7368421052631579
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Apple Corps v Apple Computer",
+          "Billy & Lillie",
+          "List of baroque pop artists",
+          "The Scorpions (London band)",
+          "Sosumi"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Mount Everest",
+        "expected": "consistent:Infobox mountain",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox mountain",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 81,
+        "coverage": 0.7777777777777778,
+        "dominant": {
+          "template": "Infobox mountain",
+          "count": 33
+        },
+        "distribution": {
+          "Infobox mountain": 33,
+          "Infobox settlement": 8,
+          "Infobox body of water": 7,
+          "Infobox religious building": 4,
+          "Infobox Chinese": 2,
+          "Infobox Tibetan Buddhist monastery": 2,
+          "Infobox mountain pass": 2,
+          "Infobox museum": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 81,
+            "boxed": 63,
+            "coverage": 0.7777777777777778,
+            "dominant": {
+              "template": "Infobox mountain",
+              "count": 33
+            },
+            "dominantShare": 0.5238095238095238
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Seven Summits",
+          "Seven Second Summits",
+          "Tibetan festivals",
+          "Explorer's Grand Slam",
+          "Indonesia Seven Summits Expedition"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Nile",
+        "expected": "consistent:Infobox river",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox river",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 51,
+        "coverage": 0.7254901960784313,
+        "dominant": {
+          "template": "Infobox river",
+          "count": 22
+        },
+        "distribution": {
+          "Infobox river": 22,
+          "Infobox protected area": 5,
+          "Infobox settlement": 4,
+          "Infobox designation list": 3,
+          "Infobox mountain": 1,
+          "Infobox company": 1,
+          "Infobox port": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 51,
+            "boxed": 37,
+            "coverage": 0.7254901960784313,
+            "dominant": {
+              "template": "Infobox river",
+              "count": 22
+            },
+            "dominantShare": 0.5945945945945946
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Wadi Allaqi",
+          "Cataracts of the Nile",
+          "Egyptian Protectorates",
+          "List of rivers of Eritrea",
+          "List of rivers of Sudan"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Venus",
+        "expected": "consistent:Infobox planet",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox planet",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 115,
+        "coverage": 0.591304347826087,
+        "dominant": {
+          "template": "Infobox planet",
+          "count": 40
+        },
+        "distribution": {
+          "Infobox planet": 40,
+          "Infobox open cluster": 8,
+          "Infobox galaxy": 4,
+          "Infobox astronomical event": 3,
+          "Infobox book": 2,
+          "Infobox": 2,
+          "Infobox artwork": 2,
+          "Infobox Bible chapter": 2
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 3,
+            "boxed": 3,
+            "coverage": 1,
+            "dominant": {
+              "template": "Infobox planet",
+              "count": 3
+            },
+            "dominantShare": 1
+          },
+          "byCategoryOnly": {
+            "n": 112,
+            "boxed": 65,
+            "coverage": 0.5803571428571429,
+            "dominant": {
+              "template": "Infobox planet",
+              "count": 37
+            },
+            "dominantShare": 0.5692307692307692
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Algol",
+          "Lucifer",
+          "Planets beyond Neptune",
+          "Planetary nomenclature",
+          "Epsilon Eridani"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Oxygen",
+        "expected": "consistent:Infobox element",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox element",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 115,
+        "coverage": 0.9652173913043478,
+        "dominant": {
+          "template": "Infobox element",
+          "count": 33
+        },
+        "distribution": {
+          "Infobox element": 33,
+          "Infobox drug": 28,
+          "Infobox americium": 1,
+          "Infobox aluminium": 1,
+          "Infobox beryllium": 1,
+          "Infobox berkelium": 1,
+          "Infobox chromium": 1,
+          "Infobox californium": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 79,
+            "boxed": 78,
+            "coverage": 0.9873417721518988,
+            "dominant": {
+              "template": "Infobox element",
+              "count": 33
+            },
+            "dominantShare": 0.4230769230769231
+          },
+          "byCategoryOnly": {
+            "n": 36,
+            "boxed": 33,
+            "coverage": 0.9166666666666666,
+            "dominant": {
+              "template": "Infobox drug",
+              "count": 28
+            },
+            "dominantShare": 0.8484848484848485
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Distributed-feedback laser",
+          "Selenium in biology",
+          "Interchalcogen",
+          "Solid nitrogen"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Coca-Cola",
+        "expected": "consistent:Infobox drink",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox drink",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 143,
+        "coverage": 0.7762237762237763,
+        "dominant": {
+          "template": "Infobox drink",
+          "count": 69
+        },
+        "distribution": {
+          "Infobox drink": 69,
+          "Infobox company": 11,
+          "Infobox brand": 11,
+          "Infobox nutritional value": 9,
+          "Infobox food": 6,
+          "Infobox bottled water": 3,
+          "Subinfobox bodystyle": 1,
+          "Infobox brewery": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 74,
+            "boxed": 54,
+            "coverage": 0.7297297297297297,
+            "dominant": {
+              "template": "Infobox drink",
+              "count": 34
+            },
+            "dominantShare": 0.6296296296296297
+          },
+          "byCategoryOnly": {
+            "n": 69,
+            "boxed": 57,
+            "coverage": 0.8260869565217391,
+            "dominant": {
+              "template": "Infobox drink",
+              "count": 35
+            },
+            "dominantShare": 0.6140350877192983
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Rose's lime juice",
+          "Lurvills Delight",
+          "Virgil's Root Beer",
+          "Kingstone Press Cider",
+          "Goombay Punch"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "The Naked Now",
+        "expected": "consistent:Infobox television episode",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox television episode",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 101,
+        "coverage": 0.9900990099009901,
+        "dominant": {
+          "template": "Infobox television episode",
+          "count": 93
+        },
+        "distribution": {
+          "Infobox television episode": 93,
+          "Infobox television season": 3,
+          "Infobox television": 2,
+          "Infobox short story": 1,
+          "Infobox": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 101,
+            "boxed": 100,
+            "coverage": 0.9900990099009901,
+            "dominant": {
+              "template": "Infobox television episode",
+              "count": 93
+            },
+            "dominantShare": 0.93
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "List of Star Trek: The Next Generation episodes"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Tyrannosaurus",
+        "expected": "consistent:Automatic taxobox",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Automatic taxobox",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 86,
+        "coverage": 0.9534883720930233,
+        "dominant": {
+          "template": "Automatic taxobox",
+          "count": 51
+        },
+        "distribution": {
+          "Automatic taxobox": 51,
+          "Speciesbox": 14,
+          "Infobox fossil": 7,
+          "Infobox rockunit": 3,
+          "Infobox television": 2,
+          "Infobox comics character": 1,
+          "Taxobox": 1,
+          "Infobox character": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 86,
+            "boxed": 82,
+            "coverage": 0.9534883720930233,
+            "dominant": {
+              "template": "Automatic taxobox",
+              "count": 51
+            },
+            "dominantShare": 0.6219512195121951
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Tyrannosaurus in popular culture",
+          "Specimens of Tyrannosaurus",
+          "Feeding behavior of Tyrannosaurus",
+          "Edmontosaurus mummy SMF R 4036"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "France",
+        "expected": "consistent:Infobox country",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox country",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 149,
+        "coverage": 0.9932885906040269,
+        "dominant": {
+          "template": "Infobox country",
+          "count": 144
+        },
+        "distribution": {
+          "Infobox country": 144,
+          "Infobox political division": 2,
+          "Infobox UK legislation": 1,
+          "Infobox fictional location": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 149,
+            "boxed": 148,
+            "coverage": 0.9932885906040269,
+            "dominant": {
+              "template": "Infobox country",
+              "count": 144
+            },
+            "dominantShare": 0.972972972972973
+          },
+          "byCategoryOnly": null
+        },
+        "bareCluster": [],
+        "bare": [
+          "Republic of Mulhouse"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "New York City",
+        "expected": "consistent:Infobox settlement",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox settlement",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 150,
+        "coverage": 0.9466666666666667,
+        "dominant": {
+          "template": "Infobox settlement",
+          "count": 98
+        },
+        "distribution": {
+          "Infobox settlement": 98,
+          "Infobox Russian inhabited locality": 13,
+          "Infobox designation list": 8,
+          "Infobox Chinese": 4,
+          "Infobox Romanian subdivision": 4,
+          "Infobox Italian comune": 3,
+          "Infobox political division": 2,
+          "Infobox German place": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 150,
+            "boxed": 142,
+            "coverage": 0.9466666666666667,
+            "dominant": {
+              "template": "Infobox settlement",
+              "count": 98
+            },
+            "dominantShare": 0.6901408450704225
+          },
+          "byCategoryOnly": null
+        },
+        "bareCluster": [],
+        "bare": [
+          "Saint Aubin, Jersey",
+          "Nisaea",
+          "Tartessos",
+          "Playa de las Américas",
+          "Rishahr"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "New York Yankees",
+        "expected": "consistent:Infobox MLB",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox MLB",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 72,
+        "coverage": 0.7361111111111112,
+        "dominant": {
+          "template": "Infobox MLB",
+          "count": 14
+        },
+        "distribution": {
+          "Infobox MLB": 14,
+          "Infobox college sports team season": 8,
+          "Infobox football club": 4,
+          "Infobox gridiron football team": 3,
+          "Infobox baseball team": 3,
+          "Infobox person": 3,
+          "Infobox television channel": 2,
+          "Infobox company": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 72,
+            "boxed": 53,
+            "coverage": 0.7361111111111112,
+            "dominant": {
+              "template": "Infobox MLB",
+              "count": 14
+            },
+            "dominantShare": 0.2641509433962264
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Bronx Yankees",
+          "Bayside Yankees",
+          "New York Soccer Club",
+          "Spring training",
+          "Bronx Tigers"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Star Wars (film)",
+        "expected": "consistent:Infobox film",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox film",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 91,
+        "coverage": 0.967032967032967,
+        "dominant": {
+          "template": "Infobox film",
+          "count": 75
+        },
+        "distribution": {
+          "Infobox film": 75,
+          "Infobox album": 5,
+          "Infobox television": 3,
+          "Infobox television episode": 2,
+          "Infobox radio show": 1,
+          "Infobox book": 1,
+          "Infobox song": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 91,
+            "boxed": 88,
+            "coverage": 0.967032967032967,
+            "dominant": {
+              "template": "Infobox film",
+              "count": 75
+            },
+            "dominantShare": 0.8522727272727273
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "GRASS (programming language)",
+          "Han shot first",
+          "These aren't the droids you're looking for"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Minecraft",
+        "expected": "consistent:Infobox video game",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox video game",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 40,
+        "coverage": 1,
+        "dominant": {
+          "template": "Infobox video game",
+          "count": 40
+        },
+        "distribution": {
+          "Infobox video game": 40
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 40,
+            "boxed": 40,
+            "coverage": 1,
+            "dominant": {
+              "template": "Infobox video game",
+              "count": 40
+            },
+            "dominantShare": 1
+          }
+        },
+        "bareCluster": [],
+        "bare": []
+      }
+    },
+    {
+      "case": {
+        "title": "Mona Lisa",
+        "expected": "consistent:Infobox artwork",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox artwork",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 148,
+        "coverage": 0.7972972972972973,
+        "dominant": {
+          "template": "Infobox artwork",
+          "count": 98
+        },
+        "distribution": {
+          "Infobox artwork": 98,
+          "Infobox film": 4,
+          "Infobox book": 3,
+          "Infobox person": 2,
+          "Infobox song": 2,
+          "Infobox Doctor Who episode": 1,
+          "Infobox event": 1,
+          "Infobox bridge": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 148,
+            "boxed": 118,
+            "coverage": 0.7972972972972973,
+            "dominant": {
+              "template": "Infobox artwork",
+              "count": 98
+            },
+            "dominantShare": 0.8305084745762712
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Yves Chaudron",
+          "The Battle of Anghiari (Leonardo)",
+          "Medusa (Leonardo)",
+          "The Holy Infants Embracing",
+          "Leda and the Swan (Leonardo)"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Oxford",
+        "expected": "consistent:Infobox settlement",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox settlement",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 150,
+        "coverage": 0.98,
+        "dominant": {
+          "template": "Infobox settlement",
+          "count": 46
+        },
+        "distribution": {
+          "Infobox settlement": 46,
+          "Infobox German place": 43,
+          "Infobox UK place": 34,
+          "Infobox Switzerland municipality": 8,
+          "Infobox Italian comune": 3,
+          "Infobox Chinese": 3,
+          "Emblem table": 2,
+          "Infobox UK legislation": 2
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 146,
+            "boxed": 143,
+            "coverage": 0.9794520547945206,
+            "dominant": {
+              "template": "Infobox settlement",
+              "count": 46
+            },
+            "dominantShare": 0.32167832167832167
+          },
+          "byCategoryOnly": {
+            "n": 4,
+            "boxed": 4,
+            "coverage": 1,
+            "dominant": {
+              "template": "Infobox UK place",
+              "count": 4
+            },
+            "dominantShare": 1
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Takadanobaba",
+          "Oriental University City",
+          "Kanda, Tokyo"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "United States",
+        "expected": "consistent:Infobox country",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox country",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 147,
+        "coverage": 0.9795918367346939,
+        "dominant": {
+          "template": "Infobox country",
+          "count": 138
+        },
+        "distribution": {
+          "Infobox country": 138,
+          "Infobox UK legislation": 2,
+          "Infobox political division": 2,
+          "Infobox cabinet members": 1,
+          "Infobox settlement": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 147,
+            "boxed": 144,
+            "coverage": 0.9795918367346939,
+            "dominant": {
+              "template": "Infobox country",
+              "count": 138
+            },
+            "dominantShare": 0.9583333333333334
+          },
+          "byCategoryOnly": null
+        },
+        "bareCluster": [],
+        "bare": [
+          "Polish Soviet Socialist Republic",
+          "Saxony in the German Revolution (1918–1919)",
+          "Republic of the Floridas"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "FIFA World Cup",
+        "expected": "consistent:Infobox football tournament",
+        "labelSource": "canonical-validate (user-proposed ground truth)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox football tournament",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 129,
+        "coverage": 0.8682170542635659,
+        "dominant": {
+          "template": "Infobox football tournament",
+          "count": 41
+        },
+        "distribution": {
+          "Infobox football tournament": 41,
+          "Infobox athletics race": 16,
+          "Infobox recurring event": 15,
+          "Infobox cycling race": 8,
+          "Infobox sporting event organization": 7,
+          "Infobox horseraces": 4,
+          "Infobox motor race": 4,
+          "Infobox international football competition": 3
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 32,
+            "boxed": 31,
+            "coverage": 0.96875,
+            "dominant": {
+              "template": "Infobox football tournament",
+              "count": 16
+            },
+            "dominantShare": 0.5161290322580645
+          },
+          "byCategoryOnly": {
+            "n": 97,
+            "boxed": 81,
+            "coverage": 0.8350515463917526,
+            "dominant": {
+              "template": "Infobox football tournament",
+              "count": 25
+            },
+            "dominantShare": 0.30864197530864196
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "History of the FIFA World Cup",
+          "List of FIFA World Cup hosts",
+          "UEFA Amateur Cup",
+          "Economics of the FIFA World Cup",
+          "Badwater Ultramarathon"
         ]
       }
     }

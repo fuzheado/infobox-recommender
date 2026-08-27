@@ -1,7 +1,7 @@
 # Infobox Recommender — Evaluation
 
 **Date:** 2026-08-27 (two campaigns) · **Scope:** POC pipeline (Stages A–C) · **Corpus:** 64 labeled cases
-**Result: 35 pass / 6 fail / 23 abstain — 85% accuracy on decisive verdicts** (after tiered neighborhoods)
+**Result: 56 pass / 6 fail / 25 abstain — 90% accuracy on decisive verdicts** (after canonical ground-truth corpus + Wikidata pointer peers)
 
 This document is the full writeup of the evaluation campaigns: how the test
 set was built, how scoring works, per-case results, an analysis of every
@@ -105,7 +105,7 @@ abstentions do not dilute precision.
 
 ## 3. Results
 
-**35 pass / 6 fail / 23 abstain · 85% (35/41) on decisive verdicts · 36% abstention rate**
+**56 pass / 6 fail / 25 abstain · 90% (56/62) on decisive verdicts · 29% abstention rate** (87-case corpus)
 
 The abstention rate is the design working: roughly half of the backlog
 articles sit in the ambiguous middle band where peer signals are mixed, and

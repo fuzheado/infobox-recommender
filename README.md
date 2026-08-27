@@ -142,13 +142,13 @@ infobox-request backlog:
 
 `npm run eval` runs the pipeline over all fixtures (warm-cache = fast), scores
 verdicts against expectations, and persists per-case results to
-`test/results/` (`<date>.json|.md` + `latest.*`). Current: **35 pass / 6 fail
-/ 23 abstain — 85% accuracy on decisive verdicts** (weak-signal counts as
+`test/results/` (`<date>.json|.md` + `latest.*`). Current: **56 pass / 6 fail / 25 abstain — 90% accuracy on decisive
+verdicts** (87-case corpus: 64 backlog + 23 canonical validate cases) (weak-signal counts as
 honest abstention).
 
 **Full writeup: `test/EVALUATION.md`** — dataset construction, scoring rules,
 per-case table, analysis of every failure, the bugs the eval surfaced (with
-the before/after progression 11% → 83% → 71% → 73% → 75% → 84% → 85% → 84% → 85%), and
+the before/after progression 11% → 83% → 71% → 73% → 75% → 84% → 85% → 84% → 85% → 86% → 90%), and
 limitations.
 
 ## Single-article invocation
@@ -183,7 +183,7 @@ caught); `Prince-elector` / `Amathlai` / `1696 Jacobite assassination plot` →
 honest weak-signals (concept genre, P31=human, mixed peers).
 
 The full history — every bug found and fixed, the campaign progression
-(11% → 83% → 71% → 73% → 75% → 84% → 85% → 84% → 85%), and per-case results — lives in
+(11% → 83% → 71% → 73% → 75% → 84% → 85% → 84% → 85% → 86% → 90%), and per-case results — lives in
 `test/EVALUATION.md` (writeup), `test/results/latest.md` (current per-case
 table), and `engineering-notes.md` (API gotchas).
 

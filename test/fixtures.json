@@ -325,6 +325,121 @@
       "title": "Coronation of the Holy Roman Emperor",
       "expected": "none",
       "labelSource": "doc-demo (institution, 0/7 boxed)"
+    },
+    {
+      "title": "Abraham Lincoln",
+      "expected": "consistent:Infobox officeholder",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "George Washington",
+      "expected": "consistent:Infobox officeholder",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Wyoming",
+      "expected": "consistent:Infobox U.S. state",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "California",
+      "expected": "consistent:Infobox U.S. state",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Hot dog",
+      "expected": "consistent:Infobox food",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Hamburger",
+      "expected": "consistent:Infobox food",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "The Beatles",
+      "expected": "consistent:Infobox musical artist",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Mount Everest",
+      "expected": "consistent:Infobox mountain",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Nile",
+      "expected": "consistent:Infobox river",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Venus",
+      "expected": "consistent:Infobox planet",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Oxygen",
+      "expected": "consistent:Infobox element",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Coca-Cola",
+      "expected": "consistent:Infobox drink",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "The Naked Now",
+      "expected": "consistent:Infobox television episode",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Tyrannosaurus",
+      "expected": "consistent:Automatic taxobox",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "France",
+      "expected": "consistent:Infobox country",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "New York City",
+      "expected": "consistent:Infobox settlement",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "New York Yankees",
+      "expected": "consistent:Infobox MLB",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Star Wars (film)",
+      "expected": "consistent:Infobox film",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Minecraft",
+      "expected": "consistent:Infobox video game",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Mona Lisa",
+      "expected": "consistent:Infobox artwork",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Oxford",
+      "expected": "consistent:Infobox settlement",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "United States",
+      "expected": "consistent:Infobox country",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "FIFA World Cup",
+      "expected": "consistent:Infobox football tournament",
+      "labelSource": "canonical-validate (user-proposed ground truth)"
     }
   ]
 }
