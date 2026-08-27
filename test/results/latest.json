@@ -1,0 +1,5029 @@
+{
+  "meta": {
+    "date": "2026-08-27",
+    "fixtures": {
+      "source": "Category:Wikipedia articles with an infobox request",
+      "fetched": "2026-08-27",
+      "queueSize": 601,
+      "staleCount": 57
+    },
+    "cases": 64,
+    "limit": 64,
+    "pipeline": "infobox-recommender POC"
+  },
+  "summary": {
+    "pass": 32,
+    "fail": 6,
+    "abstain": 26,
+    "excluded": 0,
+    "decisive": 38,
+    "accuracy": 84
+  },
+  "results": [
+    {
+      "case": {
+        "title": "Brooke Hodge",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 150,
+        "coverage": 0.5133333333333333,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 50
+        },
+        "distribution": {
+          "Infobox person": 50,
+          "Infobox artist": 19,
+          "Infobox academic": 5,
+          "Infobox museum": 5,
+          "Infobox organization": 4,
+          "Infobox officeholder": 3,
+          "Infobox recurring event": 3,
+          "Infobox university": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 150,
+            "boxed": 77,
+            "coverage": 0.5133333333333333,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 50
+            },
+            "dominantShare": 0.6493506493506493
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Architectural design",
+            "n": 8,
+            "members": [
+              "List of architectural styles",
+              "Architectural design competition",
+              "Building design",
+              "Interior architecture",
+              "Computer-aided architectural design",
+              "Architectural designer",
+              "Architectural technologist",
+              "Architectural Design"
+            ]
+          },
+          {
+            "category": "Webarchive template wayback links",
+            "n": 7,
+            "members": [
+              "Architectural design competition",
+              "Building design",
+              "Max Palevsky",
+              "Architectural technologist",
+              "Getty Foundation",
+              "California Art Club",
+              "Getty Conservation Institute"
+            ]
+          },
+          {
+            "category": "Art in Greater Los Angeles",
+            "n": 7,
+            "members": [
+              "Chouinard Art Institute",
+              "Getty Foundation",
+              "Ferus Gallery",
+              "California Art Club",
+              "FHR Fred Robertson Los Angeles Pottery",
+              "Getty Conservation Institute",
+              "Finish Fetish"
+            ]
+          }
+        ],
+        "bare": [
+          "Max Palevsky",
+          "Giuseppe Panza",
+          "Paul Schimmel (curator)",
+          "Carolyn Clark Powers",
+          "Interior architecture"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Brad Gilmore",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 148,
+        "coverage": 0.831081081081081,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 74
+        },
+        "distribution": {
+          "Infobox person": 74,
+          "Infobox officeholder": 41,
+          "Infobox writer": 12,
+          "Infobox scientist": 5,
+          "Infobox military person": 3,
+          "Infobox medal templates": 3,
+          "Infobox academic": 2,
+          "Infobox college coach": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 148,
+            "boxed": 123,
+            "coverage": 0.831081081081081,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 74
+            },
+            "dominantShare": 0.6016260162601627
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Living people",
+            "n": 4,
+            "members": [
+              "Shelly Berg",
+              "Glenn W. Smith",
+              "C. Anthony Anderson",
+              "Lisa Malosky"
+            ]
+          },
+          {
+            "category": "All stub articles",
+            "n": 3,
+            "members": [
+              "Charles L. Allen",
+              "C. Anthony Anderson",
+              "Lisa Malosky"
+            ]
+          },
+          {
+            "category": "Journalists from Houston",
+            "n": 3,
+            "members": [
+              "Charles L. Allen",
+              "Glenn W. Smith",
+              "Lisa Malosky"
+            ]
+          }
+        ],
+        "bare": [
+          "Charles L. Allen",
+          "Gina Gaston",
+          "Dahr Jamail",
+          "Adina Hoffman",
+          "Lisa Malosky"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Campo San Barnaba",
+        "expected": "Infobox urban feature",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox urban feature",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 69,
+        "coverage": 0.5217391304347826,
+        "dominant": {
+          "template": "Infobox urban feature",
+          "count": 8
+        },
+        "distribution": {
+          "Infobox urban feature": 8,
+          "Infobox building": 6,
+          "Infobox bridge": 3,
+          "Infobox Observatory": 3,
+          "Infobox observatory": 3,
+          "Infobox museum": 2,
+          "Infobox religious building": 2,
+          "Infobox church": 2
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 14,
+            "boxed": 5,
+            "coverage": 0.35714285714285715,
+            "dominant": {
+              "template": "Infobox urban feature",
+              "count": 5
+            },
+            "dominantShare": 1
+          },
+          "byCategoryOnly": {
+            "n": 55,
+            "boxed": 31,
+            "coverage": 0.5636363636363636,
+            "dominant": {
+              "template": "Infobox building",
+              "count": 6
+            },
+            "dominantShare": 0.1935483870967742
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 7,
+            "members": [
+              "Campo San Polo",
+              "Aqua Augusta (Rome)",
+              "Acqua Pia Antica Marcia",
+              "Baths of Licinius Sura",
+              "Campo Santa Maria Formosa",
+              "Argenta Gap War Cemetery",
+              "Aedes Tensarum"
+            ]
+          },
+          {
+            "category": "Italian building and structure stubs",
+            "n": 6,
+            "members": [
+              "Campo San Polo",
+              "Aqua Augusta (Rome)",
+              "Acqua Pia Antica Marcia",
+              "Baths of Licinius Sura",
+              "Campo Santa Maria Formosa",
+              "Argenta Gap War Cemetery"
+            ]
+          },
+          {
+            "category": "Dorsoduro",
+            "n": 3,
+            "members": [
+              "Peggy Guggenheim Collection",
+              "Dorsoduro",
+              "Scuola Grande dei Carmini"
+            ]
+          }
+        ],
+        "bare": [
+          "Campo Santa Maria Formosa",
+          "Campo Santi Giovanni e Paolo",
+          "Campo Sant'Angelo",
+          "Campo San Bartolomeo",
+          "Campo Santa Margherita"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Campo della Salute",
+        "expected": "Infobox urban feature",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox urban feature",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 56,
+        "coverage": 0.48214285714285715,
+        "dominant": {
+          "template": "Infobox urban feature",
+          "count": 8
+        },
+        "distribution": {
+          "Infobox urban feature": 8,
+          "Infobox building": 5,
+          "Infobox bridge": 3,
+          "Infobox Observatory": 3,
+          "Infobox observatory": 3,
+          "Infobox settlement": 2,
+          "Infobox restaurant": 2,
+          "Infobox Bridge": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 14,
+            "boxed": 5,
+            "coverage": 0.35714285714285715,
+            "dominant": {
+              "template": "Infobox urban feature",
+              "count": 5
+            },
+            "dominantShare": 1
+          },
+          "byCategoryOnly": {
+            "n": 42,
+            "boxed": 22,
+            "coverage": 0.5238095238095238,
+            "dominant": {
+              "template": "Infobox building",
+              "count": 5
+            },
+            "dominantShare": 0.22727272727272727
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 10,
+            "members": [
+              "Campo San Polo",
+              "Aqua Augusta (Rome)",
+              "Acqua Pia Antica Marcia",
+              "Baths of Licinius Sura",
+              "Campo Santa Maria Formosa",
+              "Argenta Gap War Cemetery",
+              "Aedes Tensarum",
+              "Palazzo Bindi Sergardi",
+              "Campo San Bartolomeo",
+              "Campo (Venice)"
+            ]
+          },
+          {
+            "category": "Italian building and structure stubs",
+            "n": 9,
+            "members": [
+              "Campo San Polo",
+              "Aqua Augusta (Rome)",
+              "Acqua Pia Antica Marcia",
+              "Baths of Licinius Sura",
+              "Campo Santa Maria Formosa",
+              "Argenta Gap War Cemetery",
+              "Aedes Tensarum",
+              "Palazzo Bindi Sergardi",
+              "Campo San Bartolomeo"
+            ]
+          },
+          {
+            "category": "Piazzas and campos in Venice",
+            "n": 5,
+            "members": [
+              "Campo San Polo",
+              "Liston (square)",
+              "Campo Santa Maria Formosa",
+              "Campo San Bartolomeo",
+              "Campo (Venice)"
+            ]
+          }
+        ],
+        "bare": [
+          "Campo Santa Maria Formosa",
+          "Campo Santi Giovanni e Paolo",
+          "Campo Sant'Angelo",
+          "Campo de le Gate",
+          "Campo San Bartolomeo"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Campo del Ghetto Novo",
+        "expected": "Infobox urban feature",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox animal breed",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 62,
+        "coverage": 0.6290322580645161,
+        "dominant": {
+          "template": "Infobox animal breed",
+          "count": 16
+        },
+        "distribution": {
+          "Infobox animal breed": 16,
+          "Infobox urban feature": 8,
+          "Infobox goat breed": 8,
+          "Infobox sheep breed": 6,
+          "Infobox flag": 4,
+          "Infobox settlement": 2,
+          "Infobox ethnic group": 2,
+          "Infobox cattle breed": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 14,
+            "boxed": 5,
+            "coverage": 0.35714285714285715,
+            "dominant": {
+              "template": "Infobox urban feature",
+              "count": 5
+            },
+            "dominantShare": 1
+          },
+          "byCategoryOnly": {
+            "n": 48,
+            "boxed": 34,
+            "coverage": 0.7083333333333334,
+            "dominant": {
+              "template": "Infobox animal breed",
+              "count": 16
+            },
+            "dominantShare": 0.47058823529411764
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 10,
+            "members": [
+              "Amalfian Laws",
+              "Catasto",
+              "Campo San Polo",
+              "Chiericati family",
+              "Adoption in Italy",
+              "Albracca",
+              "Codice di avviamento postale",
+              "Biological Evolution: Facts and Theories",
+              "Campo Santa Maria Formosa",
+              "Campo San Bartolomeo"
+            ]
+          },
+          {
+            "category": "Italy stubs",
+            "n": 7,
+            "members": [
+              "Amalfian Laws",
+              "Catasto",
+              "Chiericati family",
+              "Adoption in Italy",
+              "Albracca",
+              "Codice di avviamento postale",
+              "Biological Evolution: Facts and Theories"
+            ]
+          },
+          {
+            "category": "Piazzas and campos in Venice",
+            "n": 4,
+            "members": [
+              "Campo San Polo",
+              "Liston (square)",
+              "Campo Santa Maria Formosa",
+              "Campo San Bartolomeo"
+            ]
+          }
+        ],
+        "bare": [
+          "Campo Santa Maria Formosa",
+          "Campo Santi Giovanni e Paolo",
+          "Campo Sant'Angelo",
+          "Campo San Bartolomeo",
+          "Campo Santa Margherita"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Campo Santo Stefano",
+        "expected": "Infobox urban feature",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox urban feature",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 56,
+        "coverage": 0.48214285714285715,
+        "dominant": {
+          "template": "Infobox urban feature",
+          "count": 8
+        },
+        "distribution": {
+          "Infobox urban feature": 8,
+          "Infobox building": 5,
+          "Infobox bridge": 3,
+          "Infobox Observatory": 3,
+          "Infobox observatory": 3,
+          "Infobox settlement": 2,
+          "Infobox restaurant": 2,
+          "Infobox Bridge": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 14,
+            "boxed": 5,
+            "coverage": 0.35714285714285715,
+            "dominant": {
+              "template": "Infobox urban feature",
+              "count": 5
+            },
+            "dominantShare": 1
+          },
+          "byCategoryOnly": {
+            "n": 42,
+            "boxed": 22,
+            "coverage": 0.5238095238095238,
+            "dominant": {
+              "template": "Infobox building",
+              "count": 5
+            },
+            "dominantShare": 0.22727272727272727
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 10,
+            "members": [
+              "Campo San Polo",
+              "Aqua Augusta (Rome)",
+              "Acqua Pia Antica Marcia",
+              "Baths of Licinius Sura",
+              "Campo Santa Maria Formosa",
+              "Argenta Gap War Cemetery",
+              "Aedes Tensarum",
+              "Palazzo Bindi Sergardi",
+              "Campo San Bartolomeo",
+              "Campo (Venice)"
+            ]
+          },
+          {
+            "category": "Italian building and structure stubs",
+            "n": 9,
+            "members": [
+              "Campo San Polo",
+              "Aqua Augusta (Rome)",
+              "Acqua Pia Antica Marcia",
+              "Baths of Licinius Sura",
+              "Campo Santa Maria Formosa",
+              "Argenta Gap War Cemetery",
+              "Aedes Tensarum",
+              "Palazzo Bindi Sergardi",
+              "Campo San Bartolomeo"
+            ]
+          },
+          {
+            "category": "Piazzas and campos in Venice",
+            "n": 5,
+            "members": [
+              "Campo San Polo",
+              "Liston (square)",
+              "Campo Santa Maria Formosa",
+              "Campo San Bartolomeo",
+              "Campo (Venice)"
+            ]
+          }
+        ],
+        "bare": [
+          "Campo Santa Maria Formosa",
+          "Campo Santi Giovanni e Paolo",
+          "Campo Sant'Angelo",
+          "Campo de le Gate",
+          "Campo San Bartolomeo"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Casco (town), Wisconsin",
+        "expected": "Infobox settlement",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox settlement",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 55,
+        "coverage": 1,
+        "dominant": {
+          "template": "Infobox settlement",
+          "count": 54
+        },
+        "distribution": {
+          "Infobox settlement": 54,
+          "Infobox U.S. county": 2,
+          "Infobox golf facility": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 55,
+            "boxed": 55,
+            "coverage": 1,
+            "dominant": {
+              "template": "Infobox settlement",
+              "count": 54
+            },
+            "dominantShare": 0.9818181818181818
+          }
+        },
+        "bareCluster": [],
+        "bare": []
+      }
+    },
+    {
+      "case": {
+        "title": "Cashew Research Station, Madakkathara",
+        "expected": "Infobox laboratory",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox organization",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 39,
+        "coverage": 0.8205128205128205,
+        "dominant": {
+          "template": "Infobox organization",
+          "count": 6
+        },
+        "distribution": {
+          "Infobox organization": 6,
+          "Infobox laboratory": 5,
+          "Infobox company": 5,
+          "Infobox university": 3,
+          "Infobox dam": 3,
+          "Infobox government agency": 2,
+          "Infobox geographical indication": 2,
+          "Infobox protected area": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 39,
+            "boxed": 32,
+            "coverage": 0.8205128205128205,
+            "dominant": {
+              "template": "Infobox organization",
+              "count": 6
+            },
+            "dominantShare": 0.1875
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Use Indian English from August 2019",
+            "n": 4,
+            "members": [
+              "Education in Thrissur District",
+              "Regional Agricultural Research Station, Pattambi",
+              "Agricultural Research Station, Anakkayam",
+              "Agricultural Research Station, Mannuthy"
+            ]
+          },
+          {
+            "category": "Agricultural research stations in Kerala",
+            "n": 4,
+            "members": [
+              "Regional Agricultural Research Station, Pattambi",
+              "Agronomic Research Station, Chalakudy",
+              "Agricultural Research Station, Anakkayam",
+              "Agricultural Research Station, Mannuthy"
+            ]
+          },
+          {
+            "category": "Webarchive template wayback links",
+            "n": 3,
+            "members": [
+              "Education in Thrissur District",
+              "Agricultural Research Station, Anakkayam",
+              "Cashew business in Kollam"
+            ]
+          }
+        ],
+        "bare": [
+          "Education in Thrissur District",
+          "Agricultural Research Station, Anakkayam",
+          "Agricultural Research Station, Mannuthy",
+          "Cashew business in Kollam",
+          "List of cashew companies based in Kollam"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Chilton (town), Wisconsin",
+        "expected": "Infobox settlement",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox settlement",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 8,
+        "coverage": 1,
+        "dominant": {
+          "template": "Infobox settlement",
+          "count": 8
+        },
+        "distribution": {
+          "Infobox settlement": 8
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 8,
+            "boxed": 8,
+            "coverage": 1,
+            "dominant": {
+              "template": "Infobox settlement",
+              "count": 8
+            },
+            "dominantShare": 1
+          }
+        },
+        "bareCluster": [],
+        "bare": []
+      }
+    },
+    {
+      "case": {
+        "title": "Christopher Edwards (businessman)",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 97,
+        "coverage": 0.7628865979381443,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 62
+        },
+        "distribution": {
+          "Infobox person": 62,
+          "Infobox officeholder": 11,
+          "Infobox criminal": 4,
+          "Infobox writer": 4,
+          "Infobox COA wide": 4,
+          "Infobox scientist": 3,
+          "Infobox academic": 2,
+          "Infobox cricketer": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 97,
+            "boxed": 74,
+            "coverage": 0.7628865979381443,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 62
+            },
+            "dominantShare": 0.8378378378378378
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 3,
+            "members": [
+              "Wilfred Rowland Childe",
+              "Joseph Bingham",
+              "Jonathan Baume"
+            ]
+          },
+          {
+            "category": "People from Wakefield",
+            "n": 3,
+            "members": [
+              "Wilfred Rowland Childe",
+              "Joseph Bingham",
+              "George Allan (antiquary)"
+            ]
+          }
+        ],
+        "bare": [
+          "George Allan (antiquary)",
+          "Leo Avery",
+          "John Ashton (bishop)",
+          "William Stott Banks",
+          "Jonathan Baume"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "ClueQuest",
+        "expected": "Infobox company",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox company",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 16,
+        "coverage": 0.75,
+        "dominant": {
+          "template": "Infobox company",
+          "count": 6
+        },
+        "distribution": {
+          "Infobox company": 6,
+          "Infobox video game": 2,
+          "Infobox person": 1,
+          "Infobox event": 1,
+          "Infobox television": 1,
+          "Infobox game": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 16,
+            "boxed": 12,
+            "coverage": 0.75,
+            "dominant": {
+              "template": "Infobox company",
+              "count": 6
+            },
+            "dominantShare": 0.5
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Escape rooms",
+            "n": 4,
+            "members": [
+              "Escape room",
+              "AdventureRooms",
+              "Claustrophobia (escape room)",
+              "Sherlock: The Game Is Now"
+            ]
+          }
+        ],
+        "bare": [
+          "Escape room",
+          "AdventureRooms",
+          "Claustrophobia (escape room)",
+          "Sherlock: The Game Is Now"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Convictolitavis",
+        "expected": "Infobox officeholder",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 110,
+        "coverage": 0.39090909090909093,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 21
+        },
+        "distribution": {
+          "Infobox person": 21,
+          "Infobox military person": 14,
+          "Infobox officeholder": 10,
+          "Infobox royalty": 7,
+          "Infobox noble": 1,
+          "Infobox writer": 1,
+          "Infobox pirate": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 110,
+            "boxed": 43,
+            "coverage": 0.39090909090909093,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 21
+            },
+            "dominantShare": 0.4883720930232558
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 13,
+            "members": [
+              "Gaius Julius Vindex",
+              "Helenius Acron",
+              "Calgacus",
+              "Julius Indus",
+              "Aeneas Silvius",
+              "Alypius of Antioch",
+              "Sulpicius Alexander",
+              "Publius Afranius Potitus",
+              "Marcius Agrippa",
+              "Albucilla",
+              "Albucius",
+              "Alcimus Alethius",
+              "Lucius Alienus"
+            ]
+          },
+          {
+            "category": "Ancient Roman people stubs",
+            "n": 12,
+            "members": [
+              "Gaius Julius Vindex",
+              "Helenius Acron",
+              "Julius Indus",
+              "Aeneas Silvius",
+              "Alypius of Antioch",
+              "Sulpicius Alexander",
+              "Publius Afranius Potitus",
+              "Marcius Agrippa",
+              "Albucilla",
+              "Albucius",
+              "Alcimus Alethius",
+              "Lucius Alienus"
+            ]
+          },
+          {
+            "category": "Celtic warriors",
+            "n": 7,
+            "members": [
+              "Gaius Julius Vindex",
+              "Calgacus",
+              "Julius Indus",
+              "Ambicatus",
+              "Imanuentius",
+              "Mandubracius",
+              "Carvilius"
+            ]
+          }
+        ],
+        "bare": [
+          "Gaius Valerius Caburus",
+          "Divico",
+          "Litaviccus",
+          "Galba (Suessiones)",
+          "Julius Licinus"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Cowboys Are Frequently, Secretly Fond of Each Other",
+        "expected": "Infobox song",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox song",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 147,
+        "coverage": 0.8775510204081632,
+        "dominant": {
+          "template": "Infobox song",
+          "count": 121
+        },
+        "distribution": {
+          "Infobox song": 121,
+          "Infobox musical composition": 4,
+          "Infobox album": 1,
+          "Infobox anthem": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 147,
+            "boxed": 129,
+            "coverage": 0.8775510204081632,
+            "dominant": {
+              "template": "Infobox song",
+              "count": 121
+            },
+            "dominantShare": 0.937984496124031
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Waltzes",
+            "n": 8,
+            "members": [
+              "Ashokan Farewell",
+              "Les Patineurs (waltz)",
+              "Mephisto Waltzes",
+              "Waltz (music)",
+              "Estudiantina",
+              "Je te veux",
+              "Kettenbrücke-Walzer",
+              "After the Ball (song)"
+            ]
+          },
+          {
+            "category": "Works with IMSLP links",
+            "n": 5,
+            "members": [
+              "Les Patineurs (waltz)",
+              "Mephisto Waltzes",
+              "Estudiantina",
+              "Je te veux",
+              "Kettenbrücke-Walzer"
+            ]
+          }
+        ],
+        "bare": [
+          "Waltz (music)",
+          "After the Ball (song)",
+          "Amur Waves",
+          "Ashokan Farewell",
+          "Dorfschwalben aus Österreich"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Felix Greissle",
+        "expected": "Infobox musical artist",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 150,
+        "coverage": 0.4533333333333333,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 34
+        },
+        "distribution": {
+          "Infobox person": 34,
+          "Infobox musical artist": 32,
+          "Infobox academic": 1,
+          "Infobox NRHP": 1,
+          "Infobox classical composer": 1,
+          "Infobox officeholder": 1,
+          "Infobox record label": 1,
+          "Infobox Chinese": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 150,
+            "boxed": 68,
+            "coverage": 0.4533333333333333,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 34
+            },
+            "dominantShare": 0.5
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Austrian conductors (music)",
+            "n": 8,
+            "members": [
+              "Jascha Horenstein",
+              "Emil Paur",
+              "Gottfried von Preyer",
+              "Josef Reiter (composer)",
+              "Herbert Prikopa",
+              "Gustav Kuhn",
+              "Julius Prüwer",
+              "Gérard Korsten"
+            ]
+          },
+          {
+            "category": "Living people",
+            "n": 5,
+            "members": [
+              "Paul Neubauer",
+              "Semyon Bychkov (conductor)",
+              "Yehuda Hanani",
+              "Gustav Kuhn",
+              "Gérard Korsten"
+            ]
+          },
+          {
+            "category": "Webarchive template wayback links",
+            "n": 4,
+            "members": [
+              "Semyon Bychkov (conductor)",
+              "Yehuda Hanani",
+              "Gottfried von Preyer",
+              "Gustav Kuhn"
+            ]
+          }
+        ],
+        "bare": [
+          "Christian Hoard",
+          "Gerhard Allroggen",
+          "Stephen Kemp",
+          "Federico Mompellio",
+          "Friedrich Lindner (composer)"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Fountain of Wealth",
+        "expected": "Infobox",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox building",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 106,
+        "coverage": 0.8018867924528302,
+        "dominant": {
+          "template": "Infobox building",
+          "count": 29
+        },
+        "distribution": {
+          "Infobox building": 29,
+          "Infobox designation list": 15,
+          "Infobox shopping mall": 7,
+          "Infobox historic site": 6,
+          "Infobox settlement": 5,
+          "Infobox bridge": 5,
+          "Infobox park": 4,
+          "Infobox hotel": 3
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 106,
+            "boxed": 85,
+            "coverage": 0.8018867924528302,
+            "dominant": {
+              "template": "Infobox building",
+              "count": 29
+            },
+            "dominantShare": 0.3411764705882353
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Downtown Core",
+            "n": 6,
+            "members": [
+              "Central Police Division",
+              "Boon Tat Street",
+              "Dalhousie Obelisk",
+              "Bencoolen Street",
+              "Beach Road, Singapore",
+              "Cantonment Road, Singapore"
+            ]
+          },
+          {
+            "category": "Roads in Singapore",
+            "n": 4,
+            "members": [
+              "Boon Tat Street",
+              "Bencoolen Street",
+              "Beach Road, Singapore",
+              "Cantonment Road, Singapore"
+            ]
+          },
+          {
+            "category": "All stub articles",
+            "n": 3,
+            "members": [
+              "Central Police Division",
+              "Boon Tat Street",
+              "Cross Street"
+            ]
+          }
+        ],
+        "bare": [
+          "Fountain Gardens",
+          "Art Apart Fair",
+          "Bukit Batok memorials",
+          "Chek Jawa",
+          "Changi Murals"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Ferdinand P. Earle",
+        "expected": "Infobox military person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 133,
+        "coverage": 0.849624060150376,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 41
+        },
+        "distribution": {
+          "Infobox person": 41,
+          "Infobox officeholder": 41,
+          "Infobox military person": 38,
+          "Infobox judge": 1,
+          "Infobox musical artist": 1,
+          "Infobox astronaut": 1,
+          "Infobox religious biography": 1,
+          "Infobox academic": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 133,
+            "boxed": 113,
+            "coverage": 0.849624060150376,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 41
+            },
+            "dominantShare": 0.36283185840707965
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "American hoteliers",
+            "n": 5,
+            "members": [
+              "Donald Breckenridge",
+              "John McEntee Bowman",
+              "William W. Becker",
+              "Karl Ichiro Akiya",
+              "John Nicholson Anhut"
+            ]
+          },
+          {
+            "category": "20th-century American businesspeople",
+            "n": 3,
+            "members": [
+              "Donald Breckenridge",
+              "William W. Becker",
+              "John Nicholson Anhut"
+            ]
+          }
+        ],
+        "bare": [
+          "Julius D. Canns",
+          "Alfred Bayliss",
+          "Joseph Bauer",
+          "George M. Brink",
+          "David Wesley Finney"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Guy Markizano",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 127,
+        "coverage": 0.84251968503937,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 37
+        },
+        "distribution": {
+          "Infobox person": 37,
+          "Infobox military unit": 35,
+          "Infobox military person": 25,
+          "Infobox officeholder": 11,
+          "Infobox military aviation unit": 1,
+          "Infobox military operation": 1,
+          "Infobox weapon": 1,
+          "Infobox criminal": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 127,
+            "boxed": 107,
+            "coverage": 0.84251968503937,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 37
+            },
+            "dominantShare": 0.34579439252336447
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 7,
+            "members": [
+              "Hossam Mohammed Amin",
+              "Mustafa Hamdan",
+              "Hagai Amir",
+              "Bahad 4",
+              "366th Division",
+              "Nathan Elbaz",
+              "Daniel Adni"
+            ]
+          },
+          {
+            "category": "Middle Eastern military personnel stubs",
+            "n": 3,
+            "members": [
+              "Hossam Mohammed Amin",
+              "Mustafa Hamdan",
+              "Nathan Elbaz"
+            ]
+          },
+          {
+            "category": "Israeli people stubs",
+            "n": 3,
+            "members": [
+              "Hagai Amir",
+              "Nathan Elbaz",
+              "Daniel Adni"
+            ]
+          }
+        ],
+        "bare": [
+          "Hossam Mohammed Amin",
+          "Johnny Abdo",
+          "Nathan Elbaz",
+          "Hisham Sabah al-Fakhri",
+          "Saadoun Ghaidan"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "In the Making (TV series)",
+        "expected": "Infobox television",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox television",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 146,
+        "coverage": 0.7876712328767124,
+        "dominant": {
+          "template": "Infobox television",
+          "count": 112
+        },
+        "distribution": {
+          "Infobox television": 112,
+          "Infobox comedian": 1,
+          "Infobox person": 1,
+          "Infobox programming block": 1,
+          "Infobox video game series": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 146,
+            "boxed": 115,
+            "coverage": 0.7876712328767124,
+            "dominant": {
+              "template": "Infobox television",
+              "count": 112
+            },
+            "dominantShare": 0.9739130434782609
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 10,
+            "members": [
+              "CBC News: Country Canada",
+              "Big Ideas (TV series)",
+              "Canadian Case Files",
+              "Doc Zone",
+              "Bravo!FACT Presents",
+              "God's Greatest Hits",
+              "20/20 (Canadian TV program)",
+              "Canadian Travel Show",
+              "Breaking Point (2010 TV series)",
+              "Burning Log"
+            ]
+          },
+          {
+            "category": "Canadian documentary television show stubs",
+            "n": 10,
+            "members": [
+              "CBC News: Country Canada",
+              "Big Ideas (TV series)",
+              "Canadian Case Files",
+              "Doc Zone",
+              "Bravo!FACT Presents",
+              "God's Greatest Hits",
+              "20/20 (Canadian TV program)",
+              "Canadian Travel Show",
+              "Breaking Point (2010 TV series)",
+              "Burning Log"
+            ]
+          },
+          {
+            "category": "2000s Canadian documentary television series",
+            "n": 6,
+            "members": [
+              "CBC News: Country Canada",
+              "Big Ideas (TV series)",
+              "Canadian Case Files",
+              "Doc Zone",
+              "Bravo!FACT Presents",
+              "Canadian Travel Show"
+            ]
+          }
+        ],
+        "bare": [
+          "Cavendish (TV series)",
+          "Under New Management (TV series)",
+          "Ageless Gardens",
+          "Drag Heals",
+          "From the Vaults (TV series)"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Izabella Pawelczynska",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 148,
+        "coverage": 0.7094594594594594,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 59
+        },
+        "distribution": {
+          "Infobox person": 59,
+          "Infobox officeholder": 18,
+          "Infobox medal templates": 13,
+          "Infobox sportsperson": 9,
+          "Infobox writer": 4,
+          "Infobox military person": 2,
+          "Infobox scientist": 2,
+          "Infobox saint": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 148,
+            "boxed": 105,
+            "coverage": 0.7094594594594594,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 59
+            },
+            "dominantShare": 0.5619047619047619
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "20th-century Polish women",
+            "n": 4,
+            "members": [
+              "Anna Czekanowska-Kuklińska",
+              "Maria Fedecka",
+              "Justyna Bąk",
+              "Elżbieta Jarosz"
+            ]
+          },
+          {
+            "category": "All stub articles",
+            "n": 3,
+            "members": [
+              "Anna Czekanowska-Kuklińska",
+              "Justyna Bąk",
+              "Elżbieta Jarosz"
+            ]
+          }
+        ],
+        "bare": [
+          "Shorthand",
+          "John Austin (inventor)",
+          "Thomas Arkisden",
+          "William Isaac Blanchard",
+          "Noah Bridges"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Jeremiah Clarke",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 150,
+        "coverage": 0.32,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 26
+        },
+        "distribution": {
+          "Infobox person": 26,
+          "Infobox officeholder": 7,
+          "Infobox musical artist": 5,
+          "Infobox classical composer": 3,
+          "Infobox royalty": 3,
+          "Infobox military person": 3,
+          "Infobox noble": 2,
+          "Infobox artist": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 150,
+            "boxed": 48,
+            "coverage": 0.32,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 26
+            },
+            "dominantShare": 0.5416666666666666
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "18th-century English keyboardists",
+            "n": 7,
+            "members": [
+              "William Boyce (composer)",
+              "William Hayes (composer)",
+              "Thomas Sanders Dupuis",
+              "Jane Mary Guest",
+              "George Guest (English organist)",
+              "William Hine",
+              "William Howgill"
+            ]
+          },
+          {
+            "category": "18th-century English classical composers",
+            "n": 6,
+            "members": [
+              "John Eccles (composer)",
+              "William Boyce (composer)",
+              "William Hayes (composer)",
+              "Thomas Sanders Dupuis",
+              "Jane Mary Guest",
+              "William Hine"
+            ]
+          },
+          {
+            "category": "18th-century English male composers",
+            "n": 6,
+            "members": [
+              "John Eccles (composer)",
+              "William Boyce (composer)",
+              "William Hayes (composer)",
+              "Thomas Sanders Dupuis",
+              "George Guest (English organist)",
+              "William Hine"
+            ]
+          }
+        ],
+        "bare": [
+          "Thomas Bateson",
+          "John Bartlet (composer)",
+          "Richard Allison (composer)",
+          "George Barcroft",
+          "John Attey"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Jesús González Ortega",
+        "expected": "Infobox officeholder",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox officeholder",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 140,
+        "coverage": 0.8428571428571429,
+        "dominant": {
+          "template": "Infobox officeholder",
+          "count": 81
+        },
+        "distribution": {
+          "Infobox officeholder": 81,
+          "Infobox person": 20,
+          "Infobox military person": 5,
+          "Infobox cabinet members": 3,
+          "Infobox saint": 3,
+          "Infobox Political post": 2,
+          "Infobox official post": 2,
+          "Infobox Christian leader": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 140,
+            "boxed": 118,
+            "coverage": 0.8428571428571429,
+            "dominant": {
+              "template": "Infobox officeholder",
+              "count": 81
+            },
+            "dominantShare": 0.6864406779661016
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Liberalism in Mexico",
+            "n": 5,
+            "members": [
+              "Científico",
+              "Miguel Lerdo de Tejada",
+              "Liberalism in Mexico",
+              "La Reforma",
+              "Ignacio Manuel Altamirano"
+            ]
+          }
+        ],
+        "bare": [
+          "Enrique Estrada",
+          "Juan Arévalo Gardoqui",
+          "Maximino Ávila Camacho",
+          "Antonio Nava (polo)",
+          "Jesús Aceves"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "John Darrenkamp",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 150,
+        "coverage": 0.5066666666666667,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 47
+        },
+        "distribution": {
+          "Infobox person": 47,
+          "Infobox musical artist": 30,
+          "Infobox artist": 1,
+          "Infobox military person": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 150,
+            "boxed": 76,
+            "coverage": 0.5066666666666667,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 47
+            },
+            "dominantShare": 0.618421052631579
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "American operatic baritones",
+            "n": 7,
+            "members": [
+              "Jules Bledsoe",
+              "James Billings",
+              "Daniel Belcher",
+              "Ron Bottcher",
+              "Liam Bonner",
+              "Carlos Alexander",
+              "Gene Boucher"
+            ]
+          },
+          {
+            "category": "Living people",
+            "n": 5,
+            "members": [
+              "Gioacchino Livigni",
+              "Michael Best (tenor)",
+              "Othalie Graham",
+              "Daniel Belcher",
+              "Liam Bonner"
+            ]
+          },
+          {
+            "category": "Webarchive template wayback links",
+            "n": 5,
+            "members": [
+              "Gioacchino Livigni",
+              "Othalie Graham",
+              "James Billings",
+              "Daniel Belcher",
+              "Liam Bonner"
+            ]
+          }
+        ],
+        "bare": [
+          "Jack Behrens",
+          "Vi Burnside",
+          "Carousel Kings",
+          "Forrest McClendon",
+          "Burak Bilgili"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "José Ignacio Ustarán",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox officeholder",
+      "confidence": "medium",
+      "outcome": "fail",
+      "evidence": {
+        "total": 113,
+        "coverage": 0.6902654867256637,
+        "dominant": {
+          "template": "Infobox officeholder",
+          "count": 59
+        },
+        "distribution": {
+          "Infobox officeholder": 59,
+          "Infobox person": 18,
+          "Infobox COA wide": 2,
+          "Infobox writer": 1,
+          "Infobox academic": 1,
+          "Infobox scholar": 1,
+          "Infobox football biography": 1,
+          "Infobox medal templates": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 113,
+            "boxed": 78,
+            "coverage": 0.6902654867256637,
+            "dominant": {
+              "template": "Infobox officeholder",
+              "count": 59
+            },
+            "dominantShare": 0.7564102564102564
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Assassinated Spanish politicians",
+            "n": 3,
+            "members": [
+              "José Miguel Beñaran Ordeñana",
+              "Gonzalo of Sobrarbe and Ribagorza",
+              "Hildegart Rodríguez Carballeira"
+            ]
+          }
+        ],
+        "bare": [
+          "Ramón Baglietto",
+          "Pierre Declercq",
+          "Juan de Dios Doval Mateo",
+          "Lodovico Ligato",
+          "José Larrañaga Arenas"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Levi David Addai",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 150,
+        "coverage": 0.8733333333333333,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 127
+        },
+        "distribution": {
+          "Infobox person": 127,
+          "Infobox writer": 42,
+          "Infobox comedian": 4,
+          "Infobox officeholder": 4,
+          "Infobox musical artist": 3,
+          "Infobox model": 1,
+          "Infobox artist": 1,
+          "Infobox military person": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 150,
+            "boxed": 131,
+            "coverage": 0.8733333333333333,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 127
+            },
+            "dominantShare": 0.9694656488549618
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "20th-century English dramatists and playwrights",
+            "n": 4,
+            "members": [
+              "Dusty Hughes (playwright)",
+              "Howard Brenton",
+              "Marcus Lloyd",
+              "Daniel Abineri"
+            ]
+          },
+          {
+            "category": "20th-century English male dramatists and playwrights",
+            "n": 4,
+            "members": [
+              "Dusty Hughes (playwright)",
+              "Howard Brenton",
+              "Marcus Lloyd",
+              "Daniel Abineri"
+            ]
+          },
+          {
+            "category": "21st-century English dramatists and playwrights",
+            "n": 4,
+            "members": [
+              "Dusty Hughes (playwright)",
+              "Howard Brenton",
+              "Marcus Lloyd",
+              "Daniel Abineri"
+            ]
+          }
+        ],
+        "bare": [
+          "Emma Frost (screenwriter)",
+          "Paul Rutman",
+          "Matthew Henry Barker",
+          "Harry and Jack Williams",
+          "George Mason (writer)"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Lungotevere di Pietra Papa",
+        "expected": "Infobox street",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox street",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 56,
+        "coverage": 0.48214285714285715,
+        "dominant": {
+          "template": "Infobox street",
+          "count": 15
+        },
+        "distribution": {
+          "Infobox street": 15,
+          "Infobox church": 6,
+          "Infobox bridge": 3,
+          "Infobox settlement": 1,
+          "Infobox designation list": 1,
+          "Infobox historic site": 1,
+          "Infobox station": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 41,
+            "boxed": 15,
+            "coverage": 0.36585365853658536,
+            "dominant": {
+              "template": "Infobox street",
+              "count": 15
+            },
+            "dominantShare": 1
+          },
+          "byCategoryOnly": {
+            "n": 15,
+            "boxed": 12,
+            "coverage": 0.8,
+            "dominant": {
+              "template": "Infobox church",
+              "count": 6
+            },
+            "dominantShare": 0.5
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Lungotevere",
+            "n": 21,
+            "members": [
+              "Lungotevere in Augusta",
+              "Lungotevere",
+              "Lungotevere Maresciallo Diaz",
+              "Lungotevere Flaminio",
+              "Lungotevere Della Vittoria",
+              "Lungotevere Guglielmo Oberdan",
+              "Lungotevere delle Armi",
+              "Lungotevere Michelangelo",
+              "Lungotevere Castello",
+              "Lungotevere della Farnesina",
+              "Lungotevere Raffaello Sanzio",
+              "Lungotevere degli Anguillara",
+              "Lungotevere Portuense",
+              "Lungotevere degli Altoviti",
+              "Lungotevere degli Artigiani",
+              "Lungotevere dei Tebaldi",
+              "Lungotevere Marzio",
+              "Lungotevere dei Vallati",
+              "Lungotevere Dante",
+              "Lungotevere degli Inventori",
+              "Lungotevere di San Paolo"
+            ]
+          },
+          {
+            "category": "All stub articles",
+            "n": 4,
+            "members": [
+              "Via Portuensis",
+              "Lungotevere della Farnesina",
+              "Lungotevere Raffaello Sanzio",
+              "Lungotevere degli Inventori"
+            ]
+          },
+          {
+            "category": "Italy road stubs",
+            "n": 4,
+            "members": [
+              "Via Portuensis",
+              "Lungotevere della Farnesina",
+              "Lungotevere Raffaello Sanzio",
+              "Lungotevere degli Inventori"
+            ]
+          }
+        ],
+        "bare": [
+          "Lungotevere della Farnesina",
+          "Lungotevere dei Tebaldi",
+          "Lungotevere della Magliana",
+          "Lungotevere dell'Acqua Acetosa",
+          "Lungotevere in Augusta"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Lungotevere Prati",
+        "expected": "Infobox street",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox street",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 93,
+        "coverage": 0.6236559139784946,
+        "dominant": {
+          "template": "Infobox street",
+          "count": 15
+        },
+        "distribution": {
+          "Infobox street": 15,
+          "Infobox musical artist": 4,
+          "Infobox person": 3,
+          "Infobox company": 3,
+          "Infobox book": 2,
+          "Infobox game score": 2,
+          "Infobox concert": 2,
+          "Infobox baseball championship series": 2
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 41,
+            "boxed": 15,
+            "coverage": 0.36585365853658536,
+            "dominant": {
+              "template": "Infobox street",
+              "count": 15
+            },
+            "dominantShare": 1
+          },
+          "byCategoryOnly": {
+            "n": 52,
+            "boxed": 43,
+            "coverage": 0.8269230769230769,
+            "dominant": {
+              "template": "Infobox musical artist",
+              "count": 4
+            },
+            "dominantShare": 0.09302325581395349
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Use mdy dates from November 2015",
+            "n": 8,
+            "members": [
+              "Twenty-second Amendment to the United States Constitution",
+              "Mazhar Alanson",
+              "Ron Androla",
+              "Jesse Alexander",
+              "Forrest Aguirre",
+              "1849 in Switzerland",
+              "Lungotevere",
+              "Lungotevere Maresciallo Diaz"
+            ]
+          },
+          {
+            "category": "Lungotevere",
+            "n": 7,
+            "members": [
+              "Lungotevere in Augusta",
+              "Lungotevere",
+              "Lungotevere Maresciallo Diaz",
+              "Lungotevere Flaminio",
+              "Lungotevere Della Vittoria",
+              "Lungotevere Guglielmo Oberdan",
+              "Lungotevere delle Armi"
+            ]
+          },
+          {
+            "category": "Living people",
+            "n": 4,
+            "members": [
+              "Mazhar Alanson",
+              "Ron Androla",
+              "Jesse Alexander",
+              "Forrest Aguirre"
+            ]
+          }
+        ],
+        "bare": [
+          "Lungotevere della Farnesina",
+          "Lungotevere dei Tebaldi",
+          "Lungotevere della Magliana",
+          "Lungotevere dell'Acqua Acetosa",
+          "Lungotevere Della Vittoria"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Lungotevere Gianicolense",
+        "expected": "Infobox street",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox street",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 44,
+        "coverage": 0.3409090909090909,
+        "dominant": {
+          "template": "Infobox street",
+          "count": 15
+        },
+        "distribution": {
+          "Infobox street": 15
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 41,
+            "boxed": 15,
+            "coverage": 0.36585365853658536,
+            "dominant": {
+              "template": "Infobox street",
+              "count": 15
+            },
+            "dominantShare": 1
+          },
+          "byCategoryOnly": {
+            "n": 3,
+            "boxed": 0,
+            "coverage": 0,
+            "dominant": null,
+            "dominantShare": 0
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Lungotevere",
+            "n": 26,
+            "members": [
+              "Lungotevere in Augusta",
+              "Lungotevere",
+              "Lungotevere Maresciallo Diaz",
+              "Lungotevere Flaminio",
+              "Lungotevere Della Vittoria",
+              "Lungotevere Guglielmo Oberdan",
+              "Lungotevere delle Armi",
+              "Lungotevere Michelangelo",
+              "Lungotevere Castello",
+              "Lungotevere della Farnesina",
+              "Lungotevere Raffaello Sanzio",
+              "Lungotevere degli Anguillara",
+              "Lungotevere Portuense",
+              "Lungotevere degli Altoviti",
+              "Lungotevere degli Artigiani",
+              "Lungotevere dei Tebaldi",
+              "Lungotevere Marzio",
+              "Lungotevere dei Vallati",
+              "Lungotevere Dante",
+              "Lungotevere degli Inventori",
+              "Lungotevere di San Paolo",
+              "Lungotevere delle Navi",
+              "Lungotevere Vittorio Gassman",
+              "Lungotevere della Magliana",
+              "Lungotevere Grande Ammiraglio Thaon di Revel",
+              "Lungotevere dell'Acqua Acetosa"
+            ]
+          },
+          {
+            "category": "Rome Q. XI Portuense",
+            "n": 5,
+            "members": [
+              "Lungotevere Portuense",
+              "Lungotevere degli Artigiani",
+              "Lungotevere degli Inventori",
+              "Lungotevere Vittorio Gassman",
+              "Lungotevere della Magliana"
+            ]
+          },
+          {
+            "category": "Rome Q. XV Della Vittoria",
+            "n": 4,
+            "members": [
+              "Lungotevere Maresciallo Diaz",
+              "Lungotevere Della Vittoria",
+              "Lungotevere Guglielmo Oberdan",
+              "Lungotevere delle Armi"
+            ]
+          }
+        ],
+        "bare": [
+          "Lungotevere della Farnesina",
+          "Lungotevere dei Tebaldi",
+          "Lungotevere della Magliana",
+          "Lungotevere dell'Acqua Acetosa",
+          "Lungotevere Della Vittoria"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Maani Petgar",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 13,
+        "coverage": 0.6923076923076923,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 9
+        },
+        "distribution": {
+          "Infobox person": 9,
+          "Infobox artist": 1,
+          "Infobox scientist": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 13,
+            "boxed": 9,
+            "coverage": 0.6923076923076923,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 9
+            },
+            "dominantShare": 1
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Iranian filmmakers",
+            "n": 4,
+            "members": [
+              "Bijan Birang",
+              "Vahid Evazzadeh",
+              "Sina Khani",
+              "Hamed Zolfaghari"
+            ]
+          },
+          {
+            "category": "Living people",
+            "n": 3,
+            "members": [
+              "Bijan Birang",
+              "Vahid Evazzadeh",
+              "Hamed Zolfaghari"
+            ]
+          }
+        ],
+        "bare": [
+          "Bijan Birang",
+          "Vahid Evazzadeh",
+          "Sina Khani",
+          "Hamed Zolfaghari"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Melbourne, Mount Alexander and Murray River Railway Company",
+        "expected": "Infobox company",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox Australian electorate",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 121,
+        "coverage": 0.859504132231405,
+        "dominant": {
+          "template": "Infobox Australian electorate",
+          "count": 37
+        },
+        "distribution": {
+          "Infobox Australian electorate": 37,
+          "Infobox Australian Electorate": 33,
+          "Infobox company": 26,
+          "Infobox rail": 20,
+          "Infobox government agency": 7,
+          "Infobox UK legislation": 6,
+          "Infobox rail line": 3,
+          "Infobox government cabinet": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 121,
+            "boxed": 104,
+            "coverage": 0.859504132231405,
+            "dominant": {
+              "template": "Infobox Australian electorate",
+              "count": 37
+            },
+            "dominantShare": 0.3557692307692308
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Defunct railway companies of Australia",
+            "n": 5,
+            "members": [
+              "Deniliquin and Moama Railway Company",
+              "Melbourne and Hobson's Bay Railway Company",
+              "Melbourne and Suburban Railway Company",
+              "List of former Australian railway companies",
+              "Regional Rail Logistics"
+            ]
+          },
+          {
+            "category": "Railway companies established in 1853",
+            "n": 4,
+            "members": [
+              "Brooklyn City Railroad",
+              "Iowa Central Air Line Railroad",
+              "Melbourne and Hobson's Bay Railway Company",
+              "Atlantic and Great Western Railroad"
+            ]
+          }
+        ],
+        "bare": [
+          "D. & W. Murray Limited",
+          "Maysville and Lexington Railroad",
+          "List of former Australian railway companies",
+          "Cornish & Bruce",
+          "Deniliquin and Moama Railway Company"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Mercy Faith Lakisa",
+        "expected": "Infobox officeholder",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "fail",
+      "evidence": {
+        "total": 113,
+        "coverage": 0.8584070796460177,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 55
+        },
+        "distribution": {
+          "Infobox person": 55,
+          "Infobox officeholder": 36,
+          "Infobox medal templates": 3,
+          "Infobox sportsperson": 3,
+          "Infobox politician": 3,
+          "Infobox musical artist": 2,
+          "Infobox academic": 2,
+          "Infobox writer": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 113,
+            "boxed": 97,
+            "coverage": 0.8584070796460177,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 55
+            },
+            "dominantShare": 0.5670103092783505
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Cabinet (government)",
+            "n": 7,
+            "members": [
+              "Council of Ministers",
+              "War cabinet",
+              "Ministry (collective executive)",
+              "Cabinet collective responsibility",
+              "Individual ministerial responsibility",
+              "Cabinet (government)",
+              "Rump cabinet"
+            ]
+          },
+          {
+            "category": "Westminster system",
+            "n": 3,
+            "members": [
+              "Ministry (collective executive)",
+              "Cabinet collective responsibility",
+              "Individual ministerial responsibility"
+            ]
+          },
+          {
+            "category": "Ugandan politicians",
+            "n": 3,
+            "members": [
+              "Kibirige Mayanja",
+              "John Kabaireho",
+              "Besueri Kiwanuka Lusse Mulondo"
+            ]
+          }
+        ],
+        "bare": [
+          "Cabinet collective responsibility",
+          "Cabinet (government)",
+          "Council of Ministers",
+          "Ministry (collective executive)",
+          "Individual ministerial responsibility"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Miko Kongstad",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 95,
+        "coverage": 0.8421052631578947,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 44
+        },
+        "distribution": {
+          "Infobox person": 44,
+          "Infobox medal templates": 31,
+          "Infobox sportsperson": 24,
+          "Infobox badminton player": 12,
+          "Infobox football biography": 4,
+          "Infobox boxer": 2,
+          "Infobox ice hockey biography": 2,
+          "Infobox ice hockey player": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 95,
+            "boxed": 80,
+            "coverage": 0.8421052631578947,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 44
+            },
+            "dominantShare": 0.55
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Transgender sportsmen",
+            "n": 4,
+            "members": [
+              "Andreas Krieger",
+              "Leonard Chalmers",
+              "Mark Weston (athlete)",
+              "Pierre Brésolles"
+            ]
+          },
+          {
+            "category": "All stub articles",
+            "n": 4,
+            "members": [
+              "Leonard Chalmers",
+              "Lars Uhre",
+              "Pierre Brésolles",
+              "Léon Caurla"
+            ]
+          },
+          {
+            "category": "LGBTQ track and field athletes",
+            "n": 3,
+            "members": [
+              "Andreas Krieger",
+              "Mark Weston (athlete)",
+              "Pierre Brésolles"
+            ]
+          }
+        ],
+        "bare": [
+          "Lars Uhre",
+          "Pierre Brésolles",
+          "Leonard Chalmers",
+          "Léon Caurla",
+          "Willy De Bruyn"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "NGC 5475",
+        "expected": "Infobox galaxy",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox galaxy",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 148,
+        "coverage": 0.7364864864864865,
+        "dominant": {
+          "template": "Infobox galaxy",
+          "count": 99
+        },
+        "distribution": {
+          "Infobox galaxy": 99,
+          "Infobox Galaxy": 18,
+          "Infobox planet": 3,
+          "Infobox quasar": 3,
+          "Infobox galaxy cluster": 2,
+          "Infobox cluster": 1,
+          "Infobox open cluster": 1,
+          "Infobox constellation": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 148,
+            "boxed": 109,
+            "coverage": 0.7364864864864865,
+            "dominant": {
+              "template": "Infobox galaxy",
+              "count": 99
+            },
+            "dominantShare": 0.908256880733945
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Bright Star Catalogue objects",
+            "n": 4,
+            "members": [
+              "Alioth",
+              "47 Ursae Majoris",
+              "Alkaid",
+              "Alcor (star)"
+            ]
+          },
+          {
+            "category": "Durchmusterung objects",
+            "n": 4,
+            "members": [
+              "Alioth",
+              "47 Ursae Majoris",
+              "Alkaid",
+              "Alcor (star)"
+            ]
+          },
+          {
+            "category": "Flamsteed objects",
+            "n": 4,
+            "members": [
+              "Alioth",
+              "47 Ursae Majoris",
+              "Alkaid",
+              "Alcor (star)"
+            ]
+          }
+        ],
+        "bare": [
+          "NGC 5485",
+          "List of stars in Ursa Major",
+          "2 Ursae Majoris",
+          "1SWASP J093010.78+533859.5",
+          "4 Ursae Majoris"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Noronha",
+        "expected": "Infobox family",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "none-warranted",
+      "template": null,
+      "confidence": "medium",
+      "outcome": "fail",
+      "evidence": {
+        "total": 43,
+        "coverage": 0.09302325581395349,
+        "dominant": {
+          "template": "Infobox name",
+          "count": 2
+        },
+        "distribution": {
+          "Infobox name": 2,
+          "Infobox surname": 2,
+          "Infobox family": 2,
+          "Infobox noble house": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 43,
+            "boxed": 4,
+            "coverage": 0.09302325581395349,
+            "dominant": {
+              "template": "Infobox name",
+              "count": 2
+            },
+            "dominantShare": 0.5
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All set index articles",
+            "n": 14,
+            "members": [
+              "Andrade",
+              "Álvares",
+              "Azevedo",
+              "Baptista",
+              "Acácio",
+              "Alencar",
+              "Assunção",
+              "Almeida (surname)",
+              "Araújo",
+              "Agostinho",
+              "Alves da Silva",
+              "Abril",
+              "Águas",
+              "Arantes"
+            ]
+          },
+          {
+            "category": "Portuguese-language surnames",
+            "n": 14,
+            "members": [
+              "Andrade",
+              "Álvares",
+              "Azevedo",
+              "Baptista",
+              "Acácio",
+              "Alencar",
+              "Assunção",
+              "Almeida (surname)",
+              "Araújo",
+              "Agostinho",
+              "Alves da Silva",
+              "Abril",
+              "Águas",
+              "Arantes"
+            ]
+          },
+          {
+            "category": "Surnames",
+            "n": 13,
+            "members": [
+              "Andrade",
+              "Álvares",
+              "Azevedo",
+              "Baptista",
+              "Acácio",
+              "Alencar",
+              "Assunção",
+              "Almeida (surname)",
+              "Araújo",
+              "Agostinho",
+              "Alves da Silva",
+              "Abril",
+              "Águas"
+            ]
+          }
+        ],
+        "bare": [
+          "Acácio",
+          "Abril",
+          "Abreu (surname)",
+          "Abrahão",
+          "Abrantes (surname)"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "NGC 5642",
+        "expected": "Infobox galaxy",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox galaxy",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 143,
+        "coverage": 0.7202797202797203,
+        "dominant": {
+          "template": "Infobox galaxy",
+          "count": 98
+        },
+        "distribution": {
+          "Infobox galaxy": 98,
+          "Infobox Galaxy": 8,
+          "Infobox quasar": 2,
+          "Infobox galaxy cluster": 2,
+          "Infobox constellation": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 143,
+            "boxed": 103,
+            "coverage": 0.7202797202797203,
+            "dominant": {
+              "template": "Infobox galaxy",
+              "count": 98
+            },
+            "dominantShare": 0.9514563106796117
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Boötes",
+            "n": 5,
+            "members": [
+              "Arcturus",
+              "Ampelos",
+              "38 Boötis",
+              "18 Boötis",
+              "46 Boötis"
+            ]
+          },
+          {
+            "category": "Bayer objects",
+            "n": 4,
+            "members": [
+              "Arcturus",
+              "38 Boötis",
+              "46 Boötis",
+              "45 Boötis"
+            ]
+          },
+          {
+            "category": "Bright Star Catalogue objects",
+            "n": 4,
+            "members": [
+              "Arcturus",
+              "38 Boötis",
+              "18 Boötis",
+              "46 Boötis"
+            ]
+          }
+        ],
+        "bare": [
+          "1 Boötis",
+          "2 Boötis",
+          "3 Boötis",
+          "List of stars in Boötes",
+          "2MASS J15031961+2525196"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "NGC 7706",
+        "expected": "Infobox galaxy",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox galaxy",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 143,
+        "coverage": 0.7622377622377622,
+        "dominant": {
+          "template": "Infobox galaxy",
+          "count": 85
+        },
+        "distribution": {
+          "Infobox galaxy": 85,
+          "Infobox Galaxy": 19,
+          "Infobox quasar": 18,
+          "Infobox galaxy cluster": 4,
+          "Infobox nebula": 1,
+          "Infobox constellation": 1,
+          "Infobox astronomical event": 1,
+          "Infobox planet": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 143,
+            "boxed": 109,
+            "coverage": 0.7622377622377622,
+            "dominant": {
+              "template": "Infobox galaxy",
+              "count": 85
+            },
+            "dominantShare": 0.7798165137614679
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Pisces (constellation)",
+            "n": 6,
+            "members": [
+              "First point of Aries",
+              "107 Piscium",
+              "101 Piscium",
+              "54 Piscium",
+              "Alpha Piscium",
+              "Eta Piscium"
+            ]
+          },
+          {
+            "category": "Bright Star Catalogue objects",
+            "n": 5,
+            "members": [
+              "107 Piscium",
+              "101 Piscium",
+              "54 Piscium",
+              "Alpha Piscium",
+              "Eta Piscium"
+            ]
+          },
+          {
+            "category": "Durchmusterung objects",
+            "n": 5,
+            "members": [
+              "107 Piscium",
+              "101 Piscium",
+              "54 Piscium",
+              "Alpha Piscium",
+              "Eta Piscium"
+            ]
+          }
+        ],
+        "bare": [
+          "Angular correlation function",
+          "List of stars in Pisces",
+          "BzK galaxy",
+          "2MASS J00361617+1821104",
+          "7 Piscium"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "NGC 7311",
+        "expected": "Infobox galaxy",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox galaxy",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 140,
+        "coverage": 0.65,
+        "dominant": {
+          "template": "Infobox galaxy",
+          "count": 80
+        },
+        "distribution": {
+          "Infobox galaxy": 80,
+          "Infobox Galaxy": 10,
+          "Infobox planet": 4,
+          "Infobox quasar": 3,
+          "Infobox galaxy cluster": 2,
+          "Infobox constellation": 1,
+          "Infobox globular cluster": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 140,
+            "boxed": 91,
+            "coverage": 0.65,
+            "dominant": {
+              "template": "Infobox galaxy",
+              "count": 80
+            },
+            "dominantShare": 0.8791208791208791
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Bright Star Catalogue objects",
+            "n": 4,
+            "members": [
+              "51 Pegasi",
+              "Alpheratz",
+              "Alpha Pegasi",
+              "Epsilon Pegasi"
+            ]
+          },
+          {
+            "category": "Durchmusterung objects",
+            "n": 4,
+            "members": [
+              "51 Pegasi",
+              "Alpheratz",
+              "Alpha Pegasi",
+              "Epsilon Pegasi"
+            ]
+          },
+          {
+            "category": "Flamsteed objects",
+            "n": 4,
+            "members": [
+              "51 Pegasi",
+              "Alpheratz",
+              "Alpha Pegasi",
+              "Epsilon Pegasi"
+            ]
+          }
+        ],
+        "bare": [
+          "List of stars in Pegasus",
+          "1 Pegasi",
+          "2 Pegasi",
+          "9 Pegasi",
+          "32 Pegasi"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Piazza dell'Esquilino",
+        "expected": "Infobox urban feature",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox urban feature",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 86,
+        "coverage": 0.7906976744186046,
+        "dominant": {
+          "template": "Infobox urban feature",
+          "count": 29
+        },
+        "distribution": {
+          "Infobox urban feature": 29,
+          "Infobox animal breed": 16,
+          "Infobox goat breed": 8,
+          "Infobox sheep breed": 6,
+          "Infobox street": 4,
+          "Infobox flag": 4,
+          "Infobox Hill of Rome": 2,
+          "Infobox hill of Rome": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 86,
+            "boxed": 68,
+            "coverage": 0.7906976744186046,
+            "dominant": {
+              "template": "Infobox urban feature",
+              "count": 29
+            },
+            "dominantShare": 0.4264705882352941
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 8,
+            "members": [
+              "Amalfian Laws",
+              "Catasto",
+              "Chiericati family",
+              "Adoption in Italy",
+              "Piazza di San Macuto",
+              "Albracca",
+              "Codice di avviamento postale",
+              "Biological Evolution: Facts and Theories"
+            ]
+          },
+          {
+            "category": "Italy stubs",
+            "n": 7,
+            "members": [
+              "Amalfian Laws",
+              "Catasto",
+              "Chiericati family",
+              "Adoption in Italy",
+              "Albracca",
+              "Codice di avviamento postale",
+              "Biological Evolution: Facts and Theories"
+            ]
+          },
+          {
+            "category": "Piazzas in Rome",
+            "n": 3,
+            "members": [
+              "List of obelisks in Rome",
+              "Piazza di San Macuto",
+              "Piazza della Libertà, Rome"
+            ]
+          }
+        ],
+        "bare": [
+          "List of obelisks in Rome",
+          "Piazza di San Macuto",
+          "Piazza della Libertà, Rome",
+          "Piazza Benedetto Cairoli",
+          "Piazza Trilussa"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Piscichnus",
+        "expected": "Infobox fossil",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "none-warranted",
+      "template": null,
+      "confidence": "high",
+      "outcome": "fail",
+      "evidence": {
+        "total": 144,
+        "coverage": 0.013888888888888888,
+        "dominant": {
+          "template": "Infobox rockunit",
+          "count": 1
+        },
+        "distribution": {
+          "Infobox rockunit": 1,
+          "Taxobox": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 94,
+            "boxed": 0,
+            "coverage": 0,
+            "dominant": null,
+            "dominantShare": 0
+          },
+          "byCategoryOnly": {
+            "n": 50,
+            "boxed": 2,
+            "coverage": 0.04,
+            "dominant": {
+              "template": "Infobox rockunit",
+              "count": 1
+            },
+            "dominantShare": 0.5
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 16,
+            "members": [
+              "Treptichnus",
+              "Thalassinoides",
+              "Rhizocorallium",
+              "Oldhamia",
+              "Radulichnus",
+              "Amblydactylus",
+              "Megalosauripus",
+              "Planolites",
+              "Phycosiphon",
+              "Ornithopodichnites",
+              "Paragrallator",
+              "Parasauropodopus",
+              "Paratetrasauropus",
+              "Paratrisauropus",
+              "Osprioneides",
+              "Palaeoxyris"
+            ]
+          },
+          {
+            "category": "Trace fossil stubs",
+            "n": 14,
+            "members": [
+              "Treptichnus",
+              "Thalassinoides",
+              "Rhizocorallium",
+              "Oldhamia",
+              "Radulichnus",
+              "Amblydactylus",
+              "Planolites",
+              "Phycosiphon",
+              "Ornithopodichnites",
+              "Paragrallator",
+              "Parasauropodopus",
+              "Paratetrasauropus",
+              "Paratrisauropus",
+              "Osprioneides"
+            ]
+          },
+          {
+            "category": "Burrow fossils",
+            "n": 7,
+            "members": [
+              "Treptichnus",
+              "Paleodictyon",
+              "Skolithos",
+              "Rhizocorallium",
+              "Oldhamia",
+              "Osprioneides",
+              "Paleodictyon nodosum"
+            ]
+          }
+        ],
+        "bare": [
+          "Paleobuprestis",
+          "Bifungites",
+          "Dromaeosauriformipes",
+          "Isochirotherium",
+          "Ruopodosaurus"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Piazzale Roma",
+        "expected": "Infobox urban feature",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox station",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 150,
+        "coverage": 0.6733333333333333,
+        "dominant": {
+          "template": "Infobox station",
+          "count": 42
+        },
+        "distribution": {
+          "Infobox station": 42,
+          "Infobox bridge": 12,
+          "Infobox rail line": 11,
+          "Infobox urban feature": 8,
+          "Infobox company": 6,
+          "Infobox airline": 5,
+          "Infobox Bridge": 5,
+          "Infobox building": 4
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 150,
+            "boxed": 101,
+            "coverage": 0.6733333333333333,
+            "dominant": {
+              "template": "Infobox station",
+              "count": 42
+            },
+            "dominantShare": 0.4158415841584158
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 9,
+            "members": [
+              "Ferrovia Circumetnea",
+              "ElettroTreno",
+              "Josef Mountain Aerial Tramway",
+              "Campo San Polo",
+              "Ponte alle Grazie",
+              "Aqua Augusta (Rome)",
+              "Bangor Transportation Center",
+              "Munkegata Terminal",
+              "Artesia (railways)"
+            ]
+          },
+          {
+            "category": "Italy transport stubs",
+            "n": 5,
+            "members": [
+              "Ferrovia Circumetnea",
+              "ElettroTreno",
+              "Josef Mountain Aerial Tramway",
+              "Ponte alle Grazie",
+              "Artesia (railways)"
+            ]
+          },
+          {
+            "category": "Europe rail transport stubs",
+            "n": 3,
+            "members": [
+              "Ferrovia Circumetnea",
+              "ElettroTreno",
+              "Artesia (railways)"
+            ]
+          }
+        ],
+        "bare": [
+          "Campo (Venice)",
+          "Campo de le Gate",
+          "Campo San Bartolomeo",
+          "Campo San Geremia",
+          "Campo Santa Maria Formosa"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Playadito",
+        "expected": "Infobox company",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox company",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 25,
+        "coverage": 0.56,
+        "dominant": {
+          "template": "Infobox company",
+          "count": 11
+        },
+        "distribution": {
+          "Infobox company": 11,
+          "Infobox publisher": 1,
+          "Infobox toy": 1,
+          "Infobox Brand": 1,
+          "Infobox brand": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 25,
+            "boxed": 14,
+            "coverage": 0.56,
+            "dominant": {
+              "template": "Infobox company",
+              "count": 11
+            },
+            "dominantShare": 0.7857142857142857
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Yerba mate",
+            "n": 3,
+            "members": [
+              "Yerba mate",
+              "Bombilla",
+              "Matófono"
+            ]
+          }
+        ],
+        "bare": [
+          "List of tea companies",
+          "Gorreana",
+          "Tanganda Tea",
+          "Rakura tea",
+          "Yerba mate"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Robert N. Charrette",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 149,
+        "coverage": 0.8322147651006712,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 99
+        },
+        "distribution": {
+          "Infobox person": 99,
+          "Infobox artist": 36,
+          "Infobox comics creator": 22,
+          "Infobox writer": 20,
+          "Infobox organization": 2,
+          "Infobox scientist": 1,
+          "Infobox officeholder": 1,
+          "Infobox academic": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 149,
+            "boxed": 124,
+            "coverage": 0.8322147651006712,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 99
+            },
+            "dominantShare": 0.7983870967741935
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Living people",
+            "n": 8,
+            "members": [
+              "Wes Benscoter",
+              "Vaughan Alden Bass",
+              "Julie Ann Dawson",
+              "Ron Barrett",
+              "Ken Brown (filmmaker)",
+              "Jim Burke (illustrator)",
+              "Pete Fenlon",
+              "Justin Achilli"
+            ]
+          },
+          {
+            "category": "American illustrators",
+            "n": 7,
+            "members": [
+              "Wes Benscoter",
+              "Vaughan Alden Bass",
+              "Harry C. Bradley (painter)",
+              "Ron Barrett",
+              "Ken Brown (filmmaker)",
+              "Jim Burke (illustrator)",
+              "Albert Berghaus"
+            ]
+          },
+          {
+            "category": "All stub articles",
+            "n": 6,
+            "members": [
+              "Wes Benscoter",
+              "Vaughan Alden Bass",
+              "Harry C. Bradley (painter)",
+              "Ron Barrett",
+              "Jim Burke (illustrator)",
+              "Justin Achilli"
+            ]
+          }
+        ],
+        "bare": [
+          "Justin Achilli",
+          "Justin Alexander",
+          "Rick Britton",
+          "Julie Ann Dawson",
+          "Michael Fiegel"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Roberta Gropper",
+        "expected": "Infobox officeholder",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 132,
+        "coverage": 0.7196969696969697,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 44
+        },
+        "distribution": {
+          "Infobox person": 44,
+          "Infobox officeholder": 44,
+          "Infobox medal templates": 5,
+          "Infobox sportsperson": 5,
+          "Infobox artist": 2,
+          "Infobox motorcycle rider": 1,
+          "Infobox Christian leader": 1,
+          "Infobox criminal": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 132,
+            "boxed": 95,
+            "coverage": 0.7196969696969697,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 44
+            },
+            "dominantShare": 0.4631578947368421
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "20th-century German women politicians",
+            "n": 3,
+            "members": [
+              "Ursula Engelen-Kefer",
+              "Christine Lucyga",
+              "Wilhelmine Kähler"
+            ]
+          },
+          {
+            "category": "German women trade unionists",
+            "n": 3,
+            "members": [
+              "Ursula Engelen-Kefer",
+              "Gisela Kessler",
+              "Johanna Töpfer"
+            ]
+          }
+        ],
+        "bare": [
+          "Christopher Elias Heiss",
+          "Jakob Friedrich Caflisch",
+          "Johann Heiss",
+          "Bernhard Strigel",
+          "Monika Sprüth"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "RuPaul's Drag Race: Corona Can't Keep a Good Queen Down",
+        "expected": "Infobox television",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox television",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 61,
+        "coverage": 0.8852459016393442,
+        "dominant": {
+          "template": "Infobox television",
+          "count": 21
+        },
+        "distribution": {
+          "Infobox television": 21,
+          "Infobox television episode": 17,
+          "Infobox concert": 4,
+          "Infobox television season": 2,
+          "Infobox film": 2,
+          "Infobox company": 1,
+          "Infobox musical artist": 1,
+          "Infobox website": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 61,
+            "boxed": 54,
+            "coverage": 0.8852459016393442,
+            "dominant": {
+              "template": "Infobox television",
+              "count": 21
+            },
+            "dominantShare": 0.3888888888888889
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 5,
+            "members": [
+              "Haters Roast",
+              "Drive 'N Drag",
+              "Fashion Photo RuView",
+              "This Is Me: Pride Celebration Spectacular",
+              "Out There (Comedy Central)"
+            ]
+          },
+          {
+            "category": "RuPaul's Drag Race",
+            "n": 4,
+            "members": [
+              "Haters Roast",
+              "Drive 'N Drag",
+              "Fashion Photo RuView",
+              "Drag Race: The Experience"
+            ]
+          },
+          {
+            "category": "American LGBTQ-related television specials",
+            "n": 3,
+            "members": [
+              "Tickled Pink",
+              "This Is Me: Pride Celebration Spectacular",
+              "Out There (Comedy Central)"
+            ]
+          }
+        ],
+        "bare": [
+          "Out There (Comedy Central)",
+          "Tickled Pink",
+          "This Is Me: Pride Celebration Spectacular",
+          "Drag Race: The Experience",
+          "Haters Roast"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Sabrina Dallafior",
+        "expected": "Infobox officeholder",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox officeholder",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 67,
+        "coverage": 0.4626865671641791,
+        "dominant": {
+          "template": "Infobox officeholder",
+          "count": 27
+        },
+        "distribution": {
+          "Infobox officeholder": 27,
+          "Infobox person": 4,
+          "Infobox Officeholder": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 67,
+            "boxed": 31,
+            "coverage": 0.4626865671641791,
+            "dominant": {
+              "template": "Infobox officeholder",
+              "count": 27
+            },
+            "dominantShare": 0.8709677419354839
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 5,
+            "members": [
+              "Ernst Brugger",
+              "Roger Bonvin",
+              "Jean Bourgknecht",
+              "Simeon Bavier",
+              "Fridolin Anderwert"
+            ]
+          },
+          {
+            "category": "Members of the Federal Council (Switzerland)",
+            "n": 5,
+            "members": [
+              "Ernst Brugger",
+              "Roger Bonvin",
+              "Jean Bourgknecht",
+              "Simeon Bavier",
+              "Fridolin Anderwert"
+            ]
+          },
+          {
+            "category": "Swiss politician stubs",
+            "n": 4,
+            "members": [
+              "Ernst Brugger",
+              "Roger Bonvin",
+              "Jean Bourgknecht",
+              "Simeon Bavier"
+            ]
+          }
+        ],
+        "bare": [
+          "José Bustani",
+          "Albert Ammann",
+          "Fridolin Anderwert",
+          "Adrian Amstutz",
+          "Casimir von Arx"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Sayfo",
+        "expected": "Infobox",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox civilian attack",
+      "confidence": "high",
+      "outcome": "fail",
+      "evidence": {
+        "total": 115,
+        "coverage": 0.8956521739130435,
+        "dominant": {
+          "template": "Infobox civilian attack",
+          "count": 72
+        },
+        "distribution": {
+          "Infobox civilian attack": 72,
+          "Infobox military conflict": 10,
+          "Infobox Holocaust event": 4,
+          "Infobox holocaust event": 4,
+          "Infobox event": 3,
+          "Infobox civil conflict": 3,
+          "Infobox Former Subdivision": 3,
+          "Infobox former subdivision": 3
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 93,
+            "boxed": 85,
+            "coverage": 0.9139784946236559,
+            "dominant": {
+              "template": "Infobox civilian attack",
+              "count": 67
+            },
+            "dominantShare": 0.788235294117647
+          },
+          "byCategoryOnly": {
+            "n": 22,
+            "boxed": 18,
+            "coverage": 0.8181818181818182,
+            "dominant": {
+              "template": "Infobox civilian attack",
+              "count": 5
+            },
+            "dominantShare": 0.2777777777777778
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Genocide of Indigenous peoples in Venezuela",
+          "Maafa",
+          "Genocide of Indigenous peoples in Brazil",
+          "Genocide of Indigenous peoples in Paraguay",
+          "COVID-19 misinformation in the Philippines"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Serena Morena",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 71,
+        "coverage": 0.6901408450704225,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 22
+        },
+        "distribution": {
+          "Infobox person": 22,
+          "Infobox ethnic group": 9,
+          "Infobox officeholder": 4,
+          "Infobox artist": 3,
+          "Infobox pageant titleholder": 2,
+          "Infobox medal templates": 2,
+          "Infobox professional wrestler": 2,
+          "Infobox sportsperson": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 71,
+            "boxed": 49,
+            "coverage": 0.6901408450704225,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 22
+            },
+            "dominantShare": 0.4489795918367347
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 9,
+            "members": [
+              "Multipurpose community telecenters",
+              "Spanish missions in Mexico",
+              "Calderón Hinojosa family",
+              "Texas Virtual Border Watch",
+              "Havardia albicans",
+              "Vachellia schaffneri",
+              "Juniperus jaliscana",
+              "Pinus pinceana",
+              "White-fronted swift"
+            ]
+          },
+          {
+            "category": "Mexico stubs",
+            "n": 8,
+            "members": [
+              "Multipurpose community telecenters",
+              "Spanish missions in Mexico",
+              "Calderón Hinojosa family",
+              "Texas Virtual Border Watch",
+              "Havardia albicans",
+              "Vachellia schaffneri",
+              "Juniperus jaliscana",
+              "Pinus pinceana"
+            ]
+          },
+          {
+            "category": "Trees of Northern America",
+            "n": 3,
+            "members": [
+              "Havardia albicans",
+              "Juniperus jaliscana",
+              "Pinus pinceana"
+            ]
+          }
+        ],
+        "bare": [
+          "José Julio Gaona",
+          "Anders Stone",
+          "Gustavo Vázquez-Lozano",
+          "Aspidoscelis ceralbensis",
+          "Calderón Hinojosa family"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Shari McMahan",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 148,
+        "coverage": 0.7297297297297297,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 81
+        },
+        "distribution": {
+          "Infobox person": 81,
+          "Infobox scientist": 16,
+          "Infobox academic": 10,
+          "Infobox musical artist": 10,
+          "Infobox medal templates": 10,
+          "Infobox officeholder": 9,
+          "Infobox artist": 6,
+          "Infobox writer": 5
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 148,
+            "boxed": 108,
+            "coverage": 0.7297297297297297,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 81
+            },
+            "dominantShare": 0.75
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Living people",
+            "n": 5,
+            "members": [
+              "Chris Freiling",
+              "Diane F. Halpern",
+              "Richard Hellesen",
+              "Siobhan Brooks",
+              "Mike McGee (gallery director)"
+            ]
+          },
+          {
+            "category": "California State University, Fullerton, faculty",
+            "n": 4,
+            "members": [
+              "Richard Hellesen",
+              "Siobhan Brooks",
+              "Mike McGee (gallery director)",
+              "Ron Larson (artist)"
+            ]
+          },
+          {
+            "category": "California State University, San Bernardino, faculty",
+            "n": 3,
+            "members": [
+              "Chris Freiling",
+              "Diane F. Halpern",
+              "William L. Slout"
+            ]
+          }
+        ],
+        "bare": [
+          "Frances F. Berdan",
+          "Chris Freiling",
+          "Diane F. Halpern",
+          "Susan Finsen",
+          "Jacqueline Coyle-Shapiro"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Shigeru Yoshida",
+        "expected": "Infobox officeholder",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox officeholder",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 77,
+        "coverage": 0.935064935064935,
+        "dominant": {
+          "template": "Infobox officeholder",
+          "count": 67
+        },
+        "distribution": {
+          "Infobox officeholder": 67,
+          "Infobox incumbency": 6,
+          "Infobox person": 6,
+          "Infobox premiership": 5,
+          "Infobox Japanese": 2,
+          "Infobox military person": 2,
+          "Infobox writer": 2,
+          "Infobox criminal": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 77,
+            "boxed": 72,
+            "coverage": 0.935064935064935,
+            "dominant": {
+              "template": "Infobox officeholder",
+              "count": 67
+            },
+            "dominantShare": 0.9305555555555556
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Ambassadors of Japan to Italy",
+            "n": 3,
+            "members": [
+              "Masaharu Kono",
+              "Shin'ichirō Kurino",
+              "List of ambassadors of Japan to Italy"
+            ]
+          }
+        ],
+        "bare": [
+          "List of ambassadors of Japan to Italy",
+          "Masaharu Kono",
+          "Shin'ichirō Kurino",
+          "Olav Sandvik",
+          "Ion Țurai"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Simon de Waal",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 145,
+        "coverage": 0.6413793103448275,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 84
+        },
+        "distribution": {
+          "Infobox person": 84,
+          "Infobox writer": 14,
+          "Infobox officeholder": 5,
+          "Infobox film": 2,
+          "Infobox artist": 2,
+          "Infobox academic": 2,
+          "Infobox actor": 1,
+          "Infobox civilian attack": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 145,
+            "boxed": 93,
+            "coverage": 0.6413793103448275,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 84
+            },
+            "dominantShare": 0.9032258064516129
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Writers from Amsterdam",
+            "n": 7,
+            "members": [
+              "Ferdinand Bordewijk",
+              "Erik Borgman",
+              "Ian Theodor Beelen",
+              "Laurens Bake",
+              "Govert Bidloo",
+              "Christine de Bosch Kemper",
+              "Hieronymus de Bosch"
+            ]
+          },
+          {
+            "category": "All stub articles",
+            "n": 7,
+            "members": [
+              "Erik Borgman",
+              "Matthijs van Heijningen",
+              "Ian Theodor Beelen",
+              "Laurens Bake",
+              "Cees Geel",
+              "Christine de Bosch Kemper",
+              "Hieronymus de Bosch"
+            ]
+          },
+          {
+            "category": "Dutch writer stubs",
+            "n": 4,
+            "members": [
+              "Erik Borgman",
+              "Laurens Bake",
+              "Christine de Bosch Kemper",
+              "Hieronymus de Bosch"
+            ]
+          }
+        ],
+        "bare": [
+          "Tamara Bos",
+          "Job ter Burg",
+          "Gerrit van Dijk",
+          "Cees Geel",
+          "Matthijs van Heijningen"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Small Business Liability Relief and Brownfields Revitalization Act",
+        "expected": "Infobox U.S. legislation",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox U.S. legislation",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 148,
+        "coverage": 0.5202702702702703,
+        "dominant": {
+          "template": "Infobox U.S. legislation",
+          "count": 58
+        },
+        "distribution": {
+          "Infobox U.S. legislation": 58,
+          "Infobox book": 5,
+          "Infobox legislation": 4,
+          "Infobox treaty": 3,
+          "Infobox United States federal proposed legislation": 2,
+          "Infobox film": 1,
+          "Infobox oil spill": 1,
+          "Infobox SCOTUS case": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 148,
+            "boxed": 77,
+            "coverage": 0.5202702702702703,
+            "dominant": {
+              "template": "Infobox U.S. legislation",
+              "count": 58
+            },
+            "dominantShare": 0.7532467532467533
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Use American English from June 2025",
+            "n": 14,
+            "members": [
+              "Clear Skies Act of 2003",
+              "Bradley Amendment",
+              "Early Childhood Education Act",
+              "Stand by Your Ad provision",
+              "Excise Tax Reduction Act of 1954",
+              "Job Creation and Worker Assistance Act of 2002",
+              "Federal Unemployment Tax Act",
+              "Mustering-out Payment Act",
+              "McCarran–Ferguson Act",
+              "Longshore and Harbor Workers' Compensation Act",
+              "Labor Department Act",
+              "Elizabeth Morgan Act",
+              "List of federal environmental statutes in the United States",
+              "Kline–Miller Multiemployer Pension Reform Act of 2014"
+            ]
+          },
+          {
+            "category": "United States federal legislation articles needing infoboxes",
+            "n": 13,
+            "members": [
+              "Clear Skies Act of 2003",
+              "Investment Advisers Act of 1940",
+              "Bradley Amendment",
+              "Early Childhood Education Act",
+              "Excise Tax Reduction Act of 1954",
+              "Federal Unemployment Tax Act",
+              "Mustering-out Payment Act",
+              "McCarran–Ferguson Act",
+              "Longshore and Harbor Workers' Compensation Act",
+              "Labor Department Act",
+              "Elizabeth Morgan Act",
+              "Military Commissions Act of 2009",
+              "Kline–Miller Multiemployer Pension Reform Act of 2014"
+            ]
+          },
+          {
+            "category": "United States federal taxation legislation",
+            "n": 3,
+            "members": [
+              "Excise Tax Reduction Act of 1954",
+              "Job Creation and Worker Assistance Act of 2002",
+              "Federal Unemployment Tax Act"
+            ]
+          }
+        ],
+        "bare": [
+          "2002 California Proposition 50",
+          "2002 in the environment",
+          "Earth Summit 2002",
+          "Cleaner Production Promotion Law",
+          "Melbourne Principles"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Solly's Grille",
+        "expected": "Infobox restaurant",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox restaurant",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 146,
+        "coverage": 0.8904109589041096,
+        "dominant": {
+          "template": "Infobox restaurant",
+          "count": 94
+        },
+        "distribution": {
+          "Infobox restaurant": 94,
+          "Infobox company": 31,
+          "Infobox NRHP": 4,
+          "Infobox civilian attack": 1,
+          "Infobox venue": 1,
+          "Infobox chef": 1,
+          "Infobox culinary career": 1,
+          "Infobox person": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 146,
+            "boxed": 130,
+            "coverage": 0.8904109589041096,
+            "dominant": {
+              "template": "Infobox restaurant",
+              "count": 94
+            },
+            "dominantShare": 0.7230769230769231
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "America's Classics winners",
+            "n": 4,
+            "members": [
+              "Al's Breakfast",
+              "Breitbach's Country Dining",
+              "Doe's Eat Place",
+              "Gott's Roadside"
+            ]
+          },
+          {
+            "category": "Regional restaurant chains in the United States",
+            "n": 4,
+            "members": [
+              "B&K Rootbeer",
+              "Doe's Eat Place",
+              "Geri's Hamburgers",
+              "Gott's Roadside"
+            ]
+          }
+        ],
+        "bare": [
+          "Al Johnson's Swedish Restaurant",
+          "Geri's Hamburgers",
+          "Big Boy named franchisees",
+          "Eureka! Restaurant Group",
+          "Hamburger Hamlet"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Strait Is the Gate",
+        "expected": "Infobox book",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox book",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 121,
+        "coverage": 0.8677685950413223,
+        "dominant": {
+          "template": "Infobox book",
+          "count": 104
+        },
+        "distribution": {
+          "Infobox book": 104,
+          "Infobox graphic novel": 1,
+          "Infobox Book": 1,
+          "Infobox novel": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 121,
+            "boxed": 105,
+            "coverage": 0.8677685950413223,
+            "dominant": {
+              "template": "Infobox book",
+              "count": 104
+            },
+            "dominantShare": 0.9904761904761905
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Epistolary novels",
+            "n": 4,
+            "members": [
+              "Epistolary novel",
+              "List of contemporary epistolary novels",
+              "Ammi: Letter to a Democratic Mother",
+              "The Boy Next Door (novel)"
+            ]
+          },
+          {
+            "category": "All stub articles",
+            "n": 4,
+            "members": [
+              "Ammi: Letter to a Democratic Mother",
+              "Les Vingt et un Jours d'un neurasthénique",
+              "Les Onze Mille Verges",
+              "Trusted Like the Fox"
+            ]
+          },
+          {
+            "category": "1900s French-language novels",
+            "n": 4,
+            "members": [
+              "Les Vingt et un Jours d'un neurasthénique",
+              "La Maternelle",
+              "Supermale (novel)",
+              "Les Onze Mille Verges"
+            ]
+          }
+        ],
+        "bare": [
+          "I'll Get You for This (novel)",
+          "No Business of Mine",
+          "Trusted Like the Fox",
+          "The Adventures of King Pausole",
+          "La Maternelle"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Strengholt Holding",
+        "expected": "Infobox company",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox publisher",
+      "confidence": "medium",
+      "outcome": "fail",
+      "evidence": {
+        "total": 30,
+        "coverage": 0.6666666666666666,
+        "dominant": {
+          "template": "Infobox publisher",
+          "count": 11
+        },
+        "distribution": {
+          "Infobox publisher": 11,
+          "Infobox company": 6,
+          "Infobox military conflict": 2,
+          "Infobox settlement": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 30,
+            "boxed": 20,
+            "coverage": 0.6666666666666666,
+            "dominant": {
+              "template": "Infobox publisher",
+              "count": 11
+            },
+            "dominantShare": 0.55
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Book publishing companies of the Netherlands",
+            "n": 8,
+            "members": [
+              "House of Elzevir",
+              "Ins & Outs Press",
+              "Holland (publisher)",
+              "Johannes Marius Meulenhoff",
+              "Uitgeverij Prometheus",
+              "Alexander Herzen Foundation",
+              "Pieter Mortier",
+              "Singel Uitgeverijen"
+            ]
+          },
+          {
+            "category": "Defunct publishing companies of the Netherlands",
+            "n": 4,
+            "members": [
+              "House of Elzevir",
+              "Johannes Marius Meulenhoff",
+              "Alexander Herzen Foundation",
+              "Pieter Mortier"
+            ]
+          },
+          {
+            "category": "Mass media in Amsterdam",
+            "n": 4,
+            "members": [
+              "Ins & Outs Press",
+              "Holland (publisher)",
+              "Johannes Marius Meulenhoff",
+              "Singel Uitgeverijen"
+            ]
+          }
+        ],
+        "bare": [
+          "Veen Media",
+          "Muiderkring",
+          "Alexander Herzen Foundation",
+          "House of Elzevir",
+          "Ins & Outs Press"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Sushirrito",
+        "expected": "Infobox restaurant",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox company",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 131,
+        "coverage": 0.8625954198473282,
+        "dominant": {
+          "template": "Infobox company",
+          "count": 53
+        },
+        "distribution": {
+          "Infobox company": 53,
+          "Infobox restaurant": 48,
+          "Infobox food": 4,
+          "Infobox venue": 2,
+          "Infobox chef": 1,
+          "Infobox culinary career": 1,
+          "Infobox person": 1,
+          "Infobox settlement": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 131,
+            "boxed": 113,
+            "coverage": 0.8625954198473282,
+            "dominant": {
+              "template": "Infobox company",
+              "count": 53
+            },
+            "dominantShare": 0.4690265486725664
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "All stub articles",
+            "n": 5,
+            "members": [
+              "Dynamite roll",
+              "Spider roll",
+              "B&K Rootbeer",
+              "Al's Beef",
+              "Liguria Bakery"
+            ]
+          },
+          {
+            "category": "American fusion cuisine",
+            "n": 4,
+            "members": [
+              "Dynamite roll",
+              "Spider roll",
+              "Philadelphia roll",
+              "Korean taco"
+            ]
+          },
+          {
+            "category": "Sushi in the United States",
+            "n": 3,
+            "members": [
+              "Dynamite roll",
+              "Spider roll",
+              "Philadelphia roll"
+            ]
+          }
+        ],
+        "bare": [
+          "Dynamite roll",
+          "Filipino-American cuisine",
+          "Philadelphia roll",
+          "Korean taco",
+          "Korean-Mexican fusion"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Svend Foyn",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 138,
+        "coverage": 0.5072463768115942,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 56
+        },
+        "distribution": {
+          "Infobox person": 56,
+          "Infobox officeholder": 9,
+          "Infobox royalty": 3,
+          "Infobox medal templates": 2,
+          "Infobox sportsperson": 2,
+          "Infobox islands": 1,
+          "Infobox monarch": 1,
+          "Infobox chess biography": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 138,
+            "boxed": 70,
+            "coverage": 0.5072463768115942,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 56
+            },
+            "dominantShare": 0.8
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "People from Tønsberg Municipality",
+            "n": 9,
+            "members": [
+              "Henrik Johan Bull",
+              "Gudrød Bjørnsson",
+              "Hanne Sophie Greve",
+              "Ragnvald Bødtker",
+              "Lars Havstad",
+              "Christian Blom",
+              "Ditlef Hvistendahl Christiansen",
+              "Axel Camillo Eitzen (1883–1968)",
+              "Halfdan Hanson"
+            ]
+          },
+          {
+            "category": "All stub articles",
+            "n": 4,
+            "members": [
+              "Thorvald Meyer",
+              "Christian Blom",
+              "Ditlef Hvistendahl Christiansen",
+              "Axel Camillo Eitzen (1883–1968)"
+            ]
+          },
+          {
+            "category": "Sealers",
+            "n": 3,
+            "members": [
+              "Mayhew Folger",
+              "Henrik Johan Bull",
+              "Johnny Jones (pioneer)"
+            ]
+          }
+        ],
+        "bare": [
+          "Richard Andvord",
+          "Erik Børresen",
+          "Thorvald Meyer",
+          "Henrik Heftye",
+          "Thomas Johannessen Heftye"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Trans-Ocean News Service",
+        "expected": "Infobox company",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox company",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 12,
+        "coverage": 0.8333333333333334,
+        "dominant": {
+          "template": "Infobox company",
+          "count": 5
+        },
+        "distribution": {
+          "Infobox company": 5,
+          "Infobox organization": 4,
+          "Infobox government agency": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 12,
+            "boxed": 10,
+            "coverage": 0.8333333333333334,
+            "dominant": {
+              "template": "Infobox company",
+              "count": 5
+            },
+            "dominantShare": 0.5
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Idea (news agency)",
+          "Wolffs Telegraphisches Bureau"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Tony Greenstein",
+        "expected": "Infobox person",
+        "labelSource": "editor-choice (stale tag)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox person",
+      "confidence": "medium",
+      "outcome": "pass",
+      "evidence": {
+        "total": 98,
+        "coverage": 0.9081632653061225,
+        "dominant": {
+          "template": "Infobox person",
+          "count": 59
+        },
+        "distribution": {
+          "Infobox person": 59,
+          "Infobox officeholder": 30,
+          "Infobox musical artist": 5,
+          "Infobox academic": 4,
+          "Infobox writer": 3,
+          "Infobox scientist": 3,
+          "Infobox criminal": 2,
+          "Infobox social media personality": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 98,
+            "boxed": 89,
+            "coverage": 0.9081632653061225,
+            "dominant": {
+              "template": "Infobox person",
+              "count": 59
+            },
+            "dominantShare": 0.6629213483146067
+          }
+        },
+        "bareCluster": [],
+        "bare": [
+          "Ed Miliband",
+          "Jonathan Binns",
+          "Edward Rushton",
+          "Thomas Wardle (pacifist)",
+          "Jonathan Rosenhead"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "1346 imperial election",
+        "expected": "Infobox election",
+        "labelSource": "doc-demo (26/26 peers boxed)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox election",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 74,
+        "coverage": 0.7297297297297297,
+        "dominant": {
+          "template": "Infobox election",
+          "count": 30
+        },
+        "distribution": {
+          "Infobox election": 30,
+          "Infobox papal conclave": 10,
+          "Infobox military conflict": 2,
+          "Infobox church": 2,
+          "Infobox earthquake": 1,
+          "Infobox civilian attack": 1,
+          "Infobox university": 1,
+          "Infobox university rankings": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 31,
+            "boxed": 30,
+            "coverage": 0.967741935483871,
+            "dominant": {
+              "template": "Infobox election",
+              "count": 30
+            },
+            "dominantShare": 1
+          },
+          "byCategoryOnly": {
+            "n": 43,
+            "boxed": 24,
+            "coverage": 0.5581395348837209,
+            "dominant": {
+              "template": "Infobox papal conclave",
+              "count": 10
+            },
+            "dominantShare": 0.4166666666666667
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Imperial election (Holy Roman Empire)",
+            "n": 3,
+            "members": [
+              "Prince-elector",
+              "Declaration of Rhense",
+              "Imperial election"
+            ]
+          }
+        ],
+        "bare": [
+          "May 1400 imperial election",
+          "1346 in Ireland",
+          "Black Death in the Holy Roman Empire",
+          "Strasbourg massacre",
+          "Thuringian Counts' War"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "May 1400 imperial election",
+        "expected": "Infobox election",
+        "labelSource": "doc-demo (orphaned sibling)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox election",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 61,
+        "coverage": 0.7540983606557377,
+        "dominant": {
+          "template": "Infobox election",
+          "count": 30
+        },
+        "distribution": {
+          "Infobox election": 30,
+          "Infobox papal conclave": 10,
+          "Infobox military conflict": 3,
+          "Infobox militant organization": 1,
+          "Infobox document": 1,
+          "Infobox church": 1
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 31,
+            "boxed": 30,
+            "coverage": 0.967741935483871,
+            "dominant": {
+              "template": "Infobox election",
+              "count": 30
+            },
+            "dominantShare": 1
+          },
+          "byCategoryOnly": {
+            "n": 30,
+            "boxed": 16,
+            "coverage": 0.5333333333333333,
+            "dominant": {
+              "template": "Infobox papal conclave",
+              "count": 10
+            },
+            "dominantShare": 0.625
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Imperial election (Holy Roman Empire)",
+            "n": 4,
+            "members": [
+              "Prince-elector",
+              "Declaration of Rhense",
+              "Imperial election",
+              "Coronation of the Holy Roman Emperor"
+            ]
+          }
+        ],
+        "bare": [
+          "1346 imperial election",
+          "Kastav Statute",
+          "1400 in Scotland",
+          "1400 in France",
+          "1400 in Ireland"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Golden Bull of 1356",
+        "expected": "Infobox document",
+        "labelSource": "doc-demo (specialized neighbor)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox document",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 31,
+        "coverage": 0.3548387096774194,
+        "dominant": {
+          "template": "Infobox document",
+          "count": 4
+        },
+        "distribution": {
+          "Infobox document": 4,
+          "Infobox military conflict": 2,
+          "Infobox earthquake": 1,
+          "Infobox country": 1,
+          "Infobox court": 1,
+          "Infobox COA wide": 1,
+          "Infobox family": 1,
+          "Infobox noble house": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 31,
+            "boxed": 11,
+            "coverage": 0.3548387096774194,
+            "dominant": {
+              "template": "Infobox document",
+              "count": 4
+            },
+            "dominantShare": 0.36363636363636365
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Golden Bulls",
+            "n": 4,
+            "members": [
+              "Golden bull",
+              "Golden Bull of Rimini",
+              "Golden Charter of Bern",
+              "Bull of Gniezno"
+            ]
+          }
+        ],
+        "bare": [
+          "Treaty of Paris (1355)",
+          "Joyous Entry of 1356",
+          "Diet of Metz (1356/57)",
+          "Black Death in the Holy Roman Empire",
+          "Constitutiones Sanctæ Matris Ecclesiæ"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Frankfurt Cathedral",
+        "expected": "Infobox church",
+        "labelSource": "doc-demo (specialized neighbor)"
+      },
+      "verdict": "recommend",
+      "template": "Infobox church",
+      "confidence": "high",
+      "outcome": "pass",
+      "evidence": {
+        "total": 33,
+        "coverage": 0.7575757575757576,
+        "dominant": {
+          "template": "Infobox church",
+          "count": 23
+        },
+        "distribution": {
+          "Infobox church": 23,
+          "Infobox religious building": 2,
+          "Infobox designation list": 2,
+          "Infobox UNESCO World Heritage Site": 1
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 33,
+            "boxed": 25,
+            "coverage": 0.7575757575757576,
+            "dominant": {
+              "template": "Infobox church",
+              "count": 23
+            },
+            "dominantShare": 0.92
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Roman Catholic church buildings in the Diocese of Limburg",
+            "n": 3,
+            "members": [
+              "Saint Justin's Church, Frankfurt-Höchst",
+              "Wetzlar Cathedral",
+              "Frauenfriedenskirche"
+            ]
+          }
+        ],
+        "bare": [
+          "Saint Lambertchurch (Rosmalen)",
+          "Wetzlar Cathedral",
+          "Catholic Holy Cross Church, Augsburg",
+          "Xanten Cathedral",
+          "Imperial cathedrals"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Prince-elector",
+        "expected": "none",
+        "labelSource": "doc-demo (institution, 0/7 boxed)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox royalty",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 51,
+        "coverage": 0.43137254901960786,
+        "dominant": {
+          "template": "Infobox royalty",
+          "count": 3
+        },
+        "distribution": {
+          "Infobox royalty": 3,
+          "Infobox legislature": 3,
+          "Infobox European Parliament constituency": 3,
+          "Infobox former monarchy": 3,
+          "Infobox monarchy": 3,
+          "Infobox country": 2,
+          "Infobox former country": 2,
+          "Infobox Chinese": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 51,
+            "boxed": 22,
+            "coverage": 0.43137254901960786,
+            "dominant": {
+              "template": "Infobox royalty",
+              "count": 3
+            },
+            "dominantShare": 0.13636363636363635
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Monarchy in Germany",
+            "n": 3,
+            "members": [
+              "List of monarchs of Germany",
+              "Imperial Estate",
+              "King in Prussia"
+            ]
+          }
+        ],
+        "bare": [
+          "Church of San Cipriano, Toledo",
+          "Marienrode Priory",
+          "Kreuzlingen Abbey",
+          "Val Abbey",
+          "Advocatus"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Declaration of Rhense",
+        "expected": "none",
+        "labelSource": "doc-demo (institution, 0/7 boxed)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox election",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 146,
+        "coverage": 0.5616438356164384,
+        "dominant": {
+          "template": "Infobox election",
+          "count": 26
+        },
+        "distribution": {
+          "Infobox election": 26,
+          "Infobox summit meeting": 14,
+          "Infobox event": 11,
+          "Infobox military conflict": 7,
+          "Infobox German place": 7,
+          "Infobox settlement": 7,
+          "Infobox German location": 5,
+          "Infobox Chinese": 3
+        },
+        "subCluster": {
+          "byClass": {
+            "n": 80,
+            "boxed": 34,
+            "coverage": 0.425,
+            "dominant": {
+              "template": "Infobox summit meeting",
+              "count": 14
+            },
+            "dominantShare": 0.4117647058823529
+          },
+          "byCategoryOnly": {
+            "n": 66,
+            "boxed": 48,
+            "coverage": 0.7272727272727273,
+            "dominant": {
+              "template": "Infobox election",
+              "count": 26
+            },
+            "dominantShare": 0.5416666666666666
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Webarchive template wayback links",
+            "n": 5,
+            "members": [
+              "European Social Forum",
+              "Ettal Abbey",
+              "Imperial election",
+              "Coronation of the Holy Roman Emperor",
+              "Electoral capitulation"
+            ]
+          },
+          {
+            "category": "Imperial election (Holy Roman Empire)",
+            "n": 4,
+            "members": [
+              "Imperial election",
+              "Coronation of the Holy Roman Emperor",
+              "Electoral capitulation",
+              "List of royal and imperial elections in the Holy Roman Empire"
+            ]
+          }
+        ],
+        "bare": [
+          "Congress of Verona",
+          "Delhi Durbar",
+          "Asian Relations Conference",
+          "Ustertag",
+          "Esbat"
+        ]
+      }
+    },
+    {
+      "case": {
+        "title": "Coronation of the Holy Roman Emperor",
+        "expected": "none",
+        "labelSource": "doc-demo (institution, 0/7 boxed)"
+      },
+      "verdict": "weak-signal",
+      "template": "Infobox election",
+      "confidence": "medium",
+      "outcome": "abstain",
+      "evidence": {
+        "total": 107,
+        "coverage": 0.5046728971962616,
+        "dominant": {
+          "template": "Infobox election",
+          "count": 26
+        },
+        "distribution": {
+          "Infobox election": 26,
+          "Infobox Christian leader": 7,
+          "Infobox country": 6,
+          "Infobox Antipope": 5,
+          "Infobox former country": 3,
+          "Infobox event": 3,
+          "Infobox church": 2,
+          "Infobox royalty": 2
+        },
+        "subCluster": {
+          "byClass": null,
+          "byCategoryOnly": {
+            "n": 107,
+            "boxed": 54,
+            "coverage": 0.5046728971962616,
+            "dominant": {
+              "template": "Infobox election",
+              "count": 26
+            },
+            "dominantShare": 0.48148148148148145
+          }
+        },
+        "bareCluster": [
+          {
+            "category": "Holy Roman Empire–Holy See relations",
+            "n": 6,
+            "members": [
+              "Concordat of Worms",
+              "Road to Canossa",
+              "Diploma Ottonianum",
+              "Treaty of Speyer (1209)",
+              "Synod of Worms (1076)",
+              "War of Comacchio"
+            ]
+          },
+          {
+            "category": "Investiture Controversy",
+            "n": 3,
+            "members": [
+              "Concordat of Worms",
+              "Road to Canossa",
+              "Synod of Worms (1076)"
+            ]
+          },
+          {
+            "category": "Treaties of the Holy See (754–1870)",
+            "n": 3,
+            "members": [
+              "Concordat of Worms",
+              "Diploma Ottonianum",
+              "Treaty of Speyer (1209)"
+            ]
+          }
+        ],
+        "bare": [
+          "Al-Abbasiyya",
+          "Imperial election",
+          "Erbreichsplan",
+          "Kingdom of Germany",
+          "Pleissnerland"
+        ]
+      }
+    }
+  ]
+}

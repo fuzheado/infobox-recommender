@@ -1,0 +1,12 @@
+{
+  "note": "Manually curated, doc-backed ground-truth cases (from infobox-recommendation.md live demos). 'none' = no infobox customary.",
+  "cases": [
+    { "title": "1346 imperial election", "expected": "Infobox election", "labelSource": "doc-demo (26/26 peers boxed)" },
+    { "title": "May 1400 imperial election", "expected": "Infobox election", "labelSource": "doc-demo (orphaned sibling)" },
+    { "title": "Golden Bull of 1356", "expected": "Infobox document", "labelSource": "doc-demo (specialized neighbor)" },
+    { "title": "Frankfurt Cathedral", "expected": "Infobox church", "labelSource": "doc-demo (specialized neighbor)" },
+    { "title": "Prince-elector", "expected": "none", "labelSource": "doc-demo (institution, 0/7 boxed)" },
+    { "title": "Declaration of Rhense", "expected": "none", "labelSource": "doc-demo (institution, 0/7 boxed)" },
+    { "title": "Coronation of the Holy Roman Emperor", "expected": "none", "labelSource": "doc-demo (institution, 0/7 boxed)" }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "meta": {
+    "source": "Category:Wikipedia articles with an infobox request",
+    "fetched": "2026-08-27",
+    "queueSize": 601,
+    "staleCount": 57
+  },
+  "cases": [
+    {
+      "title": "Brooke Hodge",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Brad Gilmore",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Campo San Barnaba",
+      "expected": "Infobox urban feature",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Campo della Salute",
+      "expected": "Infobox urban feature",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Campo del Ghetto Novo",
+      "expected": "Infobox urban feature",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Campo Santo Stefano",
+      "expected": "Infobox urban feature",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Casco (town), Wisconsin",
+      "expected": "Infobox settlement",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Cashew Research Station, Madakkathara",
+      "expected": "Infobox laboratory",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Chilton (town), Wisconsin",
+      "expected": "Infobox settlement",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Christopher Edwards (businessman)",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "ClueQuest",
+      "expected": "Infobox company",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Convictolitavis",
+      "expected": "Infobox officeholder",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Cowboys Are Frequently, Secretly Fond of Each Other",
+      "expected": "Infobox song",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Felix Greissle",
+      "expected": "Infobox musical artist",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Fountain of Wealth",
+      "expected": "Infobox",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Ferdinand P. Earle",
+      "expected": "Infobox military person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Guy Markizano",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "In the Making (TV series)",
+      "expected": "Infobox television",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Izabella Pawelczynska",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Jeremiah Clarke",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Jesús González Ortega",
+      "expected": "Infobox officeholder",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "John Darrenkamp",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "José Ignacio Ustarán",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Levi David Addai",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Lungotevere di Pietra Papa",
+      "expected": "Infobox street",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Lungotevere Prati",
+      "expected": "Infobox street",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Lungotevere Gianicolense",
+      "expected": "Infobox street",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Maani Petgar",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Melbourne, Mount Alexander and Murray River Railway Company",
+      "expected": "Infobox company",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Mercy Faith Lakisa",
+      "expected": "Infobox officeholder",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Miko Kongstad",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "NGC 5475",
+      "expected": "Infobox galaxy",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Noronha",
+      "expected": "Infobox family",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "NGC 5642",
+      "expected": "Infobox galaxy",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "NGC 7706",
+      "expected": "Infobox galaxy",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "NGC 7311",
+      "expected": "Infobox galaxy",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Piazza dell'Esquilino",
+      "expected": "Infobox urban feature",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Piscichnus",
+      "expected": "Infobox fossil",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Piazzale Roma",
+      "expected": "Infobox urban feature",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Playadito",
+      "expected": "Infobox company",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Robert N. Charrette",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Roberta Gropper",
+      "expected": "Infobox officeholder",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "RuPaul's Drag Race: Corona Can't Keep a Good Queen Down",
+      "expected": "Infobox television",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Sabrina Dallafior",
+      "expected": "Infobox officeholder",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Sayfo",
+      "expected": "Infobox",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Serena Morena",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Shari McMahan",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Shigeru Yoshida",
+      "expected": "Infobox officeholder",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Simon de Waal",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Small Business Liability Relief and Brownfields Revitalization Act",
+      "expected": "Infobox U.S. legislation",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Solly's Grille",
+      "expected": "Infobox restaurant",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Strait Is the Gate",
+      "expected": "Infobox book",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Strengholt Holding",
+      "expected": "Infobox company",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Sushirrito",
+      "expected": "Infobox restaurant",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Svend Foyn",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Trans-Ocean News Service",
+      "expected": "Infobox company",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "Tony Greenstein",
+      "expected": "Infobox person",
+      "labelSource": "editor-choice (stale tag)"
+    },
+    {
+      "title": "1346 imperial election",
+      "expected": "Infobox election",
+      "labelSource": "doc-demo (26/26 peers boxed)"
+    },
+    {
+      "title": "May 1400 imperial election",
+      "expected": "Infobox election",
+      "labelSource": "doc-demo (orphaned sibling)"
+    },
+    {
+      "title": "Golden Bull of 1356",
+      "expected": "Infobox document",
+      "labelSource": "doc-demo (specialized neighbor)"
+    },
+    {
+      "title": "Frankfurt Cathedral",
+      "expected": "Infobox church",
+      "labelSource": "doc-demo (specialized neighbor)"
+    },
+    {
+      "title": "Prince-elector",
+      "expected": "none",
+      "labelSource": "doc-demo (institution, 0/7 boxed)"
+    },
+    {
+      "title": "Declaration of Rhense",
+      "expected": "none",
+      "labelSource": "doc-demo (institution, 0/7 boxed)"
+    },
+    {
+      "title": "Coronation of the Holy Roman Emperor",
+      "expected": "none",
+      "labelSource": "doc-demo (institution, 0/7 boxed)"
+    }
+  ]
+}
