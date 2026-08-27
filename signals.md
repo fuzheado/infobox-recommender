@@ -108,7 +108,14 @@ From `test/results/2026-08-27.json`:
 Re-ran the full 64-case eval with both cheap wins in place (2026-08-27):
 
 **Before: 24 pass / 8 fail / 32 abstain — 75% decisive**
-**After: 32 pass / 6 fail / 26 abstain — 84% decisive**
+**After: 35 pass / 6 fail / 23 abstain — 85% decisive**
+
+(Campaign 3: a **maintenance-category filter** — hidden categories were
+leaking through because `prop=categories` returns no `hidden` flag in
+formatversion=2; fixed with `clshow=!hidden` + an extended ignorable set
+including stub categories, which are *not* hidden on enwiki. Three
+abstain→pass, zero regressions, no maintenance cats left in any evidence.
+See `engineering-notes.md` §1.8.)
 
 What moved:
 

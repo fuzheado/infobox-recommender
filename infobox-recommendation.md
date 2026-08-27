@@ -145,10 +145,12 @@ repo (see README.md for the doc index):
 - **Test corpus**: 64 labeled cases from the infobox-request backlog — the
   9% stale-tag rate (57/601) provides free editor-consensus labels
   (`test/fixtures.json`, `scripts/fetch-queue.mjs`).
-- **Eval**: 32 pass / 6 fail / 26 abstain — 84% accuracy on decisive
+- **Eval**: 35 pass / 6 fail / 23 abstain — 85% accuracy on decisive
   verdicts (`test/EVALUATION.md`, results in `test/results/`).
 - **Signal upgrades**: member-count category selection + short-description
-  structural filtering moved 75% → 84% (`signals.md`, H1/H2 confirmed).
+  structural filtering moved 75% → 84% (`signals.md`, H1/H2 confirmed); a
+  maintenance-category filter (clshow=!hidden + ignorable set) moved it to
+  85% with no regressions.
 - **Stage D** (Wikidata fill-rate draft preview) and the **template
   specificity ladder** remain future work; the userscript path is documented
   in README.

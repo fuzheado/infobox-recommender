@@ -105,7 +105,7 @@ abstentions do not dilute precision.
 
 ## 3. Results
 
-**32 pass / 6 fail / 26 abstain · 84% (32/38) on decisive verdicts · 41% abstention rate**
+**35 pass / 6 fail / 23 abstain · 85% (35/41) on decisive verdicts · 36% abstention rate**
 
 The abstention rate is the design working: roughly half of the backlog
 articles sit in the ambiguous middle band where peer signals are mixed, and

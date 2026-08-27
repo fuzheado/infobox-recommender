@@ -28,7 +28,7 @@ sub-cluster splits — so an editor can weigh the argument themselves,
 consistent with MOS:INFOBOXUSE, which explicitly treats "similar articles do
 or don't have infoboxes" as a legitimate consensus argument. On a 64-case
 labeled corpus drawn from the infobox-request backlog (editor-consensus
-labels), the pipeline scores 84% accuracy on decisive verdicts, with
+labels), the pipeline scores 85% accuracy on decisive verdicts, with
 abstention treated as the designed honest answer in the ambiguous middle
 band.
 
@@ -116,7 +116,7 @@ honest abstention).
 
 **Full writeup: `test/EVALUATION.md`** — dataset construction, scoring rules,
 per-case table, analysis of every failure, the bugs the eval surfaced (with
-the before/after progression 11% → 83% → 71% → 73% → 75% → 84%), and
+the before/after progression 11% → 83% → 71% → 73% → 75% → 84% → 85%), and
 limitations.
 
 ## Single-article invocation
