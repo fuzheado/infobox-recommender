@@ -142,15 +142,19 @@ repo (see README.md for the doc index):
   same-class), `May 1400 imperial election` → recommend (orphan caught),
   concept/institution articles → honest weak-signal (the 0/7 case needs the
   still-future semantic sub-clustering to separate genres automatically).
-- **Test corpus**: 64 labeled cases from the infobox-request backlog — the
-  9% stale-tag rate (57/601) provides free editor-consensus labels
-  (`test/fixtures.json`, `scripts/fetch-queue.mjs`).
-- **Eval**: 35 pass / 6 fail / 23 abstain — 85% accuracy on decisive
-  verdicts (`test/EVALUATION.md`, results in `test/results/`).
+- **Test corpus**: 87 cases — 64 labeled cases from the infobox-request
+  backlog (the 9% stale-tag rate, 57/601, provides free editor-consensus
+  labels) plus 23 canonical validate cases (sets with universal boxes:
+  presidents, states, foods, episodes…; `scripts/manual-cases.json`).
+- **Eval**: 56 pass / 6 fail / 25 abstain — 90% accuracy on decisive
+  verdicts over the 87-case corpus (`test/EVALUATION.md`, results in
+  `test/results/`); the original 64-case corpus is exactly preserved
+  (35/6/23).
 - **Signal upgrades**: member-count category selection + short-description
   structural filtering moved 75% → 84% (`signals.md`, H1/H2 confirmed); a
   maintenance-category filter (clshow=!hidden + ignorable set) moved it to
-  85% with no regressions.
+  85% with no regressions; campaign 6 added Wikidata same-type
+  pointer peers (P39/P179/P361/P155/P156) and the canonical corpus — 90%.
 - **Stage D** (Wikidata fill-rate draft preview) and the **template
   specificity ladder** remain future work; the userscript path is documented
   in README.

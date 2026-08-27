@@ -80,6 +80,40 @@ was established by an explicit peer census:
 - Fixtures live in `test/fixtures.json` (rebuilt by `npm run fixtures`),
   manual seeds in `scripts/manual-cases.json`.
 
+### 1.5 Canonical ground-truth corpus (23 cases, campaign 6)
+
+Beyond the backlog-derived labels, a **canonical validate corpus** was added:
+articles whose correct answer is essentially uncontroversial because they
+belong to a set with a universal infobox practice. The risk of synthetic
+labels is acknowledged — these are not "should have an infobox" claims about
+edge cases, but *set-membership confirmations*: if 45+ of the 46 US
+presidents use {{Infobox officeholder}}, the peer census on any president
+should confirm it. All 23 cases are run in validate mode (the article HAS an
+infobox; the census must confirm the choice):
+
+- **Sets with universal boxes**: presidents (Lincoln, Washington →
+  officeholder), US states (Wyoming, California → U.S. state), foods (Hot
+  dog, Hamburger → food), countries (France, United States → country),
+  cities (New York City, Oxford → settlement), the Beatles → musical
+  artist, Mount Everest → mountain, Nile → river, Venus → planet, Oxygen →
+  element, Coca-Cola → drink, The Naked Now → television episode,
+  Tyrannosaurus → Automatic taxobox, Star Wars (film) → film, Minecraft →
+  video game, Mona Lisa → artwork, New York Yankees → MLB, FIFA World Cup →
+  football tournament.
+- **Expectation format**: `consistent[:Template]` — the eval asserts the
+  validate comparison says the existing infobox matches peer practice
+  (optionally the exact template).
+
+These cases are *also* the sharpest regression net: they exercise the
+primary-infobox selection, the infobox-family filter (Speciesbox,
+Automatic taxobox), redirect normalization (prepared food → food, beverage →
+drink), supporting-box rules (UNESCO child box on Everest, region-symbols on
+states, per-element isotope tables on elements), and the Wikidata pointer
+discovery (§5.7). Result: **21/23 pass; 2 honest abstains** — Oxygen (per-
+element wrapper boxes fragment the element class) and New York Yankees
+(mixed MLB/seasons pool) — both show the correct template as the visible
+dominant.
+
 ---
 
 ## 2. Scoring rules
@@ -219,7 +253,10 @@ category, ≥40% of all bare peers) within the 25% band.
 | 4 — after 5.3 (structural none-warranted) | 64 | 24 | 9 | 31 | 73% |
 | 5 — cluster ceiling tightened to 25% band | 64 | 24 | 8 | 32 | 75% |
 | 6 — signal upgrades (5.5 below) | 64 | 32 | 6 | 26 | 84% |
-| 7 — maintenance-category filter (5.6) | 64 | **35** | **6** | **23** | **85%** |
+| 7 — maintenance-category filter (5.6) | 64 | 35 | 6 | 23 | 85% |
+| 8 — tiered neighborhoods (Dallas Cowboys fix) | 64 | 35 | 6 | 23 | 85% |
+| 9 — wd same-type pointers (5.7) | 64 | 36 | 6 | 22 | 86% |
+| 10 — canonical ground-truth corpus (1.5) | 87 | **56** | **6** | **25** | **90%** |
 
 ### 5.5 Signal upgrades (campaign 2 — see `signals.md` for hypotheses)
 
@@ -255,6 +292,61 @@ prefixes, Use … English). Result: **84% → 85% (35/6/23)** — three
 abstain→pass flips (Piazza dell'Esquilino, Piazzale Roma, Serena Morena),
 zero regressions, and no maintenance categories left in any evidence. See
 `engineering-notes.md` §1.8 for the API lesson.
+
+### 5.7 Wikidata same-type pointer peers + canonical corpus (campaign 6)
+
+**The insight** (proposed by the user, validated empirically): Wikidata
+properties like *part of* (P361), *part of the series* (P179), and
+*preceded/succeeded by* (P155/P156) are **same-type pointers** — only things
+of the same kind can share a set, a series, or a succession chain. When P31
+is unusable (people: Q5 human, dropped at >500 instances) or absent (Hot
+dog has no P31 at all), these pointers still find true peers. P39 (position
+held) extends the idea: every US president shares P39 = President of the
+United States.
+
+**Discovery design** (`lib/peers.js`):
+- Per-VALUE queries: each P39 position / P179 series / P361 set is queried
+  separately, so each yields one clean same-kind group (the POTUS set, not
+  a mix of Lincoln's five positions). Cached per value — every president
+  reuses the POTUS query.
+- P155/P156: direct chain-neighbor query (the 1–4 items that precede/
+  succeed the article — same-type by construction).
+- Value labels (wbgetentities, one batched call) shown in the tier strata:
+  "P39: President of the United States".
+- Capped at 60 members per group and appended AFTER category peers in the
+  pool, so pointer peers never displace category peers under the 150 cap
+  (an early version flooded the pool and broke Jesús González Ortega).
+
+**Verified effects**: Lincoln → officeholder 140/145 boxed peers (high),
+consistent; The Naked Now → its series' episodes (television episode),
+consistent; Wyoming's P361 set joins the U.S.-state class. Roberta Gropper
+(abstain→pass) was rescued by P39.
+
+**Refinements the canonical corpus flushed out** (each caught by a ground-
+truth case):
+1. **Infobox family**: Speciesbox and Automatic taxobox were missing
+   (Tyrannosaurus showed "no infobox").
+2. **Redirect normalization**: {{Infobox prepared food}} → food, {{Infobox
+   beverage}} → drink, {{Infobox NFL team}} → gridiron football team.
+   `prop=templates` returns the LITERAL transcluded names, so one batched
+   `redirects=1` call canonicalizes them (comparisons, primaries,
+   distribution).
+3. **Transclusion facts** (same batched call): template A transcluding
+   template B means A is the specialization — used by the primary
+   selection's generic-place penalty ({{Infobox U.S. state}} beats the
+   generic {{Infobox settlement}} despite being shorter — "U.S." is 3
+   chars).
+4. **Supporting boxes**: embedded child boxes ({{Infobox region symbols}}
+   on US states, {{Infobox UNESCO World Heritage Site}} on Everest),
+   meta-templates (names ending `(meta)` or ` isotopes` — the per-element
+   isotope tables), and medal wrappers never win primary selection.
+5. **byClass override hardened**: now requires dominanceShare ≥ 0.5 — a
+   count-1 plurality (Oxygen's fragmented element class) can no longer
+   fire a recommendation.
+
+**Result**: old 64-case corpus exactly preserved (35/6/23); canonical set
+21/23 (2 honest abstains: Oxygen — per-element wrapper boxes fragment the
+class; Yankees — mixed MLB/seasons pool); overall **56/6/25 — 90%**.
 
 ---
 

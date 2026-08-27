@@ -30,9 +30,10 @@ its PRIMARY infobox only — supporting boxes like {{Infobox3cols}} or
 medal-record wrappers never win), event-vs-concept sub-cluster splits — so
 an editor can weigh the argument themselves,
 consistent with MOS:INFOBOXUSE, which explicitly treats "similar articles do
-or don't have infoboxes" as a legitimate consensus argument. On a 64-case
-labeled corpus drawn from the infobox-request backlog (editor-consensus
-labels), the pipeline scores 85% accuracy on decisive verdicts, with
+or don't have infoboxes" as a legitimate consensus argument. On an 87-case
+labeled corpus — 64 backlog-derived labels plus 23 canonical validate cases
+(sets with universal boxes: presidents, states, foods, …) — the pipeline
+scores 90% accuracy on decisive verdicts, with
 abstention treated as the designed honest answer in the ambiguous middle
 band.
 
@@ -173,9 +174,10 @@ node cli.js "A" "B" "C" --json       # multiple titles, machine-readable only
 
 ## Findings & history (2026-08-27)
 
-Three evaluation campaigns took the pipeline from 11% to 85% decisive
-accuracy (24 → 35 pass, 32 → 23 abstain): census correctness fixes, decision
-logic hardening, signal upgrades, and the maintenance-category filter. Key
+Six evaluation campaigns took the pipeline from 11% to 90% decisive
+accuracy (1 → 56 pass, 32 → 25 abstain): census correctness fixes, decision
+logic hardening, signal upgrades, the maintenance-category filter, tiered
+neighborhoods, and the canonical corpus + Wikidata same-type pointers. Key
 verified cases: `1346 imperial election` → **recommend Infobox election
 (high)** (97% same-class, matches the research doc's demo); `May 1400
 imperial election` → **recommend** (the doc's orphaned sibling, correctly

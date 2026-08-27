@@ -115,6 +115,31 @@ The ignorable-category set lives in `MAINTENANCE_CATEGORY_RE`
 (`"helpformat":"none"`) — consult mediawiki.org docs for semantics, or
 verify behavior empirically (as done for all of the above).
 
+### 1.10 wbgetclaims: one property per call; heavy items via filtered claims
+
+`action=wbgetclaims&entity=Q…&property=P31` accepts a SINGLE property — a
+pipe-separated list (`P31|P279`) is rejected with `param-invalid`. Fetch the
+properties you need concurrently (7 small calls in the resolve phase, all
+cached). Prefer this over `wbgetentities&props=claims` for famous items:
+Lincoln's full claims response is ~100KB; the filtered P39 fetch is ~1KB.
+
+### 1.11 `prop=templates` returns LITERAL transcluded names — normalize redirects yourself
+
+A page using {{Infobox NFL team}} (a redirect to {{Infobox gridiron football
+team}}) lists the literal name; comparisons and primaries must use the
+canonical name. One batched call with `redirects=1` + `prop=templates`
+returns BOTH the redirect map and the template's direct transclusions
+(which reveal specializations: {{Infobox U.S. state}} transcludes
+{{Infobox settlement}}). Cost: one call per run, cached.
+
+### 1.12 Per-value SPARQL caching beats one mixed query
+
+For same-type pointer discovery (P39/P179/P361), run one query PER value
+(`?item wdt:P39 wd:Q11696`), not one query with `VALUES { all values }`:
+per-value queries return clean sets (all presidents, not a mix of
+Lincoln's five positions) and the URL — and thus the disk cache — is shared
+by every item with that value (one POTUS query for all 46 presidents).
+
 ## 2. Methodology lessons
 
 ### 2.1 Cache staleness on a live corpus masquerades as regressions

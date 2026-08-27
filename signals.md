@@ -61,6 +61,7 @@ From `test/results/latest.json` (campaign 3, 2026-08-27):
 | **Wikidata descriptions/labels** | free (SPARQL already returns items) | Low–Med | Same filtering role as shortdesc, cross-language |
 | **ORES / LiftWing article topics** | 1 call/peer | Med–High | Topic labels → sub-cluster peers (the doc's 0/7 institution case is a topic-cluster problem) |
 | **WikiProject banner → project categories** | 1 extra API call | Medium | Untapped peer source; projects standardize infoboxes by subject |
+| **Wikidata same-type pointers** (P39 position held, P179 part of the series, P361 part of, P155/P156 preceded/succeeded by) | wbgetclaims + 1 SPARQL per value (cached per value) | **High — implemented (campaign 6)** | "Only same-kind things share a position, a series, a set, or a succession chain" — finds true peers when P31 is unusable (people) or absent (Hot dog). Lincoln → all presidents via P39; episodes → their series via P179 |
 | **Template taxonomy** (Category:Infobox templates tree) | 1-time crawl, cached | High (different stage) | The specificity ladder (publisher ⊂ company) — fixes near-miss fails, not peer finding |
 | **Pageviews / popularity** | cheap | ~Zero | Popularity ≠ genre; wrong axis |
 | **`list=search` "similar articles"** | cheap | Low | Title/lead-text driven, weak genre signal |
@@ -91,6 +92,11 @@ From `test/results/latest.json` (campaign 3, 2026-08-27):
 - **H6 — Abstain-heavy behavior is correct.** Precision on decisive verdicts
   is the metric that matters; forcing the middle band would trade honest
   abstention for wrong recommends.
+- **H7 — Same-type Wikidata pointers beat classes for people (confirmed,
+  campaign 6).** P31=human is dropped at the 500-instance cap, but P39
+  (position held) still finds all presidents, P179 finds series members, P361
+  set members, P155/P156 chain neighbors. Per-VALUE queries keep the sets
+  clean and cacheable (the POTUS query is shared by every president).
 
 ## 5. Cheap wins implemented this session
 
@@ -117,7 +123,15 @@ decisive tight circle (>=80% coverage, >=70% dominance, consistent with the
 wider pool) rescues a verdict — e.g. Dallas Cowboys -> Category:NFL teams
 (32): 31/31 gridiron. Intersection categories ("1960 establishments in
 Texas") are excluded from discovery. Three abstains rescued (Charrette,
-Sushirrito, Greenstein), zero regressions. — primary-infobox
+Sushirrito, Greenstein), zero regressions.
+
+**After (campaign 6): 56 pass / 6 fail / 25 abstain — 90% decisive (87-case
+corpus).** Wikidata same-type pointer peers (P39/P179/P361/P155/P156, H7)
+plus the 23-case canonical validate corpus (sets with universal boxes:
+presidents, states, foods, …). The canonical cases flushed out five real
+defects (Speciesbox family gap, redirect normalization, transclusion-based
+primary rules, supporting-box rules, byClass share requirement) — see
+`test/EVALUATION.md` §1.5/§5.7. Old 64-case corpus exactly preserved. — primary-infobox
 selection (each boxed peer contributes its PRIMARY box only; supporting
 boxes — generic {{Infobox}}, legacy Infobox3cols, {{Infobox medal templates}}
 — never win). Gaelic games case fixed (Infobox Gaelic games biography 41/44
