@@ -8,6 +8,7 @@
     "demo": "node cli.js \"1346 imperial election\"",
     "demo:prince": "node cli.js \"Prince-elector\"",
     "fixtures": "node scripts/fetch-queue.mjs",
-    "eval": "node test/eval.mjs"
+    "eval": "node test/eval.mjs",
+    "serve": "node server.mjs"
   }
 }

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infobox recommender — English Wikipedia</title>
+<meta name="description" content="Peer-census analysis: should this Wikipedia article have an infobox, and which template?">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<header class="site-header">
+  <h1>Infobox recommender</h1>
+  <p class="tagline">Peer-census analysis for English Wikipedia articles — which infobox, if any?</p>
+  <form id="search" autocomplete="off">
+    <input id="title" type="text" placeholder="Article title, e.g. Small-signal model" required>
+    <button type="submit">Analyze</button>
+  </form>
+</header>
+<main id="app"><div id="view"></div></main>
+<footer class="site-footer">
+  <p>
+    Advisory analysis based on peer-article observation — evidence for editorial
+    consensus (MOS:INFOBOXUSE), not an authority. Read the
+    <a href="https://github.com/fuzheado/infobox-recommender">methodology</a>.
+  </p>
+</footer>
+<script src="/app.js"></script>
+</body>
+</html>

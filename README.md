@@ -58,6 +58,28 @@ The libs are pure logic + a thin `fetch` layer — the same code will back the
 future userscript (pacing/caching disabled there; same-origin API calls on
 enwiki, `origin=*` CORS for Wikidata).
 
+## Web UI (experimental)
+
+Zero-dependency analysis service — the same pipeline as the CLI, with a rich
+report renderer and an API mode:
+
+```sh
+npm run serve        # http://localhost:3000
+```
+
+- `/?title=Small-signal+model` → auto-runs the analysis and renders the report (shareable URL)
+- `/analyze?title=X&output=json` → API mode: full analysis JSON, CORS-enabled (missing title → 400)
+- `/` → search + examples
+
+Cold analyses take 30–90s (WDQS); repeat analyses are instant (disk cache).
+Server guards: 2 concurrent analyses max (queue), per-IP throttle (30/5 min),
+title sanitization, path-traversal protection.
+
+Deployment: Toolforge node22 webservice (tool creation is web-UI only at
+toolsadmin; OSI `LICENSE` included). Caveat: Toolforge proxy timeouts may
+bite cold 60–90s analyses — if so, the fix is a job/polling pattern, not a
+longer request.
+
 ## Docs
 
 | Doc | Contents |
