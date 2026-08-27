@@ -154,9 +154,16 @@ Document label provenance (see `test/fixtures.json` `labelSource`).
   browser use `{ cacheDir: null, paceMs: 0 }` — enwiki calls are same-origin
   (no CORS), Wikidata works with anonymous `origin=*`.
 - **Canonical repo**: github.com/fuzheado/infobox-recommender (private as of
-  2026-08-27; flip visibility when ready). Toolforge deployment: tool
-  creation is web-UI only (toolsadmin), then
-  `webservice --backend=kubernetes node22 start`; an OSI `LICENSE` (MIT) is
-  included.
+  2026-08-27; flip visibility when ready).
+- **Toolforge (deployed 2026-08-27)**: tool `infobox-recommender`;
+  <https://infobox-recommender.toolforge.org>. The k8s node runtime serves
+  from `~/www/js/` (package.json + server.mjs + lib/ + public/ — the CLI's
+  pre-check errors if package.json is missing there). Runtime is `node20`
+  (this instance's newest node type). Tool creation is web-UI only
+  (toolsadmin); deploy = tar (minus cache/.git) → scp → extract as
+  `sudo -iu tools.<tool>` → `webservice --backend=kubernetes node20
+  restart`. Verified: 21s cold analyses complete through the proxy; warm
+  repeats ~0.15s; SSE streams. Keep the two copies in sync (repo root +
+  www/js) or make www/js a symlink farm.
 - Disk cache (`cache/`, SHA1-URL-keyed JSON) is the default; re-runs are
   deterministic and instant. Bust it when API semantics change.

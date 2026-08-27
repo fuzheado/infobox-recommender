@@ -89,6 +89,15 @@ boxed peers) links to its Template: page for inspection. An **About** box
 (header/footer link; auto-opens on first visit) explains the method and the
 three verdicts for new users.
 
+**Validate mode**: for an article that already has an infobox, the report
+shows a "Run peer census to check this choice" button (or use
+`?title=X&validate=1` — shareable, and works on the JSON API too). It runs
+the census anyway and compares the existing choice against peer practice:
+*consistent* (matches the dominant template, e.g. 1612 imperial election),
+*atypical* (peers differ — e.g. Joint European Torus uses the generic
+{{Infobox}} while 38/57 peers use {{Infobox fusion device}}), or
+*inconclusive* (mixed evidence). Also the CLI: `node cli.js X --validate`.
+
 Speed: cold analyses run in ~5–15s (down from 30–90s) thanks to bigger
 census batches with continuation, per-class Wikidata sample caching (shared
 across every article of the same class), parallel discovery stages, and lazy
@@ -100,10 +109,14 @@ the analysis runs.
 Server guards: 2 concurrent analyses max (queue), per-IP throttle (30/5 min),
 title sanitization, path-traversal protection.
 
-Deployment: Toolforge node22 webservice (tool creation is web-UI only at
-toolsadmin; OSI `LICENSE` included). Caveat: Toolforge proxy timeouts may
-bite cold analyses — if so, the fix is a job/polling pattern, not a longer
-request (the SSE stream is a step toward that).
+**Deployed: <https://infobox-recommender.toolforge.org>** (Toolforge
+Kubernetes, node20 runtime). Layout note: the k8s node type serves the app
+from `~/www/js/` (package.json + server.mjs + lib/ + public/); redeploy =
+package the repo (minus cache/), extract as the tool user, then
+`webservice --backend=kubernetes node20 restart`. Verified live: cold
+150-peer analyses (~21s) complete fine through the Toolforge proxy, warm
+repeats are ~0.15s, SSE progress streams. Tool account is created via the
+web UI only (toolsadmin); OSI `LICENSE` (MIT) included.
 
 ## Docs
 
