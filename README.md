@@ -8,7 +8,7 @@ is customary and which template dominates.
 
 ## Approach (executive summary)
 
-Our recommender answers "should this infoboxless article have an infobox, and
+This recommender answers "should this infoboxless article have an infobox, and
 if so which template?" by running an **infobox census over the article's
 peers** rather than by matching the article itself against template rules.
 Peers are discovered from three signals: Wikidata **P31 (instance-of)
