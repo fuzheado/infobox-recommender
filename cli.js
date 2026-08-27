@@ -23,6 +23,14 @@ for (const t of titles) {
     results.push(r);
     if (jsonOnly) continue;
     console.log(`  qid: ${r.qid ?? '(none)'}`);
+    if (r.digest) {
+      const d = r.digest;
+      console.log(
+        `  ${d.existingInfobox ? `infobox: {{${d.existingInfobox}}}` : 'infobox: none'}` +
+          (d.shortdesc ? ` | ${d.shortdesc}` : '')
+      );
+      if (d.extract) console.log(`  digest: ${d.extract.slice(0, 160)}${d.extract.length > 160 ? '…' : ''}`);
+    }
     if (r.verdict === 'recommend') {
       console.log(`  -> recommend: ${r.template} (${r.confidence}) — ${r.reason}`);
     } else {

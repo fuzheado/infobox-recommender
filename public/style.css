@@ -120,6 +120,37 @@ code {
 
 .coverage-label { margin-bottom: 6px; font-size: 14px; }
 
+/* article digest card */
+.digest-head { display: flex; gap: 12px; align-items: flex-start; }
+.digest-thumb {
+  width: 72px; height: 72px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  flex: none;
+}
+.digest-title { font-size: 18px; font-weight: 700; }
+.digest-desc { color: var(--muted); font-style: italic; font-size: 13px; margin: 2px 0 4px; }
+.digest-infobox { font-size: 12px; }
+.digest-infobox.none { color: var(--muted); }
+.digest-extract { font-size: 13.5px; color: #404244; margin: 8px 0 0; }
+
+/* clickable template names */
+.tpl-link {
+  font-family: var(--mono);
+  font-size: 0.95em;
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px dotted #a2a9b1;
+}
+.tpl-link:hover { text-decoration: none; border-bottom: 1px solid var(--link); }
+.dist-name {
+  color: var(--fg);
+  border-bottom: none;
+}
+.dist-name:hover { border-bottom: 1px solid var(--link); }
+.peer-list .tpl-link { font-size: 12px; }
+
 .dist-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
 .dist-name {
   width: 220px;

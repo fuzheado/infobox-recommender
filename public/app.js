@@ -17,6 +17,13 @@ const EXAMPLES = [
 const esc = (s) =>
   String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+// clickable template name -> Template: page
+const tplLink = (name, cls = '') =>
+  `<a class="tpl-link ${cls}" href="https://en.wikipedia.org/wiki/Template:${encodeURIComponent(name.replace(/ /g, '_'))}" target="_blank" rel="noopener">${esc(name)}</a>`;
+
+const articleUrl = (title) =>
+  `https://en.wikipedia.org/wiki/${encodeURIComponent((title ?? '').replace(/ /g, '_'))}`;
+
 const qs = () => new URLSearchParams(location.search);
 
 function setTitleParam(title) {
@@ -68,6 +75,32 @@ function streamAnalysis(title, onStage) {
 const panel = (title, html) =>
   `<section class="panel"><h3>${esc(title)}</h3>${html}</section>`;
 
+// Article digest card: clickable title, short description, lead extract,
+// thumbnail, infobox status — shown while the census runs and in the report.
+function digestHtml(d) {
+  if (!d) return '';
+  const thumb = d.thumbnail
+    ? `<img class="digest-thumb" src="${esc(d.thumbnail)}" alt="" loading="lazy">`
+    : '';
+  const box =
+    d.existingInfobox && d.existingInfobox !== 'Infobox'
+      ? `<div class="digest-infobox">Has an infobox: ${tplLink(d.existingInfobox)}</div>`
+      : `<div class="digest-infobox none">No infobox detected</div>`;
+  const extract = d.extract
+    ? `<p class="digest-extract">${esc(d.extract.length > 400 ? d.extract.slice(0, 400) + '…' : d.extract)}</p>`
+    : '';
+  return `<section class="panel digest">
+    <div class="digest-head">${thumb}
+      <div>
+        <div class="digest-title"><a href="${articleUrl(d.title)}" target="_blank" rel="noopener">${esc(d.title)}</a></div>
+        ${d.shortdesc ? `<div class="digest-desc">${esc(d.shortdesc)}</div>` : ''}
+        ${box}
+      </div>
+    </div>
+    ${extract}
+  </section>`;
+}
+
 function coverageBar(ev) {
   const cov = Math.round((ev.coverage ?? 0) * 100);
   const boxed = ev.withInfobox ?? Math.round((ev.coverage ?? 0) * (ev.total ?? 0));
@@ -89,7 +122,7 @@ function distributionPanel(ev) {
       ${dist
         .map(
           ([t, n]) => `<div class="dist-row">
-            <span class="dist-name" title="${esc(t)}">${esc(t)}</span>
+            ${tplLink(t, 'dist-name')}
             <div class="bar"><div class="fill" style="width:${Math.round((n / max) * 100)}%"></div></div>
             <span class="dist-n">${n}</span>
           </div>`
@@ -102,7 +135,7 @@ function subClusterPanel(ev) {
   const sc = ev.subCluster ?? {};
   const rows = [];
   if (sc.byClass) {
-    rows.push(`<div class="sc-row"><span class="sc-label">Same-class (P31)</span><strong>${Math.round(sc.byClass.coverage * 100)}% boxed</strong> <span class="muted">n=${sc.byClass.n}${sc.byClass.dominant ? ' · dominant: ' + esc(sc.byClass.dominant.template) : ''}</span></div>`);
+    rows.push(`<div class="sc-row"><span class="sc-label">Same-class (P31)</span><strong>${Math.round(sc.byClass.coverage * 100)}% boxed</strong> <span class="muted">n=${sc.byClass.n}${sc.byClass.dominant ? ' · dominant: ' + tplLink(sc.byClass.dominant.template) : ''}</span></div>`);
   }
   if (sc.byCategoryOnly) {
     rows.push(`<div class="sc-row"><span class="sc-label">Category-only</span><strong>${Math.round(sc.byCategoryOnly.coverage * 100)}% boxed</strong> <span class="muted">n=${sc.byCategoryOnly.n}</span></div>`);
@@ -132,12 +165,12 @@ function peerSamplesPanel(ev) {
   const sections = [];
   if (boxed.length) {
     sections.push(`<div><h4>Boxed peers</h4><ul class="peer-list">
-      ${boxed.map((p) => `<li><a href="https://en.wikipedia.org/wiki/${encodeURIComponent(p.title.replace(/ /g, '_'))}" target="_blank" rel="noopener">${esc(p.title)}</a> <span class="tpl">${esc(p.template)}</span></li>`).join('')}
+      ${boxed.map((p) => `<li><a href="${articleUrl(p.title)}" target="_blank" rel="noopener">${esc(p.title)}</a> ${tplLink(p.template)}</li>`).join('')}
     </ul></div>`);
   }
   if (bare.length) {
     sections.push(`<div><h4>Bare peers</h4><ul class="peer-list">
-      ${bare.map((p) => `<li><a href="https://en.wikipedia.org/wiki/${encodeURIComponent(p.replace(/ /g, '_'))}" target="_blank" rel="noopener">${esc(p)}</a></li>`).join('')}
+      ${bare.map((p) => `<li><a href="${articleUrl(p)}" target="_blank" rel="noopener">${esc(p)}</a></li>`).join('')}
     </ul></div>`);
   }
   return sections.length ? panel('Peer samples', sections.join('')) : '';
@@ -162,7 +195,7 @@ function weakSignalNote(r, ev) {
     return `<p class="note weak-note">Only ${ev.total} evaluable peers — too few for a reliable census. The article's Wikidata class may be too broad or its categories too sparse.</p>`;
   }
   if (cov >= 50 && domShare < 50) {
-    return `<p class="note weak-note">Most peers have an infobox, but no single template dominates (best candidate: ${esc(dom.template)} at ${domShare}% of boxed peers). The genre may be mixed — a WikiProject banner may point to the standardized infobox for this subject.</p>`;
+    return `<p class="note weak-note">Most peers have an infobox, but no single template dominates (best candidate: ${tplLink(dom.template)} at ${domShare}% of boxed peers). The genre may be mixed — a WikiProject banner may point to the standardized infobox for this subject.</p>`;
   }
   return `<p class="note weak-note">Peer signals are mixed (coverage ${cov}% in the ambiguous band). The evidence below shows what exists; a WikiProject banner may point to the standardized infobox for this subject.</p>`;
 }
@@ -173,7 +206,7 @@ function renderReport(r) {
   switch (r.verdict) {
     case 'recommend':
       cardClass = 'v-ok';
-      verdictTitle = `Recommend: ${esc(r.template)}`;
+      verdictTitle = `Recommend: ${tplLink(r.template)}`;
       badge = `<span class="badge">confidence: ${esc(r.confidence ?? '—')}</span>`;
       break;
     case 'none-warranted':
@@ -188,7 +221,7 @@ function renderReport(r) {
       break;
     case 'already-has-infobox':
       cardClass = 'v-info';
-      verdictTitle = `Already has an infobox${r.template ? ` (${esc(r.template)})` : ''}`;
+      verdictTitle = `Already has an infobox${r.template ? ` (${tplLink(r.template)})` : ''}`;
       break;
     case 'excluded':
       cardClass = 'v-info';
@@ -199,7 +232,7 @@ function renderReport(r) {
       verdictTitle = `Error — ${esc(r.reason ?? '')}`;
   }
 
-  const articleLink = `https://en.wikipedia.org/wiki/${encodeURIComponent((r.title ?? '').replace(/ /g, '_'))}`;
+  const articleLink = articleUrl(r.title ?? '');
   const talkLink = `https://en.wikipedia.org/wiki/Talk:${encodeURIComponent((r.title ?? '').replace(/ /g, '_'))}`;
 
   let evidenceHtml = '';
@@ -216,6 +249,7 @@ function renderReport(r) {
 
   $view.innerHTML = `
     <div class="report">
+      ${digestHtml(r.digest)}
       <div class="verdict ${cardClass}">
         <div class="verdict-title">${verdictTitle} ${badge}</div>
         <div class="verdict-reason">${esc(r.reason ?? '')}</div>
@@ -260,7 +294,8 @@ function renderLoading(title) {
     <div class="report loading">
       <div class="spinner"></div>
       <h2>Running the peer census for “${esc(title)}”…</h2>
-      <p class="muted" id="elapsed">First analysis of an article takes 30–90s (Wikidata queries). Repeat analyses are instant.</p>
+      <p class="muted" id="elapsed">First analysis takes ~5–30s depending on peer-set size. Repeat analyses are instant.</p>
+      <div id="digest"></div>
       <div class="progress-panel" id="progress">
         <div class="stage" data-stage="resolve"><span class="dot"></span>Resolving article</div>
         <div class="stage" data-stage="peers"><span class="dot"></span>Discovering peers (Wikidata class, categories, WikiProject banners)</div>
@@ -278,6 +313,13 @@ function renderLoading(title) {
   }, 1000);
 
   onStageRef = (ev) => {
+    if (ev.stage === 'digest') {
+      // article digest lands right after resolution — render it while the
+      // census runs (clickable title, short description, lead extract)
+      const slot = document.getElementById('digest');
+      if (slot) slot.innerHTML = digestHtml(ev);
+      return;
+    }
     const row = document.querySelector(`.stage[data-stage="${ev.stage}"]`);
     if (row) {
       if (ev.stage === 'census' && typeof ev.done === 'number') {
