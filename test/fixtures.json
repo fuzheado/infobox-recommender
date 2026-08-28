@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "Category:Wikipedia articles with an infobox request",
-    "fetched": "2026-08-27",
+    "fetched": "2026-08-28",
     "queueSize": 601,
     "staleCount": 57
   },
@@ -440,6 +440,11 @@
       "title": "FIFA World Cup",
       "expected": "consistent:Infobox football tournament",
       "labelSource": "canonical-validate (user-proposed ground truth)"
+    },
+    {
+      "title": "Icelandic College of Art and Crafts",
+      "expected": "Infobox university",
+      "labelSource": "manual-2026-08-28 (peer census 9/10 Infobox university; subsidiary rankings-box regression case)"
     }
   ]
 }

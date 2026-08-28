@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="site-header">
-  <h1>Infobox recommender</h1>
+  <h1><a href="/" id="home-link" title="Start page — clear the current analysis">Infobox recommender</a></h1>
   <p class="tagline">Peer-census analysis for English Wikipedia articles — which infobox, if any? <a href="#about" id="about-link">About this tool</a></p>
   <form id="search" autocomplete="off">
     <input id="title" type="text" placeholder="Article title, e.g. Small-signal model" required>
@@ -90,11 +90,11 @@
     infobox; the remaining ~23% include many that are appropriately without one.</p>
 
     <h3>How well does it work?</h3>
-    <p>The pipeline is evaluated against an 87-case corpus: 64 labeled cases
+    <p>The pipeline is evaluated against an 88-case corpus: 64 labeled cases
     from the infobox-request backlog (labels = templates editors actually
-    chose) plus 23 canonical validate cases (sets with universal boxes —
+    chose) plus 24 manual/canonical validate cases (sets with universal boxes —
     presidents, states, foods, TV episodes, …):
-    <strong>56 correct / 6 near-miss or defensible disagreements / 25 honest
+    <strong>57 correct / 6 near-miss or defensible disagreements / 25 honest
     abstentions — 90% accuracy on decisive verdicts</strong>. The full methodology,
     hypotheses, and evaluation are in the repo:</p>
     <ul class="small">

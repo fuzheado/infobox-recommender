@@ -36,6 +36,8 @@ a:hover { text-decoration: underline; }
   text-align: center;
 }
 .site-header h1 { margin: 0 0 2px; font-size: 26px; }
+.site-header h1 a { color: inherit; text-decoration: none; }
+.site-header h1 a:hover { text-decoration: underline; }
 .tagline { margin: 0 0 14px; color: var(--muted); font-size: 14px; }
 #search { display: flex; gap: 8px; justify-content: center; max-width: 560px; margin: 0 auto; }
 #title {
@@ -255,6 +257,8 @@ code {
 .intro-list { margin: 8px 0 0; padding-left: 20px; font-size: 14px; }
 .examples { margin: 0; padding-left: 20px; font-size: 14px; }
 .examples li { margin-bottom: 4px; }
+.example-more { margin-top: 10px; }
+.example-more a { text-decoration: underline; }
 
 .flash {
   position: fixed;

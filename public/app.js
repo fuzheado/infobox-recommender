@@ -49,14 +49,17 @@ async function fetchAnalysis(title, validate) {
 }
 
 // Live progress via SSE; falls back to a plain fetch if the stream fails.
+let activeES = null;
 function streamAnalysis(title, validate, onStage) {
   return new Promise((resolve, reject) => {
     const es = new EventSource('analyze/stream?title=' + encodeURIComponent(title) + (validate ? '&validate=1' : ''));
+    activeES = es;
     let settled = false;
     const timer = setTimeout(() => {
       if (settled) return;
       settled = true;
       es.close();
+      if (activeES === es) activeES = null;
       fetchAnalysis(title, validate).then(resolve, reject); // stream unsupported — fall back
     }, 4000);
     es.addEventListener('stage', (e) => onStage(JSON.parse(e.data)));
@@ -65,6 +68,7 @@ function streamAnalysis(title, validate, onStage) {
       settled = true;
       clearTimeout(timer);
       es.close();
+      if (activeES === es) activeES = null;
       resolve(JSON.parse(e.data));
     });
     es.addEventListener('error', () => {
@@ -412,6 +416,7 @@ function renderLoading(title) {
 
 let onStageRef = null;
 let elapsedTimer = null;
+let runToken = 0; // invalidated on every run()/goHome() so stale results never render
 
 function renderError(title, msg) {
   $view.innerHTML = `
@@ -441,6 +446,9 @@ function renderHome() {
       <ul class="examples">
         ${EXAMPLES.map(([t, d]) => `<li><a href="?title=${encodeURIComponent(t)}">${esc(t)}</a> <span class="muted">— ${esc(d)}</span></li>`).join('')}
       </ul>
+      <p class="muted small example-more">…or pick any article from the live
+      <a href="https://en.wikipedia.org/wiki/Category:Wikipedia_articles_with_an_infobox_request" target="_blank" rel="noopener">Category:Wikipedia articles with an infobox request</a>
+      — hundreds of real infoboxless articles waiting for a peer census.</p>
     </section>
     <section class="panel">
       <h3>API</h3>
@@ -450,6 +458,12 @@ function renderHome() {
 }
 
 async function run(title, validate) {
+  activeTitle = title;
+  const token = ++runToken;
+  if (activeES) {
+    activeES.close();
+    activeES = null;
+  }
   setTitleParam(title);
   if (!validate) {
     const u = new URL(location.href);
@@ -460,9 +474,11 @@ async function run(title, validate) {
   try {
     const r = await streamAnalysis(title, validate, (ev) => onStageRef?.(ev));
     clearInterval(elapsedTimer);
+    if (token !== runToken) return; // superseded by a newer run or a home reset
     renderReport(r);
   } catch (e) {
     clearInterval(elapsedTimer);
+    if (token !== runToken) return;
     renderError(title, e.message);
   }
 }
@@ -472,13 +488,42 @@ $form.addEventListener('submit', (e) => {
   const t = $input.value.trim();
   if (t) run(t, false);
 });
+
+// Reset to the start page: drop URL params, cancel any in-flight analysis,
+// and render the home view. The header title links here.
+function goHome() {
+  runToken++; // invalidate any in-flight analysis
+  if (activeES) {
+    activeES.close();
+    activeES = null;
+  }
+  clearInterval(elapsedTimer);
+  activeTitle = null;
+  $input.value = '';
+  history.pushState({}, '', location.pathname);
+  renderHome();
+}
+document.getElementById('home-link')?.addEventListener('click', (e) => {
+  // Leave modifier/middle clicks alone so "open in new tab" still works.
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+  e.preventDefault();
+  goHome();
+});
+// The title currently shown/analyzed. Lets the popstate handler tell a
+// fragment-only navigation (e.g. clicking the "About this tool" link, which
+// navigates to #about and fires popstate in Chrome) apart from a real
+// back/forward title change — otherwise the hash gets stripped and the
+// analysis re-runs, swallowing the About modal.
+let activeTitle = null;
 window.addEventListener('popstate', () => {
   const t = qs().get('title');
+  if (t === activeTitle) return; // hash-only navigation — the hashchange handler deals with it
   if (t) {
     $input.value = t;
     run(t, isValidate());
   } else {
     $input.value = '';
+    activeTitle = null;
     renderHome();
   }
 });
