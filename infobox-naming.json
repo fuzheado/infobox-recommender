@@ -1,51 +1,68 @@
 {
- "generated": "2026-10-01T02:56:29Z",
+ "generated": "2026-10-01T03:11:31Z",
+ "user_agent": "HermesAgent/1.0 (https://en.wikipedia.org/wiki/User:Fuzheado) InfoboxNaming/1.0",
  "wikidata_item": "Q6154820",
  "en_source_category": "Category:Infobox templates",
- "method": "Wikidata sitelink of en Category:Infobox templates -> local category title -> Action API list=categorymembers (ns 10 templates only) for the category plus its direct subcategories (depth<=2)",
- "pattern_tested": "title after local Template-namespace prefix starts with 'Infobox' (case-insensitive)",
+ "resolution": "en.wikipedia action=query&prop=pageprops -> wikibase_item -> wikidata wbgetentities&props=sitelinks -> localized category title per edition",
+ "sampling": "list=categorymembers of the localized category, ns 10 (Template) only, for the category itself plus up to 30 of its direct subcategories (depth<=2). Pages and subcategories listed with separate cmtype calls so a large ns-10 listing cannot hide subcategories.",
+ "pattern_tested": "title after the local Template-namespace prefix starts with 'Infobox', case-insensitive",
  "editions_measured": 20,
- "templates_sampled_total": 13082,
- "pattern_hits_total": 7630,
- "overall_pattern_hit_share_pct": 58.3,
- "lexeme_anywhere_total": 10150,
- "lexeme_anywhere_share_pct": 77.6,
- "editions_with_complete_sample_failures": [],
- "user_agent": "HermesAgent/1.0 (https://en.wikipedia.org/wiki/User:Fuzheado) InfoboxNaming/1.0",
+ "editions_targeted": 20,
+ "editions_not_measured": [],
+ "templates_sampled_total": 13724,
+ "R1_naive_hits_total": 8257,
+ "R1_naive_hit_share_pct": 60.2,
+ "R3_union_hits_total": 8697,
+ "R3_union_hit_share_pct": 63.4,
+ "R4_any_lexeme_hits_total": 10771,
+ "R4_any_lexeme_share_pct": 78.5,
+ "editions_where_naive_rule_catches_under_50pct": [
+  "es",
+  "it",
+  "pt",
+  "ru",
+  "pl",
+  "sv",
+  "uk",
+  "ca",
+  "tr",
+  "he",
+  "ar",
+  "ko"
+ ],
+ "editions_whose_local_word_is_mostly_a_suffix": [
+  "pl",
+  "tr",
+  "ko"
+ ],
  "per_wiki": [
   {
    "lang": "en",
    "site": "enwiki",
    "local_category": "Category:Infobox templates",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 2106,
-    "pages": 2087,
-    "files": 0,
-    "subcats": 19,
-    "hidden": false
-   },
-   "template_ns_name": "Template",
-   "template_ns_aliases": [
+   "local_category_exists": true,
+   "local_template_namespace": "Template",
+   "local_template_namespace_aliases": [
     "TM"
    ],
-   "templates_sampled": 1496,
-   "starts_with_infobox_count": 1479,
-   "starts_with_infobox_share_pct": 98.9,
-   "local_infobox_lexemes": [
+   "templates_sampled": 2138,
+   "R1_naive_infobox_prefix_count": 2106,
+   "R1_naive_infobox_prefix_pct": 98.5,
+   "R2_local_prefix_word": "Infobox",
+   "R2_local_prefix_count": 2099,
+   "R2_local_prefix_pct": 98.2,
+   "R3_union_prefix_count": 2106,
+   "R3_union_prefix_pct": 98.5,
+   "R4_any_lexeme_count": 2111,
+   "R4_any_lexeme_pct": 98.7,
+   "local_infobox_words_tested": [
     "infobox"
    ],
-   "lexeme_anywhere_count": 1481,
-   "lexeme_anywhere_share_pct": 99.0,
    "dominant_local_word": "infobox",
-   "dominant_local_word_share_pct": 99.0,
-   "dominant_local_word_prefix_count": 1479,
-   "dominant_local_word_suffix_count": 1,
-   "best_local_prefix_word": "Infobox",
-   "best_local_prefix_count": 1474,
-   "best_local_prefix_share_pct": 98.5,
-   "best_local_marker_non_english": null,
-   "distinct_leading_words": 14,
+   "dominant_local_word_share_pct": 98.7,
+   "dominant_local_word_prefix_count": 2106,
+   "dominant_local_word_suffix_count": 2,
+   "distinct_leading_words": 29,
    "top_other_leading_words": [
     {
      "word": "Collapsed",
@@ -68,48 +85,43 @@
      "count": 1
     },
     {
-     "word": "Chembox",
-     "count": 1
-    },
-    {
-     "word": "Helsinki",
-     "count": 1
-    },
-    {
-     "word": "Hybridbox",
+     "word": "BC",
      "count": 1
     }
    ],
-   "generic_infobox_template": "Template:Infobox",
+   "generic_catchall_infobox_template": "Template:Infobox",
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Template:Infobox",
     "Template:Infobox OS",
     "Template:Infobox Art"
    ],
-   "subcat_count": 0,
-   "subcats_sampled": 0,
+   "direct_subcat_count": 19,
+   "subcats_sampled": 19,
    "subcats_truncated": false,
+   "top_pages_total": 2087,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "828": [
+     "Module:Infobox3cols",
      "Module:Infobox3cols"
     ],
     "12": [
      "Help:Designing infoboxes"
     ],
     "4": [
-     "Wikipedia:List of infoboxes"
+     "Wikipedia:List of infoboxes",
+     "Wikipedia:WikiProject Biography/Templates/Infoboxes"
     ],
     "2": [
-     "User:Coolgurl5555/Infobox"
+     "User:Coolgurl5555/Infobox",
+     "User:Harold Foppele/Infobox quantum computing",
+     "User:Raph Williams65 Public/Sample page",
+     "User:WalnutBloom/templates/subbox edit milestones",
+     "User:PK2/Template:Infobox settlement",
+     "User:PK2/Template:Infobox political division"
     ]
-   },
-   "top_ns_histogram": {
-    "2": 1,
-    "4": 1,
-    "10": 1496,
-    "12": 1,
-    "828": 1
    },
    "notes": []
   },
@@ -117,32 +129,26 @@
    "lang": "de",
    "site": "dewiki",
    "local_category": "Kategorie:Vorlage:Infobox",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 30,
-    "pages": 8,
-    "files": 0,
-    "subcats": 22,
-    "hidden": false
-   },
-   "template_ns_name": "Vorlage",
-   "template_ns_aliases": [],
+   "local_category_exists": true,
+   "local_template_namespace": "Vorlage",
+   "local_template_namespace_aliases": [],
    "templates_sampled": 489,
-   "starts_with_infobox_count": 462,
-   "starts_with_infobox_share_pct": 94.5,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 462,
+   "R1_naive_infobox_prefix_pct": 94.5,
+   "R2_local_prefix_word": "Infobox",
+   "R2_local_prefix_count": 461,
+   "R2_local_prefix_pct": 94.3,
+   "R3_union_prefix_count": 462,
+   "R3_union_prefix_pct": 94.5,
+   "R4_any_lexeme_count": 468,
+   "R4_any_lexeme_pct": 95.7,
+   "local_infobox_words_tested": [
     "infobox"
    ],
-   "lexeme_anywhere_count": 468,
-   "lexeme_anywhere_share_pct": 95.7,
    "dominant_local_word": "infobox",
    "dominant_local_word_share_pct": 95.7,
    "dominant_local_word_prefix_count": 462,
    "dominant_local_word_suffix_count": 5,
-   "best_local_prefix_word": "Infobox",
-   "best_local_prefix_count": 461,
-   "best_local_prefix_share_pct": 94.3,
-   "best_local_marker_non_english": null,
    "distinct_leading_words": 23,
    "top_other_leading_words": [
     {
@@ -168,25 +174,20 @@
     {
      "word": "DnD",
      "count": 1
-    },
-    {
-     "word": "ILWSQualifikation",
-     "count": 1
-    },
-    {
-     "word": "JLWSQualifikation",
-     "count": 1
     }
    ],
-   "generic_infobox_template": "Vorlage:Infobox",
+   "generic_catchall_infobox_template": "Vorlage:Infobox",
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Vorlage:Infobox",
     "Vorlage:Infobox AFV",
     "Vorlage:Infobox Alm"
    ],
-   "subcat_count": 22,
+   "direct_subcat_count": 22,
    "subcats_sampled": 22,
    "subcats_truncated": false,
+   "top_pages_total": 8,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "12": [
@@ -200,44 +201,32 @@
      "Benutzer:Dirk123456/Baustellenbaustelle 001/Baustelle-A/Baustelle-A.9"
     ]
    },
-   "top_ns_histogram": {
-    "4": 1,
-    "10": 6,
-    "12": 1,
-    "14": 22
-   },
    "notes": []
   },
   {
    "lang": "fr",
    "site": "frwiki",
    "local_category": "Catégorie:Modèle infobox",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 12,
-    "pages": 2,
-    "files": 0,
-    "subcats": 10,
-    "hidden": false
-   },
-   "template_ns_name": "Modèle",
-   "template_ns_aliases": [],
+   "local_category_exists": true,
+   "local_template_namespace": "Modèle",
+   "local_template_namespace_aliases": [],
    "templates_sampled": 1049,
-   "starts_with_infobox_count": 1040,
-   "starts_with_infobox_share_pct": 99.1,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 1040,
+   "R1_naive_infobox_prefix_pct": 99.1,
+   "R2_local_prefix_word": "Infobox",
+   "R2_local_prefix_count": 944,
+   "R2_local_prefix_pct": 90.0,
+   "R3_union_prefix_count": 1040,
+   "R3_union_prefix_pct": 99.1,
+   "R4_any_lexeme_count": 1046,
+   "R4_any_lexeme_pct": 99.7,
+   "local_infobox_words_tested": [
     "infobox"
    ],
-   "lexeme_anywhere_count": 1046,
-   "lexeme_anywhere_share_pct": 99.7,
    "dominant_local_word": "infobox",
    "dominant_local_word_share_pct": 99.7,
    "dominant_local_word_prefix_count": 1040,
    "dominant_local_word_suffix_count": 4,
-   "best_local_prefix_word": "Infobox",
-   "best_local_prefix_count": 944,
-   "best_local_prefix_share_pct": 90.0,
-   "best_local_marker_non_english": null,
    "distinct_leading_words": 7,
    "top_other_leading_words": [
     {
@@ -263,21 +252,20 @@
     {
      "word": "Licence",
      "count": 1
-    },
-    {
-     "word": "Multi-infobox",
-     "count": 1
     }
    ],
-   "generic_infobox_template": "Modèle:Infobox",
+   "generic_catchall_infobox_template": "Modèle:Infobox",
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Modèle:Infobox",
     "Modèle:Infobox API",
     "Modèle:Infobox Art"
    ],
-   "subcat_count": 10,
+   "direct_subcat_count": 10,
    "subcats_sampled": 10,
    "subcats_truncated": false,
+   "top_pages_total": 2,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "102": [
@@ -286,43 +274,33 @@
      "Projet:Infobox/V3"
     ]
    },
-   "top_ns_histogram": {
-    "10": 2,
-    "14": 10
-   },
    "notes": []
   },
   {
    "lang": "es",
    "site": "eswiki",
    "local_category": "Categoría:Wikipedia:Fichas",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 20,
-    "pages": 7,
-    "files": 0,
-    "subcats": 13,
-    "hidden": false
-   },
-   "template_ns_name": "Plantilla",
-   "template_ns_aliases": [],
+   "local_category_exists": true,
+   "local_template_namespace": "Plantilla",
+   "local_template_namespace_aliases": [],
    "templates_sampled": 198,
-   "starts_with_infobox_count": 4,
-   "starts_with_infobox_share_pct": 2.0,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 4,
+   "R1_naive_infobox_prefix_pct": 2.0,
+   "R2_local_prefix_word": "Ficha",
+   "R2_local_prefix_count": 149,
+   "R2_local_prefix_pct": 75.3,
+   "R3_union_prefix_count": 155,
+   "R3_union_prefix_pct": 78.3,
+   "R4_any_lexeme_count": 158,
+   "R4_any_lexeme_pct": 79.8,
+   "local_infobox_words_tested": [
     "ficha",
     "infobox"
    ],
-   "lexeme_anywhere_count": 158,
-   "lexeme_anywhere_share_pct": 79.8,
    "dominant_local_word": "ficha",
    "dominant_local_word_share_pct": 77.8,
    "dominant_local_word_prefix_count": 151,
    "dominant_local_word_suffix_count": 1,
-   "best_local_prefix_word": "Ficha",
-   "best_local_prefix_count": 149,
-   "best_local_prefix_share_pct": 75.3,
-   "best_local_marker_non_english": "ficha",
    "distinct_leading_words": 36,
    "top_other_leading_words": [
     {
@@ -348,25 +326,20 @@
     {
      "word": "Cronología",
      "count": 1
-    },
-    {
-     "word": "Cuadro",
-     "count": 1
-    },
-    {
-     "word": "Definición",
-     "count": 1
     }
    ],
-   "generic_infobox_template": "Plantilla:Ficha",
+   "generic_catchall_infobox_template": "Plantilla:Ficha",
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Plantilla:Ficha",
     "Plantilla:Ficha Wikidata",
     "Plantilla:Ficha animanga"
    ],
-   "subcat_count": 13,
+   "direct_subcat_count": 13,
    "subcats_sampled": 13,
    "subcats_truncated": false,
+   "top_pages_total": 7,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "2": [
@@ -378,46 +351,36 @@
      "Wikiproyecto:Anime y Manga/Infobox animanga"
     ]
    },
-   "top_ns_histogram": {
-    "10": 7,
-    "14": 13
-   },
    "notes": []
   },
   {
    "lang": "it",
    "site": "itwiki",
    "local_category": "Categoria:Template sinottici",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 88,
-    "pages": 41,
-    "files": 0,
-    "subcats": 47,
-    "hidden": false
-   },
-   "template_ns_name": "Template",
-   "template_ns_aliases": [
+   "local_category_exists": true,
+   "local_template_namespace": "Template",
+   "local_template_namespace_aliases": [
     "T"
    ],
    "templates_sampled": 337,
-   "starts_with_infobox_count": 3,
-   "starts_with_infobox_share_pct": 0.9,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 3,
+   "R1_naive_infobox_prefix_pct": 0.9,
+   "R2_local_prefix_word": "Infobox",
+   "R2_local_prefix_count": 3,
+   "R2_local_prefix_pct": 0.9,
+   "R3_union_prefix_count": 3,
+   "R3_union_prefix_pct": 0.9,
+   "R4_any_lexeme_count": 3,
+   "R4_any_lexeme_pct": 0.9,
+   "local_infobox_words_tested": [
     "infobox",
     "sinottico",
     "tmp"
    ],
-   "lexeme_anywhere_count": 3,
-   "lexeme_anywhere_share_pct": 0.9,
    "dominant_local_word": "infobox",
    "dominant_local_word_share_pct": 0.9,
    "dominant_local_word_prefix_count": 3,
    "dominant_local_word_suffix_count": 0,
-   "best_local_prefix_word": "Infobox",
-   "best_local_prefix_count": 3,
-   "best_local_prefix_share_pct": 0.9,
-   "best_local_marker_non_english": null,
    "distinct_leading_words": 268,
    "top_other_leading_words": [
     {
@@ -443,67 +406,53 @@
     {
      "word": "Elemento",
      "count": 3
-    },
-    {
-     "word": "Opera",
-     "count": 3
-    },
-    {
-     "word": "Parco",
-     "count": 3
     }
    ],
-   "generic_infobox_template": null,
+   "generic_catchall_infobox_template": null,
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Template:Codifica colore",
     "Template:Codifica colore/Cmax",
-    "Template:Codifica colore/Cmin"
+    "Template:Infobox colore"
    ],
-   "subcat_count": 47,
+   "direct_subcat_count": 47,
    "subcats_sampled": 30,
    "subcats_truncated": true,
+   "top_pages_total": 41,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {},
-   "top_ns_histogram": {
-    "10": 41,
-    "14": 47
-   },
    "notes": []
   },
   {
    "lang": "pt",
    "site": "ptwiki",
    "local_category": "Categoria:!Predefinições de caixas de informação",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 72,
-    "pages": 54,
-    "files": 0,
-    "subcats": 18,
-    "hidden": false
-   },
-   "template_ns_name": "Predefinição",
-   "template_ns_aliases": [
+   "local_category_exists": true,
+   "local_template_namespace": "Predefinição",
+   "local_template_namespace_aliases": [
     "PRE"
    ],
    "templates_sampled": 406,
-   "starts_with_infobox_count": 42,
-   "starts_with_infobox_share_pct": 10.3,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 42,
+   "R1_naive_infobox_prefix_pct": 10.3,
+   "R2_local_prefix_word": "Info/Clube",
+   "R2_local_prefix_count": 10,
+   "R2_local_prefix_pct": 2.5,
+   "R3_union_prefix_count": 53,
+   "R3_union_prefix_pct": 13.1,
+   "R4_any_lexeme_count": 396,
+   "R4_any_lexeme_pct": 97.5,
+   "local_infobox_words_tested": [
     "info/",
-    "infobox",
-    "caixa de informação"
+    "infocaixa",
+    "caixa de informação",
+    "infobox"
    ],
-   "lexeme_anywhere_count": 391,
-   "lexeme_anywhere_share_pct": 96.3,
    "dominant_local_word": "info/",
    "dominant_local_word_share_pct": 85.5,
    "dominant_local_word_prefix_count": 347,
    "dominant_local_word_suffix_count": 0,
-   "best_local_prefix_word": "Info/Clube",
-   "best_local_prefix_count": 10,
-   "best_local_prefix_share_pct": 2.5,
-   "best_local_marker_non_english": "info/",
    "distinct_leading_words": 308,
    "top_other_leading_words": [
     {
@@ -529,39 +478,32 @@
     {
      "word": "Info/Piloto",
      "count": 4
-    },
-    {
-     "word": "Info/Prelado",
-     "count": 4
-    },
-    {
-     "word": "Info/Treinador",
-     "count": 4
     }
    ],
-   "generic_infobox_template": null,
+   "generic_catchall_infobox_template": null,
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Predefinição:Info/Clube",
     "Predefinição:Info/Clube de Futebol Americano",
     "Predefinição:Info/Clube de basquetebol"
    ],
-   "subcat_count": 18,
+   "direct_subcat_count": 18,
    "subcats_sampled": 18,
    "subcats_truncated": false,
+   "top_pages_total": 54,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "828": [
      "Módulo:Infobox3cols"
     ],
     "4": [
-     "Wikipédia:Lista de infocaixas",
      "Wikipédia:Lista de predefinições/Modelos de caixas informativas",
      "Wikipédia:Projetos/Padronização/Infocaixas",
+     "Wikipédia:Lista de infocaixas",
+     "Wikipédia:Lista de infocaixas",
      "Wikipédia:Lista de infocaixas/Arte e cultura",
-     "Wikipédia:Lista de infocaixas/Ciência e natureza",
-     "Wikipédia:Lista de infocaixas/Geografia e lugar",
-     "Wikipédia:Lista de infocaixas/História e eventos",
-     "Wikipédia:Lista de infocaixas/Matemática e abstração"
+     "Wikipédia:Lista de infocaixas/Ciência e natureza"
     ],
     "2": [
      "Usuário:Dux Praxis/Testes/P",
@@ -571,50 +513,37 @@
      "Wikipédia Discussão:Projetos/Naval/2023-2024"
     ]
    },
-   "top_ns_histogram": {
-    "2": 1,
-    "4": 3,
-    "10": 49,
-    "14": 18,
-    "828": 1
-   },
    "notes": []
   },
   {
    "lang": "ru",
    "site": "ruwiki",
    "local_category": "Категория:Шаблоны-карточки",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 35,
-    "pages": 24,
-    "files": 0,
-    "subcats": 11,
-    "hidden": false
-   },
-   "template_ns_name": "Шаблон",
-   "template_ns_aliases": [
+   "local_category_exists": true,
+   "local_template_namespace": "Шаблон",
+   "local_template_namespace_aliases": [
     "T",
     "Ш"
    ],
    "templates_sampled": 584,
-   "starts_with_infobox_count": 0,
-   "starts_with_infobox_share_pct": 0.0,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 0,
+   "R1_naive_infobox_prefix_pct": 0.0,
+   "R2_local_prefix_word": "Карточка",
+   "R2_local_prefix_count": 37,
+   "R2_local_prefix_pct": 6.3,
+   "R3_union_prefix_count": 39,
+   "R3_union_prefix_pct": 6.7,
+   "R4_any_lexeme_count": 44,
+   "R4_any_lexeme_pct": 7.5,
+   "local_infobox_words_tested": [
     "карточка",
     "инфобокс",
     "infobox"
    ],
-   "lexeme_anywhere_count": 44,
-   "lexeme_anywhere_share_pct": 7.5,
    "dominant_local_word": "карточка",
    "dominant_local_word_share_pct": 7.0,
    "dominant_local_word_prefix_count": 39,
    "dominant_local_word_suffix_count": 3,
-   "best_local_prefix_word": "Карточка",
-   "best_local_prefix_count": 37,
-   "best_local_prefix_share_pct": 6.3,
-   "best_local_marker_non_english": "карточка",
    "distinct_leading_words": 443,
    "top_other_leading_words": [
     {
@@ -640,25 +569,20 @@
     {
      "word": "Азербайджан",
      "count": 4
-    },
-    {
-     "word": "Воинское",
-     "count": 4
-    },
-    {
-     "word": "Группа",
-     "count": 4
     }
    ],
-   "generic_infobox_template": "Шаблон:Карточка",
+   "generic_catchall_infobox_template": "Шаблон:Карточка",
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Шаблон:Карточка",
     "Шаблон:Карточка КДС",
     "Шаблон:Карточка КИС"
    ],
-   "subcat_count": 11,
+   "direct_subcat_count": 11,
    "subcats_sampled": 11,
    "subcats_truncated": false,
+   "top_pages_total": 24,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "4": [
@@ -667,14 +591,12 @@
      "Википедия:Обёртки шаблонов-карточек"
     ],
     "0": [
-     "Женщины Самоа",
      "Женщины в Алжире",
      "Женщины в Армении",
      "Женщины в Бразилии",
      "Женщины в Государстве Палестина",
      "Женщины в Иордании",
-     "Женщины в Иране",
-     "Женщины в Йемене"
+     "Женщины в Иране"
     ],
     "2": [
      "Участница:Nella.hohlova/Песочница",
@@ -686,17 +608,8 @@
      "Модуль:Супруг или супруга",
      "Модуль:Cycling race",
      "Модуль:Infobox",
-     "Модуль:Infobox civil conflict",
-     "Модуль:Infobox gene",
-     "Модуль:Infobox/компонент системы звёзд"
+     "Модуль:Infobox civil conflict"
     ]
-   },
-   "top_ns_histogram": {
-    "0": 14,
-    "2": 1,
-    "4": 1,
-    "10": 8,
-    "14": 11
    },
    "notes": []
   },
@@ -704,33 +617,27 @@
    "lang": "pl",
    "site": "plwiki",
    "local_category": "Kategoria:Infoboksy",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 25,
-    "pages": 5,
-    "files": 0,
-    "subcats": 20,
-    "hidden": false
-   },
-   "template_ns_name": "Szablon",
-   "template_ns_aliases": [],
+   "local_category_exists": true,
+   "local_template_namespace": "Szablon",
+   "local_template_namespace_aliases": [],
    "templates_sampled": 301,
-   "starts_with_infobox_count": 39,
-   "starts_with_infobox_share_pct": 13.0,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 39,
+   "R1_naive_infobox_prefix_pct": 13.0,
+   "R2_local_prefix_word": "Infobox",
+   "R2_local_prefix_count": 39,
+   "R2_local_prefix_pct": 13.0,
+   "R3_union_prefix_count": 39,
+   "R3_union_prefix_pct": 13.0,
+   "R4_any_lexeme_count": 297,
+   "R4_any_lexeme_pct": 98.7,
+   "local_infobox_words_tested": [
     "infoboks",
     "infobox"
    ],
-   "lexeme_anywhere_count": 297,
-   "lexeme_anywhere_share_pct": 98.7,
    "dominant_local_word": "infobox",
    "dominant_local_word_share_pct": 98.7,
    "dominant_local_word_prefix_count": 39,
    "dominant_local_word_suffix_count": 246,
-   "best_local_prefix_word": "Infobox",
-   "best_local_prefix_count": 39,
-   "best_local_prefix_share_pct": 13.0,
-   "best_local_marker_non_english": null,
    "distinct_leading_words": 208,
    "top_other_leading_words": [
     {
@@ -756,25 +663,20 @@
     {
      "word": "Cycling",
      "count": 3
-    },
-    {
-     "word": "Działo",
-     "count": 3
-    },
-    {
-     "word": "Pocisk",
-     "count": 3
     }
    ],
-   "generic_infobox_template": null,
+   "generic_catchall_infobox_template": null,
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Szablon:Turniej SGP infobox",
     "Szablon:Turniej darterski infobox",
-    "Szablon:Turniej darterski ogólny infobox"
+    "Szablon:Infobox 2x1"
    ],
-   "subcat_count": 20,
+   "direct_subcat_count": 20,
    "subcats_sampled": 20,
    "subcats_truncated": false,
+   "top_pages_total": 5,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "12": [
@@ -789,43 +691,32 @@
      "Wikiprojekt:Infoboksy/uczłowieczanie instrukcji infoboksów"
     ]
    },
-   "top_ns_histogram": {
-    "10": 3,
-    "12": 2,
-    "14": 20
-   },
    "notes": []
   },
   {
    "lang": "nl",
    "site": "nlwiki",
    "local_category": "Categorie:Wikipedia:Sjablonen infobox",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 763,
-    "pages": 757,
-    "files": 0,
-    "subcats": 6,
-    "hidden": false
-   },
-   "template_ns_name": "Sjabloon",
-   "template_ns_aliases": [],
+   "local_category_exists": true,
+   "local_template_namespace": "Sjabloon",
+   "local_template_namespace_aliases": [],
    "templates_sampled": 1556,
-   "starts_with_infobox_count": 1527,
-   "starts_with_infobox_share_pct": 98.1,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 1527,
+   "R1_naive_infobox_prefix_pct": 98.1,
+   "R2_local_prefix_word": "Infobox",
+   "R2_local_prefix_count": 1520,
+   "R2_local_prefix_pct": 97.7,
+   "R3_union_prefix_count": 1527,
+   "R3_union_prefix_pct": 98.1,
+   "R4_any_lexeme_count": 1527,
+   "R4_any_lexeme_pct": 98.1,
+   "local_infobox_words_tested": [
     "infobox"
    ],
-   "lexeme_anywhere_count": 1527,
-   "lexeme_anywhere_share_pct": 98.1,
    "dominant_local_word": "infobox",
    "dominant_local_word_share_pct": 98.1,
    "dominant_local_word_prefix_count": 1527,
    "dominant_local_word_suffix_count": 1,
-   "best_local_prefix_word": "Infobox",
-   "best_local_prefix_count": 1520,
-   "best_local_prefix_share_pct": 97.7,
-   "best_local_marker_non_english": null,
    "distinct_leading_words": 9,
    "top_other_leading_words": [
     {
@@ -851,35 +742,25 @@
     {
      "word": "Successie",
      "count": 1
-    },
-    {
-     "word": "Syntaxobox",
-     "count": 1
-    },
-    {
-     "word": "Taxobox/Kladblok",
-     "count": 1
     }
    ],
-   "generic_infobox_template": "Sjabloon:Infobox",
+   "generic_catchall_infobox_template": "Sjabloon:Infobox",
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Sjabloon:Infobox",
     "Sjabloon:Infobox IPA",
     "Sjabloon:Infobox bot"
    ],
-   "subcat_count": 6,
+   "direct_subcat_count": 6,
    "subcats_sampled": 6,
    "subcats_truncated": false,
+   "top_pages_total": 757,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "2": [
      "Gebruiker:Chescargot/Infobox cursus"
     ]
-   },
-   "top_ns_histogram": {
-    "2": 1,
-    "10": 756,
-    "14": 6
    },
    "notes": []
   },
@@ -887,34 +768,28 @@
    "lang": "sv",
    "site": "svwiki",
    "local_category": "Kategori:Faktamallar",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 103,
-    "pages": 71,
-    "files": 0,
-    "subcats": 32,
-    "hidden": false
-   },
-   "template_ns_name": "Mall",
-   "template_ns_aliases": [],
+   "local_category_exists": true,
+   "local_template_namespace": "Mall",
+   "local_template_namespace_aliases": [],
    "templates_sampled": 681,
-   "starts_with_infobox_count": 200,
-   "starts_with_infobox_share_pct": 29.4,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 200,
+   "R1_naive_infobox_prefix_pct": 29.4,
+   "R2_local_prefix_word": "Infobox",
+   "R2_local_prefix_count": 192,
+   "R2_local_prefix_pct": 28.2,
+   "R3_union_prefix_count": 200,
+   "R3_union_prefix_pct": 29.4,
+   "R4_any_lexeme_count": 353,
+   "R4_any_lexeme_pct": 51.8,
+   "local_infobox_words_tested": [
     "faktamall",
     "faktaruta",
     "infobox"
    ],
-   "lexeme_anywhere_count": 353,
-   "lexeme_anywhere_share_pct": 51.8,
    "dominant_local_word": "infobox",
    "dominant_local_word_share_pct": 30.1,
    "dominant_local_word_prefix_count": 200,
    "dominant_local_word_suffix_count": 3,
-   "best_local_prefix_word": "Infobox",
-   "best_local_prefix_count": 192,
-   "best_local_prefix_share_pct": 28.2,
-   "best_local_marker_non_english": null,
    "distinct_leading_words": 291,
    "top_other_leading_words": [
     {
@@ -940,25 +815,20 @@
     {
      "word": "Sidoruta",
      "count": 5
-    },
-    {
-     "word": "Taxobox",
-     "count": 5
-    },
-    {
-     "word": "Tunnelbanestation",
-     "count": 4
     }
    ],
-   "generic_infobox_template": null,
+   "generic_catchall_infobox_template": null,
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Mall:Faktamall",
     "Mall:Faktamall American Hockey League",
-    "Mall:Faktamall CPU socket"
+    "Mall:Infobox Amerikanskfotboll klubb"
    ],
-   "subcat_count": 32,
+   "direct_subcat_count": 32,
    "subcats_sampled": 30,
    "subcats_truncated": true,
+   "top_pages_total": 71,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "4": [
@@ -969,45 +839,34 @@
      "Modul:Makae"
     ]
    },
-   "top_ns_histogram": {
-    "4": 1,
-    "10": 70,
-    "14": 32
-   },
    "notes": []
   },
   {
    "lang": "uk",
    "site": "ukwiki",
    "local_category": "Категорія:Шаблони:Картки",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 308,
-    "pages": 250,
-    "files": 0,
-    "subcats": 58,
-    "hidden": false
-   },
-   "template_ns_name": "Шаблон",
-   "template_ns_aliases": [],
+   "local_category_exists": true,
+   "local_template_namespace": "Шаблон",
+   "local_template_namespace_aliases": [],
    "templates_sampled": 659,
-   "starts_with_infobox_count": 40,
-   "starts_with_infobox_share_pct": 6.1,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 40,
+   "R1_naive_infobox_prefix_pct": 6.1,
+   "R2_local_prefix_word": "Картка",
+   "R2_local_prefix_count": 78,
+   "R2_local_prefix_pct": 11.8,
+   "R3_union_prefix_count": 196,
+   "R3_union_prefix_pct": 29.7,
+   "R4_any_lexeme_count": 199,
+   "R4_any_lexeme_pct": 30.2,
+   "local_infobox_words_tested": [
     "картка",
     "інфобокс",
     "infobox"
    ],
-   "lexeme_anywhere_count": 199,
-   "lexeme_anywhere_share_pct": 30.2,
    "dominant_local_word": "картка",
    "dominant_local_word_share_pct": 23.8,
    "dominant_local_word_prefix_count": 156,
    "dominant_local_word_suffix_count": 2,
-   "best_local_prefix_word": "Картка",
-   "best_local_prefix_count": 78,
-   "best_local_prefix_share_pct": 11.8,
-   "best_local_marker_non_english": "картка",
    "distinct_leading_words": 395,
    "top_other_leading_words": [
     {
@@ -1033,25 +892,20 @@
     {
      "word": "НП",
      "count": 8
-    },
-    {
-     "word": "Аеропорт",
-     "count": 7
-    },
-    {
-     "word": "Провінція",
-     "count": 7
     }
    ],
-   "generic_infobox_template": "Шаблон:Картка",
+   "generic_catchall_infobox_template": "Шаблон:Картка",
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Шаблон:Картка",
     "Шаблон:Картка APU",
     "Шаблон:Картка CPU"
    ],
-   "subcat_count": 58,
+   "direct_subcat_count": 58,
    "subcats_sampled": 30,
    "subcats_truncated": true,
+   "top_pages_total": 250,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "12": [
@@ -1060,33 +914,22 @@
     "0": [
      "Вищий орган Дель Бо",
      "Вищий орган Коппа",
-     "Вищий орган Мальвестіті",
      "Вищий орган Маєра",
+     "Вищий орган Мальвестіті",
      "Вищий орган Моне",
-     "Вищий орган Фіне",
-     "Друга комісія Баррозу",
-     "Друга комісія Гальштайна"
+     "Вищий орган Фіне"
     ],
     "4": [
      "Вікіпедія:Проєкт:Європейський Союз/Шаблони",
      "Вікіпедія:Шаблони/Картки",
      "Вікіпедія:Шаблони/Географія",
      "Вікіпедія:Шаблони/Картки/Географія",
-     "Вікіпедія:Шаблони/Картки/Геологія",
-     "Вікіпедія:Шаблони/Картки/Історія",
-     "Вікіпедія:Шаблони/Картки/Кіно",
-     "Вікіпедія:Шаблони/Картки/Комп'ютери і програмне забезпечення"
+     "Вікіпедія:Шаблони/Картки",
+     "Вікіпедія:Шаблони/Картки/Геологія"
     ],
     "2": [
      "Користувач:Andrey0369/Чернетка"
     ]
-   },
-   "top_ns_histogram": {
-    "0": 28,
-    "4": 2,
-    "10": 219,
-    "12": 1,
-    "14": 58
    },
    "notes": []
   },
@@ -1094,35 +937,29 @@
    "lang": "ja",
    "site": "jawiki",
    "local_category": "Category:基礎情報テンプレート",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 44,
-    "pages": 34,
-    "files": 0,
-    "subcats": 10,
-    "hidden": false
-   },
-   "template_ns_name": "Template",
-   "template_ns_aliases": [
+   "local_category_exists": true,
+   "local_template_namespace": "Template",
+   "local_template_namespace_aliases": [
     "テンプレート"
    ],
    "templates_sampled": 350,
-   "starts_with_infobox_count": 264,
-   "starts_with_infobox_share_pct": 75.4,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 264,
+   "R1_naive_infobox_prefix_pct": 75.4,
+   "R2_local_prefix_word": "Infobox",
+   "R2_local_prefix_count": 260,
+   "R2_local_prefix_pct": 74.3,
+   "R3_union_prefix_count": 264,
+   "R3_union_prefix_pct": 75.4,
+   "R4_any_lexeme_count": 281,
+   "R4_any_lexeme_pct": 80.3,
+   "local_infobox_words_tested": [
     "基礎情報",
     "infobox"
    ],
-   "lexeme_anywhere_count": 281,
-   "lexeme_anywhere_share_pct": 80.3,
    "dominant_local_word": "infobox",
    "dominant_local_word_share_pct": 75.4,
    "dominant_local_word_prefix_count": 264,
    "dominant_local_word_suffix_count": 1,
-   "best_local_prefix_word": "Infobox",
-   "best_local_prefix_count": 260,
-   "best_local_prefix_share_pct": 74.3,
-   "best_local_marker_non_english": null,
    "distinct_leading_words": 71,
    "top_other_leading_words": [
     {
@@ -1148,25 +985,20 @@
     {
      "word": "Databox",
      "count": 1
-    },
-    {
-     "word": "Emblem",
-     "count": 1
-    },
-    {
-     "word": "Fusion",
-     "count": 1
     }
    ],
-   "generic_infobox_template": null,
+   "generic_catchall_infobox_template": null,
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Template:Infobox",
     "Template:Infobox2",
     "Template:Infobox 姓"
    ],
-   "subcat_count": 10,
+   "direct_subcat_count": 10,
    "subcats_sampled": 10,
    "subcats_truncated": false,
+   "top_pages_total": 34,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "12": [
@@ -1181,19 +1013,11 @@
      "Wikipedia:井戸端/subj/サッカー選手のテンプレートについて",
      "Wikipedia:井戸端/subj/Template:Hostel Info について",
      "Wikipedia:井戸端/subj/基礎情報テンプレートの情報は本文にも記載すべきか？",
-     "Wikipedia:井戸端/subj/著作権、改行タグの多用、Template:Infoboxなど",
-     "Wikipedia:井戸端/subj/メーカーはどこまでメーカーと呼べるのか",
-     "Wikipedia:井戸端/subj/新規インフォボックスの導入について"
+     "Wikipedia:井戸端/subj/著作権、改行タグの多用、Template:Infoboxなど"
     ],
     "2": [
      "利用者:Gwongsing/TemplateChineseperson"
     ]
-   },
-   "top_ns_histogram": {
-    "10": 32,
-    "12": 1,
-    "14": 10,
-    "828": 1
    },
    "notes": []
   },
@@ -1201,38 +1025,32 @@
    "lang": "zh",
    "site": "zhwiki",
    "local_category": "Category:信息框模板",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 1204,
-    "pages": 1187,
-    "files": 0,
-    "subcats": 17,
-    "hidden": false
-   },
-   "template_ns_name": "Template",
-   "template_ns_aliases": [
+   "local_category_exists": true,
+   "local_template_namespace": "Template",
+   "local_template_namespace_aliases": [
     "T",
     "样板",
     "模板",
     "樣板"
    ],
    "templates_sampled": 1246,
-   "starts_with_infobox_count": 1148,
-   "starts_with_infobox_share_pct": 92.1,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 1148,
+   "R1_naive_infobox_prefix_pct": 92.1,
+   "R2_local_prefix_word": "Infobox",
+   "R2_local_prefix_count": 1146,
+   "R2_local_prefix_pct": 92.0,
+   "R3_union_prefix_count": 1148,
+   "R3_union_prefix_pct": 92.1,
+   "R4_any_lexeme_count": 1186,
+   "R4_any_lexeme_pct": 95.2,
+   "local_infobox_words_tested": [
     "信息框",
     "infobox"
    ],
-   "lexeme_anywhere_count": 1186,
-   "lexeme_anywhere_share_pct": 95.2,
    "dominant_local_word": "infobox",
    "dominant_local_word_share_pct": 92.5,
    "dominant_local_word_prefix_count": 1148,
    "dominant_local_word_suffix_count": 2,
-   "best_local_prefix_word": "Infobox",
-   "best_local_prefix_count": 1146,
-   "best_local_prefix_share_pct": 92.0,
-   "best_local_marker_non_english": null,
    "distinct_leading_words": 94,
    "top_other_leading_words": [
     {
@@ -1258,25 +1076,20 @@
     {
      "word": "Crosstalk",
      "count": 1
-    },
-    {
-     "word": "Emblem",
-     "count": 1
-    },
-    {
-     "word": "HKPublicHousing",
-     "count": 1
     }
    ],
-   "generic_infobox_template": "Template:Infobox",
+   "generic_catchall_infobox_template": "Template:Infobox",
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Template:Infobox",
     "Template:Infobox OS",
     "Template:Infobox 假名"
    ],
-   "subcat_count": 17,
+   "direct_subcat_count": 17,
    "subcats_sampled": 17,
    "subcats_truncated": false,
+   "top_pages_total": 1187,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "4": [
@@ -1294,16 +1107,8 @@
      "卡布里約國家紀念區",
      "坎頓森特歷史區",
      "冷泉港實驗室",
-     "迈阿密市中心历史区",
-     "東普利茅斯歷史區",
-     "東溫莎希爾歷史區"
+     "迈阿密市中心历史区"
     ]
-   },
-   "top_ns_histogram": {
-    "2": 2,
-    "4": 2,
-    "10": 1183,
-    "14": 17
    },
    "notes": []
   },
@@ -1311,33 +1116,27 @@
    "lang": "ca",
    "site": "cawiki",
    "local_category": "Categoria:Infotaules",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 17,
-    "pages": 10,
-    "files": 0,
-    "subcats": 7,
-    "hidden": false
-   },
-   "template_ns_name": "Plantilla",
-   "template_ns_aliases": [],
+   "local_category_exists": true,
+   "local_template_namespace": "Plantilla",
+   "local_template_namespace_aliases": [],
    "templates_sampled": 130,
-   "starts_with_infobox_count": 32,
-   "starts_with_infobox_share_pct": 24.6,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 32,
+   "R1_naive_infobox_prefix_pct": 24.6,
+   "R2_local_prefix_word": "Infotaula",
+   "R2_local_prefix_count": 71,
+   "R2_local_prefix_pct": 54.6,
+   "R3_union_prefix_count": 103,
+   "R3_union_prefix_pct": 79.2,
+   "R4_any_lexeme_count": 114,
+   "R4_any_lexeme_pct": 87.7,
+   "local_infobox_words_tested": [
     "infotaula",
     "infobox"
    ],
-   "lexeme_anywhere_count": 114,
-   "lexeme_anywhere_share_pct": 87.7,
    "dominant_local_word": "infotaula",
    "dominant_local_word_share_pct": 56.2,
    "dominant_local_word_prefix_count": 71,
    "dominant_local_word_suffix_count": 1,
-   "best_local_prefix_word": "Infotaula",
-   "best_local_prefix_count": 71,
-   "best_local_prefix_share_pct": 54.6,
-   "best_local_marker_non_english": "infotaula",
    "distinct_leading_words": 13,
    "top_other_leading_words": [
     {
@@ -1363,25 +1162,20 @@
     {
      "word": "Databox",
      "count": 1
-    },
-    {
-     "word": "Edició",
-     "count": 1
-    },
-    {
-     "word": "Format",
-     "count": 1
     }
    ],
-   "generic_infobox_template": null,
+   "generic_catchall_infobox_template": null,
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Plantilla:Infotaula Azerbaidjan als Jocs Olímpics",
     "Plantilla:Infotaula Borgen",
     "Plantilla:Infotaula IPA/core1"
    ],
-   "subcat_count": 7,
+   "direct_subcat_count": 7,
    "subcats_sampled": 7,
    "subcats_truncated": false,
+   "top_pages_total": 10,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "4": [
@@ -1397,19 +1191,11 @@
      "Viquiprojecte:Adaptació de plantilles a Wikidata/infotaules/Mostres1",
      "Viquiprojecte:Adaptació de plantilles a Wikidata/infotaules/Mostres1O",
      "Viquiprojecte:Adaptació de plantilles a Wikidata/infotaules/Mostres2",
-     "Viquiprojecte:Adaptació de plantilles a Wikidata/infotaules/Mostres3",
-     "Viquiprojecte:Adaptació de plantilles a Wikidata/infotaules/Mostres4",
-     "Viquiprojecte:Adaptació de plantilles a Wikidata/infotaules/Mostres5"
+     "Viquiprojecte:Adaptació de plantilles a Wikidata/infotaules/Mostres3"
     ],
     "2": [
      "Usuari:وهراني/proves"
     ]
-   },
-   "top_ns_histogram": {
-    "4": 1,
-    "10": 7,
-    "12": 2,
-    "14": 7
    },
    "notes": []
   },
@@ -1417,33 +1203,27 @@
    "lang": "id",
    "site": "idwiki",
    "local_category": "Kategori:Templat kotak info",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 905,
-    "pages": 872,
-    "files": 0,
-    "subcats": 33,
-    "hidden": true
-   },
-   "template_ns_name": "Templat",
-   "template_ns_aliases": [],
+   "local_category_exists": true,
+   "local_template_namespace": "Templat",
+   "local_template_namespace_aliases": [],
    "templates_sampled": 1015,
-   "starts_with_infobox_count": 919,
-   "starts_with_infobox_share_pct": 90.5,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 919,
+   "R1_naive_infobox_prefix_pct": 90.5,
+   "R2_local_prefix_word": "Infobox",
+   "R2_local_prefix_count": 914,
+   "R2_local_prefix_pct": 90.0,
+   "R3_union_prefix_count": 919,
+   "R3_union_prefix_pct": 90.5,
+   "R4_any_lexeme_count": 952,
+   "R4_any_lexeme_pct": 93.8,
+   "local_infobox_words_tested": [
     "kotak info",
     "infobox"
    ],
-   "lexeme_anywhere_count": 952,
-   "lexeme_anywhere_share_pct": 93.8,
    "dominant_local_word": "infobox",
    "dominant_local_word_share_pct": 91.2,
    "dominant_local_word_prefix_count": 919,
    "dominant_local_word_suffix_count": 4,
-   "best_local_prefix_word": "Infobox",
-   "best_local_prefix_count": 914,
-   "best_local_prefix_share_pct": 90.0,
-   "best_local_marker_non_english": null,
    "distinct_leading_words": 55,
    "top_other_leading_words": [
     {
@@ -1469,25 +1249,20 @@
     {
      "word": "Dubai",
      "count": 2
-    },
-    {
-     "word": "Kotakinfo",
-     "count": 2
-    },
-    {
-     "word": "Nama",
-     "count": 2
     }
    ],
-   "generic_infobox_template": "Templat:Infobox",
+   "generic_catchall_infobox_template": "Templat:Infobox",
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Templat:Infobox",
     "Templat:Infobox OS",
     "Templat:Infobox AoE"
    ],
-   "subcat_count": 33,
+   "direct_subcat_count": 33,
    "subcats_sampled": 30,
    "subcats_truncated": true,
+   "top_pages_total": 872,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "0": [
@@ -1499,46 +1274,35 @@
      "Pengguna:Ariyanto~idwiki/papanka"
     ]
    },
-   "top_ns_histogram": {
-    "0": 3,
-    "10": 869,
-    "14": 33
-   },
    "notes": []
   },
   {
    "lang": "tr",
    "site": "trwiki",
    "local_category": "Kategori:Bilgi kutusu şablonları",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 27,
-    "pages": 13,
-    "files": 0,
-    "subcats": 14,
-    "hidden": false
-   },
-   "template_ns_name": "Şablon",
-   "template_ns_aliases": [
+   "local_category_exists": true,
+   "local_template_namespace": "Şablon",
+   "local_template_namespace_aliases": [
     "Ş"
    ],
    "templates_sampled": 142,
-   "starts_with_infobox_count": 0,
-   "starts_with_infobox_share_pct": 0.0,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 0,
+   "R1_naive_infobox_prefix_pct": 0.0,
+   "R2_local_prefix_word": null,
+   "R2_local_prefix_count": 0,
+   "R2_local_prefix_pct": 0.0,
+   "R3_union_prefix_count": 0,
+   "R3_union_prefix_pct": 0.0,
+   "R4_any_lexeme_count": 132,
+   "R4_any_lexeme_pct": 93.0,
+   "local_infobox_words_tested": [
     "bilgi kutusu",
     "infobox"
    ],
-   "lexeme_anywhere_count": 132,
-   "lexeme_anywhere_share_pct": 93.0,
    "dominant_local_word": "bilgi kutusu",
    "dominant_local_word_share_pct": 93.0,
    "dominant_local_word_prefix_count": 1,
    "dominant_local_word_suffix_count": 127,
-   "best_local_prefix_word": null,
-   "best_local_prefix_count": 0,
-   "best_local_prefix_share_pct": 0.0,
-   "best_local_marker_non_english": "bilgi kutusu",
    "distinct_leading_words": 128,
    "top_other_leading_words": [
     {
@@ -1564,67 +1328,52 @@
     {
      "word": "Etnik",
      "count": 2
-    },
-    {
-     "word": "Korunan",
-     "count": 2
-    },
-    {
-     "word": "Kurgusal",
-     "count": 2
     }
    ],
-   "generic_infobox_template": "Şablon:Bilgi kutusu",
+   "generic_catchall_infobox_template": "Şablon:Bilgi kutusu",
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Şablon:Arkeolojik höyük",
     "Şablon:Arkeolojik kültür bilgi kutusu",
-    "Şablon:Arkeolojik sit bilgi kutusu"
+    "Şablon:IUCN şeridi"
    ],
-   "subcat_count": 14,
+   "direct_subcat_count": 14,
    "subcats_sampled": 14,
    "subcats_truncated": false,
+   "top_pages_total": 13,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {},
-   "top_ns_histogram": {
-    "10": 13,
-    "14": 14
-   },
    "notes": []
   },
   {
    "lang": "he",
    "site": "hewiki",
    "local_category": "קטגוריה:תבניות מידע",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 37,
-    "pages": 2,
-    "files": 0,
-    "subcats": 35,
-    "hidden": false
-   },
-   "template_ns_name": "תבנית",
-   "template_ns_aliases": [
+   "local_category_exists": true,
+   "local_template_namespace": "תבנית",
+   "local_template_namespace_aliases": [
     "תב"
    ],
    "templates_sampled": 390,
-   "starts_with_infobox_count": 0,
-   "starts_with_infobox_share_pct": 0.0,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 0,
+   "R1_naive_infobox_prefix_pct": 0.0,
+   "R2_local_prefix_word": "מידע",
+   "R2_local_prefix_count": 4,
+   "R2_local_prefix_pct": 1.0,
+   "R3_union_prefix_count": 4,
+   "R3_union_prefix_pct": 1.0,
+   "R4_any_lexeme_count": 7,
+   "R4_any_lexeme_pct": 1.8,
+   "local_infobox_words_tested": [
     "מידע",
     "אינפובוקס",
     "infobox"
    ],
-   "lexeme_anywhere_count": 7,
-   "lexeme_anywhere_share_pct": 1.8,
    "dominant_local_word": "מידע",
    "dominant_local_word_share_pct": 1.8,
    "dominant_local_word_prefix_count": 4,
    "dominant_local_word_suffix_count": 2,
-   "best_local_prefix_word": "מידע",
-   "best_local_prefix_count": 4,
-   "best_local_prefix_share_pct": 1.0,
-   "best_local_marker_non_english": "מידע",
    "distinct_leading_words": 278,
    "top_other_leading_words": [
     {
@@ -1650,34 +1399,25 @@
     {
      "word": "נבחרת",
      "count": 5
-    },
-    {
-     "word": "בחירות",
-     "count": 4
-    },
-    {
-     "word": "בית",
-     "count": 4
     }
    ],
-   "generic_infobox_template": null,
+   "generic_catchall_infobox_template": null,
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "תבנית:אישיות",
     "תבנית:אישיות בודהיסטית",
-    "תבנית:אישיות בייסבול"
+    "תבנית:מידע דגל"
    ],
-   "subcat_count": 35,
+   "direct_subcat_count": 35,
    "subcats_sampled": 30,
    "subcats_truncated": true,
+   "top_pages_total": 2,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "4": [
      "ויקיפדיה:יצירה על פי תבנית/בסיס לתבנית פרמטרית"
     ]
-   },
-   "top_ns_histogram": {
-    "10": 2,
-    "14": 35
    },
    "notes": []
   },
@@ -1685,34 +1425,28 @@
    "lang": "ar",
    "site": "arwiki",
    "local_category": "تصنيف:قوالب صناديق معلومات",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 650,
-    "pages": 622,
-    "files": 0,
-    "subcats": 28,
-    "hidden": false
-   },
-   "template_ns_name": "قالب",
-   "template_ns_aliases": [],
+   "local_category_exists": true,
+   "local_template_namespace": "قالب",
+   "local_template_namespace_aliases": [],
    "templates_sampled": 814,
-   "starts_with_infobox_count": 40,
-   "starts_with_infobox_share_pct": 4.9,
-   "local_infobox_lexemes": [
-    "صندوق",
+   "R1_naive_infobox_prefix_count": 40,
+   "R1_naive_infobox_prefix_pct": 4.9,
+   "R2_local_prefix_word": "Infobox",
+   "R2_local_prefix_count": 39,
+   "R2_local_prefix_pct": 4.8,
+   "R3_union_prefix_count": 40,
+   "R3_union_prefix_pct": 4.9,
+   "R4_any_lexeme_count": 689,
+   "R4_any_lexeme_pct": 84.6,
+   "local_infobox_words_tested": [
+    "صندوق معلومات",
     "معلومات",
     "infobox"
    ],
-   "lexeme_anywhere_count": 703,
-   "lexeme_anywhere_share_pct": 86.4,
    "dominant_local_word": "معلومات",
    "dominant_local_word_share_pct": 79.7,
    "dominant_local_word_prefix_count": 35,
    "dominant_local_word_suffix_count": 0,
-   "best_local_prefix_word": "صندوق",
-   "best_local_prefix_count": 625,
-   "best_local_prefix_share_pct": 76.8,
-   "best_local_marker_non_english": "معلومات",
    "distinct_leading_words": 45,
    "top_other_leading_words": [
     {
@@ -1738,25 +1472,20 @@
     {
      "word": "تعاقب",
      "count": 2
-    },
-    {
-     "word": "نجم",
-     "count": 2
-    },
-    {
-     "word": "هلال",
-     "count": 2
     }
    ],
-   "generic_infobox_template": null,
+   "generic_catchall_infobox_template": null,
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "قالب:صندوق بطولة تنس",
     "قالب:صندوق بطولة تنس/شرح",
-    "قالب:صندوق تنظيم حدث رياضي"
+    "قالب:Infobox"
    ],
-   "subcat_count": 28,
+   "direct_subcat_count": 28,
    "subcats_sampled": 28,
    "subcats_truncated": false,
+   "top_pages_total": 622,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "2": [
@@ -1764,16 +1493,12 @@
      "مستخدم:مي هشلمون/ملعب",
      "مستخدم:عبدالرحمن مصطفى/قالب:صندوق معلومات سلسلة جبلية",
      "مستخدم:Kenshiro Taisho/شريط جانبي مطيافية",
+     "مستخدم:مواطن تونسي/ملعب5",
      "مستخدم:Mohamede medhoune/ملعب"
     ],
     "4": [
      "ويكيبيديا:مشروع ويكي أعلام/صناديق معلومات"
     ]
-   },
-   "top_ns_histogram": {
-    "2": 1,
-    "10": 621,
-    "14": 28
    },
    "notes": []
   },
@@ -1781,34 +1506,28 @@
    "lang": "ko",
    "site": "kowiki",
    "local_category": "분류:정보 틀",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 237,
-    "pages": 219,
-    "files": 0,
-    "subcats": 18,
-    "hidden": false
-   },
-   "template_ns_name": "틀",
-   "template_ns_aliases": [],
+   "local_category_exists": true,
+   "local_template_namespace": "틀",
+   "local_template_namespace_aliases": [],
    "templates_sampled": 701,
-   "starts_with_infobox_count": 2,
-   "starts_with_infobox_share_pct": 0.3,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 2,
+   "R1_naive_infobox_prefix_pct": 0.3,
+   "R2_local_prefix_word": "정보상자",
+   "R2_local_prefix_count": 7,
+   "R2_local_prefix_pct": 1.0,
+   "R3_union_prefix_count": 10,
+   "R3_union_prefix_pct": 1.4,
+   "R4_any_lexeme_count": 394,
+   "R4_any_lexeme_pct": 56.2,
+   "local_infobox_words_tested": [
     "정보상자",
     "정보",
     "infobox"
    ],
-   "lexeme_anywhere_count": 394,
-   "lexeme_anywhere_share_pct": 56.2,
    "dominant_local_word": "정보",
    "dominant_local_word_share_pct": 55.6,
    "dominant_local_word_prefix_count": 8,
    "dominant_local_word_suffix_count": 354,
-   "best_local_prefix_word": "정보상자",
-   "best_local_prefix_count": 7,
-   "best_local_prefix_share_pct": 1.0,
-   "best_local_marker_non_english": "정보",
    "distinct_leading_words": 611,
    "top_other_leading_words": [
     {
@@ -1834,35 +1553,25 @@
     {
      "word": "가공의",
      "count": 3
-    },
-    {
-     "word": "대한민국",
-     "count": 3
-    },
-    {
-     "word": "무술",
-     "count": 3
     }
    ],
-   "generic_infobox_template": "틀:정보상자",
+   "generic_catchall_infobox_template": "틀:정보상자",
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "틀:프로게임팀 정보",
     "틀:프로게임팀 정보/FPS",
-    "틀:프로게임팀 정보/기타"
+    "틀:정보상자"
    ],
-   "subcat_count": 18,
+   "direct_subcat_count": 18,
    "subcats_sampled": 18,
    "subcats_truncated": false,
+   "top_pages_total": 219,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "4": [
      "위키백과:편집 지침/정보상자"
     ]
-   },
-   "top_ns_histogram": {
-    "4": 1,
-    "10": 218,
-    "14": 18
    },
    "notes": []
   },
@@ -1870,35 +1579,29 @@
    "lang": "vi",
    "site": "viwiki",
    "local_category": "Thể loại:Bản mẫu hộp thông tin",
-   "category_exists": true,
-   "categoryinfo": {
-    "size": 719,
-    "pages": 704,
-    "files": 0,
-    "subcats": 15,
-    "hidden": false
-   },
-   "template_ns_name": "Bản mẫu",
-   "template_ns_aliases": [
+   "local_category_exists": true,
+   "local_template_namespace": "Bản mẫu",
+   "local_template_namespace_aliases": [
     "Tiêu bản"
    ],
    "templates_sampled": 538,
-   "starts_with_infobox_count": 389,
-   "starts_with_infobox_share_pct": 72.3,
-   "local_infobox_lexemes": [
+   "R1_naive_infobox_prefix_count": 389,
+   "R1_naive_infobox_prefix_pct": 72.3,
+   "R2_local_prefix_word": "Infobox",
+   "R2_local_prefix_count": 388,
+   "R2_local_prefix_pct": 72.1,
+   "R3_union_prefix_count": 389,
+   "R3_union_prefix_pct": 72.3,
+   "R4_any_lexeme_count": 414,
+   "R4_any_lexeme_pct": 77.0,
+   "local_infobox_words_tested": [
     "hộp thông tin",
     "infobox"
    ],
-   "lexeme_anywhere_count": 414,
-   "lexeme_anywhere_share_pct": 77.0,
    "dominant_local_word": "infobox",
    "dominant_local_word_share_pct": 72.5,
    "dominant_local_word_prefix_count": 389,
    "dominant_local_word_suffix_count": 1,
-   "best_local_prefix_word": "Infobox",
-   "best_local_prefix_count": 388,
-   "best_local_prefix_share_pct": 72.1,
-   "best_local_marker_non_english": null,
    "distinct_leading_words": 30,
    "top_other_leading_words": [
     {
@@ -1924,25 +1627,20 @@
     {
      "word": "Đội",
      "count": 2
-    },
-    {
-     "word": "Bộ",
-     "count": 1
-    },
-    {
-     "word": "Chiến",
-     "count": 1
     }
    ],
-   "generic_infobox_template": "Bản mẫu:Hộp thông tin",
+   "generic_catchall_infobox_template": "Bản mẫu:Hộp thông tin",
+   "structure": "many (family of infoboxes)",
    "example_titles": [
     "Bản mẫu:Infobox CPU",
     "Bản mẫu:Infobox GPU",
     "Bản mẫu:Infobox IPA"
    ],
-   "subcat_count": 15,
+   "direct_subcat_count": 15,
    "subcats_sampled": 15,
    "subcats_truncated": false,
+   "top_pages_total": 704,
+   "top_pages_truncated": false,
    "failed_subcats": 0,
    "non_template_ns_members": {
     "4": [
@@ -1953,8 +1651,6 @@
      "2001 Mars Odyssey",
      "ADEOS II",
      "AGILE (vệ tinh)",
-     "ASTERIA (tàu vũ trụ)",
-     "ATS-2",
      "Akatsuki (vệ tinh)",
      "Albert CanCook",
      "Aleks Le"
@@ -1962,24 +1658,14 @@
     "2": [
      "Thành viên:Biheo2812/nháp",
      "Thành viên:Ctdbsclvn/nháp 3",
-     "Thành viên:KOL Giới Trẻ/Pony Park (nghệ sĩ make-up)",
      "Thành viên:Linreno/Artermis 1",
-     "Thành viên:Méiyue Lysithea/Trang đã tạo/Bảo trì",
-     "Thành viên:Méiyue Lysithea/Trang đã tạo/Bảo trì-BCBcontent",
      "Thành viên:Méiyue Lysithea/Trang đã tạo/Bảo trì-template",
-     "Thành viên:Noeruchan/Pannenkoek2012"
+     "Thành viên:Noeruchan/Pannenkoek2012",
+     "Thành viên:KOL Giới Trẻ/Pony Park (nghệ sĩ make-up)"
     ],
     "3": [
      "Thảo luận Thành viên:Nguyentrongphu/thí nghiệm"
     ]
-   },
-   "top_ns_histogram": {
-    "0": 221,
-    "2": 8,
-    "3": 1,
-    "4": 2,
-    "10": 472,
-    "14": 15
    },
    "notes": []
   }

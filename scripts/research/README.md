@@ -9,8 +9,9 @@ across 20 Wikipedia language editions, and what share of them a naive English
 
 `lib/census.js` identifies infoboxes by the literal prefix `Infobox` plus seven
 hardcoded families. Measured against each wiki's own declared infobox set, that
-rule matches **58.3%** of 13,082 sampled templates overall — and near-zero on
-several large editions (es 2.0%, it 0.9%, ar 4.9%, ko 0.3%, ru/tr/he 0.0%).
+rule matches **60.2%** of 13,724 sampled templates overall — and near-zero on
+several large editions (es 2.0%, it 0.9%, ar 4.9%, ko 0.3%, ru/tr/he 0.0%), and
+under half on 12 of the 20 editions.
 The failure mode is silent: a missed family lowers measured coverage, which
 flips the verdict toward a confident "no infobox customary".
 
@@ -27,7 +28,7 @@ python3 scripts/research/infobox_step2_harvest.py     # -> infobox_raw.json  (AP
 python3 scripts/research/infobox_step3_analyze.py     # -> infobox-naming.json + infobox-naming.md
 ```
 
-Step 2 is the slow one (~430 requests, roughly 10-15 minutes at 1s pacing) and
+Step 2 is the slow one (~470 requests, roughly 10-15 minutes at 1s pacing) and
 is resumable: it rewrites `infobox_raw.json` after every wiki, and a re-run
 keeps wikis already marked `ok`. HTTP 429/503 are retried with exponential
 backoff and counted, never treated as zero.
@@ -55,9 +56,9 @@ backoff and counted, never treated as zero.
 | | |
 |---|---|
 | editions measured | 20 |
-| templates sampled (ns 10) | 13,082 |
-| caught by naive `^Infobox` | 7,630 (**58.3%**) |
-| containing any localized infobox word | 10,150 (77.6%) |
+| templates sampled (ns 10) | 13,724 |
+| caught by naive `^Infobox` | 8,257 (**60.2%**) |
+| containing any localized infobox word | 10,771 (78.5%) |
 
 Position matters as much as vocabulary: **pl** has `infobox` in 98.7% of titles
 but only 39 as a prefix vs 246 as a suffix (`Aktor infobox`), and **tr**/**ko**
