@@ -50,12 +50,14 @@ run 5–30s; repeats are instant.
 | `cli.js` | CLI harness |
 | `server.mjs` | Zero-dep web service (report UI, SSE progress, JSON API, validate mode) |
 | `public/` | Report renderer, digest card, About modal, tier panel |
+| `images/` | Screenshots used in README.md |
 | `test/eval.mjs` | Evaluation harness (persists `test/results/<date>.json|.md`) |
 | `test/census.test.mjs` | Unit tests — primary-infobox selection (supporting/subsidiary boxes, penalties, specificity); `npm test` |
 | `scripts/fetch-queue.mjs` | Rebuilds fixtures from the live backlog |
 | `scripts/manual-cases.json` | Manual + canonical seed cases |
 | `status-quo.md` | Need assessment — how editors add infoboxes today (workflows, friction, prior art, honest market assessment) |
 | `ROADMAP.md` | What's next — prioritized features (engine + reach tracks), effort, eval targets |
+| `ARCHITECTURE.md` | Technical companion to README — pipeline, primary-selection rules, runtime design, web service |
 
 ## The recommender in 10 minutes
 
