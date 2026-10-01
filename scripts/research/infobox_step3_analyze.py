@@ -1,29 +1,40 @@
 #!/usr/bin/env python3
-"""Step 3 (final): naming stats per wiki -> infobox_naming.json + .md
+"""Step 3: per-edition naming statistics for infobox templates.
 
-Metrics per wiki:
-  * templates_sampled          - ns-10 category members (cat + direct subcats, depth<=2)
-  * starts_with_infobox_*      - the naive English rule  ^Infobox (case-insensitive)
-  * local_marker_*             - the best *localized* single-token rule for that wiki
-  * lexeme_anywhere_share_pct  - share of titles containing any local infobox lexeme
-  * top_other_leading_words    - most common non-Infobox leading tokens
-  * example_titles             - 3 verbatim titles illustrating local naming
+Run from the repository root (after steps 1-2):
+    INFOBOX_WORKDIR=. python3 scripts/research/infobox_step3_analyze.py
+
+Reads infobox_raw.json + infobox_qid_sitelinks.json -> writes infobox-naming.json
+and infobox-naming.md.
+
+Candidate detection rules scored over the SAME sample:
+  R1 naive English   : title (after the local Template-ns prefix) starts with
+                       "Infobox", case-insensitive  <- what lib/census.js does
+  R2 localized prefix: title starts with the wiki's own infobox word
+  R3 union(R1, R2)
+  R4 position-agnostic: title CONTAINS any localized infobox word anywhere
+                       (so a suffix-only naming convention still counts) - a
+                       ceiling for language-aware name matching
+Also records where the local word sits (prefix vs suffix), the most common other
+leading words, the local template-namespace name, example titles, and whether the
+wiki has a single catch-all infobox template or a family of many.
 """
 import json, os, re, time
 from collections import Counter
 
 BASE = os.environ.get("INFOBOX_WORKDIR", ".")
-raw = json.load(open(os.path.join(BASE, "infobox_raw.json")))
-slinfo = json.load(open(os.path.join(BASE, "infobox_qid_sitelinks.json")))
+RAW = os.path.join(BASE, "infobox_raw.json")
+SLF = os.path.join(BASE, "infobox_qid_sitelinks.json")
 
 ORDER = ["en", "de", "fr", "es", "it", "pt", "ru", "pl", "nl", "sv",
          "uk", "ja", "zh", "ca", "id", "tr", "he", "ar", "ko", "vi"]
 
-# Localized words that Wikipedia communities use to mean "infobox".
+# Words communities use to mean "infobox". Used for the position-agnostic
+# ceiling (R4) and to derive each wiki's own prefix rule (R2). Extend freely.
 LEXEMES = {
     "en": ["infobox"], "de": ["infobox"], "fr": ["infobox"],
     "es": ["ficha", "infobox"], "it": ["infobox", "sinottico", "tmp"],
-    "pt": ["info/", "infobox", "caixa de informação"],
+    "pt": ["info/", "infocaixa", "caixa de informação", "infobox"],
     "ru": ["карточка", "инфобокс", "infobox"],
     "pl": ["infoboks", "infobox"], "nl": ["infobox"],
     "sv": ["faktamall", "faktaruta", "infobox"],
@@ -31,14 +42,15 @@ LEXEMES = {
     "zh": ["信息框", "infobox"], "ca": ["infotaula", "infobox"],
     "id": ["kotak info", "infobox"], "tr": ["bilgi kutusu", "infobox"],
     "he": ["מידע", "אינפובוקס", "infobox"],
-    "ar": ["صندوق", "معلومات", "infobox"],
+    "ar": ["صندوق معلومات", "معلومات", "infobox"],
     "ko": ["정보상자", "정보", "infobox"], "vi": ["hộp thông tin", "infobox"],
 }
+# Names that would be a single catch-all infobox template rather than a family.
 GENERIC = {
     "en": ["infobox"], "de": ["infobox"], "fr": ["infobox"],
     "es": ["ficha", "ficha de", "infobox"], "it": ["infobox"],
-    "pt": ["infobox", "caixa de informação"], "ru": ["карточка"],
-    "pl": ["infobox"], "nl": ["infobox"], "sv": ["infobox"],
+    "pt": ["infobox", "caixa de informação", "infocaixa"],
+    "ru": ["карточка"], "pl": ["infobox"], "nl": ["infobox"], "sv": ["infobox"],
     "uk": ["картка"], "ja": ["基礎情報"], "zh": ["信息框", "infobox"],
     "ca": ["infotaula"], "id": ["infobox"], "tr": ["bilgi kutusu", "infobox"],
     "he": ["מידע"], "ar": ["معلومات", "صندوق معلومات"],
@@ -57,42 +69,36 @@ def lead_token(name):
     return re.split(r"[\s_]+", name.strip(), maxsplit=1)[0]
 
 
-def contains_lexeme(name, lexemes):
-    n = name.casefold()
-    return any(lx.casefold() in n for lx in lexemes)
+def pct(n, d):
+    return round(100.0 * n / d, 1) if d else None
 
 
 def main():
-    results = []
+    raw = json.load(open(RAW))
+    try:
+        qid = json.load(open(SLF))["qid"]
+    except Exception:
+        qid = "Q6154820"
+
+    results, not_measured = [], []
     for lang in ORDER:
         rec = raw.get(lang)
-        if not rec:
+        if not rec or not rec.get("ok"):
+            not_measured.append({"lang": lang,
+                                 "category": (rec or {}).get("category"),
+                                 "notes": (rec or {}).get("notes")})
             continue
         ns_name = rec.get("template_ns_name") or "Template"
         aliases = rec.get("template_ns_aliases", [])
-        raw_titles = rec.get("templates", [])
-        pairs = [(t, strip_ns(t, ns_name, aliases)) for t in raw_titles]
+        pairs = [(t, strip_ns(t, ns_name, aliases)) for t in rec["templates"]]
         total = len(pairs)
 
-        matched = [(t, s) for t, s in pairs if s.casefold().startswith("infobox")]
-        share = round(100.0 * len(matched) / total, 1) if total else None
-
-        # top leading words excluding the English Infobox pattern
-        cnt, disp = Counter(), {}
-        for _t, s in pairs:
-            tok = lead_token(s)
-            if tok.casefold().startswith("infobox"):
-                continue
-            cnt[tok.casefold()] += 1
-            disp.setdefault(tok.casefold(), tok)
-        top_other = [{"word": disp[k], "count": c} for k, c in cnt.most_common(8)]
-
-        # localized lexeme metrics
+        r1 = [(t, s) for t, s in pairs if s.casefold().startswith("infobox")]
         lex = LEXEMES.get(lang, ["infobox"])
-        lex_hits = [(t, s) for t, s in pairs if contains_lexeme(s, lex)]
-        lex_share = round(100.0 * len(lex_hits) / total, 1) if total else None
+        r4 = [(t, s) for t, s in pairs
+              if any(lx.casefold() in s.casefold() for lx in lex)]
 
-        # dominant local infobox word (may be the English "Infobox") and its position
+        # dominant local word (may be the English one) and its position
         lx_freq = Counter()
         for _t, s in pairs:
             low = s.casefold()
@@ -108,14 +114,10 @@ def main():
                 if d in low:
                     dom_pre += int(low.startswith(d))
                     dom_suf += int(low.endswith(d))
-        marker = dom if (dom and dom.casefold() != "infobox") else None
-        prefix_hits = [t for t, _s in pairs if dom and _s.casefold().startswith(dom.casefold())]
-        suffix_hits = [t for t, _s in pairs if dom and _s.casefold().endswith(dom.casefold())]
         dom_share = (round(100.0 * lx_freq[dom] / total, 1)
                      if (dom and total) else None)
 
-        # localized analogue of the naive rule: most common leading token that is
-        # itself an infobox lexeme (e.g. Ficha, Faktamall, صندوق, Картка, 정보상자)
+        # R2: most common leading token that is itself an infobox word
         pref_counter, pref_disp = Counter(), {}
         for _t, s in pairs:
             tok = lead_token(s)
@@ -123,157 +125,208 @@ def main():
                 pref_counter[tok.casefold()] += 1
                 pref_disp.setdefault(tok.casefold(), tok)
         if pref_counter:
-            best_pref_key = pref_counter.most_common(1)[0][0]
-            best_pref_word = pref_disp[best_pref_key]
-            best_pref_count = pref_counter[best_pref_key]
+            k = pref_counter.most_common(1)[0][0]
+            best_pref_word, best_pref_count = pref_disp[k], pref_counter[k]
         else:
             best_pref_word, best_pref_count = None, 0
-        best_pref_share = (round(100.0 * best_pref_count / total, 1)
-                           if total else None)
+        best_pref_share = round(100.0 * best_pref_count / total, 1) if total else None
+        r3 = {t for t, _s in r1} | {t for t, s in pairs
+                                    if best_pref_word and
+                                    s.casefold().startswith(best_pref_word.casefold())}
 
-        # examples
-        if share is not None and share >= 50:
-            ex = [t for t, _s in sorted(matched, key=lambda x: (len(x[1]), x[1]))][:3]
+        # most common other leading words (excluding the English pattern)
+        cnt, disp = Counter(), {}
+        for _t, s in pairs:
+            tok = lead_token(s)
+            if tok.casefold().startswith("infobox"):
+                continue
+            cnt[tok.casefold()] += 1
+            disp.setdefault(tok.casefold(), tok)
+        top_other = [{"word": disp[k], "count": c} for k, c in cnt.most_common(6)]
+
+        # 3 verbatim example titles illustrating local naming
+        if (pct(len(r1), total) or 0) >= 50:
+            ex = [t for t, _s in sorted(r1, key=lambda x: (len(x[1]), x[1]))][:3]
         else:
             ex = []
             if top_other:
-                w = top_other[0]["word"]
-                ex = sorted([t for t, s in pairs if lead_token(s) == w])[:3]
-            if len(ex) < 3 and lex_hits:
-                ex += sorted([t for t, _s in lex_hits if t not in ex])[:3 - len(ex)]
+                word = top_other[0]["word"]
+                ex += sorted([t for t, s in pairs if lead_token(s) == word])[:2]
+            ex += sorted([t for t, s in pairs if s.casefold().startswith(
+                best_pref_word.casefold()) and t not in ex])[:3 - len(ex)] \
+                if best_pref_word else []
             if len(ex) < 3:
                 ex += [t for t, _s in sorted(pairs, key=lambda x: (len(x[1]), x[1]))
                        if t not in ex][:3 - len(ex)]
         ex = ex[:3]
 
-        gen = next((t for t, s in pairs if s.casefold() in GENERIC.get(lang, ["infobox"])), None)
+        gen = next((t for t, s in pairs
+                    if s.casefold() in GENERIC.get(lang, ["infobox"])), None)
 
         results.append({
             "lang": lang,
             "site": lang + "wiki",
             "local_category": rec.get("category"),
-            "category_exists": rec.get("category_exists"),
-            "categoryinfo": rec.get("categoryinfo"),
-            "template_ns_name": ns_name,
-            "template_ns_aliases": aliases,
+            "local_category_exists": rec.get("category_exists"),
+            "local_template_namespace": ns_name,
+            "local_template_namespace_aliases": aliases,
             "templates_sampled": total,
-            "starts_with_infobox_count": len(matched),
-            "starts_with_infobox_share_pct": share,
-            "local_infobox_lexemes": lex,
-            "lexeme_anywhere_count": len(lex_hits),
-            "lexeme_anywhere_share_pct": lex_share,
+            "R1_naive_infobox_prefix_count": len(r1),
+            "R1_naive_infobox_prefix_pct": pct(len(r1), total),
+            "R2_local_prefix_word": best_pref_word,
+            "R2_local_prefix_count": best_pref_count,
+            "R2_local_prefix_pct": best_pref_share,
+            "R3_union_prefix_count": len(r3),
+            "R3_union_prefix_pct": pct(len(r3), total),
+            "R4_any_lexeme_count": len(r4),
+            "R4_any_lexeme_pct": pct(len(r4), total),
+            "local_infobox_words_tested": lex,
             "dominant_local_word": dom,
             "dominant_local_word_share_pct": dom_share,
             "dominant_local_word_prefix_count": dom_pre,
             "dominant_local_word_suffix_count": dom_suf,
-            "best_local_prefix_word": best_pref_word,
-            "best_local_prefix_count": best_pref_count,
-            "best_local_prefix_share_pct": best_pref_share,
-            "best_local_marker_non_english": marker,
             "distinct_leading_words": len(cnt),
             "top_other_leading_words": top_other,
-            "generic_infobox_template": gen,
+            "generic_catchall_infobox_template": gen,
+            "structure": ("single generic" if total <= 3 else "few"
+                          if total <= 10 else "many (family of infoboxes)"),
             "example_titles": ex,
-            "subcat_count": rec.get("subcat_count"),
+            "direct_subcat_count": rec.get("direct_subcat_count"),
             "subcats_sampled": len(rec.get("subcats", [])),
             "subcats_truncated": rec.get("subcats_truncated"),
+            "top_pages_total": rec.get("top_pages_total"),
+            "top_pages_truncated": rec.get("top_pages_truncated"),
             "failed_subcats": len(rec.get("failed_subcats", [])),
             "non_template_ns_members": rec.get("non_template_ns_members", {}),
-            "top_ns_histogram": rec.get("top_ns_histogram", {}),
             "notes": rec.get("notes", []),
         })
 
     tot = sum(r["templates_sampled"] for r in results)
-    totm = sum(r["starts_with_infobox_count"] for r in results)
-    totlx = sum(r["lexeme_anywhere_count"] for r in results)
-    failed = [r["lang"] for r in results if r["failed_subcats"] or not r["templates_sampled"]]
+    r1t = sum(r["R1_naive_infobox_prefix_count"] for r in results)
+    r3t = sum(r["R3_union_prefix_count"] for r in results)
+    r4t = sum(r["R4_any_lexeme_count"] for r in results)
+    weak = [r["lang"] for r in results if (r["R1_naive_infobox_prefix_pct"] or 0) < 50]
+    suffixy = [r["lang"] for r in results
+               if r["dominant_local_word_prefix_count"] is not None
+               and r["dominant_local_word_suffix_count"] > r["dominant_local_word_prefix_count"]]
+
     summary = {
         "generated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "wikidata_item": slinfo["qid"],
-        "en_source_category": "Category:Infobox templates",
-        "method": ("Wikidata sitelink of en Category:Infobox templates -> local category "
-                   "title -> Action API list=categorymembers (ns 10 templates only) for the "
-                   "category plus its direct subcategories (depth<=2)"),
-        "pattern_tested": "title after local Template-namespace prefix starts with 'Infobox' (case-insensitive)",
-        "editions_measured": len(results),
-        "templates_sampled_total": tot,
-        "pattern_hits_total": totm,
-        "overall_pattern_hit_share_pct": round(100.0 * totm / tot, 1) if tot else None,
-        "lexeme_anywhere_total": totlx,
-        "lexeme_anywhere_share_pct": round(100.0 * totlx / tot, 1) if tot else None,
-        "editions_with_complete_sample_failures": failed,
         "user_agent": "HermesAgent/1.0 (https://en.wikipedia.org/wiki/User:Fuzheado) InfoboxNaming/1.0",
+        "wikidata_item": qid,
+        "en_source_category": "Category:Infobox templates",
+        "resolution": ("en.wikipedia action=query&prop=pageprops -> wikibase_item "
+                       "-> wikidata wbgetentities&props=sitelinks -> localized "
+                       "category title per edition"),
+        "sampling": ("list=categorymembers of the localized category, ns 10 "
+                     "(Template) only, for the category itself plus up to 30 of "
+                     "its direct subcategories (depth<=2). Pages and subcategories "
+                     "listed with separate cmtype calls so a large ns-10 listing "
+                     "cannot hide subcategories."),
+        "pattern_tested": "title after the local Template-namespace prefix starts with 'Infobox', case-insensitive",
+        "editions_measured": len(results),
+        "editions_targeted": len(ORDER),
+        "editions_not_measured": not_measured,
+        "templates_sampled_total": tot,
+        "R1_naive_hits_total": r1t,
+        "R1_naive_hit_share_pct": pct(r1t, tot),
+        "R3_union_hits_total": r3t,
+        "R3_union_hit_share_pct": pct(r3t, tot),
+        "R4_any_lexeme_hits_total": r4t,
+        "R4_any_lexeme_share_pct": pct(r4t, tot),
+        "editions_where_naive_rule_catches_under_50pct": weak,
+        "editions_whose_local_word_is_mostly_a_suffix": suffixy,
         "per_wiki": results,
     }
     json.dump(summary, open(os.path.join(BASE, "infobox-naming.json"), "w"),
               ensure_ascii=False, indent=1)
 
+    # ------------------------------- markdown -------------------------------
     L = []
     L.append("# Localized infobox template naming across Wikipedia language editions\n")
-    L.append(f"- Wikidata item for en `Category:Infobox templates`: **{slinfo['qid']}** "
-             f"(found via `action=query&prop=pageprops`, then `wbgetentities&props=sitelinks`)")
-    L.append("- Rule tested: title after the local Template-namespace prefix "
-             "**starts with `Infobox`**, case-insensitive")
-    L.append(f"- Editions measured: **{len(results)}**  •  "
-             f"templates sampled (ns 10 only): **{tot}**  •  "
-             f"naive-rule hits: **{totm}** ({summary['overall_pattern_hit_share_pct']}%)")
-    L.append(f"- Titles containing *any* localized infobox lexeme "
-             f"(Ficha / Карточка / 基礎情報 / bilgi kutusu / 정보 …): **{totlx}** "
-             f"({summary['lexeme_anywhere_share_pct']}%)")
-    L.append("- Sampling: the Wikipedia-linked category for `Category:Infobox templates`, "
-             "`list=categorymembers` restricted to **ns 10 (Template)** — the category itself "
-             "plus its direct subcategories (depth ≤ 2), max 30 subcategories and 1500 members "
-             "per wiki. Lua/Module (ns 828), Help (ns 12) and article (ns 0) members that some "
-             "wikis file in the same category are excluded and reported separately.\n")
+    L.append(f"**Question:** can infobox templates be found by name pattern on each wiki, "
+             f"or is a name-independent method needed?\n")
+    L.append(f"- Wikidata item for en `Category:Infobox templates`: **{qid}** "
+             f"(`prop=pageprops` → `wbgetentities&props=sitelinks`)")
+    L.append(f"- Editions measured: **{len(results)}** of {len(ORDER)} targeted  •  "
+             f"templates sampled (ns 10 only): **{tot}**")
+    L.append(f"- **Naive English rule `^Infobox` (ci): {r1t} hits = "
+             f"{summary['R1_naive_hit_share_pct']}%** of all sampled infobox templates")
+    L.append(f"- Best per-wiki prefix rule (local ∪ English): {r3t} = "
+             f"{summary['R3_union_hit_share_pct']}%")
+    L.append(f"- Position-agnostic ceiling (name contains any local infobox word, "
+             f"prefix or suffix): {r4t} = {summary['R4_any_lexeme_share_pct']}%")
+    L.append(f"- Editions where the naive rule catches <50%: **{len(weak)}/20** "
+             f"({', '.join(weak)})")
+    L.append(f"- Editions whose own infobox word sits mostly at the *end* of the "
+             f"title: **{', '.join(suffixy) or 'none'}**\n")
+    L.append("Sampling: `list=categorymembers` on the Wikipedia-linked category, namespace 10 "
+             "(Template) only, for the category plus up to 30 of its direct subcategories "
+             "(depth ≤ 2). Pages and subcategories are listed with separate `cmtype` calls, so a "
+             "large ns-10 listing (enwiki has >1500 direct templates) cannot hide subcategories. "
+             "Module (828) / Help (12) / project (4) / article (0) members that some wikis file in "
+             "the same category are excluded from the counts and reported in Table 4.\n")
 
     L.append("## Table 1 — how many infobox templates the naive English `^Infobox` rule catches\n")
     L.append("| wiki | template ns | local category | templates sampled | naive `^Infobox` hits | naive share | best local prefix rule | its share | where the local word sits | top other leading words |")
     L.append("|---|---|---|---:|---:|---:|---|---:|---|---|")
     for r in results:
-        ow = ", ".join(f"`{d['word']}`×{d['count']}" for d in r["top_other_leading_words"][:4]) or "—"
+        ow = ", ".join(f"`{d['word']}`×{d['count']}"
+                       for d in r["top_other_leading_words"][:4]) or "—"
         cat = (r["local_category"] or "—").replace("|", "\\|")
-        share = "n/a" if r["starts_with_infobox_share_pct"] is None else f"{r['starts_with_infobox_share_pct']}%"
-        bp = (f"`{r['best_local_prefix_word']}` ({r['best_local_prefix_count']})"
-              if r["best_local_prefix_word"] else "— (no local prefix rule)")
-        bps = "n/a" if r["best_local_prefix_share_pct"] is None else f"{r['best_local_prefix_share_pct']}%"
-        dw = r["dominant_local_word"] or "—"
-        pos = (f"`{dw}` in {r['dominant_local_word_share_pct']}% of titles — "
-               f"prefix {r['dominant_local_word_prefix_count']} / suffix {r['dominant_local_word_suffix_count']}")
-        L.append(f"| **{r['lang']}** | `{r['template_ns_name']}` | {cat} | {r['templates_sampled']} | "
-                 f"{r['starts_with_infobox_count']} | {share} | {bp} | {bps} | {pos} | {ow} |")
+        p1 = "n/a" if r["R1_naive_infobox_prefix_pct"] is None else f"{r['R1_naive_infobox_prefix_pct']}%"
+        bp = (f"`{r['R2_local_prefix_word']}` ({r['R2_local_prefix_count']})"
+              if r["R2_local_prefix_word"] else "— (no local prefix rule)")
+        bps = "n/a" if r["R2_local_prefix_pct"] is None else f"{r['R2_local_prefix_pct']}%"
+        pos = (f"`{r['dominant_local_word']}` in {r['dominant_local_word_share_pct']}% of "
+               f"titles — prefix {r['dominant_local_word_prefix_count']} / "
+               f"suffix {r['dominant_local_word_suffix_count']}")
+        L.append(f"| **{r['lang']}** | `{r['local_template_namespace']}` | {cat} | "
+                 f"{r['templates_sampled']} | {r['R1_naive_infobox_prefix_count']} | "
+                 f"**{p1}** | {bp} | {bps} | {pos} | {ow} |")
 
     L.append("\n## Table 2 — 3 example localized infobox template titles per wiki (verbatim)\n")
-    L.append("| wiki | example 1 | example 2 | example 3 |")
-    L.append("|---|---|---|---|")
+    L.append("| wiki | template ns | example 1 | example 2 | example 3 |")
+    L.append("|---|---|---|---|---|")
     for r in results:
         e = (r["example_titles"] + ["—", "—", "—"])[:3]
-        L.append(f"| **{r['lang']}** | " + " | ".join(f"`{x}`" for x in e) + " |")
+        L.append(f"| **{r['lang']}** | `{r['local_template_namespace']}` | " +
+                 " | ".join(f"`{x}`" for x in e) + " |")
 
-    L.append("\n## Table 3 — single generic infobox vs. a family of many\n")
-    L.append("| wiki | templates sampled | distinct non-`Infobox` leading words | lexeme-anywhere share | catch-all infobox template | verdict |")
-    L.append("|---|---:|---:|---:|---|---|")
+    L.append("\n## Table 3 — most common other leading words, and single-generic vs. many\n")
+    L.append("| wiki | distinct non-`Infobox` leading words | top other leading words (count) | catch-all infobox template | structure |")
+    L.append("|---|---:|---|---|---|")
     for r in results:
-        n = r["templates_sampled"]
-        verdict = ("single generic" if n <= 3 else "few" if n <= 10 else "many (family of infoboxes)")
-        lx = "n/a" if r["lexeme_anywhere_share_pct"] is None else f"{r['lexeme_anywhere_share_pct']}%"
-        L.append(f"| **{r['lang']}** | {n} | {r['distinct_leading_words']} | {lx} | "
-                 f"{r['generic_infobox_template'] or '—'} | {verdict} |")
+        ow = ", ".join(f"`{d['word']}` ×{d['count']}"
+                       for d in r["top_other_leading_words"]) or "—"
+        L.append(f"| **{r['lang']}** | {r['distinct_leading_words']} | {ow} | "
+                 f"{r['generic_catchall_infobox_template'] or '—'} | {r['structure']} |")
 
-    L.append("\n## Table 4 — coverage and rate-limit report\n")
-    L.append("| wiki | subcats (direct) | subcats sampled | truncated | subcats failed (HTTP 429) | non-ns10 members seen (ns: title…) | notes |")
-    L.append("|---|---:|---:|---|---:|---|---|")
+    L.append("\n## Table 4 — coverage, truncation and rate-limit report\n")
+    L.append("| wiki | direct subcats | subcats sampled | subcats truncated | top listing truncated (cap 3000) | failed subcats (after backoff) | non-ns10 members seen | notes |")
+    L.append("|---|---:|---:|---|---:|---|---|---|")
     for r in results:
-        ntm = "; ".join(f"ns{k}: `{v[0]}`" for k, v in list(r["non_template_ns_members"].items())[:2]) or "—"
-        L.append(f"| **{r['lang']}** | {r['subcat_count'] if r['subcat_count'] is not None else '—'} | "
-                 f"{r['subcats_sampled']} | {r['subcats_truncated']} | {r['failed_subcats']} | "
-                 f"{ntm} | {'; '.join(r['notes']) or '—'} |")
+        ntm = "; ".join(f"ns{k}: `{v[0]}`"
+                        for k, v in list(r["non_template_ns_members"].items())[:2]) or "—"
+        L.append(f"| **{r['lang']}** | {r['direct_subcat_count']} | {r['subcats_sampled']} | "
+                 f"{r['subcats_truncated']} | {r['top_pages_truncated']} | "
+                 f"{r['failed_subcats']} | {ntm} | {'; '.join(r['notes']) or '—'} |")
+
+    if not_measured:
+        L.append("\n### Editions not measured\n")
+        for r in not_measured:
+            L.append(f"- **{r['lang']}** — {r['category']}: {r['notes']}")
 
     L.append("\n---\n")
-    L.append("Source: MediaWiki Action API per edition + Wikidata API. "
-             "User-Agent: `HermesAgent/1.0 (https://en.wikipedia.org/wiki/User:Fuzheado) InfoboxNaming/1.0`.\n")
+    L.append("Source: MediaWiki Action API per edition + Wikidata API. User-Agent "
+             "`HermesAgent/1.0 (https://en.wikipedia.org/wiki/User:Fuzheado) InfoboxNaming/1.0`; "
+             "~1 s between requests; HTTP 429/503 retried with exponential backoff and counted, "
+             "never treated as zero.\n")
 
-    open(os.path.join(BASE, "infobox-naming.md"), "w").write("\n".join(L) + "\n")
-    print("\n".join(L))
+    md = "\n".join(L) + "\n"
+    open(os.path.join(BASE, "infobox-naming.md"), "w").write(md)
+    print(md)
+    print("wrote infobox-naming.json / infobox-naming.md")
     return summary
 
 
