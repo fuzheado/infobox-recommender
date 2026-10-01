@@ -29,8 +29,8 @@ project/class/importance data as structured JSON on **en, fr, zh, ar, tr, hu**.
 Threading a wiki parameter through the pipeline (API client, SPARQL wiki-URL, UI links, CLI, `?wiki=`)
 is **1–2 days** and the URL-keyed cache already makes per-wiki caching free. The hard dependency is
 one function — `lib/census.js` identifies infoboxes by the literal prefix `Infobox` plus seven
-hardcoded families — and measured across 20 editions only **~58% of a wiki's own infobox templates**
-match that rule: 98.9% on en, 94.5% de, 99.1% fr — but **2.0% on es** (`Ficha`), 0.0% ru
+hardcoded families — and measured across 20 editions only **~60% of a wiki's own infobox templates**
+match that rule: 98.5% on en, 94.5% de, 99.1% fr — but **2.0% on es** (`Ficha`), 0.0% ru
 (`Карточка`), 0.9% it, and **0% on tr and he**. Crucially the failure mode is silent: a missed family
 lowers measured coverage, which flips the verdict to a confident **"no infobox customary"** — a wrong
 answer, not an abstention, which breaks the tool's core honesty guarantee. Two refactors fix this
@@ -336,6 +336,15 @@ several majors the local word dominates: **he** `מידע` 6,736 vs `Infobox` **
 **uk** `Картка` 736 vs 468; **ca** `Infotaula` 703 vs 306; **ru** `Карточка` 581 vs 123;
 **it** `Scheda` 88 vs 83; **fi** `Tietolaatikko` 97 vs **20**.
 
+**Reproducing Table 2, and filling its gaps.** These counts are `list=search` `intitle:` totals over
+namespace 10; `scripts/research/infobox_step4_crosscheck.py` re-runs the probe and its output is
+Table 5 of `infobox-naming.md`. Re-run today it returns near-identical counts — de 3,483 vs 3,493,
+fr 4,540 vs 4,544, nl 2,154 vs 2,156, uk 465 vs 468, pl 1,318 vs 1,318 — i.e. a handful of templates'
+worth of drift between the two runs, which is the expected scale over a few hours. It also fills the
+two gaps above: **en 7,776** templates whose title contains `Infobox` (the 429 row here), and a
+local-word column for **he** (2 vs 50 `מידע`), **ar** (928 vs 3,203 `صندوق`), **ko** (870 vs 3,313
+`정보`), **tr** (95 vs 1,999 `bilgi kutusu`) and **vi** (1,770 vs 511 `hộp thông tin`).
+
 The dangerous property is the **failure mode**: a missed infobox family doesn't error, it *lowers
 coverage*, which pushes the verdict toward **"no infobox customary"** — a confident, wrong answer.
 That is worse than abstaining, and it is exactly the kind of output a tool built on
@@ -344,16 +353,18 @@ peer-census honesty must not produce.
 **Second, independent method** (category-denominated, so the denominator is the wiki's own declared
 infobox set): take each wiki's Wikidata-linked "Infobox templates" category (Q6154820, 233 sitelinks),
 list its ns-10 (Template) members plus those of its direct subcategories, and compute the share of
-sampled template titles that start with `Infobox`. Across **20 editions / 13,082 templates: 7,630
-(58.3%)** — full table, raw JSON and the scripts that produce them are in this repo
+sampled template titles that start with `Infobox`. Across **20 editions / 13,724 templates: 8,257
+(60.2%)** — full table, raw JSON and the scripts that produce them are in this repo
 (`infobox-naming.md`, `infobox-naming.json`, `scripts/research/`). Per edition the split is
 stark and matches the `intitle:` probe above:
 
-* ≈90–99% "Infobox" — fr 99.1%, en 98.9%, nl 98.1%, de 94.5%, zh 92.1%, id 90.5%
+* ≈90–99% "Infobox" — fr 99.1%, en 98.5%, nl 98.1%, de 94.5%, zh 92.1%, id 90.5%
 * mixed — ja 75.4%, vi 72.3%, sv 29.4% (`Faktamall` 128), ca 24.6% (`Infotaula` 71),
   pl 13.0%, pt 10.3% (`Info/…`)
 * local wins decisively — uk 6.1% (`Картка` 78), ar 4.9% (`صندوق` 625), **es 2.0%** (`Ficha` 149),
   it 0.9% (`Codifica`/`Razza`), ko 0.3%, **ru 0.0%**, **tr 0.0%**, **he 0.0%** (`אישיות`, `קבוצת`)
+
+The naive rule catches under half the declared set on **12 of the 20 editions**.
 
 **Position matters as much as vocabulary.** The rule is prefix-anchored, but several editions put the
 infobox word at the *end* of the title: **pl** contains `infobox` in 98.7% of titles yet only 39 as a
@@ -364,11 +375,11 @@ A localized word list alone is therefore not sufficient for a detector; the matc
 position-aware (or suffix-tolerant) too.
 
 Caveat on that sampling: some wikis' "infobox" categories are container categories with mixed
-contents (it sampled 268 distinct leading words across 337 templates), the three wikis with more than
-30 direct subcategories were read to a depth-2 cap of 30, and Lua/Module, Help and article-space
-pages filed in the same categories are excluded (they are reported separately in
-`infobox-naming.md`). Treat the per-edition shares as indicative rather than exact. Two methods with
-different denominators agreeing on the direction is the point.
+contents (it sampled 268 distinct leading words across 337 templates), the five editions with more
+than 30 direct subcategories (it, sv, uk, id, he) were read to a depth-2 cap of 30, and Lua/Module,
+Help, project and article-space pages filed in the same categories are excluded (they are reported
+separately in `infobox-naming.md`). Category membership is editor-maintained, so this measures what
+each wiki *declares*, not every infobox template in existence.
 
 ### 4.4 Effort estimate
 
