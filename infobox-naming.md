@@ -112,6 +112,36 @@ Sampling: `list=categorymembers` on the Wikipedia-linked category, namespace 10 
 | **ko** | 18 | 18 | False | False | 0 | ns4: `위키백과:편집 지침/정보상자` | — |
 | **vi** | 15 | 15 | False | False | 0 | ns4: `Wikipedia:Danh sách hộp thông tin`; ns0: `2001 Mars Odyssey` | — |
 
+## Table 5 — independent cross-check (CirrusSearch `intitle:` counts, ns 10)
+
+Second, independent method. Tables 1–4 count members of each wiki's Wikidata-linked infobox *category*; the counts below come from `list=search` over the wiki's **entire Template namespace** — a different data source and a different denominator. Direction agreement between the two is evidence the naming pattern belongs to the wiki, not to the category's membership.
+
+| wiki | Template-ns titles containing `Infobox` | Template-ns titles containing the local word | local word searched | which dominates |
+|---|---:|---:|---|---|
+| **en** | 7776 | 7776 | `Infobox` | same word |
+| **de** | 3483 | 3483 | `Infobox` | same word |
+| **fr** | 4540 | 4540 | `Infobox` | same word |
+| **es** | 116 | 1438 | `Ficha` | **local word** |
+| **it** | 83 | 9 | `sinottico` | English word |
+| **pt** | 885 | 3716 | `Info/` | **local word** |
+| **ru** | 123 | 570 | `Карточка` | **local word** |
+| **pl** | 1318 | 1318 | `infobox` | same word |
+| **nl** | 2154 | 2154 | `Infobox` | same word |
+| **sv** | 702 | 319 | `Faktamall` | English word |
+| **uk** | 465 | 713 | `Картка` | **local word** |
+| **ja** | 3289 | 354 | `基礎情報` | English word |
+| **zh** | 3362 | 169 | `信息框` | English word |
+| **ca** | 299 | 703 | `Infotaula` | **local word** |
+| **id** | 3109 | 714 | `Kotak info` | English word |
+| **tr** | 95 | 1999 | `bilgi kutusu` | **local word** |
+| **he** | 2 | 50 | `מידע` | **local word** |
+| **ar** | 928 | 3203 | `صندوق` | **local word** |
+| **ko** | 870 | 3313 | `정보` | **local word** |
+| **vi** | 1770 | 511 | `hộp thông tin` | English word |
+
+The two denominators can disagree in direction. **sv** is the clearest case: namespace-wide the English word is ahead (702 vs 319 `Faktamall`), but inside svwiki's declared infobox set `Faktamall` is the leading word. The category method measures the wiki's own declared infobox family; the search method measures every template that carries the word anywhere in its title, including wrappers, subpages and documentation. Neither is authoritative on its own. Absolute size matters too: **it** (83 `Infobox` / 9 `sinottico`) and **he** (2 / 50) have no word that identifies their infoboxes on this wiki, out of thousands of templates — a name-pattern rule has nothing to bind to there.
+
+
 ---
 
 Source: MediaWiki Action API per edition + Wikidata API. User-Agent `HermesAgent/1.0 (https://en.wikipedia.org/wiki/User:Fuzheado) InfoboxNaming/1.0`; ~1 s between requests; HTTP 429/503 retried with exponential backoff and counted, never treated as zero.

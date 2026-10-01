@@ -336,6 +336,15 @@ several majors the local word dominates: **he** `מידע` 6,736 vs `Infobox` **
 **uk** `Картка` 736 vs 468; **ca** `Infotaula` 703 vs 306; **ru** `Карточка` 581 vs 123;
 **it** `Scheda` 88 vs 83; **fi** `Tietolaatikko` 97 vs **20**.
 
+**Reproducing Table 2, and filling its gaps.** These counts are `list=search` `intitle:` totals over
+namespace 10; `scripts/research/infobox_step4_crosscheck.py` re-runs the probe and its output is
+Table 5 of `infobox-naming.md`. Re-run today it returns near-identical counts — de 3,483 vs 3,493,
+fr 4,540 vs 4,544, nl 2,154 vs 2,156, uk 465 vs 468, pl 1,318 vs 1,318 — i.e. a handful of templates'
+worth of drift between the two runs, which is the expected scale over a few hours. It also fills the
+two gaps above: **en 7,776** templates whose title contains `Infobox` (the 429 row here), and a
+local-word column for **he** (2 vs 50 `מידע`), **ar** (928 vs 3,203 `صندوق`), **ko** (870 vs 3,313
+`정보`), **tr** (95 vs 1,999 `bilgi kutusu`) and **vi** (1,770 vs 511 `hộp thông tin`).
+
 The dangerous property is the **failure mode**: a missed infobox family doesn't error, it *lowers
 coverage*, which pushes the verdict toward **"no infobox customary"** — a confident, wrong answer.
 That is worse than abstaining, and it is exactly the kind of output a tool built on

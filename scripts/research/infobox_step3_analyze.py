@@ -249,8 +249,6 @@ def main():
         "editions_whose_local_word_is_mostly_a_suffix": suffixy,
         "per_wiki": results,
     }
-    json.dump(summary, open(os.path.join(BASE, "infobox-naming.json"), "w"),
-              ensure_ascii=False, indent=1)
 
     # ------------------------------- markdown -------------------------------
     L = []
@@ -328,6 +326,48 @@ def main():
         for r in not_measured:
             L.append(f"- **{r['lang']}** — {r['category']}: {r['notes']}")
 
+    # ---- Table 5: independent cross-check (optional, from step 4) ----
+    xc = None
+    try:
+        xc = json.load(open(os.path.join(BASE, "infobox-crosscheck.json")))
+    except Exception:
+        pass
+    if xc:
+        L.append("\n## Table 5 — independent cross-check (CirrusSearch `intitle:` counts, ns 10)\n")
+        L.append("Second, independent method. Tables 1–4 count members of each wiki's "
+                 "Wikidata-linked infobox *category*; the counts below come from `list=search` "
+                 "over the wiki's **entire Template namespace** — a different data source and a "
+                 "different denominator. Direction agreement between the two is evidence the "
+                 "naming pattern belongs to the wiki, not to the category's membership.\n")
+        L.append("| wiki | Template-ns titles containing `Infobox` | Template-ns titles containing the local word | local word searched | which dominates |")
+        L.append("|---|---:|---:|---|---|")
+        for r in results:
+            x = xc.get(r["lang"], {})
+            a = x.get("templates_with_Infobox_in_title")
+            b = x.get("templates_with_local_marker_in_title")
+            if a is None or b is None:
+                verdict = "—"
+            elif x.get("local_marker", "").casefold() == "infobox":
+                verdict = "same word"
+            elif b > a:
+                verdict = "**local word**"
+            elif b < a:
+                verdict = "English word"
+            else:
+                verdict = "tie"
+            L.append(f"| **{r['lang']}** | {a if a is not None else '—'} | "
+                     f"{b if b is not None else '—'} | `{x.get('local_marker', '—')}` | {verdict} |")
+        L.append("\nThe two denominators can disagree in direction. **sv** is the clearest case: "
+                 "namespace-wide the English word is ahead (702 vs 319 `Faktamall`), but inside "
+                 "svwiki's declared infobox set `Faktamall` is the leading word. The category "
+                 "method measures the wiki's own declared infobox family; the search method "
+                 "measures every template that carries the word anywhere in its title, including "
+                 "wrappers, subpages and documentation. Neither is authoritative on its own. "
+                 "Absolute size matters too: **it** (83 `Infobox` / 9 `sinottico`) and **he** "
+                 "(2 / 50) have no word that identifies their infoboxes on this wiki, out of "
+                 "thousands of templates — a name-pattern rule has nothing to bind to there.\n")
+        summary["crosscheck"] = xc
+
     L.append("\n---\n")
     L.append("Source: MediaWiki Action API per edition + Wikidata API. User-Agent "
              "`HermesAgent/1.0 (https://en.wikipedia.org/wiki/User:Fuzheado) InfoboxNaming/1.0`; "
@@ -336,6 +376,10 @@ def main():
 
     md = "\n".join(L) + "\n"
     open(os.path.join(BASE, "infobox-naming.md"), "w").write(md)
+    # written last so the cross-check block (added while building the markdown)
+    # is included in the JSON too
+    json.dump(summary, open(os.path.join(BASE, "infobox-naming.json"), "w"),
+              ensure_ascii=False, indent=1)
     print(md)
     print("wrote infobox-naming.json / infobox-naming.md")
     return summary

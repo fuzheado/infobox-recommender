@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-01T03:13:37Z",
+ "generated": "2026-10-01T03:22:24Z",
  "user_agent": "HermesAgent/1.0 (https://en.wikipedia.org/wiki/User:Fuzheado) InfoboxNaming/1.0",
  "wikidata_item": "Q6154820",
  "en_source_category": "Category:Infobox templates",
@@ -1670,5 +1670,127 @@
    },
    "notes": []
   }
- ]
+ ],
+ "crosscheck": {
+  "en": {
+   "lang": "en",
+   "local_marker": "Infobox",
+   "templates_with_Infobox_in_title": 7776,
+   "templates_with_local_marker_in_title": 7776
+  },
+  "de": {
+   "lang": "de",
+   "local_marker": "Infobox",
+   "templates_with_Infobox_in_title": 3483,
+   "templates_with_local_marker_in_title": 3483
+  },
+  "fr": {
+   "lang": "fr",
+   "local_marker": "Infobox",
+   "templates_with_Infobox_in_title": 4540,
+   "templates_with_local_marker_in_title": 4540
+  },
+  "es": {
+   "lang": "es",
+   "local_marker": "Ficha",
+   "templates_with_Infobox_in_title": 116,
+   "templates_with_local_marker_in_title": 1438
+  },
+  "it": {
+   "lang": "it",
+   "local_marker": "sinottico",
+   "templates_with_Infobox_in_title": 83,
+   "templates_with_local_marker_in_title": 9
+  },
+  "pt": {
+   "lang": "pt",
+   "local_marker": "Info/",
+   "templates_with_Infobox_in_title": 885,
+   "templates_with_local_marker_in_title": 3716
+  },
+  "ru": {
+   "lang": "ru",
+   "local_marker": "Карточка",
+   "templates_with_Infobox_in_title": 123,
+   "templates_with_local_marker_in_title": 570
+  },
+  "pl": {
+   "lang": "pl",
+   "local_marker": "infobox",
+   "templates_with_Infobox_in_title": 1318,
+   "templates_with_local_marker_in_title": 1318
+  },
+  "nl": {
+   "lang": "nl",
+   "local_marker": "Infobox",
+   "templates_with_Infobox_in_title": 2154,
+   "templates_with_local_marker_in_title": 2154
+  },
+  "sv": {
+   "lang": "sv",
+   "local_marker": "Faktamall",
+   "templates_with_Infobox_in_title": 702,
+   "templates_with_local_marker_in_title": 319
+  },
+  "uk": {
+   "lang": "uk",
+   "local_marker": "Картка",
+   "templates_with_Infobox_in_title": 465,
+   "templates_with_local_marker_in_title": 713
+  },
+  "ja": {
+   "lang": "ja",
+   "local_marker": "基礎情報",
+   "templates_with_Infobox_in_title": 3289,
+   "templates_with_local_marker_in_title": 354
+  },
+  "zh": {
+   "lang": "zh",
+   "local_marker": "信息框",
+   "templates_with_Infobox_in_title": 3362,
+   "templates_with_local_marker_in_title": 169
+  },
+  "ca": {
+   "lang": "ca",
+   "local_marker": "Infotaula",
+   "templates_with_Infobox_in_title": 299,
+   "templates_with_local_marker_in_title": 703
+  },
+  "id": {
+   "lang": "id",
+   "local_marker": "Kotak info",
+   "templates_with_Infobox_in_title": 3109,
+   "templates_with_local_marker_in_title": 714
+  },
+  "tr": {
+   "lang": "tr",
+   "local_marker": "bilgi kutusu",
+   "templates_with_Infobox_in_title": 95,
+   "templates_with_local_marker_in_title": 1999
+  },
+  "he": {
+   "lang": "he",
+   "local_marker": "מידע",
+   "templates_with_Infobox_in_title": 2,
+   "templates_with_local_marker_in_title": 50
+  },
+  "ar": {
+   "lang": "ar",
+   "local_marker": "صندوق",
+   "templates_with_Infobox_in_title": 928,
+   "templates_with_local_marker_in_title": 3203
+  },
+  "ko": {
+   "lang": "ko",
+   "local_marker": "정보",
+   "templates_with_Infobox_in_title": 870,
+   "templates_with_local_marker_in_title": 3313
+  },
+  "vi": {
+   "lang": "vi",
+   "local_marker": "hộp thông tin",
+   "templates_with_Infobox_in_title": 1770,
+   "templates_with_local_marker_in_title": 511
+  }
+ }
 }
