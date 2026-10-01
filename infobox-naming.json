@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-01T03:13:08Z",
+ "generated": "2026-10-01T03:13:37Z",
  "user_agent": "HermesAgent/1.0 (https://en.wikipedia.org/wiki/User:Fuzheado) InfoboxNaming/1.0",
  "wikidata_item": "Q6154820",
  "en_source_category": "Category:Infobox templates",
@@ -413,7 +413,7 @@
    "example_titles": [
     "Template:Codifica colore",
     "Template:Codifica colore/Cmax",
-    "Template:Infobox colore"
+    "Template:Codifica colore/Cmin"
    ],
    "direct_subcat_count": 47,
    "subcats_sampled": 30,
@@ -670,7 +670,7 @@
    "example_titles": [
     "Szablon:Turniej SGP infobox",
     "Szablon:Turniej darterski infobox",
-    "Szablon:Infobox 2x1"
+    "Szablon:Turniej darterski ogólny infobox"
    ],
    "direct_subcat_count": 20,
    "subcats_sampled": 20,
@@ -1335,7 +1335,7 @@
    "example_titles": [
     "Şablon:Arkeolojik höyük",
     "Şablon:Arkeolojik kültür bilgi kutusu",
-    "Şablon:IUCN şeridi"
+    "Şablon:Arkeolojik sit bilgi kutusu"
    ],
    "direct_subcat_count": 14,
    "subcats_sampled": 14,
@@ -1406,7 +1406,7 @@
    "example_titles": [
     "תבנית:אישיות",
     "תבנית:אישיות בודהיסטית",
-    "תבנית:מידע דגל"
+    "תבנית:אישיות בייסבול"
    ],
    "direct_subcat_count": 35,
    "subcats_sampled": 30,
@@ -1561,7 +1561,7 @@
    "example_titles": [
     "틀:프로게임팀 정보",
     "틀:프로게임팀 정보/FPS",
-    "틀:정보상자"
+    "틀:프로게임팀 정보/기타"
    ],
    "direct_subcat_count": 18,
    "subcats_sampled": 18,

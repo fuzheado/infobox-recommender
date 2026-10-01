@@ -45,10 +45,10 @@ Sampling: `list=categorymembers` on the Wikipedia-linked category, namespace 10 
 | **de** | `Vorlage` | `Vorlage:Infobox` | `Vorlage:Infobox AFV` | `Vorlage:Infobox Alm` |
 | **fr** | `Modèle` | `Modèle:Infobox` | `Modèle:Infobox API` | `Modèle:Infobox Art` |
 | **es** | `Plantilla` | `Plantilla:Ficha` | `Plantilla:Ficha Wikidata` | `Plantilla:Ficha animanga` |
-| **it** | `Template` | `Template:Codifica colore` | `Template:Codifica colore/Cmax` | `Template:Infobox colore` |
+| **it** | `Template` | `Template:Codifica colore` | `Template:Codifica colore/Cmax` | `Template:Codifica colore/Cmin` |
 | **pt** | `Predefinição` | `Predefinição:Info/Clube` | `Predefinição:Info/Clube de Futebol Americano` | `Predefinição:Info/Clube de basquetebol` |
 | **ru** | `Шаблон` | `Шаблон:Карточка` | `Шаблон:Карточка КДС` | `Шаблон:Карточка КИС` |
-| **pl** | `Szablon` | `Szablon:Turniej SGP infobox` | `Szablon:Turniej darterski infobox` | `Szablon:Infobox 2x1` |
+| **pl** | `Szablon` | `Szablon:Turniej SGP infobox` | `Szablon:Turniej darterski infobox` | `Szablon:Turniej darterski ogólny infobox` |
 | **nl** | `Sjabloon` | `Sjabloon:Infobox` | `Sjabloon:Infobox IPA` | `Sjabloon:Infobox bot` |
 | **sv** | `Mall` | `Mall:Faktamall` | `Mall:Faktamall American Hockey League` | `Mall:Faktamall CPU socket` |
 | **uk** | `Шаблон` | `Шаблон:Картка` | `Шаблон:Картка APU` | `Шаблон:Картка CPU` |
@@ -56,10 +56,10 @@ Sampling: `list=categorymembers` on the Wikipedia-linked category, namespace 10 
 | **zh** | `Template` | `Template:Infobox` | `Template:Infobox OS` | `Template:Infobox 假名` |
 | **ca** | `Plantilla` | `Plantilla:Infotaula Azerbaidjan als Jocs Olímpics` | `Plantilla:Infotaula Borgen` | `Plantilla:Infotaula IPA/core1` |
 | **id** | `Templat` | `Templat:Infobox` | `Templat:Infobox OS` | `Templat:Infobox AoE` |
-| **tr** | `Şablon` | `Şablon:Arkeolojik höyük` | `Şablon:Arkeolojik kültür bilgi kutusu` | `Şablon:IUCN şeridi` |
-| **he** | `תבנית` | `תבנית:אישיות` | `תבנית:אישיות בודהיסטית` | `תבנית:מידע דגל` |
+| **tr** | `Şablon` | `Şablon:Arkeolojik höyük` | `Şablon:Arkeolojik kültür bilgi kutusu` | `Şablon:Arkeolojik sit bilgi kutusu` |
+| **he** | `תבנית` | `תבנית:אישיות` | `תבנית:אישיות בודהיסטית` | `תבנית:אישיות בייסבול` |
 | **ar** | `قالب` | `قالب:صندوق بطولة تنس` | `قالب:صندوق بطولة تنس/شرح` | `قالب:صندوق تنظيم حدث رياضي` |
-| **ko** | `틀` | `틀:프로게임팀 정보` | `틀:프로게임팀 정보/FPS` | `틀:정보상자` |
+| **ko** | `틀` | `틀:프로게임팀 정보` | `틀:프로게임팀 정보/FPS` | `틀:프로게임팀 정보/기타` |
 | **vi** | `Bản mẫu` | `Bản mẫu:Infobox CPU` | `Bản mẫu:Infobox GPU` | `Bản mẫu:Infobox IPA` |
 
 ## Table 3 — most common other leading words, and single-generic vs. many

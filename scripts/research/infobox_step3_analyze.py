@@ -162,7 +162,7 @@ def main():
             ex = []
             if top_other:
                 word = top_other[0]["word"]
-                ex += sorted([t for t, s in pairs if lead_token(s) == word])[:2]
+                ex += sorted([t for t, s in pairs if lead_token(s) == word])[:3]
             ex += sorted([t for t, s in pairs if s.casefold().startswith(
                 best_pref_word.casefold()) and t not in ex])[:3 - len(ex)] \
                 if best_pref_word else []
