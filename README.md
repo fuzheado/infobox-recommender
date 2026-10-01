@@ -273,9 +273,10 @@ table), and `engineering-notes.md` (API gotchas).
 
 ## Next steps
 
-- **Flip repo visibility** — github.com/fuzheado/infobox-recommender is
-  private; make it public when ready to share (the About modal links it).
-  Deployment itself is done: Toolforge k8s, node20 runtime.
+- **Share it** — the repo is now **public** (github.com/fuzheado/infobox-recommender,
+  MIT); the About modal links it. Remaining: a Diff writeup and a note at
+  WikiProject Infoboxes /assistance. Deployment itself is done: Toolforge
+  k8s, node20 runtime.
 - **Semantic sub-clustering** (lead/extract embeddings or ORES topics) — the
   main lever for the remaining abstains and the concept-genre cases
   (signals.md H3).

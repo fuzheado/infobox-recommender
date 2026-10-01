@@ -154,8 +154,8 @@ WikiProject Infoboxes.
 
 ## Tier 3 — visibility & polish
 
-10. **Repo public + Diff post + WikiProject outreach** — the README's next
-    step; a Diff writeup fits the project's research lineage; the
+10. ~~**Repo public**~~ (**done 2026-08-28**) **+ Diff post + WikiProject
+    outreach** — a Diff writeup fits the project's research lineage; the
     WikiProject Infoboxes /assistance page exists for exactly this.
 11. **Microtask Generator integration** — their "add an infobox" task ends
     at "find similar articles to copy template structure"; a link to

@@ -18,7 +18,7 @@ recommend a template — or honestly abstain.
   manual/canonical validate)
 - **Deployed:** <https://infobox-recommender.toolforge.org> (Toolforge k8s,
   node20) · **Repo:** <https://github.com/fuzheado/infobox-recommender>
-  (PRIVATE — flip visibility when ready to share)
+  (**public** since 2026-08-28; MIT)
 - **Progress:** 11% → 83% → 71% → 73% → 75% → 84% → 85% → 84% → 85% → 86% →
   90% across six campaigns (full history in `test/EVALUATION.md`)
 
@@ -151,8 +151,10 @@ better than mixed VALUES; WDQS needs timeouts; 4xx ≠ retryable.
 5. **Stage D** — Wikidata fill-rate draft infobox preview.
 6. **Userscript** — libs are runtime-agnostic; the report renderer
    transfers; `{ cacheDir: null, paceMs: 0 }` in-browser.
-7. **Repo visibility** — flip to public when ready; the About modal links
-   the repo.
+7. ~~**Repo visibility**~~ — **done 2026-08-28**: the repo is public
+   (<https://github.com/fuzheado/infobox-recommender>, MIT); the About modal
+   links it. Remaining from that thread: a Diff writeup + a note at
+   WikiProject Infoboxes /assistance (see `ROADMAP.md` Tier 3).
 
 ## Campaign history (why the numbers moved)
 
