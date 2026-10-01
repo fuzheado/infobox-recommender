@@ -190,6 +190,7 @@ web UI only (toolsadmin); OSI `LICENSE` (MIT) included.
 | `test/EVALUATION.md` | Evaluation campaigns: dataset construction, scoring, per-case results, failure analysis |
 | `engineering-notes.md` | API gotchas (tllimit, tltemplates, redirects, WDQS…) + methodology lessons — read before touching the API layer |
 | `status-quo.md` | The documented need — how editors add infoboxes today (workflows, friction, prior art, honest market assessment) |
+| `ROADMAP.md` | The way forward — prioritized features (engine + reach tracks), effort estimates, eval targets |
 
 ## Test data & evaluation
 

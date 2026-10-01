@@ -55,6 +55,7 @@ run 5–30s; repeats are instant.
 | `scripts/fetch-queue.mjs` | Rebuilds fixtures from the live backlog |
 | `scripts/manual-cases.json` | Manual + canonical seed cases |
 | `status-quo.md` | Need assessment — how editors add infoboxes today (workflows, friction, prior art, honest market assessment) |
+| `ROADMAP.md` | What's next — prioritized features (engine + reach tracks), effort, eval targets |
 
 ## The recommender in 10 minutes
 
