@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-01T03:11:31Z",
+ "generated": "2026-10-01T03:13:08Z",
  "user_agent": "HermesAgent/1.0 (https://en.wikipedia.org/wiki/User:Fuzheado) InfoboxNaming/1.0",
  "wikidata_item": "Q6154820",
  "en_source_category": "Category:Infobox templates",
@@ -12,10 +12,10 @@
  "templates_sampled_total": 13724,
  "R1_naive_hits_total": 8257,
  "R1_naive_hit_share_pct": 60.2,
- "R3_union_hits_total": 8697,
- "R3_union_hit_share_pct": 63.4,
- "R4_any_lexeme_hits_total": 10771,
- "R4_any_lexeme_share_pct": 78.5,
+ "R3_union_hits_total": 9468,
+ "R3_union_hit_share_pct": 69.0,
+ "R4_any_lexeme_hits_total": 10785,
+ "R4_any_lexeme_share_pct": 78.6,
  "editions_where_naive_rule_catches_under_50pct": [
   "es",
   "it",
@@ -774,11 +774,11 @@
    "templates_sampled": 681,
    "R1_naive_infobox_prefix_count": 200,
    "R1_naive_infobox_prefix_pct": 29.4,
-   "R2_local_prefix_word": "Infobox",
-   "R2_local_prefix_count": 192,
-   "R2_local_prefix_pct": 28.2,
-   "R3_union_prefix_count": 200,
-   "R3_union_prefix_pct": 29.4,
+   "R2_local_prefix_word": "Faktamall",
+   "R2_local_prefix_count": 128,
+   "R2_local_prefix_pct": 18.8,
+   "R3_union_prefix_count": 330,
+   "R3_union_prefix_pct": 48.5,
    "R4_any_lexeme_count": 353,
    "R4_any_lexeme_pct": 51.8,
    "local_infobox_words_tested": [
@@ -822,7 +822,7 @@
    "example_titles": [
     "Mall:Faktamall",
     "Mall:Faktamall American Hockey League",
-    "Mall:Infobox Amerikanskfotboll klubb"
+    "Mall:Faktamall CPU socket"
    ],
    "direct_subcat_count": 32,
    "subcats_sampled": 30,
@@ -945,11 +945,11 @@
    "templates_sampled": 350,
    "R1_naive_infobox_prefix_count": 264,
    "R1_naive_infobox_prefix_pct": 75.4,
-   "R2_local_prefix_word": "Infobox",
-   "R2_local_prefix_count": 260,
-   "R2_local_prefix_pct": 74.3,
-   "R3_union_prefix_count": 264,
-   "R3_union_prefix_pct": 75.4,
+   "R2_local_prefix_word": "基礎情報",
+   "R2_local_prefix_count": 16,
+   "R2_local_prefix_pct": 4.6,
+   "R3_union_prefix_count": 280,
+   "R3_union_prefix_pct": 80.0,
    "R4_any_lexeme_count": 281,
    "R4_any_lexeme_pct": 80.3,
    "local_infobox_words_tested": [
@@ -1431,14 +1431,15 @@
    "templates_sampled": 814,
    "R1_naive_infobox_prefix_count": 40,
    "R1_naive_infobox_prefix_pct": 4.9,
-   "R2_local_prefix_word": "Infobox",
-   "R2_local_prefix_count": 39,
-   "R2_local_prefix_pct": 4.8,
-   "R3_union_prefix_count": 40,
-   "R3_union_prefix_pct": 4.9,
-   "R4_any_lexeme_count": 689,
-   "R4_any_lexeme_pct": 84.6,
+   "R2_local_prefix_word": "صندوق",
+   "R2_local_prefix_count": 625,
+   "R2_local_prefix_pct": 76.8,
+   "R3_union_prefix_count": 665,
+   "R3_union_prefix_pct": 81.7,
+   "R4_any_lexeme_count": 703,
+   "R4_any_lexeme_pct": 86.4,
    "local_infobox_words_tested": [
+    "صندوق",
     "صندوق معلومات",
     "معلومات",
     "infobox"
@@ -1479,7 +1480,7 @@
    "example_titles": [
     "قالب:صندوق بطولة تنس",
     "قالب:صندوق بطولة تنس/شرح",
-    "قالب:Infobox"
+    "قالب:صندوق تنظيم حدث رياضي"
    ],
    "direct_subcat_count": 28,
    "subcats_sampled": 28,

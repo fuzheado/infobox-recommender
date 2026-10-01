@@ -42,7 +42,7 @@ LEXEMES = {
     "zh": ["信息框", "infobox"], "ca": ["infotaula", "infobox"],
     "id": ["kotak info", "infobox"], "tr": ["bilgi kutusu", "infobox"],
     "he": ["מידע", "אינפובוקס", "infobox"],
-    "ar": ["صندوق معلومات", "معلومات", "infobox"],
+    "ar": ["صندوق", "صندوق معلومات", "معلومات", "infobox"],
     "ko": ["정보상자", "정보", "infobox"], "vi": ["hộp thông tin", "infobox"],
 }
 # Names that would be a single catch-all infobox template rather than a family.
@@ -117,16 +117,27 @@ def main():
         dom_share = (round(100.0 * lx_freq[dom] / total, 1)
                      if (dom and total) else None)
 
-        # R2: most common leading token that is itself an infobox word
+        # R2: the wiki's own prefix rule = most common leading word that is an
+        # infobox word. Prefer a genuine local word (>=2 hits, not an
+        # "Infobox*" variant); otherwise fall back to "Infobox" itself, so R2
+        # never degenerates into noise like "Infobox/Columns" or "Infobox3cols".
         pref_counter, pref_disp = Counter(), {}
         for _t, s in pairs:
             tok = lead_token(s)
             if any(lx.casefold() in tok.casefold() for lx in lex):
                 pref_counter[tok.casefold()] += 1
                 pref_disp.setdefault(tok.casefold(), tok)
-        if pref_counter:
-            k = pref_counter.most_common(1)[0][0]
-            best_pref_word, best_pref_count = pref_disp[k], pref_counter[k]
+        engish = {k: c for k, c in pref_counter.items() if k.startswith("infobox")}
+        local = {k: c for k, c in pref_counter.items()
+                 if not k.startswith("infobox") and c >= 2}
+        if local:
+            k = max(local.items(), key=lambda kv: kv[1])[0]
+            best_pref_word, best_pref_count = pref_disp[k], local[k]
+        elif "infobox" in engish:
+            best_pref_word, best_pref_count = "Infobox", engish["infobox"]
+        elif engish:
+            k = max(engish.items(), key=lambda kv: kv[1])[0]
+            best_pref_word, best_pref_count = pref_disp[k], engish[k]
         else:
             best_pref_word, best_pref_count = None, 0
         best_pref_share = round(100.0 * best_pref_count / total, 1) if total else None

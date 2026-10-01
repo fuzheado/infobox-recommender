@@ -5,8 +5,8 @@
 - Wikidata item for en `Category:Infobox templates`: **Q6154820** (`prop=pageprops` → `wbgetentities&props=sitelinks`)
 - Editions measured: **20** of 20 targeted  •  templates sampled (ns 10 only): **13724**
 - **Naive English rule `^Infobox` (ci): 8257 hits = 60.2%** of all sampled infobox templates
-- Best per-wiki prefix rule (local ∪ English): 8697 = 63.4%
-- Position-agnostic ceiling (name contains any local infobox word, prefix or suffix): 10771 = 78.5%
+- Best per-wiki prefix rule (local ∪ English): 9468 = 69.0%
+- Position-agnostic ceiling (name contains any local infobox word, prefix or suffix): 10785 = 78.6%
 - Editions where the naive rule catches <50%: **12/20** (es, it, pt, ru, pl, sv, uk, ca, tr, he, ar, ko)
 - Editions whose own infobox word sits mostly at the *end* of the title: **pl, tr, ko**
 
@@ -25,15 +25,15 @@ Sampling: `list=categorymembers` on the Wikipedia-linked category, namespace 10 
 | **ru** | `Шаблон` | Категория:Шаблоны-карточки | 584 | 0 | **0.0%** | `Карточка` (37) | 6.3% | `карточка` in 7.0% of titles — prefix 39 / suffix 3 | `Карточка`×37, `Cycling`×7, `Административная`×7, `Железнодорожная`×5 |
 | **pl** | `Szablon` | Kategoria:Infoboksy | 301 | 39 | **13.0%** | `Infobox` (39) | 13.0% | `infobox` in 98.7% of titles — prefix 39 / suffix 246 | `Turniej`×9, `Sezon`×5, `Mistrzostwa`×4, `Organizacja`×4 |
 | **nl** | `Sjabloon` | Categorie:Wikipedia:Sjablonen infobox | 1556 | 1527 | **98.1%** | `Infobox` (1520) | 97.7% | `infobox` in 98.1% of titles — prefix 1527 / suffix 1 | `Taxobox`×21, `Breedtedivbox`×1, `Lijnvoering`×1, `Lijnvoering/sub`×1 |
-| **sv** | `Mall` | Kategori:Faktamallar | 681 | 200 | **29.4%** | `Infobox` (192) | 28.2% | `infobox` in 30.1% of titles — prefix 200 / suffix 3 | `Faktamall`×128, `Faktaruta`×18, `Svensk`×8, `Fiktiv`×6 |
+| **sv** | `Mall` | Kategori:Faktamallar | 681 | 200 | **29.4%** | `Faktamall` (128) | 18.8% | `infobox` in 30.1% of titles — prefix 200 / suffix 3 | `Faktamall`×128, `Faktaruta`×18, `Svensk`×8, `Fiktiv`×6 |
 | **uk** | `Шаблон` | Категорія:Шаблони:Картки | 659 | 40 | **6.1%** | `Картка` (78) | 11.8% | `картка` in 23.8% of titles — prefix 156 / suffix 2 | `Картка`×78, `Населений`×21, `Зірка`×12, `Футбольний`×10 |
-| **ja** | `Template` | Category:基礎情報テンプレート | 350 | 264 | **75.4%** | `Infobox` (260) | 74.3% | `infobox` in 75.4% of titles — prefix 264 / suffix 1 | `基礎情報`×16, `AV女優`×1, `ActorActress`×1, `Awards`×1 |
+| **ja** | `Template` | Category:基礎情報テンプレート | 350 | 264 | **75.4%** | `基礎情報` (16) | 4.6% | `infobox` in 75.4% of titles — prefix 264 / suffix 1 | `基礎情報`×16, `AV女優`×1, `ActorActress`×1, `Awards`×1 |
 | **zh** | `Template` | Category:信息框模板 | 1246 | 1148 | **92.1%** | `Infobox` (1146) | 92.0% | `infobox` in 92.5% of titles — prefix 1148 / suffix 2 | `Collapsed`×4, `TW`×2, `1829至2014年牛津剑桥赛艇对抗赛信息框`×1, `AV女優`×1 |
 | **ca** | `Plantilla` | Categoria:Infotaules | 130 | 32 | **24.6%** | `Infotaula` (71) | 54.6% | `infotaula` in 56.2% of titles — prefix 71 / suffix 1 | `Infotaula`×71, `Proves`×9, `Global`×7, `Cycling`×2 |
 | **id** | `Templat` | Kategori:Templat kotak info | 1015 | 919 | **90.5%** | `Infobox` (914) | 90.0% | `infobox` in 91.2% of titles — prefix 919 / suffix 4 | `Kotak`×25, `Planetbox`×8, `Karakter`×4, `Data`×3 |
 | **tr** | `Şablon` | Kategori:Bilgi kutusu şablonları | 142 | 0 | **0.0%** | — (no local prefix rule) | 0.0% | `bilgi kutusu` in 93.0% of titles — prefix 1 / suffix 127 | `Arkeolojik`×3, `Astronomik`×2, `Bilgi`×2, `Dağ`×2 |
 | **he** | `תבנית` | קטגוריה:תבניות מידע | 390 | 0 | **0.0%** | `מידע` (4) | 1.0% | `מידע` in 1.8% of titles — prefix 4 / suffix 2 | `אישיות`×12, `קבוצת`×12, `אלפבית`×8, `אתר`×6 |
-| **ar** | `قالب` | تصنيف:قوالب صناديق معلومات | 814 | 40 | **4.9%** | `Infobox` (39) | 4.8% | `معلومات` in 79.7% of titles — prefix 35 / suffix 0 | `صندوق`×625, `بطاقة`×60, `معلومات`×35, `ص.م`×7 |
+| **ar** | `قالب` | تصنيف:قوالب صناديق معلومات | 814 | 40 | **4.9%** | `صندوق` (625) | 76.8% | `معلومات` in 79.7% of titles — prefix 35 / suffix 0 | `صندوق`×625, `بطاقة`×60, `معلومات`×35, `ص.م`×7 |
 | **ko** | `틀` | 분류:정보 틀 | 701 | 2 | **0.3%** | `정보상자` (7) | 1.0% | `정보` in 55.6% of titles — prefix 8 / suffix 354 | `프로게임팀`×9, `정보상자`×7, `음악`×4, `추가`×4 |
 | **vi** | `Bản mẫu` | Thể loại:Bản mẫu hộp thông tin | 538 | 389 | **72.3%** | `Infobox` (388) | 72.1% | `infobox` in 72.5% of titles — prefix 389 / suffix 1 | `Thông`×90, `Hộp`×24, `Bảng`×4, `Tóm`×3 |
 
@@ -50,7 +50,7 @@ Sampling: `list=categorymembers` on the Wikipedia-linked category, namespace 10 
 | **ru** | `Шаблон` | `Шаблон:Карточка` | `Шаблон:Карточка КДС` | `Шаблон:Карточка КИС` |
 | **pl** | `Szablon` | `Szablon:Turniej SGP infobox` | `Szablon:Turniej darterski infobox` | `Szablon:Infobox 2x1` |
 | **nl** | `Sjabloon` | `Sjabloon:Infobox` | `Sjabloon:Infobox IPA` | `Sjabloon:Infobox bot` |
-| **sv** | `Mall` | `Mall:Faktamall` | `Mall:Faktamall American Hockey League` | `Mall:Infobox Amerikanskfotboll klubb` |
+| **sv** | `Mall` | `Mall:Faktamall` | `Mall:Faktamall American Hockey League` | `Mall:Faktamall CPU socket` |
 | **uk** | `Шаблон` | `Шаблон:Картка` | `Шаблон:Картка APU` | `Шаблон:Картка CPU` |
 | **ja** | `Template` | `Template:Infobox` | `Template:Infobox2` | `Template:Infobox 姓` |
 | **zh** | `Template` | `Template:Infobox` | `Template:Infobox OS` | `Template:Infobox 假名` |
@@ -58,7 +58,7 @@ Sampling: `list=categorymembers` on the Wikipedia-linked category, namespace 10 
 | **id** | `Templat` | `Templat:Infobox` | `Templat:Infobox OS` | `Templat:Infobox AoE` |
 | **tr** | `Şablon` | `Şablon:Arkeolojik höyük` | `Şablon:Arkeolojik kültür bilgi kutusu` | `Şablon:IUCN şeridi` |
 | **he** | `תבנית` | `תבנית:אישיות` | `תבנית:אישיות בודהיסטית` | `תבנית:מידע דגל` |
-| **ar** | `قالب` | `قالب:صندوق بطولة تنس` | `قالب:صندوق بطولة تنس/شرح` | `قالب:Infobox` |
+| **ar** | `قالب` | `قالب:صندوق بطولة تنس` | `قالب:صندوق بطولة تنس/شرح` | `قالب:صندوق تنظيم حدث رياضي` |
 | **ko** | `틀` | `틀:프로게임팀 정보` | `틀:프로게임팀 정보/FPS` | `틀:정보상자` |
 | **vi** | `Bản mẫu` | `Bản mẫu:Infobox CPU` | `Bản mẫu:Infobox GPU` | `Bản mẫu:Infobox IPA` |
 
