@@ -17,7 +17,9 @@ recommend a template — or honestly abstain.
   verdicts** (88-case corpus: 57 backlog-derived stale-tag labels + 31
   manual/canonical validate)
 - **Deployed:** <https://infobox-recommender.toolforge.org> (Toolforge k8s,
-  node20) · **Repo:** <https://github.com/fuzheado/infobox-recommender>
+  node20) · **Usage stats:** <https://infobox-recommender.toolforge.org/stats>
+  (aggregate, privacy-preserving — see `PRIVACY.md`) · **Repo:**
+  <https://github.com/fuzheado/infobox-recommender>
   (**public** since 2026-08-28; MIT)
 - **Progress:** 11% → 83% → 71% → 73% → 75% → 84% → 85% → 84% → 85% → 86% →
   90% across six campaigns (full history in `test/EVALUATION.md`)
@@ -47,16 +49,20 @@ run 5–30s; repeats are instant.
 | `lib/census.js` | Stage B: 50-title batched template census (continuation + re-queue passes), redirect normalization, transclusion facts, primary-infobox selection, sub-cluster split |
 | `lib/decide.js` | Stage C: flat decision + tieredEvaluate rescue; evidence builder |
 | `lib/analyze.js` | Full pipeline for one title (resolve + REST summary + wbgetclaims → discovery → census → decision); validate comparison |
+| `lib/usage.js` | Privacy-preserving usage log: allowlist fields, host-only referrers, monthly JSONL, 90-day prune, counts-only aggregates |
+| `lib/stats-page.js` | Server-rendered `/stats` page (all values escaped) |
 | `cli.js` | CLI harness |
-| `server.mjs` | Zero-dep web service (report UI, SSE progress, JSON API, validate mode) |
+| `server.mjs` | Zero-dep web service (report UI, SSE progress, JSON API, validate mode, `/stats`) |
 | `public/` | Report renderer, digest card, About modal, tier panel |
 | `images/` | Screenshots used in README.md |
 | `test/eval.mjs` | Evaluation harness (persists `test/results/<date>.json|.md`) |
 | `test/census.test.mjs` | Unit tests — primary-infobox selection (supporting/subsidiary boxes, penalties, specificity); `npm test` |
 | `scripts/fetch-queue.mjs` | Rebuilds fixtures from the live backlog |
 | `scripts/manual-cases.json` | Manual + canonical seed cases |
+| `scripts/usage-report.mjs` | Maintainer-only usage report: per-day counts, per-article detail, `--adoption` check |
 | `status-quo.md` | Need assessment — how editors add infoboxes today (workflows, friction, prior art, honest market assessment) |
 | `ROADMAP.md` | What's next — prioritized features (engine + reach tracks), effort, eval targets |
+| `PRIVACY.md` | Usage-data policy: what is collected, what never is, retention |
 | `ARCHITECTURE.md` | Technical companion to README — pipeline, primary-selection rules, runtime design, web service |
 
 ## The recommender in 10 minutes
@@ -110,23 +116,58 @@ step.
 - The k8s node type serves from **`~/www/js/`** — a copy of
   server.mjs + lib/ + public/ + package.json (the CLI pre-check errors
   without package.json there)
-- **Redeploy:** package repo (minus cache/.git), scp, extract as the tool
-  user into both `/data/project/infobox-recommender/` and `.../www/js/`,
-  chown, restart:
+- **Redeploy:** package repo (minus cache/, usage/, .git), scp, extract as
+  the tool user into both `/data/project/infobox-recommender/` and
+  `.../www/js/`, chown, restart:
 
 ```sh
-tar czf /tmp/ibr.tgz --exclude=cache --exclude=.git -C . .
+tar czf /tmp/ibr.tgz --exclude=cache --exclude=usage --exclude=.git -C . .
 scp /tmp/ibr.tgz alih@dev.toolforge.org:/tmp/
-ssh alih@dev.toolforge.org "sudo -u tools.infobox-recommender -i bash -c \
-  'cd /data/project/infobox-recommender && tar xzf /tmp/ibr.tgz; \
-   cd www/js && tar xzf /tmp/ibr.tgz; \
-   chown -R tools.infobox-recommender: . ; \
-   webservice --backend=kubernetes node20 restart'"
+# multi-line remote steps: put them in a script file and run that — a
+# multi-line `bash -c` through ssh+sudo collapses newlines and breaks
+cat > /tmp/deploy-ibr.sh <<'EOF'
+#!/bin/bash
+set -eu
+cd /data/project/infobox-recommender && tar xzf /tmp/ibr.tgz
+cd www/js && tar xzf /tmp/ibr.tgz
+chown -R tools.infobox-recommender: .
+webservice --backend=kubernetes node20 restart
+EOF
+scp /tmp/deploy-ibr.sh alih@dev.toolforge.org:/tmp/
+ssh alih@dev.toolforge.org "sudo -niu tools.infobox-recommender bash /tmp/deploy-ibr.sh"
 ```
 
-- Verified: 21s cold analyses complete through the proxy (no timeout);
-  warm repeats ~0.15s; SSE streams fine. `LICENSE` (MIT) present per
-  Toolforge Rule #2.
+- **Entry point:** the platform runs `npm start`, so `package.json` **must
+declare a `start` script** — ours is `"start": "node server.mjs"`.
+- Verified: 21s cold analyses through the proxy (no timeout); warm repeats
+  ~0.15s; SSE streams fine. `LICENSE` (MIT) present per Toolforge Rule #2.
+
+### ⚠️ Pitfall: npm's implicit `start` shadowed `server.mjs` (Aug–Oct 2026)
+
+Symptom: a **new server-level route 404'd** while `lib/` and `public/`
+changes *did* go live — the app looked current but wasn't.
+
+Cause: `npm start` with no `start` script runs npm's documented default
+(`node server.js` if that file exists). A stale `server.js` from the first
+manual upload (Aug 27, before the server was renamed to `server.mjs`) was
+still in `~/www/js/`, so the live service ran **that** file for weeks. It
+imported `lib/` and served `public/` from the same directory — which is
+exactly why library and static-asset fixes appeared live while any change to
+`server.mjs` silently never took effect.
+
+Diagnosis: `webservice --backend=kubernetes node20 logs -l 10` showed
+`> node server.js` — a file that does not exist in the repo.
+
+Fix (2026-10-03): added `"start": "node server.mjs"` to `package.json` and
+moved the stale file aside (`~/www/js/server.js.stale-backup`). The pod log
+now reads `> node server.mjs`. **Never rely on npm's implicit start.**
+
+### Quoting note
+
+Multi-layer `ssh` → `sudo` → `bash -c` collapses newlines (a heredoc inside
+`bash -c '…'` arrives as one mangled line, e.g. `set -ecd /data/…`). For
+anything beyond a single command, write a script file, `scp` it, and run
+`ssh host "sudo -niu tools.<tool> bash /tmp/script.sh"`.
 
 ## Hard-won API lessons
 

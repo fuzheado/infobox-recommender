@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "POC: peer-census infobox recommender for English Wikipedia (dual-runtime JS — Node CLI now, userscript later)",
+  "description": "POC: peer-census infobox recommender for English Wikipedia (dual-runtime JS \u2014 Node CLI now, userscript later)",
   "scripts": {
+    "start": "node server.mjs",
     "demo": "node cli.js \"1346 imperial election\"",
     "demo:prince": "node cli.js \"Prince-elector\"",
     "fixtures": "node scripts/fetch-queue.mjs",
-    "test": "node --test test/census.test.mjs",
+    "test": "node --test test/census.test.mjs test/usage.test.mjs",
     "eval": "node test/eval.mjs",
     "serve": "node server.mjs"
   }

@@ -62,6 +62,10 @@ npm run serve                               # web UI at localhost:3000
 **JSON API:** `GET /analyze?title=ARTICLE&output=json` — CORS-enabled, full
 evidence (missing title → 400).
 
+**Usage stats:** `GET /stats` — how much the tool is used and what it
+recommends (aggregate, privacy-preserving; `?output=json` for
+machine-readable). What is and isn't collected: [PRIVACY.md](PRIVACY.md).
+
 First run does live API calls (tens of requests per article, ≥1s apart);
 everything is disk-cached in `cache/` so repeat analyses are instant.
 
@@ -119,6 +123,7 @@ selection rules, dual-runtime design, and the web service — is in
 | `test/EVALUATION.md` | Evaluation — corpus construction, scoring, per-case results, failure analysis |
 | `status-quo.md` | The documented need — how editors add infoboxes today, friction, prior art, market assessment |
 | `ROADMAP.md` | What's next, prioritized, with effort estimates and eval targets |
+| `PRIVACY.md` | What usage data is collected, what is never collected, and retention |
 | `HANDOFF.md` | Status, quick start, deployment recipe, open threads |
 | `infobox-recommendation.md` | Original research — guidance, backlog, tool landscape, algorithm spec |
 | `signals.md` | Signal landscape & hypotheses — what finds "birds of a feather" |

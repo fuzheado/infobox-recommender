@@ -129,6 +129,7 @@ files back three runtimes:
 - `/analyze/stream?title=X` — SSE: stage events (resolve → peers →
   census i/n → clusters → decide), plus `digest` and `wikidata` events
 - `/analyze?title=X&output=json` — full analysis JSON, CORS-enabled
+- `/stats[?output=json]` — aggregate usage stats (HTML / JSON)
 - `validate=1` — validate mode (also on the JSON API)
 
 While the census runs, an **article digest** renders immediately (title,
@@ -137,6 +138,31 @@ so there is something to read during the wait.
 
 **Guards:** 2 concurrent analyses max (queued), per-IP throttle (30 / 5 min),
 title sanitization, path-traversal protection.
+
+## Usage logging & `/stats`
+
+`lib/usage.js` records one line per analysis (and one per page load) into
+monthly JSONL files under `usage/` (gitignored, sibling of `cache/`), and
+serves aggregates at `/stats`.
+
+The privacy design is deliberate and tested (`test/usage.test.mjs`):
+
+| Decision | Why |
+|---|---|
+| **No IPs, no User-Agents, no cookies, no session ids** — ever read or stored | Toolforge's own web logs hold IPs (access-restricted); we don't duplicate them |
+| Records built from an **explicit field allowlist** | an unexpected header cannot leak into the log |
+| Referrers reduced to **host only** | paths/queries can carry watchlists, search terms, tokens |
+| Raw per-analysis records **pruned at 90 days** (startup + daily) | user-identifiable in the weak sense that they name an article |
+| Aggregates are **counts only, month granularity**, kept indefinitely | not identifiable, so the totals survive pruning |
+| Public `/stats` shows **counts, never titles**; no day-level breakdown | day-level activity can reveal an individual's working pattern |
+| Per-title detail stays server-side for the maintainer | supports adoption analysis without publishing it |
+
+Maintainer-side report (per-day counts, per-article detail, and adoption
+tracking — whether "recommend" verdicts were later acted on):
+
+```sh
+node scripts/usage-report.mjs --days 30 [--titles] [--adoption]
+```
 
 ## Performance & caching
 

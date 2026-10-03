@@ -136,11 +136,16 @@ rejected auto-rendered boxes, not editor-posted drafts). Turns "recommend
 
 ### 8. Outcome tracking — measure adoption (Track A · evidence)
 
-Store each analysis (title, verdict, date) server-side (JSONL on
-Toolforge) and re-check later: did articles with a "recommend" verdict
-later gain that template? An **actual adoption-rate number** is the missing
-evidence for the status-quo "genuine need" question — stronger than any
-argument in `status-quo.md`.
+**Substrate in place (2026-10-03):** `usage/` records one privacy-filtered line
+per analysis (verdict, template, title, timestamp; 90-day raw retention,
+counts-only aggregates at `/stats`), and `scripts/usage-report.mjs --adoption`
+re-checks whether "recommend" verdicts were later acted on.
+
+**Remaining:** run the adoption report on a schedule (e.g. monthly) and record
+the rate in `test/EVALUATION.md`. First observed candidate: *May 1400 imperial
+election* — the tool recommended {{Infobox election}}, and an editor added it
+on 2026-10-02 (correlation, not proof of causation — which is exactly why the
+rate needs measuring over many cases rather than anecdote).
 
 ### 9. Backlog-age analysis + stale-tag cleanup (Track B · research + maintenance)
 
