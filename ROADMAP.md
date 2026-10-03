@@ -174,8 +174,13 @@ WikiProject Infoboxes.
 
 ## Explicitly not doing
 
-- **Other wikis / i18n** — dewiki *avoids* biography infoboxes; the census
-  culture is per-wiki. P31 machinery generalizes, the norms don't.
+- **Other wikis / i18n** — not now. The cross-edition measurement
+  (`wikiprojects-and-i18n.md`, `infobox-naming.md`) shows why: a naive English
+  `^Infobox` name rule catches only **60%** of infobox templates across 20
+  editions (78.6% even with a position-agnostic ceiling), and 12/20 editions
+  fall below 50%. That *supports* the name-independent approach this tool
+  already uses (P31 + categories), but porting also needs per-edition census
+  norms — dewiki, for example, avoids biography infoboxes by consensus.
 - **Browser extension** — the userscript covers it at a fraction of the
   maintenance.
 - **Notification/RSS systems** — no demand signal.

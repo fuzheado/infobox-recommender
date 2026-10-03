@@ -60,6 +60,9 @@ run 5–30s; repeats are instant.
 | `scripts/fetch-queue.mjs` | Rebuilds fixtures from the live backlog |
 | `scripts/manual-cases.json` | Manual + canonical seed cases |
 | `scripts/usage-report.mjs` | Maintainer-only usage report: per-day counts, per-article detail, `--adoption` check |
+| `scripts/research/` | Cross-edition research pipeline (steps 1–4) behind `infobox-naming.md` + `infobox-naming.json` |
+| `wikiprojects-and-i18n.md` | WikiProjects + infobox naming across 20 editions; porting analysis |
+| `infobox-naming.md` / `.json` | Localized infobox naming measurement, tables + raw per-edition data |
 | `status-quo.md` | Need assessment — how editors add infoboxes today (workflows, friction, prior art, honest market assessment) |
 | `ROADMAP.md` | What's next — prioritized features (engine + reach tracks), effort, eval targets |
 | `PRIVACY.md` | Usage-data policy: what is collected, what never is, retention |

@@ -126,6 +126,8 @@ selection rules, dual-runtime design, and the web service — is in
 | `PRIVACY.md` | What usage data is collected, what is never collected, and retention |
 | `HANDOFF.md` | Status, quick start, deployment recipe, open threads |
 | `infobox-recommendation.md` | Original research — guidance, backlog, tool landscape, algorithm spec |
+| `wikiprojects-and-i18n.md` | Cross-edition measurement — infobox naming and WikiProjects across 20 Wikipedia editions, and what porting would take |
+| `infobox-naming.md` | Infobox template naming across 20 language editions (method, tables; raw data in `infobox-naming.json`, scripts in `scripts/research/`) |
 | `signals.md` | Signal landscape & hypotheses — what finds "birds of a feather" |
 | `engineering-notes.md` | API gotchas + methodology lessons — read before touching the API layer |
 
