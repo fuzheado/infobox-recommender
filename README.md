@@ -12,8 +12,8 @@ evidence attached.
 **In the wild:** editors reach it through **Lead Balancer**, a lead-review user
 script whose infobox tab calls this service for articles that lack an infobox
 ([source](https://en.wikipedia.org/wiki/User:Sadads/LeadBalancer-core.js)); the
-first ~70 analyses and 2 resulting infobox additions are recorded in
-[`usage-history.md`](usage-history.md).
+first ~70 analyses and 2 subsequent infobox additions by named editors are
+recorded in [`usage-history.md`](usage-history.md).
 
 [![Example report for "May 1400 imperial election": Recommend Infobox election (confidence: high) — 97% of 31 same-class peers use an infobox, with the peer census, template distribution, neighborhood tiers, and example peers](images/report.png)](https://infobox-recommender.toolforge.org/?title=May+1400+imperial+election)
 
@@ -65,8 +65,10 @@ node cli.js "A" "B" "C" --json              # machine-readable
 npm run serve                               # web UI at localhost:3000
 ```
 
-**JSON API:** `GET /analyze?title=ARTICLE&output=json` — CORS-enabled, full
-evidence (missing title → 400).
+**JSON API:** `GET /analyze?title=ARTICLE&output=json` — CORS-enabled, no
+tokens or keys, full evidence (missing title → 400). Per-client limits are
+generous (150 analyses / 15 min, 40/min burst) and throttled requests come back
+as 429 with `Retry-After`; see [`ARCHITECTURE.md`](ARCHITECTURE.md#web-service).
 
 **Usage stats:** `GET /stats` — how much the tool is used and what it
 recommends (aggregate, privacy-preserving; `?output=json` for
@@ -141,17 +143,25 @@ selection rules, dual-runtime design, and the web service — is in
 ## Tests
 
 ```sh
-npm test        # unit tests — primary-infobox selection rules
-npm run eval    # full evaluation over the corpus (warm cache: <1s)
-npm run fixtures # rebuild test/fixtures.json from the live backlog
+npm test          # 19 unit tests: primary-infobox selection, usage-log privacy
+                  # and retention, rate limiting
+npm run eval       # full evaluation over the corpus (warm cache: <1s)
+npm run fixtures   # rebuild test/fixtures.json from the live backlog
 ```
+
+Research scripts (cross-edition infobox naming, the early-usage/adoption
+analysis, and the `prop=templates` phantom-box audit) live in
+[`scripts/research/`](scripts/research/), documented in
+[`usage-history.md`](usage-history.md) and [`infobox-naming.md`](infobox-naming.md).
 
 ## Deployment
 
 Live on Toolforge (Kubernetes, `node20`) at
 <https://infobox-recommender.toolforge.org>. The k8s node type serves the app
-from `~/www/js/`; the exact redeploy recipe is in
-[`HANDOFF.md`](HANDOFF.md#deployment-toolforge).
+from `~/www/js/` and runs `npm start` — so `package.json` must declare its
+`start` script. The redeploy recipe, the verify-a-deploy checklist, and the
+entry-point pitfall that cost us weeks are in
+[`HANDOFF.md`](HANDOFF.md#5-deployment-toolforge).
 
 ## License
 

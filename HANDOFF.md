@@ -1,142 +1,132 @@
 # HANDOFF — infobox-recommender
 
-**Last updated:** 2026-08-28 · **For:** whoever continues this project next
-(probably Andrew, after a break). This is the "where things stand and how to
-move forward" doc — methodology details live in the docs it points to.
+**Last updated:** 2026-10-03 · **For:** whoever continues this project (probably
+Andrew, after a break).
+
+**How to use this doc:** §1–2 to know where things stand and run it; §4–5 if you
+have to deploy or debug the live service; §6 if you are about to touch the API
+layer; §8–9 for what is open. Deeper material lives in the other docs — this one
+tells you which.
 
 ---
 
-## Status at a glance
+## 1. Status at a glance
 
-A peer-census infobox recommender for English Wikipedia: for an article with
-no infobox, discover its peers (Wikidata classes + same-type pointers,
-categories, WikiProject banners), census what infoboxes they carry, and
-recommend a template — or honestly abstain.
+A peer-census infobox recommender for English Wikipedia: for an article with no
+infobox, discover its peers (Wikidata classes + same-type pointers, categories,
+WikiProject banners), census what infoboxes they carry, and recommend a template
+— or honestly abstain.
 
-- **Evaluation: 57 pass / 6 fail / 25 abstain — 90% accuracy on decisive
-  verdicts** (88-case corpus: 57 backlog-derived stale-tag labels + 31
-  manual/canonical validate)
-- **Deployed:** <https://infobox-recommender.toolforge.org> (Toolforge k8s,
-  node20) · **Usage stats:** <https://infobox-recommender.toolforge.org/stats>
-  (aggregate, privacy-preserving — see `PRIVACY.md`) · **Repo:**
-  <https://github.com/fuzheado/infobox-recommender>
-  (**public** since 2026-08-28; MIT)
-- **Progress:** 11% → 83% → 71% → 73% → 75% → 84% → 85% → 84% → 85% → 86% →
-  90% across six campaigns (full history in `test/EVALUATION.md`)
-- **Early usage (reconstructed):** 70 analyses of 70 different articles,
-  2026-08-27 → 10-02, arriving mainly via the **Lead Balancer** user script's
-  infobox tab; 2 confirmed infobox additions by named editors;
-  `usage-history.md` (+ `usage-history.json`)
+| | |
+|---|---|
+| **Evaluation** | **57 pass · 6 near-miss disagreements · 25 honest abstentions — 90% on decisive verdicts** (88-case corpus: 57 backlog-derived stale-tag labels + 31 manual/canonical). 4 of the 6 disagreements are cases where peer evidence arguably beats one editor's choice (`test/EVALUATION.md`) |
+| **Unit tests** | 19 (`npm test`): primary-infobox selection, usage-log privacy/retention, rate limiting |
+| **Live** | <https://infobox-recommender.toolforge.org> · usage stats at [`/stats`](https://infobox-recommender.toolforge.org/stats) |
+| **Repo** | <https://github.com/fuzheado/infobox-recommender> — **public** since 2026-08-28, MIT; homepage set to the tool, topics `wikipedia/wikidata/infobox/mediawiki/toolforge` |
+| **External consumer** | **Lead Balancer** (`User:Sadads/LeadBalancer-core.js`) calls `/analyze?output=json` for infobox-less articles — see §7. It is the main traffic source; mind the contract |
+| **Observed use** | 70 analyses (2026-08-27 → 10-02), 2 infobox additions by named editors, 1 census artifact found — `usage-history.md` |
+| **Engine trajectory** | 11% → 83% → 71% → 73% → 75% → 84% → 85% → 84% → 85% → 86% → **90%** over seven campaigns (`test/EVALUATION.md`) |
 
-## Quick start (local)
+## 2. Quick start (local)
 
 ```sh
-node cli.js "1346 imperial election"            # full pipeline, human summary
-node cli.js "Abraham Lincoln" --validate        # validate an existing infobox
-node cli.js "X" --json                          # machine-readable
-npm run serve                                   # web UI at localhost:3000
-npm run eval                                    # full evaluation (warm: <1s)
-npm test                                        # unit tests (test/census.test.mjs)
-npm run fixtures                                # rebuild test/fixtures.json
+node cli.js "1346 imperial election"       # full pipeline, human summary
+node cli.js "Abraham Lincoln" --validate   # check an existing infobox choice
+node cli.js "X" "Y" --json                 # machine-readable
+npm run serve                              # web UI on http://localhost:3000
+npm test                                   # 19 unit tests
+npm run eval                               # full evaluation (warm cache: <1s)
+npm run fixtures                           # rebuild test/fixtures.json from the live backlog
+node scripts/usage-report.mjs --days 30    # maintainer usage report (needs a usage/ dir)
 ```
 
-Etiquette is baked into `lib/api.js`: descriptive UA, ≥1s pacing,
-retry/backoff, cache-first disk cache (`cache/`, gitignored). Cold analyses
-run 5–30s; repeats are instant.
+Etiquette is baked into `lib/api.js`: descriptive UA, ≥1s pacing, retry/backoff,
+cache-first disk cache (`cache/`, gitignored). Cold analyses 5–30s, repeats
+instant. `cache/` and `usage/` are gitignored — never commit them.
 
-## Where everything lives
+## 3. Where things live
+
+**Pipeline** (pure logic + a thin `fetch` layer; same files run in Node, the web
+service, and a future userscript):
 
 | Path | Role |
 |---|---|
-| `lib/api.js` | Action API + WDQS client (etiquette, pacing, retries, disk cache) |
-| `lib/peers.js` | Stage A: P31 siblings (per-class cached samples), same-type pointers (P39/P179/P361/P155/P156), member-count category selection, banners; tier groups |
-| `lib/census.js` | Stage B: 50-title batched template census (continuation + re-queue passes), redirect normalization, transclusion facts, primary-infobox selection, sub-cluster split |
-| `lib/decide.js` | Stage C: flat decision + tieredEvaluate rescue; evidence builder |
-| `lib/analyze.js` | Full pipeline for one title (resolve + REST summary + wbgetclaims → discovery → census → decision); validate comparison |
-| `lib/usage.js` | Privacy-preserving usage log: allowlist fields, host-only referrers, monthly JSONL, 90-day prune, counts-only aggregates |
-| `lib/stats-page.js` | Server-rendered `/stats` page (all values escaped) |
-| `cli.js` | CLI harness |
-| `server.mjs` | Zero-dep web service (report UI, SSE progress, JSON API, validate mode, `/stats`) |
-| `public/` | Report renderer, digest card, About modal, tier panel |
-| `images/` | Screenshots used in README.md |
-| `test/eval.mjs` | Evaluation harness (persists `test/results/<date>.json|.md`) |
-| `test/census.test.mjs` | Unit tests — primary-infobox selection (supporting/subsidiary boxes, penalties, specificity); `npm test` |
-| `scripts/fetch-queue.mjs` | Rebuilds fixtures from the live backlog |
-| `scripts/manual-cases.json` | Manual + canonical seed cases |
-| `scripts/usage-report.mjs` | Maintainer-only usage report: per-day counts, per-article detail, `--adoption` check |
-| `scripts/research/` | Cross-edition research pipeline (steps 1–4) behind `infobox-naming.md` + `infobox-naming.json` |
-| `scripts/research/adoption-analysis.mjs` | Before/after infobox state + who added one, per analysed article |
-| `scripts/research/phantom-box-check.mjs` | `prop=templates` vs wikitext audit (transitive/phantom boxes) |
-| `scripts/research/extract-cache-inventory.py` | Builds the analysis inventory from the server-side cache |
-| `scripts/research/build-usage-history.mjs` | Merges the three outputs into `usage-history.json` |
-| `usage-history.md` / `usage-history.json` | Early usage + adoption record (pre-logging era) and its data |
-| `wikiprojects-and-i18n.md` | WikiProjects + infobox naming across 20 editions; porting analysis |
-| `infobox-naming.md` / `.json` | Localized infobox naming measurement, tables + raw per-edition data |
-| `status-quo.md` | Need assessment — how editors add infoboxes today (workflows, friction, prior art, honest market assessment) |
-| `ROADMAP.md` | What's next — prioritized features (engine + reach tracks), effort, eval targets |
-| `PRIVACY.md` | Usage-data policy: what is collected, what never is, retention |
-| `ARCHITECTURE.md` | Technical companion to README — pipeline, primary-selection rules, runtime design, web service |
+| `lib/api.js` | Action API + WDQS client — etiquette, pacing, retries, disk cache |
+| `lib/peers.js` | Stage A: P31 siblings, same-type pointers (P39/P179/P361/P155/P156), member-count category selection, banners; tier groups |
+| `lib/census.js` | Stage B: batched template census (continuation + re-queue), redirect normalization, transclusion facts, **primary-infobox selection**, sub-cluster split |
+| `lib/decide.js` | Stage C: flat decision + tiered rescue; evidence builder |
+| `lib/analyze.js` | Whole pipeline for one title; validate comparison |
+| `lib/usage.js` · `lib/stats-page.js` · `lib/rate-limit.js` | Usage log, `/stats` renderer, per-client limiter |
+| `cli.js` · `server.mjs` · `public/` | CLI harness, zero-dep web service, report UI |
+| `images/` | README screenshots |
 
-## The recommender in 10 minutes
+**Tests & evaluation:** `test/eval.mjs` (harness → `test/results/<date>.*`),
+`test/census.test.mjs`, `test/usage.test.mjs`, `test/rate-limit.test.mjs`,
+`test/fixtures.json` (corpus), `scripts/manual-cases.json` + `scripts/fetch-queue.mjs`
+(how the corpus is built), `test/EVALUATION.md` (writeup).
 
-1. **Resolve** the article (redirects, QID, its own templates, REST summary
-   for the digest). If it already has an infobox → "already-has-infobox",
-   or run `validate` to compare its choice against peer practice.
-2. **Discover peers** from five signals, each becoming a *tier group* ranked
-   by size (tightest first):
-   - P31 (instance-of) siblings — classes >500 instances dropped
-   - Same-type pointers: P39 position held, P179 part of the series, P361
-     part of, P155/P156 preceded/succeeded — per-VALUE queries (clean sets,
-     cached per value), capped at 60, appended after category peers
-   - Categories ranked by member count (intersection/maintenance excluded)
-   - WikiProject banners (informational)
-3. **Census** each peer's templates: 50-title batches with `tltitle`/
-   `tlcontinue` continuation rounds + suspect-only re-queue passes;
-   redirects normalized (prepared food → food); per-peer PRIMARY selected
-   (supporting/child/meta boxes excluded; generic-place penalty; subsidiary
-   section boxes — {{Infobox university rankings}}, medal records, career
-   statistics — lose to the subject box).
-4. **Decide**: flat logic (coverage + dominance thresholds, byClass
-   override with share ≥ 0.5, structural none-warranted) with a tiered
-   rescue for abstentions (tight circle ≥80%/≥70% + wider-pool
-   confirmation). Every verdict ships its evidence + tier strata.
+**Research:** `scripts/research/` — `extract-cache-inventory.py`,
+`adoption-analysis.mjs`, `phantom-box-check.mjs`, `build-usage-history.mjs`
+(usage/adoption), plus the cross-edition pipeline (steps 1–4) behind
+`infobox-naming.md` / `wikiprojects-and-i18n.md`.
 
-## The evaluation harness — how to add ground truth
+**Docs — read the one that matches your question:**
 
-Corpus = `test/fixtures.json` (88 cases: 57 backlog-derived stale-tag
-labels + 31 manual/canonical). Expectation formats:
-
-| expected | semantics |
+| Question | Doc |
 |---|---|
-| `"Infobox person"` | recommend that template (or none-warranted = fail) |
-| `"none"` | none-warranted expected |
-| `"consistent[:Template]"` | validate mode: existing infobox must match peer practice |
+| What does this tool do, for a newcomer? | [`README.md`](README.md) |
+| How does the pipeline work, and why these rules? | [`ARCHITECTURE.md`](ARCHITECTURE.md) |
+| Is this tool actually needed? What do editors do today? | [`status-quo.md`](status-quo.md) |
+| What did real usage look like, and did anyone act on it? | [`usage-history.md`](usage-history.md) (+ `.json`) |
+| What should I build next? | [`ROADMAP.md`](ROADMAP.md) |
+| What does the engine get wrong? | [`test/EVALUATION.md`](test/EVALUATION.md) |
+| What data is logged, and for how long? | [`PRIVACY.md`](PRIVACY.md) |
+| API traps that already cost us time | [`engineering-notes.md`](engineering-notes.md) |
+| Original research spec / hypotheses | [`infobox-recommendation.md`](infobox-recommendation.md), [`signals.md`](signals.md) |
+| Other-language editions (porting math) | [`wikiprojects-and-i18n.md`](wikiprojects-and-i18n.md), [`infobox-naming.md`](infobox-naming.md) |
 
-**To add a case:** append `{title, expected, labelSource}` to
-`scripts/manual-cases.json`, run `npm run fixtures`, then `npm run eval`.
-Unit tests: `npm test` (test/census.test.mjs) — run after any
-census/selection changes.
-Labels are editor-choice (stale-tag) or canonical set-membership
-(presidents/states/foods…) — see `test/EVALUATION.md` §1 for the
-methodology and caveats. Long-tail expansion is the natural next corpus
-step.
+## 4. The recommender in 10 minutes
 
-## Deployment (Toolforge)
+1. **Resolve** the article (redirects, QID, own templates, REST summary for the
+   digest). Already has an infobox → "already-has-infobox", or `validate` to
+   compare its choice against peer practice.
+2. **Discover peers** — five signals, each a *tier group* ranked tightest first:
+   P31 siblings (classes >500 instances dropped as too heterogeneous);
+   same-type pointers (per-VALUE queries, capped at 60); categories ranked by
+   member count (`categoryinfo`, smallest non-trivial = sharpest genre pointer,
+   intersections/maintenance excluded); WikiProject banners (informational).
+3. **Census** peers' templates in batches with `tltitle`/`tlcontinue`
+   continuation rounds plus suspect-only re-queue passes; redirects normalized;
+   one **PRIMARY** infobox per peer (supporting/child/meta boxes excluded;
+   generic-place penalty; subsidiary section boxes — university rankings, medal
+   records, career statistics — lose to the subject box).
+4. **Decide:** coverage ≥50% + dominant ≥50% of boxed peers → recommend (with a
+   `byClass` override for tight classes); meaningful pool with ≤15% coverage →
+   none-warranted; otherwise weak-signal, with a tiered rescue for abstentions
+   (tight circle ≥80% coverage / ≥70% dominance, confirmed by the wider pool).
+   Every verdict ships its evidence and tier strata.
 
-- Tool `infobox-recommender` (created via toolsadmin web UI), runtime
-  `node20` (this instance's newest node type)
-- The k8s node type serves from **`~/www/js/`** — a copy of
-  server.mjs + lib/ + public/ + package.json (the CLI pre-check errors
-  without package.json there)
-- **Redeploy:** package repo (minus cache/, usage/, .git), scp, extract as
-  the tool user into both `/data/project/infobox-recommender/` and
-  `.../www/js/`, chown, restart:
+## 5. Deployment (Toolforge)
+
+- Runtime **`node20`** (newest node type on this instance); the platform runs
+  **`npm start`** in `~/www/js/`, which is why `package.json` declares
+  `"start": "node server.mjs"` (see the pitfall below).
+- **`~/www/js/`** is the app directory (`/data/project/infobox-recommender/www/js`);
+  a mirror of the repo also sits one level up. The process cwd is `www/js`, so
+  its **`cache/`** (API responses) and **`usage/`** (usage log) live there.
+  The platform's own `logs/` dir is for jobs/cron, not web access.
+- Port comes from `PORT` (8000 in the pod). Static assets are read from disk per
+  request, so `public/` changes take effect without a restart; **`server.mjs` and
+  `lib/` changes need the restart**.
+- Env knobs (all optional): `RATE_MAX`, `RATE_WINDOW_MS`, `BURST_MAX`,
+  `BURST_WINDOW_MS`, `MAX_QUEUE`, `USAGE_DIR`.
+
+**Redeploy** (package → scp → extract into both copies → chown → restart):
 
 ```sh
 tar czf /tmp/ibr.tgz --exclude=cache --exclude=usage --exclude=.git -C . .
 scp /tmp/ibr.tgz alih@dev.toolforge.org:/tmp/
-# multi-line remote steps: put them in a script file and run that — a
-# multi-line `bash -c` through ssh+sudo collapses newlines and breaks
+# multi-line remote work goes in a script FILE — see the quoting note below
 cat > /tmp/deploy-ibr.sh <<'EOF'
 #!/bin/bash
 set -eu
@@ -149,91 +139,126 @@ scp /tmp/deploy-ibr.sh alih@dev.toolforge.org:/tmp/
 ssh alih@dev.toolforge.org "sudo -niu tools.infobox-recommender bash /tmp/deploy-ibr.sh"
 ```
 
-- **Entry point:** the platform runs `npm start`, so `package.json` **must
-declare a `start` script** — ours is `"start": "node server.mjs"`.
-- Verified: 21s cold analyses through the proxy (no timeout); warm repeats
-  ~0.15s; SSE streams fine. `LICENSE` (MIT) present per Toolforge Rule #2.
+**Verify a deploy** (all four, every time):
 
-### ⚠️ Pitfall: npm's implicit `start` shadowed `server.mjs` (Aug–Oct 2026)
+```sh
+ssh alih@dev.toolforge.org "sudo -niu tools.infobox-recommender bash -lc \
+  'webservice --backend=kubernetes node20 logs -l 5'"     # expect: > node server.mjs
+curl -s -o /dev/null -w '%{http_code}\n' https://infobox-recommender.toolforge.org/
+curl -s "https://infobox-recommender.toolforge.org/analyze?title=Abraham+Lincoln&output=json" | head -c 200
+curl -s -o /dev/null -w '%{http_code}\n' https://infobox-recommender.toolforge.org/stats
+```
 
-Symptom: a **new server-level route 404'd** while `lib/` and `public/`
-changes *did* go live — the app looked current but wasn't.
+## 6. Debugging the deployment
 
-Cause: `npm start` with no `start` script runs npm's documented default
-(`node server.js` if that file exists). A stale `server.js` from the first
-manual upload (Aug 27, before the server was renamed to `server.mjs`) was
-still in `~/www/js/`, so the live service ran **that** file for weeks. It
-imported `lib/` and served `public/` from the same directory — which is
-exactly why library and static-asset fixes appeared live while any change to
-`server.mjs` silently never took effect.
+| Symptom | First move |
+|---|---|
+| A **new route 404s** but other changes are live | The entry point, not your route. `webservice … logs -l 5` — if it shows `> node server.js`, see the pitfall below |
+| Everything 502/503 | `webservice … status`; `kubectl --kubeconfig /data/project/infobox-recommender/.kube/config get pods` |
+| A client gets 429 | Expected under load — the body names the limits and `Retry-After` says how long |
+| 503 "busy" | Queue guard (≥`MAX_QUEUE` waiting). The upstream pacer (~1 req/s shared) is the real throughput ceiling |
+| Analyses look slow | Cold vs cached: check `ls www/js/cache \| wc -l`; repeats are instant |
+| "Why did usage change?" | `node scripts/usage-report.mjs --days 30 --titles` on the server (per-article detail stays server-side by design) |
 
-Diagnosis: `webservice --backend=kubernetes node20 logs -l 10` showed
-`> node server.js` — a file that does not exist in the repo.
+Inspecting inside the pod (one command per exec — nested quoting breaks easily):
 
-Fix (2026-10-03): added `"start": "node server.mjs"` to `package.json` and
-moved the stale file aside (`~/www/js/server.js.stale-backup`). The pod log
-now reads `> node server.mjs`. **Never rely on npm's implicit start.**
+```sh
+K=/data/project/infobox-recommender/.kube/config
+ssh alih@dev.toolforge.org "sudo -niu tools.infobox-recommender bash -lc 'kubectl --kubeconfig $K get pods'"
+ssh alih@dev.toolforge.org "sudo -niu tools.infobox-recommender bash -lc 'kubectl --kubeconfig $K exec <pod> -- pwd'"
+```
 
-### Quoting note
+## 7. Consumers of the JSON API (what breaks if you change things)
 
-Multi-layer `ssh` → `sudo` → `bash -c` collapses newlines (a heredoc inside
-`bash -c '…'` arrives as one mangled line, e.g. `set -ecd /data/…`). For
-anything beyond a single command, write a script file, `scp` it, and run
-`ssh host "sudo -niu tools.<tool> bash /tmp/script.sh"`.
+**Lead Balancer** — `User:Sadads/LeadBalancer-core.js` (engine of
+`User:Sadads/Lead_Balancer`, installed by editors via `common.js`) shows an
+infobox tab *only for articles that have no infobox*, calling
+`GET /analyze?title=…&output=json` with a 20 s timeout and 7-day client cache.
+Its parser walks up to four levels looking for synonym key names, so it is
+tolerant — but the practical contract to keep is `verdict`, `template`,
+`confidence`, `evidence`. If a breaking change is ever needed, note it in the
+repo *and* on the script's talk page first.
 
-## Hard-won API lessons
+Rate limiting was widened for this client (2026-10-03): **150 analyses / 15 min
+plus a 40/min burst, per client**, keyed on the proxy's `X-Forwarded-For` last
+hop (`/stats` reports whether proxy headers are present). Before that the limit
+was 30/5 min *shared by everyone* — it bucketed on the proxy address.
 
-All in `engineering-notes.md` — read it before touching the API layer. The
-short list: `tllimit` is a per-request TOTAL (silent boundary truncation);
-continuation is `tltitle` (single-prop) vs `tlcontinue` (multi-prop);
-`prop=templates` returns literal names (normalize redirects yourself);
-`prop=categories` returns NO hidden flag (use `clshow=!hidden`);
-`wbgetclaims` is one property per call; per-value SPARQL queries cache
-better than mixed VALUES; WDQS needs timeouts; 4xx ≠ retryable.
+## 8. Hard-won lessons (do not re-learn these)
 
-## Known limitations & open threads (pick up here)
+**API layer** — full list in `engineering-notes.md`. Short version: `tllimit` is
+a per-request TOTAL (silent boundary truncation — hit again in a research script
+2026-10-03); continuation is `tltitle` (single-prop) vs `tlcontinue`
+(multi-prop); `prop=templates` returns literal names (normalize redirects) **and
+reports templates used by transcluded templates** — the "phantom box" that
+inflates census coverage (~1.4% of articles measured; ROADMAP 7b);
+`prop=categories` has no hidden flag (`clshow=!hidden`); `wbgetclaims` is one
+property per call; per-value SPARQL caches better than mixed `VALUES`; 4xx ≠
+retryable.
 
-1. **Semantic sub-clustering** (lead/extract embeddings or ORES topics) —
-   the doc's big lever for the remaining abstains and concept-genre cases
-   (`signals.md` H3). Venue: `lib/peers.js` / `lib/decide.js`.
-2. **Specificity ladder** — template-category taxonomy to pick the most
-   specific template (publisher ⊂ company; officeholder ⊂ person). The
-   transclusion facts already fetched per run are the seed.
-3. **Per-element wrapper merge** (Oxygen) — {{Infobox americium}} wraps
-   {{Infobox element}}; a transclusion-based merge would unify the class.
-4. **Child-box auto-detection** — supporting boxes are curated today;
-   templates starting with `{{Infobox | child = …` could be detected.
-5. **Stage D** — Wikidata fill-rate draft infobox preview.
-6. **Userscript** — libs are runtime-agnostic; the report renderer
-   transfers; `{ cacheDir: null, paceMs: 0 }` in-browser.
-7. ~~**Repo visibility**~~ — **done 2026-08-28**: the repo is public
-   (<https://github.com/fuzheado/infobox-recommender>, MIT); the About modal
-   links it. Remaining from that thread: a Diff writeup + a note at
-   WikiProject Infoboxes /assistance (see `ROADMAP.md` Tier 3).
+**Operations:**
 
-## Campaign history (why the numbers moved)
+1. **`npm start` needs an explicit `start` script.** With none, npm runs its
+   default `node server.js` *if that file exists* — and a stale `server.js` in
+   `~/www/js/` shadowed `server.mjs` for weeks (Aug–Oct 2026). Symptom: new
+   server routes 404 while `lib/`/`public/` fixes appear live, because the stale
+   file imported the same `lib/` and served the same `public/`. Fixed by
+   declaring `"start": "node server.mjs"`; the old file is parked as
+   `~/www/js/server.js.stale-backup`. **Never rely on npm's implicit start.**
+2. **Multi-layer `ssh` → `sudo` → `bash -c` collapses newlines.** A heredoc inside
+   `bash -c '…'` arrives mangled (`set -ecd /data/…`). Put anything longer than a
+   single command in a script file and run that.
+3. **Verify with two independent signals before believing a claim.** The phantom
+   box was only caught because the API's answer was cross-checked against
+   wikitext; the entry-point bug was only caught because a new route 404'd while
+   everything else looked healthy.
+4. **Cache-first is also a debugging tool.** Grep `cache/` before theorising about
+   a phantom regression (a stale cache once faked one).
 
-1. Census correctness (tllimit/continuation/self-heal) + decision hardening
-2. Signal upgrades (categoryinfo selection, shortdesc filter) — 75→84%
-3. Maintenance-category filter (`clshow=!hidden`) — 84→85%
-4. Primary-infobox selection (honest-correction dip to 84%)
-5. Tiered neighborhoods + intersection exclusion (Dallas Cowboys) — 85%
-6. Wikidata same-type pointers + canonical corpus — 86→90%
-7. Subsidiary section-box detection (rankings/medal-record boxes lose to
-   the subject box) + unit test suite + UI fixes — 2026-08-28 (90% steady;
-   corpus 87 → 88)
+## 9. Open threads
 
-Per-case deltas, failure analysis, and every bug are in
-`test/EVALUATION.md`; hypotheses in `signals.md`.
+`ROADMAP.md` is the source of truth (two tracks: **engine** accuracy, **reach**
+distribution). Currently next in line:
 
-## Working conventions
+1. **Specificity ladder** — template-taxonomy walk (publisher ⊂ company,
+   officeholder ⊂ person) to convert the remaining near-miss disagreements.
+2. **Semantic sub-clustering** — LiftWing `articletopics` over the peer set; the
+   main lever for the 25 abstains (`signals.md` H3).
+3. **Stage D draft preview** — Wikidata fill-rate draft infobox (a *draft*, which
+   enwiki norms allow, unlike the auto-rendered boxes rejected in 2018).
+4. **Userscript / gadget** — the tool is already reached through an editor
+   script; owning that experience is the highest-leverage reach item.
+5. Smaller measured items: phantom-box coverage (7b), child-box auto-detection,
+   per-element wrapper merge, backlog batch scanner, Diff writeup + a note at
+   WikiProject Infoboxes `/assistance`.
 
-- **Cache-first:** warm eval runs are <1s — iterate cheaply. Bust `cache/`
-  when API semantics change; grep cache JSONs to explain phantom
-  regressions before touching code (a stale cache once faked one).
-- **Verify against the live API** when numbers move unexpectedly — the
-  corpus is a live wiki and pages change under you.
-- Keep `test/results/latest.*` committed; they are the reproducibility
-  record.
-- Two code copies exist (repo root + Toolforge www/js) — redeploy after
-  lib/server changes, not just doc changes.
+## 10. Change log (ops + engine)
+
+**Engine** (details and per-case deltas in `test/EVALUATION.md`):
+census correctness → decision hardening → signal upgrades (categoryinfo,
+shortdesc) → maintenance-category filter → primary-infobox selection → tiered
+neighborhoods → Wikidata same-type pointers + canonical corpus → **subsidiary
+section-box detection + unit tests** (2026-08-28). 11% → 90%.
+
+**Ops / docs:**
+
+| Date | Change |
+|---|---|
+| 2026-08-27 | First Toolforge deploy (k8s, node20, `~/www/js/`) |
+| 2026-08-28 | Repo made public (MIT); corpus 87 → 88; unit tests added; README rewritten for newcomers + screenshots; About-modal and header-reset UI fixes |
+| 2026-10-01 | Reviewed RfC-style need assessment (`status-quo.md`); public flip recorded |
+| 2026-10-01 → 03 | Privacy-preserving usage logging + `/stats` + `PRIVACY.md`; early-usage/adoption report (`usage-history.md`); rate limits widened and made genuinely per-client; footer links `usage stats` / `privacy` |
+| 2026-10-03 | README + HANDOFF refresh; entry-point pitfall documented |
+
+## 11. Working conventions
+
+- **Cache-first:** warm eval runs are <1s. Bust `cache/` when API semantics
+  change; grep cache JSONs before blaming code.
+- **Verify against the live API** when numbers move — the corpus is a live wiki.
+- **Keep `test/results/latest.*` committed**; that is the reproducibility record.
+- **Two code copies exist** (repo root + Toolforge `www/js`) — redeploy after
+  `lib/`/`server.mjs` changes, not just docs.
+- **Never commit `cache/` or `usage/`** (both gitignored; `usage/` holds the
+  privacy-preserving log).
+- **Assert edits** rather than assuming an anchor matched (see the global
+  guidelines) — a silent no-op replacement is the worst failure mode here.
