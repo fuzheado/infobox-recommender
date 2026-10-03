@@ -192,6 +192,28 @@ misses:
 Both teams touched the problem, documented it, and stopped one step short of
 the selection step. That is the gap this tool fills.
 
+### Integration evidence (added 2026-10-03)
+
+The clearest sign that this gap is real is that someone else wired this tool
+into an editing workflow unprompted. **Lead Balancer**
+([User:Sadads/Lead_Balancer], engine in `User:Sadads/LeadBalancer-core.js`), a
+lead-section review script editors install via `common.js`, shows a tab that
+calls this service for articles *without* an infobox — and its source
+documents the reasoning in our own terms:
+
+```js
+// ---- Infobox check (article tab, only when the article has no infobox) ----
+// Asks https://infobox-recommender.toolforge.org (CORS-enabled, no tokens).
+// Its evidence is advisory (MOS:INFOBOXUSE); an editor makes the call.
+infobox: { enabled: true, timeoutMs: 2e4, cacheDays: 7 },
+```
+
+The first ~70 analyses and 2 observed infobox additions that followed are
+recorded in [`usage-history.md`](usage-history.md). Two implications: the need
+translates into *use* when the answer appears inside the editor (supporting the
+userscript-first plan), and an outside client makes our per-IP throttle
+(30 analyses / 5 min) worth revisiting.
+
 ## 6. Community norms that shape the solution space
 
 - **enwiki rejects automatic infoboxes.** The [2018 Infobox RfC] and its

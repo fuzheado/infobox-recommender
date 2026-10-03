@@ -23,6 +23,10 @@ recommend a template — or honestly abstain.
   (**public** since 2026-08-28; MIT)
 - **Progress:** 11% → 83% → 71% → 73% → 75% → 84% → 85% → 84% → 85% → 86% →
   90% across six campaigns (full history in `test/EVALUATION.md`)
+- **Early usage (reconstructed):** 70 analyses of 70 different articles,
+  2026-08-27 → 10-02, arriving mainly via the **Lead Balancer** user script's
+  infobox tab; 2 confirmed infobox additions by named editors;
+  `usage-history.md` (+ `usage-history.json`)
 
 ## Quick start (local)
 
@@ -61,6 +65,11 @@ run 5–30s; repeats are instant.
 | `scripts/manual-cases.json` | Manual + canonical seed cases |
 | `scripts/usage-report.mjs` | Maintainer-only usage report: per-day counts, per-article detail, `--adoption` check |
 | `scripts/research/` | Cross-edition research pipeline (steps 1–4) behind `infobox-naming.md` + `infobox-naming.json` |
+| `scripts/research/adoption-analysis.mjs` | Before/after infobox state + who added one, per analysed article |
+| `scripts/research/phantom-box-check.mjs` | `prop=templates` vs wikitext audit (transitive/phantom boxes) |
+| `scripts/research/extract-cache-inventory.py` | Builds the analysis inventory from the server-side cache |
+| `scripts/research/build-usage-history.mjs` | Merges the three outputs into `usage-history.json` |
+| `usage-history.md` / `usage-history.json` | Early usage + adoption record (pre-logging era) and its data |
 | `wikiprojects-and-i18n.md` | WikiProjects + infobox naming across 20 editions; porting analysis |
 | `infobox-naming.md` / `.json` | Localized infobox naming measurement, tables + raw per-edition data |
 | `status-quo.md` | Need assessment — how editors add infoboxes today (workflows, friction, prior art, honest market assessment) |

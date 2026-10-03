@@ -134,6 +134,18 @@ rejected auto-rendered boxes, not editor-posted drafts). Turns "recommend
   case currently abstains with a fragmented class).
 - Both live in `lib/census.js`, guarded by `npm test`.
 
+### 7b. Phantom-box coverage inflation (Track A · accuracy · measured)
+
+`prop=templates` reports templates used by *transcluded* templates too, so a
+page whose template internally calls `{{Infobox}}` is counted as boxed.
+Measured 2026-10-03 (`usage-history.md`, `scripts/research/phantom-box-check.mjs`):
+**1 phantom in 70 articles (~1.4% of articles, ~9% of "boxed" verdicts)** —
+small, and no verdict flipped in the sample, but it inflates coverage.
+Fix options: confirm boxed-ness from the article's own wikitext when a verdict
+is close to a threshold, or re-check candidate dominants. Don't switch the
+whole census to wikitext fetching — 150 peers per run is the cost that bought
+batched `prop=templates`.
+
 ### 8. Outcome tracking — measure adoption (Track A · evidence)
 
 **Substrate in place (2026-10-03):** `usage/` records one privacy-filtered line

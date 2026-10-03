@@ -9,6 +9,12 @@ evidence attached.
 
 **Live tool: <https://infobox-recommender.toolforge.org>** · CLI + JSON API · MIT
 
+**In the wild:** editors reach it through **Lead Balancer**, a lead-review user
+script whose infobox tab calls this service for articles that lack an infobox
+([source](https://en.wikipedia.org/wiki/User:Sadads/LeadBalancer-core.js)); the
+first ~70 analyses and 2 resulting infobox additions are recorded in
+[`usage-history.md`](usage-history.md).
+
 [![Example report for "May 1400 imperial election": Recommend Infobox election (confidence: high) — 97% of 31 same-class peers use an infobox, with the peer census, template distribution, neighborhood tiers, and example peers](images/report.png)](https://infobox-recommender.toolforge.org/?title=May+1400+imperial+election)
 
 *(Screenshot: a live report — click to open it.)*
@@ -122,6 +128,7 @@ selection rules, dual-runtime design, and the web service — is in
 | `ARCHITECTURE.md` | How the pipeline works — discovery, census, selection rules, runtime design, web service |
 | `test/EVALUATION.md` | Evaluation — corpus construction, scoring, per-case results, failure analysis |
 | `status-quo.md` | The documented need — how editors add infoboxes today, friction, prior art, market assessment |
+| `usage-history.md` | Early usage & adoption record — the first 70 analyses (Aug–Oct 2026), how the traffic arrived, and what happened next |
 | `ROADMAP.md` | What's next, prioritized, with effort estimates and eval targets |
 | `PRIVACY.md` | What usage data is collected, what is never collected, and retention |
 | `HANDOFF.md` | Status, quick start, deployment recipe, open threads |
