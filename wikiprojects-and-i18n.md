@@ -267,7 +267,8 @@ PageAssessments route where available.
 Live API surface today (probed): one required param `title`; `validate=1` switches to
 "article already has an infobox" mode; `output=json` is documented but is a **no-op** (JSON is the
 only output); an unknown param such as `lang=de` is **silently ignored** (probe: `analyze?title=Cat&lang=de`
-returns the enwiki Cat). Guards: max 2 concurrent analyses, 30 analyses / 5 min per IP.
+returns the enwiki Cat). Guards: max 2 concurrent analyses, 150 analyses / 15 min + 40/min burst per client
+(as of 2026-10-03; was 30 analyses / 5 min).
 
 ### 4.2 English-only inventory (file:line)
 

@@ -64,7 +64,14 @@ inventory. For each article:
 
 **Not recoverable:** the verdict the tool returned at the time (results are not
 cached, only inputs), who ran each analysis, or whether it came from the HTML
-page or the JSON API. Everything here is a *reconstruction* from API-cache
+page or the JSON API.
+
+**One more caveat discovered later (2026-10-03):** the throttle in force
+during this window bucketed clients on `socket.remoteAddress`, which behind
+Toolforge's proxy is *the proxy* — so the 30-analyses-per-5-minutes cap was
+effectively **global**, shared by every visitor. Some intended analyses may
+never have run (they would have returned 429). The limiter now keys on the
+proxy's `X-Forwarded-For` last hop, verified live. Everything here is a *reconstruction* from API-cache
 artifacts plus live wiki history — reproducible, but not a log.
 
 ## The analyses
@@ -232,10 +239,12 @@ is noted in `ROADMAP.md`.
    baseline (cache + wiki history) and the going-forward log
    (`/stats`, `scripts/usage-report.mjs --adoption`), which records the verdict
    alongside the title so future adoption checks are exact rather than inferred.
-3. **Rate limits deserve a look.** Lead Balancer users can plausibly work
-   through a topic cluster faster than our 30 analyses / 5 minutes per-IP
-   throttle; a 429 shows up as a failed tab. Worth revisiting the guard now that
-   a real client exists.
+3. **Rate limits were widened (2026-10-03).** Lead Balancer users can work a
+   topic cluster faster than the old 30-analyses-per-5-minutes cap allowed; a
+   429 shows up as a failed tab. The limit is now **150 analyses / 15 min plus
+   a 40/min burst per client** — with a cross-IP queue guard (503 + Retry-After)
+   and proxy-aware client identification, so widening the per-client budget did
+   not weaken flood protection. See `ARCHITECTURE.md#web-service`.
 4. **Coverage counting has a known ~1% phantom rate** from transitive
    `prop=templates`.
 

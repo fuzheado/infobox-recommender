@@ -119,6 +119,9 @@ files back three runtimes:
 | `lib/census.js` | Stage B (above) + primary selection |
 | `lib/decide.js` | Stage C (above) + evidence builder |
 | `lib/analyze.js` | Whole pipeline for one title; validate comparison |
+| `lib/usage.js` | Privacy-preserving usage log (allowlist fields, host-only referrers, 90-day raw retention, counts-only aggregates) |
+| `lib/stats-page.js` | Server-rendered `/stats` page (all values escaped) |
+| `lib/rate-limit.js` | Per-client sliding-window limiter (sustained + burst), proxy-aware client IP, bucket pruning |
 | `cli.js` | CLI harness (exploration, batch runs) |
 | `server.mjs` | Zero-dependency web service |
 | `public/` | Report renderer (`app.js`), styles, page shell |
@@ -136,8 +139,32 @@ While the census runs, an **article digest** renders immediately (title,
 short description, lead extract, thumbnail, infobox status, Wikidata line)
 so there is something to read during the wait.
 
-**Guards:** 2 concurrent analyses max (queued), per-IP throttle (30 / 5 min),
-title sanitization, path-traversal protection.
+**Guards** (`lib/rate-limit.js`):
+
+- **2 concurrent analyses max** — excess requests queue; throughput is bounded
+  by the shared upstream pacer (≥1s between Wikimedia request starts) anyway.
+- **Per-client limits, deliberately generous**: **150 analyses / 15 min**
+  sustained plus **40 / min** burst (env-tunable: `RATE_MAX`, `RATE_WINDOW_MS`,
+  `BURST_MAX`, `BURST_WINDOW_MS`). A Lead Balancer reviewer walking a topic
+  cluster is normal use, not abuse — the old 30-per-5-minutes cap could 429 a
+  real session. Over the line → **429** with `Retry-After`.
+- **Cross-IP flood guard**: when the queue is already ≥ `MAX_QUEUE` (40) deep,
+  answer **503** with `Retry-After` instead of growing unbounded.
+- **Client identity** from the proxy's `X-Forwarded-For` *last hop* (the value
+  our own ingress appends — spoof-resistant) or `X-Real-IP`, falling back to
+  the socket address. **Verified live 2026-10-03:** Toolforge's ingress sends
+  `X-Forwarded-For` (no `X-Real-IP`), so per-client buckets are real. Before
+  this change the app bucketed on `socket.remoteAddress` — the *proxy* — which
+  made the old 30-per-5-minutes cap effectively **global**: one busy client
+  could throttle everybody, and everyone shared one allowance.
+- `/stats` reports whether those proxy headers were seen (`clientIdentification`;
+  booleans only) so this stays verifiable.
+- Limiter buckets for idle clients are swept every 5 minutes.
+- Plus title sanitization and path-traversal protection.
+
+Covered by `test/rate-limit.test.mjs`: a realistic 50-analysis session is
+asserted to pass, while a tight loop, a sustained flood, per-client isolation,
+and bucket pruning are all tested.
 
 ## Usage logging & `/stats`
 

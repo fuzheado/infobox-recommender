@@ -211,8 +211,10 @@ infobox: { enabled: true, timeoutMs: 2e4, cacheDays: 7 },
 The first ~70 analyses and 2 observed infobox additions that followed are
 recorded in [`usage-history.md`](usage-history.md). Two implications: the need
 translates into *use* when the answer appears inside the editor (supporting the
-userscript-first plan), and an outside client makes our per-IP throttle
-(30 analyses / 5 min) worth revisiting.
+userscript-first plan), and the outside client's bursty pattern is why the
+per-client limit was widened on 2026-10-03 to **150 analyses / 15 min plus a
+40/min burst** (see `ARCHITECTURE.md#web-service`) — generous for a reviewer
+walking a cluster, still bounded for abuse.
 
 ## 6. Community norms that shape the solution space
 
