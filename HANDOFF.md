@@ -1,6 +1,6 @@
 # HANDOFF — infobox-recommender
 
-**Last updated:** 2026-10-03 · **For:** whoever continues this project (probably
+**Last updated:** 2026-10-04 · **For:** whoever continues this project (probably
 Andrew, after a break).
 
 **How to use this doc:** §1–2 to know where things stand and run it; §4–5 if you
@@ -20,7 +20,8 @@ WikiProject banners), census what infoboxes they carry, and recommend a template
 | | |
 |---|---|
 | **Evaluation** | **57 pass · 6 near-miss disagreements · 25 honest abstentions — 90% on decisive verdicts** (88-case corpus: 57 backlog-derived stale-tag labels + 31 manual/canonical). 4 of the 6 disagreements are cases where peer evidence arguably beats one editor's choice (`test/EVALUATION.md`) |
-| **Unit tests** | 19 (`npm test`): primary-infobox selection, usage-log privacy/retention, rate limiting |
+| **Unit tests** | 25 (`npm test`): primary-infobox selection, usage-log privacy/retention, rate limiting, random-article picker |
+| **Cold / warm speed** | ~10–25s cold for a heavy article (≈150 peers), instant warm — measured with `scripts/bench-analysis.mjs` |
 | **Live** | <https://infobox-recommender.toolforge.org> · usage stats at [`/stats`](https://infobox-recommender.toolforge.org/stats) |
 | **Repo** | <https://github.com/fuzheado/infobox-recommender> — **public** since 2026-08-28, MIT; homepage set to the tool, topics `wikipedia/wikidata/infobox/mediawiki/toolforge` |
 | **External consumer** | **Lead Balancer** (`User:Sadads/LeadBalancer-core.js`) calls `/analyze?output=json` for infobox-less articles — see §7. It is the main traffic source; mind the contract |
@@ -34,15 +35,17 @@ node cli.js "1346 imperial election"       # full pipeline, human summary
 node cli.js "Abraham Lincoln" --validate   # check an existing infobox choice
 node cli.js "X" "Y" --json                 # machine-readable
 npm run serve                              # web UI on http://localhost:3000
-npm test                                   # 19 unit tests
+npm test                                   # 25 unit tests
+node scripts/bench-analysis.mjs "X" --full # request-level timing audit (cold)
 npm run eval                               # full evaluation (warm cache: <1s)
 npm run fixtures                           # rebuild test/fixtures.json from the live backlog
 node scripts/usage-report.mjs --days 30    # maintainer usage report (needs a usage/ dir)
 ```
 
-Etiquette is baked into `lib/api.js`: descriptive UA, ≥1s pacing, retry/backoff,
-cache-first disk cache (`cache/`, gitignored). Cold analyses 5–30s, repeats
-instant. `cache/` and `usage/` are gitignored — never commit them.
+Etiquette is baked into `lib/api.js`: descriptive UA, per-host request waves
+(≥1s apart, ≤4 in flight per service), retry/backoff, cache-first disk cache
+(`cache/`, gitignored). A heavy cold analysis runs ~10–25s; repeats and
+overlapping analyses are instant. `cache/` and `usage/` are gitignored — never commit them.
 
 ## 3. Where things live
 
@@ -56,12 +59,13 @@ service, and a future userscript):
 | `lib/census.js` | Stage B: batched template census (continuation + re-queue), redirect normalization, transclusion facts, **primary-infobox selection**, sub-cluster split |
 | `lib/decide.js` | Stage C: flat decision + tiered rescue; evidence builder |
 | `lib/analyze.js` | Whole pipeline for one title; validate comparison |
-| `lib/usage.js` · `lib/stats-page.js` · `lib/rate-limit.js` | Usage log, `/stats` renderer, per-client limiter |
+| `lib/usage.js` · `lib/stats-page.js` · `lib/rate-limit.js` · `lib/random-pick.js` | Usage log, `/stats` renderer, per-client limiter, random-article picker |
 | `cli.js` · `server.mjs` · `public/` | CLI harness, zero-dep web service, report UI |
 | `images/` | README screenshots |
 
 **Tests & evaluation:** `test/eval.mjs` (harness → `test/results/<date>.*`),
 `test/census.test.mjs`, `test/usage.test.mjs`, `test/rate-limit.test.mjs`,
+`test/random-pick.test.mjs`,
 `test/fixtures.json` (corpus), `scripts/manual-cases.json` + `scripts/fetch-queue.mjs`
 (how the corpus is built), `test/EVALUATION.md` (writeup).
 
@@ -231,7 +235,8 @@ distribution). Currently next in line:
    enwiki norms allow, unlike the auto-rendered boxes rejected in 2018).
 4. **Userscript / gadget** — the tool is already reached through an editor
    script; owning that experience is the highest-leverage reach item.
-5. Smaller measured items: phantom-box coverage (7b), child-box auto-detection,
+5. Smaller measured items: latency levers (category fan-out, adaptive early stop,
+   peer cap — ROADMAP 7a), phantom-box coverage (7b), child-box auto-detection,
    per-element wrapper merge, backlog batch scanner, Diff writeup + a note at
    WikiProject Infoboxes `/assistance`.
 

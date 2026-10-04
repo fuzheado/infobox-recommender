@@ -148,8 +148,8 @@ selection rules, dual-runtime design, and the web service — is in
 ## Tests
 
 ```sh
-npm test          # 19 unit tests: primary-infobox selection, usage-log privacy
-                  # and retention, rate limiting
+npm test          # 25 unit tests: primary-infobox selection, usage-log privacy
+                  # and retention, rate limiting, random-article picker
 npm run eval       # full evaluation over the corpus (warm cache: <1s)
 npm run fixtures   # rebuild test/fixtures.json from the live backlog
 ```
@@ -158,6 +158,8 @@ Research scripts (cross-edition infobox naming, the early-usage/adoption
 analysis, and the `prop=templates` phantom-box audit) live in
 [`scripts/research/`](scripts/research/), documented in
 [`usage-history.md`](usage-history.md) and [`infobox-naming.md`](infobox-naming.md).
+Latency is measured per request with `scripts/bench-analysis.mjs`
+(`--full` for the census path, `--cached` for warm runs).
 
 ## Deployment
 
