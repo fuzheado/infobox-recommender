@@ -131,19 +131,31 @@ template data into `cache/templates/`).
 **Redeploy** (package → scp → extract into both copies → chown → restart):
 
 ```sh
-tar czf /tmp/ibr.tgz --exclude=cache --exclude=usage --exclude=.git -C . .
-scp /tmp/ibr.tgz alih@dev.toolforge.org:/tmp/
-# multi-line remote work goes in a script FILE — see the quoting note below
-cat > /tmp/deploy-ibr.sh <<'EOF'
+# Local: uniquely named, private temp files — never fixed /tmp names (the bastion
+# is multi-user; see the AGENTS.md rule on shell arguments)
+d=${TMPDIR:-/tmp}
+pkg=$(mktemp "$d/ibr-XXXXXX")
+tar czf "$pkg" --exclude=cache --exclude=usage --exclude=.git -C . .
+deploy=$(mktemp "$d/ibr-deploy-XXXXXX")
+cat > "$deploy" <<'EOF'
 #!/bin/bash
 set -eu
-cd /data/project/infobox-recommender && tar xzf /tmp/ibr.tgz
-cd www/js && tar xzf /tmp/ibr.tgz
+pkg="$1"
+cd /data/project/infobox-recommender && tar xzf "$pkg"
+cd www/js && tar xzf "$pkg"
 chown -R tools.infobox-recommender: .
+rm -f "$pkg"          # the payload temp is ours to clean up
 webservice --backend=kubernetes node20 restart
 EOF
-scp /tmp/deploy-ibr.sh alih@dev.toolforge.org:/tmp/
-ssh alih@dev.toolforge.org "sudo -niu tools.infobox-recommender bash /tmp/deploy-ibr.sh"
+
+# Remote: script over stdin (no remote script file); the payload temp is created
+# BY the tool user, so it is unique and readable only by them — a 0600 file owned
+# by alih would NOT be readable under sudo -niu
+H=alih@dev.toolforge.org
+r_pkg=$(ssh $H "sudo -niu tools.infobox-recommender mktemp /tmp/ibr-XXXXXX")
+ssh $H "sudo -niu tools.infobox-recommender bash -c 'cat > $r_pkg'" < "$pkg"
+ssh $H "sudo -niu tools.infobox-recommender bash -s $r_pkg" < "$deploy"
+rm -f "$pkg" "$deploy"
 ```
 
 **Verify a deploy** (all four, every time):
@@ -213,8 +225,10 @@ retryable.
    declaring `"start": "node server.mjs"`; the old file is parked as
    `~/www/js/server.js.stale-backup`. **Never rely on npm's implicit start.**
 2. **Multi-layer `ssh` → `sudo` → `bash -c` collapses newlines.** A heredoc inside
-   `bash -c '…'` arrives mangled (`set -ecd /data/…`). Put anything longer than a
-   single command in a script file and run that.
+   `bash -c '…'` arrives mangled (`set -ecd /data/…`). For anything longer than a single
+   command, **pipe the script on stdin** (`ssh host "sudo -niu tools.<tool> bash -s <args…>"
+   < script.sh`), and give every temp file a `mktemp` name — letting the *remote* create any
+   file it must read (see the AGENTS.md rule on shell arguments).
 3. **Verify with two independent signals before believing a claim.** The phantom
    box was only caught because the API's answer was cross-checked against
    wikitext; the entry-point bug was only caught because a new route 404'd while
