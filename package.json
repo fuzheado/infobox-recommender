@@ -9,7 +9,7 @@
     "demo": "node cli.js \"1346 imperial election\"",
     "demo:prince": "node cli.js \"Prince-elector\"",
     "fixtures": "node scripts/fetch-queue.mjs",
-    "test": "node --test test/census.test.mjs test/usage.test.mjs test/rate-limit.test.mjs",
+    "test": "node --test test/census.test.mjs test/usage.test.mjs test/rate-limit.test.mjs test/random-pick.test.mjs",
     "eval": "node test/eval.mjs",
     "serve": "node server.mjs"
   }

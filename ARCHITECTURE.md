@@ -132,6 +132,10 @@ files back three runtimes:
 - `/analyze/stream?title=X` — SSE: stage events (resolve → peers →
   census i/n → clusters → decide), plus `digest` and `wikidata` events
 - `/analyze?title=X&output=json` — full analysis JSON, CORS-enabled
+- `/random` — 302 to `/` with a random article from the infobox-request
+  backlog (the `{{Infobox requested}}` tag sits on talk pages, so the picker
+  strips `Talk:` and rejects non-article talk pages; the member list is cached
+  with a daily cache-buster, and the last 25 picks are not repeated)
 - `/stats[?output=json]` — aggregate usage stats (HTML / JSON)
 - `validate=1` — validate mode (also on the JSON API)
 

@@ -252,6 +252,7 @@ section-box detection + unit tests** (2026-08-28). 11% → 90%.
 | 2026-10-01 | Reviewed RfC-style need assessment (`status-quo.md`); public flip recorded |
 | 2026-10-01 → 03 | Privacy-preserving usage logging + `/stats` + `PRIVACY.md`; early-usage/adoption report (`usage-history.md`); rate limits widened and made genuinely per-client; footer links `usage stats` / `privacy` |
 | 2026-10-03 | README + HANDOFF refresh; entry-point pitfall documented |
+| 2026-10-04 | Added `/random` (one-click analysis of a random infobox-request article) with a home-page 🎲 button; `lib/random-pick.js` + tests |
 | 2026-10-04 | Performance audit + fixes: pacing made explicit and **per host** (was one global gate that let parallel calls burst), parallel census batches, 25-title census chain, one Wikidata request instead of seven, one WDQS query per pointer property instead of one per value, per-page cache that survives batch-shape changes. Cold runs: Canut revolts 20.4s → 6.6s, Abraham Lincoln 26.8s → 13.7s; eval unchanged at 57/6/25 |
 
 ## 11. Working conventions

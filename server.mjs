@@ -9,6 +9,7 @@
 //   /?title=Small-signal+model      -> same page, auto-runs the analysis
 //   /analyze/stream?title=X         -> SSE: live stage events, then the result
 //   /analyze?title=X&output=json    -> API mode: full analysis JSON (CORS *)
+//   /random                         -> 302 to a random infobox-request article
 //   /stats[?output=json]            -> aggregate usage stats (privacy-preserving)
 //   /style.css, /app.js             -> static assets from public/
 //
@@ -29,6 +30,7 @@ import { analyze } from './lib/analyze.js';
 import { createUsage, referrerHost } from './lib/usage.js';
 import { renderStatsPage } from './lib/stats-page.js';
 import { createRateLimiter, clientIp, describeLimits } from './lib/rate-limit.js';
+import { pickRandomArticle } from './lib/random-pick.js';
 
 const ROOT = fileURLToPath(new URL('.', import.meta.url));
 const PUBLIC = join(ROOT, 'public');
@@ -47,6 +49,7 @@ const CACHE_DIR = 'cache';
 const api = createApi({ cacheDir: CACHE_DIR, paceMs: 1000 });
 const usage = createUsage({ dir: process.env.USAGE_DIR || join(process.cwd(), 'usage') });
 const limiter = createRateLimiter({ rules: RATE_RULES, burst: BURST_RULES });
+const recentRandomPicks = []; // avoid handing out the same article twice in a row
 const LIMIT_TEXT = describeLimits({ rules: RATE_RULES, burst: BURST_RULES });
 
 // Referrer is reduced to a host (never the full URL) before storage.
@@ -156,6 +159,42 @@ const server = createServer(async (req, res) => {
     if (path === '/' || path === '/index.html') {
       if (path === '/') usage.record({ kind: 'page', source: 'page', refHost: refOf(req) }).catch(() => {});
       return serveAsset(res, 'index.html');
+    }
+
+    if (path === '/random') {
+      // One click: pick a random article from the {{Infobox requested}} backlog
+      // and send the visitor straight to its report. The tag lives on TALK
+      // pages, so the picker strips "Talk:" (and rejects non-article talk
+      // pages). The member list is cached; a daily cache-buster keeps the pool
+      // from fossilising at one request per day.
+      usage.record({ kind: 'page', source: 'random', refHost: refOf(req) }).catch(() => {});
+      let target = null;
+      try {
+        const day = new Date().toISOString().slice(0, 10);
+        const data = await api.enwiki({
+          action: 'query',
+          list: 'categorymembers',
+          cmtitle: 'Category:Wikipedia articles with an infobox request',
+          cmnamespace: 1, // talk pages
+          cmlimit: 500,
+          formatversion: 2,
+          randompool: day,
+        });
+        target = pickRandomArticle((data.query?.categorymembers ?? []).map((m) => m.title), {
+          recent: recentRandomPicks,
+        });
+        if (target) {
+          recentRandomPicks.push(target);
+          if (recentRandomPicks.length > 25) recentRandomPicks.shift();
+        }
+      } catch {
+        /* fall through to the home page */
+      }
+      res.writeHead(302, {
+        Location: target ? `/?title=${encodeURIComponent(target)}` : '/',
+        'Cache-Control': 'no-store',
+      });
+      return res.end();
     }
 
     if (path === '/stats') {

@@ -449,6 +449,7 @@ function renderHome() {
       <p class="muted small example-more">…or pick any article from the live
       <a href="https://en.wikipedia.org/wiki/Category:Wikipedia_articles_with_an_infobox_request" target="_blank" rel="noopener">Category:Wikipedia articles with an infobox request</a>
       — hundreds of real infoboxless articles waiting for a peer census.</p>
+      <p class="example-more"><a class="random-btn" href="/random">🎲 Analyze a random article from the backlog</a></p>
     </section>
     <section class="panel">
       <h3>API</h3>

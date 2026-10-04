@@ -51,7 +51,9 @@ title, or start from a one-click example.
 The home page also links the live
 [Category:Wikipedia articles with an infobox request](https://en.wikipedia.org/wiki/Category:Wikipedia_articles_with_an_infobox_request)
 — the backlog this tool was built for, with hundreds of real infoboxless
-articles.
+articles — and offers a **🎲 random article** button
+([`/random`](https://infobox-recommender.toolforge.org/random)) that jumps
+straight into an analysis of one of them.
 
 **Validate an existing infobox:** add `&validate=1` to a report URL, or use
 the button in the report.
