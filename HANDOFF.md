@@ -25,7 +25,7 @@ WikiProject banners), census what infoboxes they carry, and recommend a template
 | **Live** | <https://infobox-recommender.toolforge.org> · usage stats at [`/stats`](https://infobox-recommender.toolforge.org/stats) |
 | **Repo** | <https://github.com/fuzheado/infobox-recommender> — **public** since 2026-08-28, MIT; homepage set to the tool, topics `wikipedia/wikidata/infobox/mediawiki/toolforge` |
 | **External consumer** | **Lead Balancer** (`User:Sadads/LeadBalancer-core.js`) calls `/analyze?output=json` for infobox-less articles — see §7. It is the main traffic source; mind the contract |
-| **Observed use** | 70 analyses (2026-08-27 → 10-02), 2 infobox additions by named editors, 1 census artifact found — `usage-history.md` |
+| **Observed use** | 70 analyses in the pre-logging era (2026-08-27 → 10-02), 2 infobox additions by named editors, 1 census artifact found — `usage-history.md`. Counts since 2026-10-03 come from the usage log: see the live `/stats` |
 | **Engine trajectory** | 11% → 83% → 71% → 73% → 75% → 84% → 85% → 84% → 85% → 86% → **90%** over seven campaigns (`test/EVALUATION.md`) |
 
 ## 2. Quick start (local)
@@ -132,7 +132,7 @@ template data into `cache/templates/`).
 
 ```sh
 # Local: uniquely named, private temp files — never fixed /tmp names (the bastion
-# is multi-user; see the AGENTS.md rule on shell arguments)
+# is multi-user; rule: ~/.pi/agent/AGENTS.md §"Shell arguments")
 d=${TMPDIR:-/tmp}
 pkg=$(mktemp "$d/ibr-XXXXXX")
 tar czf "$pkg" --exclude=cache --exclude=usage --exclude=.git -C . .
@@ -228,7 +228,7 @@ retryable.
    `bash -c '…'` arrives mangled (`set -ecd /data/…`). For anything longer than a single
    command, **pipe the script on stdin** (`ssh host "sudo -niu tools.<tool> bash -s <args…>"
    < script.sh`), and give every temp file a `mktemp` name — letting the *remote* create any
-   file it must read (see the AGENTS.md rule on shell arguments).
+   file it must read (rule: `~/.pi/agent/AGENTS.md` §"Shell arguments").
 3. **Verify with two independent signals before believing a claim.** The phantom
    box was only caught because the API's answer was cross-checked against
    wikitext; the entry-point bug was only caught because a new route 404'd while
@@ -273,6 +273,7 @@ section-box detection + unit tests** (2026-08-28). 11% → 90%.
 | 2026-10-03 | README + HANDOFF refresh; entry-point pitfall documented |
 | 2026-10-04 | Added `/random` (one-click analysis of a random infobox-request article) with a home-page 🎲 button; `lib/random-pick.js` + tests |
 | 2026-10-04 | Performance audit + fixes: pacing made explicit and **per host** (was one global gate that let parallel calls burst), parallel census batches, 25-title census chain, one Wikidata request instead of seven, one WDQS query per pointer property instead of one per value, per-page cache that survives batch-shape changes. Cold runs: Canut revolts 20.4s → 6.6s, Abraham Lincoln 26.8s → 13.7s; eval unchanged at 57/6/25 |
+| 2026-10-04 | Deploy recipe hardened: `mktemp` names instead of fixed `/tmp/ibr.tgz`, deploy script piped over stdin (no remote script file), payload temp created **by the tool user** so it is private yet readable under `sudo -niu` — verified by running it |
 
 ## 11. Working conventions
 
@@ -286,3 +287,6 @@ section-box detection + unit tests** (2026-08-28). 11% → 90%.
   privacy-preserving log).
 - **Assert edits** rather than assuming an anchor matched (see the global
   guidelines) — a silent no-op replacement is the worst failure mode here.
+- **Temp files use `mktemp`**, never a fixed `/tmp/name` — the bastion is multi-user, and
+  a predictable `/tmp/foo.sh` is world-readable and collides with other runs. The rule
+  (and the addressable traps) live in `~/.pi/agent/AGENTS.md` §"Shell arguments".
