@@ -193,13 +193,53 @@ node scripts/usage-report.mjs --days 30 [--titles] [--adoption]
 
 ## Performance & caching
 
-- **Cache-first everywhere**: every API response is stored as
-  SHA1-URL-keyed JSON in `cache/` (gitignored). Cold analyses are ~5–15s;
-  repeats are instant.
-- Per-class WDQS samples are cached and **shared across every article of
-  the same class**; discovery stages run in parallel while **request starts
-  stay ≥1s apart** (latencies overlap, pacing is respected).
-- Sub-cluster analysis is lazy — only computed when it can change the verdict.
+Cold analyses are **bounded by request count, not by CPU**: every request to a
+Wikimedia service is spaced by a gate, so wall time ≈ (waves of requests) +
+exposed latency. Measuring is therefore about counting requests — use
+`node scripts/bench-analysis.mjs "<title>" [--full] [--cached]`, which wraps
+`fetch` and prints a per-request timeline.
+
+**The pacing policy (explicit since 2026-10-04):** one *wave* per host per
+second, ≤ `maxPerWave` (4) requests per wave, ≤ 4 in flight per host. Gates are
+**per host**, so enwiki, Wikidata and WDQS cannot block each other. Before this
+the gate was a single global timestamp that let a batch of parallel calls all
+fire at once (measured: 7 simultaneous Wikidata calls), and one slow WDQS query
+(4.2s) stalled the next enwiki wave.
+
+**Measured cold runs** (2026-10-04, `cache/` bypassed):
+
+| Case | Before | After | Requests |
+|---|---|---|---|
+| Canut revolts (112 peers) | 20.4s | **6.6s** | 30 → 26 |
+| Abraham Lincoln (147 peers, full census) | 26.8s | **13.7s** | 53 → 50 |
+| Zuiderzee Works (17 peers) | ~4.0s | 5.5s | 16 |
+
+What produced the gains:
+
+1. **Parallel census batches** — `fetchPageData` looped batches sequentially
+   (one pacing slot each) and drained each batch's 500-row continuation rounds
+   in series. Batches now run concurrently, and a smaller first-pass batch
+   (25 titles) shortens those chains: on template-heavy peers the chain, not the
+   wave rate, was the bottleneck.
+2. **One Wikidata request instead of seven** — `wbgetentities&props=claims`
+   returns every property, so the seven per-property `wbgetclaims` calls (which
+   the API requires to be one property at a time) collapsed into one.
+3. **One WDQS query per pointer property instead of one per value** — a
+   politician with six P39 values used to fan out to six queries (up to 19
+   across P39/P179/P361). Each value keeps its **own** `LIMIT 60` inside a UNION
+   of subqueries: a single shared `LIMIT` starves later values (measured: George
+   Washington lost 19 officeholder peers and flipped to weak-signal).
+4. **Per-page cache** (`cache/templates/<sha1(title)>.json`) beside the
+   URL cache. Batched responses are cached under a key containing the batch
+   composition, so changing a batch size used to invalidate *everything* — one
+   such change turned a warm eval into a ~2,600-request crawl and tripped the
+   API's 429. Per-page entries make batch shapes free to change and let peer
+   sets be reused across articles. `scripts/migrate-census-cache.mjs` harvests
+   per-page data out of an existing URL cache.
+
+Repeat analyses remain instant (URL cache); the per-page cache extends that to
+*overlapping* analyses — an article whose peers were already censused skips
+those fetches entirely.
 
 ## Known limitations
 

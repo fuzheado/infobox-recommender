@@ -74,8 +74,11 @@ as 429 with `Retry-After`; see [`ARCHITECTURE.md`](ARCHITECTURE.md#web-service).
 recommends (aggregate, privacy-preserving; `?output=json` for
 machine-readable). What is and isn't collected: [PRIVACY.md](PRIVACY.md).
 
-First run does live API calls (tens of requests per article, ≥1s apart);
-everything is disk-cached in `cache/` so repeat analyses are instant.
+A first analysis makes a few dozen live API calls, paced politely — one wave of
+at most four requests per second per Wikimedia service
+([details](ARCHITECTURE.md#performance--caching)) — so a heavy article is
+~10–25s cold. Everything is disk-cached, so repeat and overlapping analyses are
+much faster (usually instant).
 
 ## How well does it work?
 

@@ -134,6 +134,30 @@ rejected auto-rendered boxes, not editor-posted drafts). Turns "recommend
   case currently abstains with a fragmented class).
 - Both live in `lib/census.js`, guarded by `npm test`.
 
+### 7a. Analysis latency — done 2026-10-04, with the next levers measured
+
+Audited with `scripts/bench-analysis.mjs` (request-level timeline). Cold runs
+were request-count bound: **Canut revolts 20.4s → 6.6s**, **Abraham Lincoln
+26.8s → 13.7s** (147 peers), same verdicts, and `npm run eval` stayed at
+57/6/25. Fixes: parallel census batches, a shorter census chain (25-title first
+pass), one Wikidata request instead of seven, one WDQS query per pointer
+property instead of one per value, and a per-page cache that survives batch-shape
+changes. Details and the pacing policy: `ARCHITECTURE.md#performance--caching`.
+
+Remaining measured levers, in order of expected value:
+
+1. **Category-member fan-out** (5 requests on a typical article, one per
+   candidate category, in one wave) — could be cut by fetching members for
+   fewer/merged categories; needs an accuracy check.
+2. **Adaptive early stop** — census the tightest tier first and stop when it is
+   already decisive (≥80% coverage, ≥70% dominance, n ≥ 20), falling back to the
+   full pool otherwise. The tiered-rescue logic in `lib/decide.js` already
+   formalises that signal; this would make big peer sets ~2× cheaper again.
+   Trade-off: the *published evidence* would cover fewer peers, so the report
+   must say so.
+3. **Peer-set cap tuning** (currently 150) — fewer peers, fewer requests, more
+   variance; the eval should decide.
+
 ### 7b. Phantom-box coverage inflation (Track A · accuracy · measured)
 
 `prop=templates` reports templates used by *transcluded* templates too, so a

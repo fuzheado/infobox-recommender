@@ -202,3 +202,26 @@ Document label provenance (see `test/fixtures.json` `labelSource`).
   www/js) or make www/js a symlink farm.
 - Disk cache (`cache/`, SHA1-URL-keyed JSON) is the default; re-runs are
   deterministic and instant. Bust it when API semantics change.
+
+## Pacing and caching lessons (2026-10-04)
+
+- **A single global pacing timestamp is not pacing.** Concurrent callers all
+  read the same stale value, sleep the same amount and fire together — measured
+  bursts of 7 simultaneous Wikidata calls and 5 category-member calls. Enforce
+  per-host waves with a bounded concurrency instead (`lib/api.js`).
+- **The API will 429 sustained volume, and the budget is not published.** A cold
+  crawl of ~2,600 requests in a few minutes got HTTP 429 from
+  `en.wikipedia.org/w/api.php`; a 6-request burst does not (200s, no
+  `x-ratelimit-*` headers). Treat the 429 as the signal to stop and back off —
+  and prefer warming caches politely over re-crawling.
+- **Batched requests make URL-keyed caching fragile.** The cache key contains
+  the batch composition (`titles=A|B|C`), so changing a batch size invalidates
+  every entry even though per-page answers are unchanged. Cache per *entity*
+  (`readKeyed`/`writeKeyed`) in addition to per URL.
+- **`wbgetclaims` is one property per call — so use `wbgetentities&props=claims`**
+  when several properties are needed; it returns them all in one request.
+- **A single shared `LIMIT` across a `VALUES` list starves later values.** In
+  WDQS, put each value in its own subquery with its own `LIMIT` (UNION of
+  subqueries) and re-apply any per-value cap in code.
+- **`?v` comes back from WDQS as a full URI**, not a QID — normalise before
+  using it as a map key or label lookup.
