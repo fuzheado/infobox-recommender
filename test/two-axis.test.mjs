@@ -183,10 +183,28 @@ test('a split pool with no coherent tier stays with the whole-pool plurality', (
 
 // --- wording + contract -----------------------------------------------------
 
-test('a split recommendation tells the reader where to look next', () => {
+test('a split recommendation names the candidate without UI instructions', () => {
   const r = run(pool(100, 80, ['Infobox artwork', 'Infobox building', 'Infobox venue', 'Infobox bridge']));
   assert.equal(r.verdict, 'recommend');
-  assert.match(r.reason, /See the template distribution for the options/);
+  assert.match(r.reason, /best candidate Infobox artwork/);
+  // `reason` is an API field: the Lead Balancer userscript shows it as its summary
+  // line, so it must not point at parts of this tool's own page.
+  assert.doesNotMatch(r.reason, /distribution|chart|below/i);
+});
+
+test('reasons stay short enough for a downstream 400-char clip', () => {
+  // The consumers clip at 400 chars (HANDOFF §7). Keep a margin so a longer
+  // template name cannot silently truncate the sentence mid-way.
+  for (const census of [
+    pool(100, 80, ['Infobox artwork', 'Infobox building', 'Infobox venue', 'Infobox bridge']),
+    pool(100, 56, 'Infobox artwork'),
+    pool(20, 3),
+    pool(200, 30),
+    pool(4, 4),
+  ]) {
+    const r = run(census);
+    assert.ok(r.reason.length <= 360, `reason is ${r.reason.length} chars: ${r.reason}`);
+  }
 });
 
 test('a weak case with a dominant template offers it as advice', () => {

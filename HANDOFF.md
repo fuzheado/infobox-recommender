@@ -200,11 +200,27 @@ ssh alih@dev.toolforge.org "sudo -niu tools.infobox-recommender bash -lc 'kubect
 **Lead Balancer** — `User:Sadads/LeadBalancer-core.js` (engine of
 `User:Sadads/Lead_Balancer`, installed by editors via `common.js`) shows an
 infobox tab *only for articles that have no infobox*, calling
-`GET /analyze?title=…&output=json` with a 20 s timeout and 7-day client cache.
-Its parser walks up to four levels looking for synonym key names, so it is
-tolerant — but the practical contract to keep is `verdict`, `template`,
-`confidence`, `evidence`. If a breaking change is ever needed, note it in the
-repo *and* on the script's talk page first.
+`GET /analyze?title=…&output=json` with a 20 s timeout, a 7-day client cache, and
+retries that honour `Retry-After`.
+
+Its parser (`normalizeAdvice`) reads **named keys only** — there is no nested or
+synonym walk (an earlier version of this doc claimed "walks up to four levels
+looking for synonym key names": verified false against the code 2026-10-05). What
+it does means the practical contract is narrow and checkable:
+
+| it reads | consequence for changes |
+|---|---|
+| `VERDICTS = [recommend, weak-signal, none-warranted, already-has-infobox, excluded]` via `VERDICTS.includes(json.verdict)` | an unknown verdict string collapses to `""` (no advice shown) — **never invent a verdict value** |
+| `RECOMMEND = {recommend: true, 'none-warranted': false}` | every other verdict, including `weak-signal`, maps to `null` = "no call either way", so moving a case *to* weak-signal degrades to neutral rather than wrong |
+| `json.template`, used **only when `verdict === 'recommend'`** | a recommendation with a weak/plurality template is surfaced as a suggested template — worth telling them when that starts happening |
+| `json.confidence`, accepted only if `low`/`medium`/`high` | keep the vocabulary |
+| `json.reason`, shown verbatim as the tab's summary, **clipped at 400 chars** | keep it self-contained: no pointers to this tool's own UI, and comfortably under the clip |
+| evidence keys `total`, `withInfobox`, `distribution`, `boxedPeers`, `bare`, `bareCluster` | additive fields are ignored, so `dominanceShare`/`templateAdvice` are safe to add |
+
+So: **additive JSON changes are safe; a change in which verdicts are emitted is
+not a schema break but is a behaviour change in their UI** — announce it. If a
+breaking change is ever needed, note it in the repo *and* on the script's talk
+page first.
 
 Rate limiting was widened for this client (2026-10-03): **150 analyses / 15 min
 plus a 40/min burst, per client**, keyed on the proxy's `X-Forwarded-For` last

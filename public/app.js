@@ -306,10 +306,14 @@ function renderReport(r) {
   }
 
   // validate mode: the comparison card replaces the plain verdict card
+  const splitHint = ev?.templateAdvice?.status === 'split'
+    ? `<p class="muted small">No single template dominates across the peer pool — the distribution below lists the templates peers use, in order.</p>`
+    : '';
   const verdictHtml = r.comparison ? comparisonCard(r.comparison) : `
     <div class="verdict ${cardClass}">
       <div class="verdict-title">${verdictTitle} ${badge}</div>
       <div class="verdict-reason">${esc(r.reason ?? '')}</div>
+      ${splitHint}
       ${weakSignalNote(r, ev)}
     </div>`;
 
