@@ -29,27 +29,30 @@ whole job of this tool, and it is the honest way to describe it anywhere below.
      template/RfC threads, so a new one does not bury anything).
    - Timing note: that page currently carries **MOS:INFOBOXUSE RfC** activity.
      Announce the tool and its evidence; do **not** argue policy with it.
-2. **Toolhub** — the canonical catalogue of Wikimedia tools, and **this tool is
-   not in it** (`/api/tools/?name=infobox` → 0 results;
-   `/api/tools/infobox-recommender/` → 404). Registration is a few minutes' work
-   and is the one item here that keeps working after the announcement scrolls
-   away. There are three supported routes
-   ([Toolhub on Meta](https://meta.wikimedia.org/wiki/Toolhub)), all needing a
-   Wikimedia login; the API answers at `/api-docs`:
-   - **This tool is on Toolforge, so the cheap path first:** create the record in
-     [toolsadmin](https://toolsadmin.wikimedia.org) — Toolhub (and Hay's
-     Directory) import Toolforge toolinfo records automatically.
-   - **Or register a `toolinfo.json` with the crawler:**
-     <https://toolhub.wikimedia.org/add-or-remove-tools?tab=urls>. The file is
-     drafted at [`toolinfo.json`](toolinfo.json) in this repo (validated against
-     the toolinfo **1.2.2** schema — five deliberate errors were rejected by the
-     same validator, so the check discriminates); register the raw URL
-     `https://raw.githubusercontent.com/fuzheado/infobox-recommender/main/toolinfo.json`
-     and the crawler re-checks it about hourly. Keeping it in the repo (as
-     CitationHunt and Adiutor do) is what lets volunteers PR corrections.
-   - **Or create the record in the UI:**
-     <https://toolhub.wikimedia.org/add-or-remove-tools?tab=tool-create>, or
-     `POST /api/tools/` with an OAuth token.
+2. **Toolhub — already listed; the record needs enriching, not creating.**
+   It is in the catalogue as **`toolforge-infobox-recommender`**
+   (<https://toolhub.wikimedia.org/tools/toolforge-infobox-recommender>),
+   auto-imported from Toolforge's aggregate feed
+   (`https://toolsadmin.wikimedia.org/tools/toolinfo/v1.2/toolinfo.json`, one of
+   the 125 sources Toolhub crawls — the list is readable at
+   <https://toolhub.wikimedia.org/api/crawler/urls/>).
+   **Look it up under that name**: Toolforge records are prefixed `toolforge-`,
+   and querying the name I would have chosen (`infobox-recommender`) returned 404
+   — absence of a ref is not absence of the thing.
+   The auto-imported record is sparse: `title`, `description`, `license: MIT` and
+   `tool_type: web app` are populated, but `repository`, `subtitle`, `for_wikis`,
+   `api_url`, `user_docs_url`, `developer_docs_url`, `privacy_policy_url`,
+   `feedback_url`, `bugtracker_url` and `available_ui_languages` are all empty;
+   `keywords` is only "infobox, recommendation"; `author` is a bare name with no
+   wiki username; `technology_used` says `["Toolforge"]` rather than the stack.
+   - Enriching it needs a Wikimedia login — every write path (UI, API token,
+     toolsadmin metadata) is gated. **First thing to check when logged in:** which
+     source the crawler reads from, because an edit made in Toolhub on a crawled
+     record can be replaced by the next crawl (~60 min).
+   - [`toolinfo.json`](toolinfo.json) in this repo holds the full, schema-validated
+     metadata (1.2.2). If it is ever registered with the crawler it must keep
+     `"name": "toolforge-infobox-recommender"` — a different name creates a
+     **second** record for the same tool and splits discovery.
    - ⚠️ **Do not use `/tools/create`.** That is the *detail page of an existing
      tool named “create”* (a spam record, author “Smadur1997”) — not a creation
      form. Verified in a browser 2026-10-05: the page title is
