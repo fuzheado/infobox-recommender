@@ -20,7 +20,7 @@ WikiProject banners), census what infoboxes they carry, and recommend a template
 | | |
 |---|---|
 | **Evaluation** | **57 pass · 5 near-miss disagreements · 25 abstentions · 1 unlabelled — 90% on decisive verdicts** (88-case corpus: 57 backlog-derived stale-tag labels + 31 manual/canonical; **frozen 2026-08-28, labels audited 2026-10-05**). 4 of the 5 disagreements are cases where peer evidence arguably beats one editor's choice (`test/EVALUATION.md`). Corpus health: `scripts/research/check-fixture-drift.mjs` → `test/results/fixture-drift.json` (87 labels stable, 85/88 backlog tags since cleared — this is a frozen sample, not the live backlog) |
-| **Unit tests** | 72 (`npm test`): primary-infobox selection, template families (ladder), two-axis decision, EARLY_STOP, fixture labels, usage-log privacy/retention, rate limiting, random-article picker |
+| **Unit tests** | 80 (`npm test`): primary-infobox selection, template families (ladder), two-axis decision, peer-sample ordering, EARLY_STOP, fixture labels, usage-log privacy/retention, rate limiting, random-article picker |
 | **Cold / warm speed** | ~10–25s cold for a heavy article (≈150 peers), instant warm — measured with `scripts/bench-analysis.mjs` |
 | **Live** | <https://infobox-recommender.toolforge.org> · usage stats at [`/stats`](https://infobox-recommender.toolforge.org/stats) |
 | **Repo** | <https://github.com/fuzheado/infobox-recommender> — **public** since 2026-08-28, MIT; homepage set to the tool, topics `wikipedia/wikidata/infobox/mediawiki/toolforge` |
@@ -258,6 +258,45 @@ Rate limiting was widened for this client (2026-10-03): **150 analyses / 15 min
 plus a 40/min burst, per client**, keyed on the proxy's `X-Forwarded-For` last
 hop (`/stats` reports whether proxy headers are present). Before that the limit
 was 30/5 min *shared by everyone* — it bucketed on the proxy address.
+
+## 7b. Peer-sample ordering and annotations (2026-10-05)
+
+The peer samples under a verdict *are* the evidence a reader checks, so their order
+is deliberate, and it changed:
+
+- **Boxed peers**: closest first (tier) → exact recommended template → same family
+  → alphabetical. **Bare peers**: closest first → alphabetical.
+- Before this, the order was simply census order: per-page cache hits first, then
+  freshly-fetched peers in **batch-completion** order. So the samples could reorder
+  between runs, and could omit every peer using the recommended template, with no
+  change in the evidence. The explicit sort also removes that run-to-run variance.
+- Each entry now carries its **tier** (rendered with the group's name, e.g.
+  "tier 1 · 1945 sculptures") and its **review class** where WikiProjects have
+  assessed the peer ("GA", "FA"), via `fetchAssessments()` — one batched call per 50
+  peers in its own cache namespace, run **concurrently** with the census so it adds
+  no serial latency. The block is labelled "8 of N closest" so it reads as a sample.
+- **Annotate, don't rank, for popularity/quality.** Traffic (`pageviews`) and review
+  class were both considered as ordering factors and rejected as such: they measure
+  *deliberateness*, not *typicality*, and are anti-typical — ranking the sample by
+  them would fill it with the genre's celebrities (measured on one peer set:
+  Aphrodite of Knidos 13,100 views/60d, Sparty 1,533, Lunar Bird 200) which are the
+  peers *most* likely to be better developed and boxed, overstating genre practice
+  while the counts, which come from the whole pool, stayed correct. They are shown
+  as labels so the reader can weigh each example, and would only ever be a
+  *tiebreak* within an equivalence class, which cannot change which peers appear.
+- **Rejected outright:** article age (weak proxy for scrutiny, and creation dates
+  need `rvdir=newer` per title because `rvlimit` cannot be batched — one request per
+  peer), and "did this peer ever have an infobox" (circular — it uses the outcome to
+  choose the evidence for the outcome — and it needs full page history; the real
+  phenomenon, genres in transition, is already handled in the decision layer).
+- **Still open:** preferring *spread* across tiers when the tiers disagree (so a
+  sample teaches the gradient rather than eight peers from tier 1), and 30-day
+  `pageviews` as an optional extra annotation behind a bench (it was ~all of the
+  +51% payload measured when folded into a census call).
+
+The contract is unchanged for consumers: `bare` stays an array of strings (Lead
+Balancer renders it directly); `barePeers` and the extra keys on `boxedPeers`
+(`tier`, `reviewed`) are additive.
 
 ## 8. Hard-won lessons (do not re-learn these)
 

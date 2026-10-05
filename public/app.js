@@ -203,16 +203,33 @@ function clustersPanel(ev) {
 
 function peerSamplesPanel(ev) {
   const boxed = ev.boxedPeers ?? [];
-  const bare = ev.bare ?? [];
+  // `barePeers` is the annotated list; fall back to the plain string list so an
+  // older cached response still renders.
+  const bare = ev.barePeers ?? (ev.bare ?? []).map((t) => ({ title: t }));
+  const boxedTotal = ev.withInfobox ?? boxed.length;
+  const bareTotal = Math.max(0, (ev.total ?? 0) - (ev.withInfobox ?? 0));
+  const tierLabel = (n) => {
+    if (!n) return '';
+    const g = (ev.tiers ?? [])[n - 1];
+    return `tier ${n}${g?.name ? ` \u00b7 ${esc(String(g.name))}` : ''}`;
+  };
+  const meta = (p) => {
+    const bits = [tierLabel(p.tier), p.reviewed?.class ? esc(String(p.reviewed.class)) : ''].filter(Boolean);
+    return bits.length ? ` <span class="muted small">${bits.join(' \u00b7 ')}</span>` : '';
+  };
   const sections = [];
   if (boxed.length) {
-    sections.push(`<div><h4>Boxed peers</h4><ul class="peer-list">
-      ${boxed.map((p) => `<li><a href="${articleUrl(p.title)}" target="_blank" rel="noopener">${esc(p.title)}</a> ${tplLink(p.template)}</li>`).join('')}
+    sections.push(`<div><h4>Closest boxed peers <span class="muted small">${boxed.length} of ${boxedTotal}</span></h4>
+      <p class="muted small">Closest first — nearest Wikidata class or category, then peers using the recommended template. A review class appears where WikiProjects have assessed the peer.</p>
+      <ul class="peer-list">
+      ${boxed.map((p) => `<li><a href="${articleUrl(p.title)}" target="_blank" rel="noopener">${esc(p.title)}</a> ${tplLink(p.template)}${meta(p)}</li>`).join('')}
     </ul></div>`);
   }
   if (bare.length) {
-    sections.push(`<div><h4>Bare peers</h4><ul class="peer-list">
-      ${bare.map((p) => `<li><a href="${articleUrl(p)}" target="_blank" rel="noopener">${esc(p)}</a></li>`).join('')}
+    sections.push(`<div><h4>Closest bare peers <span class="muted small">${bare.length} of ${bareTotal}</span></h4>
+      <p class="muted small">Closest first, same ordering — these carry no infobox at all.</p>
+      <ul class="peer-list">
+      ${bare.map((p) => `<li><a href="${articleUrl(p.title)}" target="_blank" rel="noopener">${esc(p.title)}</a>${meta(p)}</li>`).join('')}
     </ul></div>`);
   }
   return sections.length ? panel('Peer samples', sections.join('')) : '';
