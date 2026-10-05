@@ -227,29 +227,25 @@ function skippedNote(ev) {
   return `<p class="muted small">${sk.length} peers excluded from the census (${parts.join(', ')})</p>`;
 }
 
-// The template axis, stated as its own line. The coverage axis is the bar above;
-// the engine's `reason` explains the case in prose; this names the second axis
-// explicitly (dominant vs best candidate) instead of leaving it implicit. It
-// replaces the old weak-signal note, which described the same fact in prose and
-// only for one verdict.
+// The template axis, as a compact data line under the verdict. The coverage axis
+// is the bar above and the engine's `reason` states the case in prose — which
+// has to stay complete because downstream consumers render `reason` and nothing
+// else — so this line stays terse on purpose: numbers, not a second sentence.
 function templateAdviceNote(ev) {
   const a = ev?.templateAdvice;
   if (!a || !a.template) return '';
   const pct = (x) => Math.round((x ?? 0) * 100);
   if (a.status === 'dominant') {
-    return `<p class="muted small">Template: <strong>${tplLink(a.template)}</strong> — ${a.count} of ${a.boxed} boxed peers (${pct(a.share)}%).</p>`;
+    return `<p class="muted small">Template: <strong>${tplLink(a.template)}</strong> — ${a.count}/${a.boxed} boxed peers (${pct(a.share)}%).</p>`;
   }
-  const basis =
-    a.basis === 'tightest-tier'
-      ? ` in the closest peers${
-          a.poolTemplate && a.poolTemplate !== a.template
-            ? `; the whole pool leans ${tplLink(a.poolTemplate)} (${pct(a.poolShare)}%)`
-            : ''
-        }`
-      : ' across the pool';
+  const where = a.basis === 'tightest-tier' ? 'closest peers' : 'pool';
+  const also =
+    a.poolTemplate && a.poolTemplate !== a.template
+      ? ` · whole pool leans ${tplLink(a.poolTemplate)} (${pct(a.poolShare)}%)`
+      : '';
   return (
-    `<p class="muted small">No dominant template. Best candidate: <strong>${tplLink(a.template)}</strong> — ` +
-    `${a.count} of ${a.boxed} boxed peers (${pct(a.share)}%)${basis}. The distribution below lists the rest.</p>`
+    `<p class="muted small">Template: no dominant one — best candidate <strong>${tplLink(a.template)}</strong>` +
+    ` (${a.count}/${a.boxed} boxed, ${pct(a.share)}% of ${where})${also} · distribution below.</p>`
   );
 }
 
