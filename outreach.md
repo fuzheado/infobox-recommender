@@ -29,11 +29,32 @@ whole job of this tool, and it is the honest way to describe it anywhere below.
      template/RfC threads, so a new one does not bury anything).
    - Timing note: that page currently carries **MOS:INFOBOXUSE RfC** activity.
      Announce the tool and its evidence; do **not** argue policy with it.
-2. **Toolhub** — <https://toolhub.wikimedia.org/tools/create> (HTTP 200,
-   requires Wikimedia OAuth). The canonical catalogue of Wikimedia tools, and
-   **this tool is not in it** (`/api/tools/?name=infobox` → 0 results,
-   `/api/tools/infobox-recommender/` → 404). Two minutes of form-filling, and it
-   is the one item here that keeps working after the announcement scrolls away.
+2. **Toolhub** — the canonical catalogue of Wikimedia tools, and **this tool is
+   not in it** (`/api/tools/?name=infobox` → 0 results;
+   `/api/tools/infobox-recommender/` → 404). Registration is a few minutes' work
+   and is the one item here that keeps working after the announcement scrolls
+   away. There are three supported routes
+   ([Toolhub on Meta](https://meta.wikimedia.org/wiki/Toolhub)), all needing a
+   Wikimedia login; the API answers at `/api-docs`:
+   - **This tool is on Toolforge, so the cheap path first:** create the record in
+     [toolsadmin](https://toolsadmin.wikimedia.org) — Toolhub (and Hay's
+     Directory) import Toolforge toolinfo records automatically.
+   - **Or register a `toolinfo.json` with the crawler:**
+     <https://toolhub.wikimedia.org/add-or-remove-tools?tab=urls>. Commit the
+     file to this repo (repo root, as CitationHunt and Adiutor do) so volunteers
+     can PR corrections, and register its raw URL; the crawler re-checks about
+     hourly.
+   - **Or create the record in the UI:**
+     <https://toolhub.wikimedia.org/add-or-remove-tools?tab=tool-create>, or
+     `POST /api/tools/` with an OAuth token.
+   - ⚠️ **Do not use `/tools/create`.** That is the *detail page of an existing
+     tool named “create”* (a spam record, author “Smadur1997”) — not a creation
+     form. Verified in a browser 2026-10-05: the page title is
+     “Tool : ‪create‬ | Toolhub”, and `/api/tools/create/` returns that tool's
+     record. A URL status check cannot tell these apart: Toolhub's HTML is a
+     1.3 KB JavaScript shell, so every client-side route answers 200 (and the
+     *look* of it — `/tools` 404s while `/tools/create` 200s — is not evidence
+     either).
 3. **`Help talk:Infobox`** — *live (last edit 2026-08-23)*. `Help:Infobox`
    documents exactly two methods (browse ~2,000 templates; copy from a similar
    article) and this tool automates the second while producing the MOS:INFOBOXUSE
