@@ -130,9 +130,10 @@ template data into `cache/templates/`).
   `lib/` changes need the restart**.
 - Env knobs (all optional): `RATE_MAX`, `RATE_WINDOW_MS`, `BURST_MAX`,
   `BURST_WINDOW_MS`, `MAX_QUEUE`, `USAGE_DIR`, `EARLY_STOP`, `EARLY_STOP_MIN`,
-  `TWO_AXIS` (the last: opt-in two-axis decision — coverage decides *whether*,
-  dominance only advises *which*; measured trade in
-  `ARCHITECTURE.md#two-axis-decision-two_axis1-opt-in--measured-not-yet-default`)
+  `TWO_AXIS` (the last: the two-axis decision is **default on since 2026-10-05** —
+  coverage decides *whether*, dominance only advises *which*; set `TWO_AXIS=0` to
+  revert to the legacy single verdict. Measured trade in
+  `ARCHITECTURE.md#two-axis-decision-default-since-2026-10-05-two_axis0-reverts`)
   (the last two: opt-in census early stop — off by default, **keep the floor at
   100** if you turn it on; measured trade-off in `ARCHITECTURE.md#early_stop--census-less-when-more-cannot-help-opt-in`).
 
@@ -222,6 +223,36 @@ not a schema break but is a behaviour change in their UI** — announce it. If a
 breaking change is ever needed, note it in the repo *and* on the script's talk
 page first.
 
+**Optional enhancement for their tab (dominant vs best candidate).** Since the
+two-axis default can return `recommend` with a template that is only a *best
+candidate*, the script currently presents every such suggestion as
+"Suggested: {{X}}". Nothing breaks; the suggestion is just less qualified than
+the tool's own report. The patch is two small edits in their source
+(`api/infobox.js`), both optional — the field is additive, so ignoring it stays
+safe:
+
+```js
+// 1) in normalizeAdvice(): carry the nuance
+if (verdict === "recommend" && tplName(json.template)) {
+  const adv = json.templateAdvice && typeof json.templateAdvice === "object" ? json.templateAdvice : null;
+  const split = !!adv && adv.status === "split";
+  const share = split && Number.isFinite(+adv.share) ? Math.round(adv.share * 100) : null;
+  out.templates = [{ name: tplName(json.template), bestCandidate: split, share }];
+}
+
+// 2) at the render site, replace the `Suggested: …` fragment of `first`
+const best = a.templates[0];
+const suggestion = best
+  ? best.bestCandidate
+    ? ` Best candidate: ${tpl(best.name)}${best.share ? ` (${best.share}% of boxed peers)` : ""}` +
+      ` — no single template dominates among peers.`
+    : ` Suggested: ${a.templates.map((t) => tpl(t.name)).join(", ")}`
+  : "";
+```
+
+With `TWO_AXIS=0` the engine returns no `templateAdvice`, `bestCandidate` is
+`false`, and the tab renders exactly as it does today.
+
 Rate limiting was widened for this client (2026-10-03): **150 analyses / 15 min
 plus a 40/min burst, per client**, keyed on the proxy's `X-Forwarded-For` last
 hop (`/stats` reports whether proxy headers are present). Before that the limit
@@ -299,7 +330,7 @@ section-box detection + unit tests** (2026-08-28). 11% → 90%.
 | 2026-10-04 | Performance audit + fixes: pacing made explicit and **per host** (was one global gate that let parallel calls burst), parallel census batches, 25-title census chain, one Wikidata request instead of seven, one WDQS query per pointer property instead of one per value, per-page cache that survives batch-shape changes. Cold runs: Canut revolts 20.4s → 6.6s, Abraham Lincoln 26.8s → 13.7s; eval unchanged at 57/6/25 |
 | 2026-10-04 | Deploy recipe hardened: `mktemp` names instead of fixed `/tmp/ibr.tgz`, deploy script piped over stdin (no remote script file), payload temp created **by the tool user** so it is private yet readable under `sudo -niu` — verified by running it |
 | 2026-10-05 | Peer-cap study (`scripts/research/peer-cap-study.mjs`, `test/results/peer-cap-study.json`): cap 150 kept; the decision is dominance-sensitive, not coverage-diluted. Implemented the census early stop it pointed at: `EARLY_STOP=1` (+ `EARLY_STOP_MIN`, default 100) — verdict-identical on the corpus, −6% peers censused; floor 25 costs 4 accuracy points (`test/results/early-stop-study.json`) |
-| 2026-10-05 | Two-axis decision implemented behind `TWO_AXIS=1` (opt-in, default unchanged): coverage decides *whether* an infobox is customary, dominance only advises *which* template (`templateAdvice`). Fixes a report that said "coverage 76% is in the ambiguous band" when the blocked gate was dominance. Measured (`test/results/two-axis-study.json`): whether-axis 94% of decisive with the same 2 failures, template advice 82% exact; 14 cases move from recommend → weak/mixed (with their dominant template kept as advice), 8 high-coverage abstentions become recommendations. Default flip is pending a decision — see `ARCHITECTURE.md` §Two-axis |
+| 2026-10-05 | Two-axis decision implemented, measured, then **made the default** (`TWO_AXIS=0` reverts): coverage decides *whether* an infobox is customary, dominance only advises *which* template (`templateAdvice`). Fixes a report that said "coverage 76% is in the ambiguous band" when the blocked gate was dominance. Measured (`test/results/two-axis-study.json`): whether-axis 94% of decisive with the same 2 failures, template advice 82% exact; 14 cases move from recommend → weak/mixed (dominant template kept as advice), 8 high-coverage abstentions become recommendations with a *best candidate*. Report card + About text rewritten for the two axes; `reason` strings made API-safe for the Lead Balancer script (no UI instructions, <380 chars) |
 
 ## 11. Working conventions
 

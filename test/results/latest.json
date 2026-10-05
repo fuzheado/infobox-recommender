@@ -10,29 +10,29 @@
     "cases": 88,
     "limit": null,
     "pipeline": "infobox-recommender POC",
-    "twoAxis": false,
+    "twoAxis": true,
     "earlyStop": false
   },
   "summary": {
-    "pass": 57,
-    "fail": 6,
-    "abstain": 25,
+    "pass": 50,
+    "fail": 7,
+    "abstain": 31,
     "excluded": 0,
-    "decisive": 63,
-    "accuracy": 90
+    "decisive": 57,
+    "accuracy": 88
   },
   "axes": {
     "whether": {
-      "pass": 41,
+      "pass": 33,
       "fail": 2,
-      "abstain": 22,
+      "abstain": 30,
       "validate": 23,
-      "accuracy": 95
+      "accuracy": 94
     },
     "template": {
-      "exact": 53,
-      "other": 7,
-      "rate": 88
+      "exact": 51,
+      "other": 11,
+      "rate": 82
     }
   },
   "results": [
@@ -43,12 +43,12 @@
         "labelSource": "editor-choice (stale tag)"
       },
       "verdict": "weak-signal",
-      "template": "Infobox person",
+      "template": "Infobox artist",
       "confidence": "medium",
       "outcome": "abstain",
       "axes": {
         "whether": "abstain",
-        "template": "exact"
+        "template": "other"
       },
       "evidence": {
         "total": 150,
@@ -62,6 +62,31 @@
         "stoppedEarly": false,
         "withInfobox": 77,
         "dominanceShare": 0.2857142857142857,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox artist",
+          "share": 0.5,
+          "count": 3,
+          "boxed": 6,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 22
+            },
+            {
+              "template": "Infobox artist",
+              "count": 19
+            },
+            {
+              "template": "Infobox academic",
+              "count": 5
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 1,
+          "poolShare": 0.2857142857142857,
+          "poolTemplate": "Infobox person"
+        },
         "distribution": {
           "Infobox person": 22,
           "Infobox artist": 19,
@@ -121,6 +146,29 @@
         "stoppedEarly": false,
         "withInfobox": 123,
         "dominanceShare": 0.5284552845528455,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox person",
+          "share": 0.5284552845528455,
+          "count": 65,
+          "boxed": 123,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 65
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 41
+            },
+            {
+              "template": "Infobox scientist",
+              "count": 4
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox person": 65,
           "Infobox officeholder": 41,
@@ -180,6 +228,31 @@
         "stoppedEarly": false,
         "withInfobox": 18,
         "dominanceShare": 0.4444444444444444,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox urban feature",
+          "share": 1,
+          "count": 5,
+          "boxed": 5,
+          "candidates": [
+            {
+              "template": "Infobox urban feature",
+              "count": 8
+            },
+            {
+              "template": "Infobox museum",
+              "count": 2
+            },
+            {
+              "template": "Infobox church",
+              "count": 2
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 1,
+          "poolShare": 0.4444444444444444,
+          "poolTemplate": "Infobox urban feature"
+        },
         "distribution": {
           "Infobox urban feature": 8,
           "Infobox museum": 2,
@@ -248,6 +321,21 @@
         "stoppedEarly": false,
         "withInfobox": 8,
         "dominanceShare": 1,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox urban feature",
+          "share": 1,
+          "count": 8,
+          "boxed": 8,
+          "candidates": [
+            {
+              "template": "Infobox urban feature",
+              "count": 8
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox urban feature": 8
         },
@@ -309,6 +397,21 @@
         "stoppedEarly": false,
         "withInfobox": 8,
         "dominanceShare": 1,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox urban feature",
+          "share": 1,
+          "count": 8,
+          "boxed": 8,
+          "candidates": [
+            {
+              "template": "Infobox urban feature",
+              "count": 8
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox urban feature": 8
         },
@@ -370,6 +473,21 @@
         "stoppedEarly": false,
         "withInfobox": 8,
         "dominanceShare": 1,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox urban feature",
+          "share": 1,
+          "count": 8,
+          "boxed": 8,
+          "candidates": [
+            {
+              "template": "Infobox urban feature",
+              "count": 8
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox urban feature": 8
         },
@@ -431,6 +549,29 @@
         "stoppedEarly": false,
         "withInfobox": 55,
         "dominanceShare": 0.9454545454545454,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox settlement",
+          "share": 0.9454545454545454,
+          "count": 52,
+          "boxed": 55,
+          "candidates": [
+            {
+              "template": "Infobox settlement",
+              "count": 52
+            },
+            {
+              "template": "Infobox U.S. county",
+              "count": 2
+            },
+            {
+              "template": "Infobox golf facility",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox settlement": 52,
           "Infobox U.S. county": 2,
@@ -479,6 +620,29 @@
         "stoppedEarly": false,
         "withInfobox": 13,
         "dominanceShare": 0.3076923076923077,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox laboratory",
+          "share": 0.3076923076923077,
+          "count": 4,
+          "boxed": 13,
+          "candidates": [
+            {
+              "template": "Infobox laboratory",
+              "count": 4
+            },
+            {
+              "template": "Infobox geographical indication",
+              "count": 2
+            },
+            {
+              "template": "Infobox university",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox laboratory": 4,
           "Infobox geographical indication": 2,
@@ -520,7 +684,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox settlement",
-      "confidence": "medium",
+      "confidence": "high",
       "outcome": "pass",
       "axes": {
         "whether": "pass",
@@ -538,6 +702,21 @@
         "stoppedEarly": false,
         "withInfobox": 8,
         "dominanceShare": 1,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox settlement",
+          "share": 1,
+          "count": 8,
+          "boxed": 8,
+          "candidates": [
+            {
+              "template": "Infobox settlement",
+              "count": 8
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox settlement": 8
         },
@@ -584,6 +763,29 @@
         "stoppedEarly": false,
         "withInfobox": 74,
         "dominanceShare": 0.6756756756756757,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox person",
+          "share": 0.6756756756756757,
+          "count": 50,
+          "boxed": 74,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 50
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 10
+            },
+            {
+              "template": "Infobox scientist",
+              "count": 3
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox person": 50,
           "Infobox officeholder": 10,
@@ -643,6 +845,29 @@
         "stoppedEarly": false,
         "withInfobox": 12,
         "dominanceShare": 0.5,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox company",
+          "share": 0.5,
+          "count": 6,
+          "boxed": 12,
+          "candidates": [
+            {
+              "template": "Infobox company",
+              "count": 6
+            },
+            {
+              "template": "Infobox video game",
+              "count": 2
+            },
+            {
+              "template": "Infobox person",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox company": 6,
           "Infobox video game": 2,
@@ -699,6 +924,31 @@
         "stoppedEarly": false,
         "withInfobox": 35,
         "dominanceShare": 0.4857142857142857,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox military person",
+          "share": 0.8,
+          "count": 12,
+          "boxed": 15,
+          "candidates": [
+            {
+              "template": "Infobox military person",
+              "count": 17
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 9
+            },
+            {
+              "template": "Infobox person",
+              "count": 4
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 1,
+          "poolShare": 0.4857142857142857,
+          "poolTemplate": "Infobox military person"
+        },
         "distribution": {
           "Infobox military person": 17,
           "Infobox officeholder": 9,
@@ -756,6 +1006,29 @@
         "stoppedEarly": false,
         "withInfobox": 129,
         "dominanceShare": 0.937984496124031,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox song",
+          "share": 0.937984496124031,
+          "count": 121,
+          "boxed": 129,
+          "candidates": [
+            {
+              "template": "Infobox song",
+              "count": 121
+            },
+            {
+              "template": "Infobox musical composition",
+              "count": 4
+            },
+            {
+              "template": "Infobox",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox song": 121,
           "Infobox musical composition": 4,
@@ -793,12 +1066,12 @@
         "labelSource": "editor-choice (stale tag)"
       },
       "verdict": "weak-signal",
-      "template": "Infobox musical artist",
+      "template": "Infobox person",
       "confidence": "medium",
       "outcome": "abstain",
       "axes": {
         "whether": "abstain",
-        "template": "exact"
+        "template": "other"
       },
       "evidence": {
         "total": 150,
@@ -812,6 +1085,31 @@
         "stoppedEarly": false,
         "withInfobox": 69,
         "dominanceShare": 0.463768115942029,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox person",
+          "share": 0.5714285714285714,
+          "count": 12,
+          "boxed": 21,
+          "candidates": [
+            {
+              "template": "Infobox musical artist",
+              "count": 32
+            },
+            {
+              "template": "Infobox person",
+              "count": 30
+            },
+            {
+              "template": "Infobox",
+              "count": 2
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 2,
+          "poolShare": 0.463768115942029,
+          "poolTemplate": "Infobox musical artist"
+        },
         "distribution": {
           "Infobox musical artist": 32,
           "Infobox person": 30,
@@ -851,12 +1149,12 @@
         "expected": "Infobox",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
+      "verdict": "recommend",
       "template": "Infobox building",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "fail",
       "axes": {
-        "whether": "abstain",
+        "whether": "pass",
         "template": "other"
       },
       "evidence": {
@@ -871,6 +1169,31 @@
         "stoppedEarly": false,
         "withInfobox": 85,
         "dominanceShare": 0.3411764705882353,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox building",
+          "share": 0.625,
+          "count": 10,
+          "boxed": 16,
+          "candidates": [
+            {
+              "template": "Infobox building",
+              "count": 29
+            },
+            {
+              "template": "Infobox shopping mall",
+              "count": 7
+            },
+            {
+              "template": "Infobox historic site",
+              "count": 6
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 2,
+          "poolShare": 0.3411764705882353,
+          "poolTemplate": "Infobox building"
+        },
         "distribution": {
           "Infobox building": 29,
           "Infobox shopping mall": 7,
@@ -910,12 +1233,12 @@
         "expected": "Infobox military person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
+      "verdict": "recommend",
       "template": "Infobox military person",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "pass",
       "axes": {
-        "whether": "abstain",
+        "whether": "pass",
         "template": "exact"
       },
       "evidence": {
@@ -930,6 +1253,31 @@
         "stoppedEarly": false,
         "withInfobox": 113,
         "dominanceShare": 0.34513274336283184,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox military person",
+          "share": 0.696969696969697,
+          "count": 23,
+          "boxed": 33,
+          "candidates": [
+            {
+              "template": "Infobox military person",
+              "count": 39
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 38
+            },
+            {
+              "template": "Infobox person",
+              "count": 30
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 1,
+          "poolShare": 0.34513274336283184,
+          "poolTemplate": "Infobox military person"
+        },
         "distribution": {
           "Infobox military person": 39,
           "Infobox officeholder": 38,
@@ -969,12 +1317,12 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
+      "verdict": "recommend",
       "template": "Infobox musical artist",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "fail",
       "axes": {
-        "whether": "abstain",
+        "whether": "pass",
         "template": "other"
       },
       "evidence": {
@@ -989,6 +1337,29 @@
         "stoppedEarly": false,
         "withInfobox": 95,
         "dominanceShare": 0.3894736842105263,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox musical artist",
+          "share": 0.3894736842105263,
+          "count": 37,
+          "boxed": 95,
+          "candidates": [
+            {
+              "template": "Infobox musical artist",
+              "count": 37
+            },
+            {
+              "template": "Infobox football biography",
+              "count": 16
+            },
+            {
+              "template": "Infobox person",
+              "count": 15
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox musical artist": 37,
           "Infobox football biography": 16,
@@ -1029,7 +1400,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox television",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "axes": {
         "whether": "pass",
@@ -1047,6 +1418,29 @@
         "stoppedEarly": false,
         "withInfobox": 104,
         "dominanceShare": 0.9711538461538461,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox television",
+          "share": 0.9711538461538461,
+          "count": 101,
+          "boxed": 104,
+          "candidates": [
+            {
+              "template": "Infobox television",
+              "count": 101
+            },
+            {
+              "template": "Infobox comedian",
+              "count": 1
+            },
+            {
+              "template": "Infobox programming block",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox television": 101,
           "Infobox comedian": 1,
@@ -1082,12 +1476,12 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox person",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "exact"
       },
       "evidence": {
@@ -1102,6 +1496,29 @@
         "stoppedEarly": false,
         "withInfobox": 67,
         "dominanceShare": 0.5223880597014925,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox person",
+          "share": 0.5223880597014925,
+          "count": 35,
+          "boxed": 67,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 35
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 12
+            },
+            {
+              "template": "Infobox sportsperson",
+              "count": 8
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox person": 35,
           "Infobox officeholder": 12,
@@ -1161,6 +1578,31 @@
         "stoppedEarly": false,
         "withInfobox": 50,
         "dominanceShare": 0.46,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox person",
+          "share": 0.5,
+          "count": 4,
+          "boxed": 8,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 23
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 7
+            },
+            {
+              "template": "Infobox musical artist",
+              "count": 5
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 1,
+          "poolShare": 0.46,
+          "poolTemplate": "Infobox person"
+        },
         "distribution": {
           "Infobox person": 23,
           "Infobox officeholder": 7,
@@ -1220,6 +1662,29 @@
         "stoppedEarly": false,
         "withInfobox": 123,
         "dominanceShare": 0.6585365853658537,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox officeholder",
+          "share": 0.6585365853658537,
+          "count": 81,
+          "boxed": 123,
+          "candidates": [
+            {
+              "template": "Infobox officeholder",
+              "count": 81
+            },
+            {
+              "template": "Infobox person",
+              "count": 18
+            },
+            {
+              "template": "Infobox military person",
+              "count": 5
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox officeholder": 81,
           "Infobox person": 18,
@@ -1259,12 +1724,12 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox person",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "exact"
       },
       "evidence": {
@@ -1279,6 +1744,29 @@
         "stoppedEarly": false,
         "withInfobox": 77,
         "dominanceShare": 0.5714285714285714,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox person",
+          "share": 0.5714285714285714,
+          "count": 44,
+          "boxed": 77,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 44
+            },
+            {
+              "template": "Infobox musical artist",
+              "count": 30
+            },
+            {
+              "template": "Infobox academic",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox person": 44,
           "Infobox musical artist": 30,
@@ -1315,12 +1803,12 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox officeholder",
       "confidence": "medium",
-      "outcome": "fail",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "other"
       },
       "evidence": {
@@ -1335,6 +1823,29 @@
         "stoppedEarly": false,
         "withInfobox": 78,
         "dominanceShare": 0.7564102564102564,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox officeholder",
+          "share": 0.7564102564102564,
+          "count": 59,
+          "boxed": 78,
+          "candidates": [
+            {
+              "template": "Infobox officeholder",
+              "count": 59
+            },
+            {
+              "template": "Infobox person",
+              "count": 16
+            },
+            {
+              "template": "Infobox academic",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox officeholder": 59,
           "Infobox person": 16,
@@ -1391,6 +1902,29 @@
         "stoppedEarly": false,
         "withInfobox": 131,
         "dominanceShare": 0.9007633587786259,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox person",
+          "share": 0.9007633587786259,
+          "count": 118,
+          "boxed": 131,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 118
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 4
+            },
+            {
+              "template": "Infobox comedian",
+              "count": 4
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox person": 118,
           "Infobox officeholder": 4,
@@ -1448,6 +1982,29 @@
         "stoppedEarly": false,
         "withInfobox": 27,
         "dominanceShare": 0.5555555555555556,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox street",
+          "share": 0.5555555555555556,
+          "count": 15,
+          "boxed": 27,
+          "candidates": [
+            {
+              "template": "Infobox street",
+              "count": 15
+            },
+            {
+              "template": "Infobox church",
+              "count": 6
+            },
+            {
+              "template": "Infobox bridge",
+              "count": 3
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox street": 15,
           "Infobox church": 6,
@@ -1514,6 +2071,21 @@
         "stoppedEarly": false,
         "withInfobox": 15,
         "dominanceShare": 1,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox street",
+          "share": 1,
+          "count": 15,
+          "boxed": 15,
+          "candidates": [
+            {
+              "template": "Infobox street",
+              "count": 15
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox street": 15
         },
@@ -1566,6 +2138,21 @@
         "stoppedEarly": false,
         "withInfobox": 15,
         "dominanceShare": 1,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox street",
+          "share": 1,
+          "count": 15,
+          "boxed": 15,
+          "candidates": [
+            {
+              "template": "Infobox street",
+              "count": 15
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox street": 15
         },
@@ -1604,12 +2191,12 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox person",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "exact"
       },
       "evidence": {
@@ -1624,6 +2211,29 @@
         "stoppedEarly": false,
         "withInfobox": 9,
         "dominanceShare": 0.7777777777777778,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox person",
+          "share": 0.7777777777777778,
+          "count": 7,
+          "boxed": 9,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 7
+            },
+            {
+              "template": "Infobox artist",
+              "count": 1
+            },
+            {
+              "template": "Infobox scientist",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox person": 7,
           "Infobox artist": 1,
@@ -1677,6 +2287,29 @@
         "stoppedEarly": false,
         "withInfobox": 37,
         "dominanceShare": 0.5405405405405406,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox company",
+          "share": 0.5405405405405406,
+          "count": 20,
+          "boxed": 37,
+          "candidates": [
+            {
+              "template": "Infobox company",
+              "count": 20
+            },
+            {
+              "template": "Infobox government agency",
+              "count": 7
+            },
+            {
+              "template": "Infobox rail",
+              "count": 5
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox company": 20,
           "Infobox government agency": 7,
@@ -1734,6 +2367,29 @@
         "stoppedEarly": false,
         "withInfobox": 133,
         "dominanceShare": 0.5864661654135338,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox person",
+          "share": 0.5864661654135338,
+          "count": 78,
+          "boxed": 133,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 78
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 46
+            },
+            {
+              "template": "Infobox musical artist",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox person": 78,
           "Infobox officeholder": 46,
@@ -1793,6 +2449,29 @@
         "stoppedEarly": false,
         "withInfobox": 80,
         "dominanceShare": 0.5125,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox person",
+          "share": 0.5125,
+          "count": 41,
+          "boxed": 80,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 41
+            },
+            {
+              "template": "Infobox badminton player",
+              "count": 12
+            },
+            {
+              "template": "Infobox sportsperson",
+              "count": 10
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox person": 41,
           "Infobox badminton player": 12,
@@ -1852,6 +2531,29 @@
         "stoppedEarly": false,
         "withInfobox": 106,
         "dominanceShare": 0.8584905660377359,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox galaxy",
+          "share": 0.8584905660377359,
+          "count": 91,
+          "boxed": 106,
+          "candidates": [
+            {
+              "template": "Infobox galaxy",
+              "count": 91
+            },
+            {
+              "template": "Infobox planet",
+              "count": 3
+            },
+            {
+              "template": "Infobox quasar",
+              "count": 3
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox galaxy": 91,
           "Infobox planet": 3,
@@ -1896,7 +2598,7 @@
       "outcome": "fail",
       "axes": {
         "whether": "fail",
-        "template": null
+        "template": "other"
       },
       "evidence": {
         "total": 43,
@@ -1910,6 +2612,25 @@
         "stoppedEarly": false,
         "withInfobox": 5,
         "dominanceShare": 0.6,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox name",
+          "share": 0.6,
+          "count": 3,
+          "boxed": 5,
+          "candidates": [
+            {
+              "template": "Infobox name",
+              "count": 3
+            },
+            {
+              "template": "Infobox family",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox name": 3,
           "Infobox family": 2
@@ -2026,12 +2747,12 @@
         "expected": "Infobox galaxy",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox galaxy",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "exact"
       },
       "evidence": {
@@ -2046,6 +2767,29 @@
         "stoppedEarly": false,
         "withInfobox": 58,
         "dominanceShare": 0.9137931034482759,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox galaxy",
+          "share": 0.9137931034482759,
+          "count": 53,
+          "boxed": 58,
+          "candidates": [
+            {
+              "template": "Infobox galaxy",
+              "count": 53
+            },
+            {
+              "template": "Infobox quasar",
+              "count": 2
+            },
+            {
+              "template": "Infobox galaxy cluster",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox galaxy": 53,
           "Infobox quasar": 2,
@@ -2081,12 +2825,12 @@
         "expected": "Infobox galaxy",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox galaxy",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "exact"
       },
       "evidence": {
@@ -2101,6 +2845,29 @@
         "stoppedEarly": false,
         "withInfobox": 65,
         "dominanceShare": 0.8923076923076924,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox galaxy",
+          "share": 0.8923076923076924,
+          "count": 58,
+          "boxed": 65,
+          "candidates": [
+            {
+              "template": "Infobox galaxy",
+              "count": 58
+            },
+            {
+              "template": "Infobox quasar",
+              "count": 3
+            },
+            {
+              "template": "Infobox constellation",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox galaxy": 58,
           "Infobox quasar": 3,
@@ -2138,12 +2905,12 @@
         "expected": "Infobox galaxy",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox galaxy",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "exact"
       },
       "evidence": {
@@ -2158,6 +2925,29 @@
         "stoppedEarly": false,
         "withInfobox": 51,
         "dominanceShare": 0.7843137254901961,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox galaxy",
+          "share": 0.7843137254901961,
+          "count": 40,
+          "boxed": 51,
+          "candidates": [
+            {
+              "template": "Infobox galaxy",
+              "count": 40
+            },
+            {
+              "template": "Infobox planet",
+              "count": 4
+            },
+            {
+              "template": "Infobox quasar",
+              "count": 3
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox galaxy": 40,
           "Infobox planet": 4,
@@ -2215,6 +3005,29 @@
         "stoppedEarly": false,
         "withInfobox": 34,
         "dominanceShare": 0.7647058823529411,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox urban feature",
+          "share": 0.7647058823529411,
+          "count": 26,
+          "boxed": 34,
+          "candidates": [
+            {
+              "template": "Infobox urban feature",
+              "count": 26
+            },
+            {
+              "template": "Infobox street",
+              "count": 4
+            },
+            {
+              "template": "Infobox hill of Rome",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox urban feature": 26,
           "Infobox street": 4,
@@ -2257,7 +3070,7 @@
       "outcome": "fail",
       "axes": {
         "whether": "fail",
-        "template": null
+        "template": "other"
       },
       "evidence": {
         "total": 139,
@@ -2271,6 +3084,29 @@
         "stoppedEarly": false,
         "withInfobox": 10,
         "dominanceShare": 0.7,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Automatic taxobox",
+          "share": 0.7,
+          "count": 7,
+          "boxed": 10,
+          "candidates": [
+            {
+              "template": "Automatic taxobox",
+              "count": 7
+            },
+            {
+              "template": "Infobox rockunit",
+              "count": 1
+            },
+            {
+              "template": "Speciesbox",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Automatic taxobox": 7,
           "Infobox rockunit": 1,
@@ -2357,12 +3193,12 @@
         "expected": "Infobox urban feature",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox urban feature",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "exact"
       },
       "evidence": {
@@ -2377,6 +3213,29 @@
         "stoppedEarly": false,
         "withInfobox": 16,
         "dominanceShare": 0.5,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox urban feature",
+          "share": 0.5,
+          "count": 8,
+          "boxed": 16,
+          "candidates": [
+            {
+              "template": "Infobox urban feature",
+              "count": 8
+            },
+            {
+              "template": "Infobox station",
+              "count": 2
+            },
+            {
+              "template": "Infobox public transit accident",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox urban feature": 8,
           "Infobox station": 2,
@@ -2416,12 +3275,12 @@
         "expected": "Infobox company",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox company",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "exact"
       },
       "evidence": {
@@ -2436,6 +3295,29 @@
         "stoppedEarly": false,
         "withInfobox": 13,
         "dominanceShare": 0.7692307692307693,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox company",
+          "share": 0.7692307692307693,
+          "count": 10,
+          "boxed": 13,
+          "candidates": [
+            {
+              "template": "Infobox company",
+              "count": 10
+            },
+            {
+              "template": "Infobox publisher",
+              "count": 1
+            },
+            {
+              "template": "Infobox brand",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox company": 10,
           "Infobox publisher": 1,
@@ -2491,6 +3373,31 @@
         "stoppedEarly": false,
         "withInfobox": 124,
         "dominanceShare": 0.49193548387096775,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox person",
+          "share": 0.8333333333333334,
+          "count": 35,
+          "boxed": 42,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 61
+            },
+            {
+              "template": "Infobox artist",
+              "count": 36
+            },
+            {
+              "template": "Infobox comics creator",
+              "count": 22
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 1,
+          "poolShare": 0.49193548387096775,
+          "poolTemplate": "Infobox person"
+        },
         "distribution": {
           "Infobox person": 61,
           "Infobox artist": 36,
@@ -2549,6 +3456,29 @@
         "stoppedEarly": false,
         "withInfobox": 110,
         "dominanceShare": 0.5272727272727272,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox officeholder",
+          "share": 0.5272727272727272,
+          "count": 58,
+          "boxed": 110,
+          "candidates": [
+            {
+              "template": "Infobox officeholder",
+              "count": 58
+            },
+            {
+              "template": "Infobox person",
+              "count": 42
+            },
+            {
+              "template": "Infobox sportsperson",
+              "count": 5
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox officeholder": 58,
           "Infobox person": 42,
@@ -2587,12 +3517,12 @@
         "expected": "Infobox television",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
+      "verdict": "recommend",
       "template": "Infobox television",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "pass",
       "axes": {
-        "whether": "abstain",
+        "whether": "pass",
         "template": "exact"
       },
       "evidence": {
@@ -2607,6 +3537,31 @@
         "stoppedEarly": false,
         "withInfobox": 54,
         "dominanceShare": 0.3888888888888889,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox television",
+          "share": 0.5714285714285714,
+          "count": 12,
+          "boxed": 21,
+          "candidates": [
+            {
+              "template": "Infobox television",
+              "count": 21
+            },
+            {
+              "template": "Infobox television episode",
+              "count": 17
+            },
+            {
+              "template": "Infobox concert",
+              "count": 4
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 3,
+          "poolShare": 0.3888888888888889,
+          "poolTemplate": "Infobox television"
+        },
         "distribution": {
           "Infobox television": 21,
           "Infobox television episode": 17,
@@ -2666,6 +3621,25 @@
         "stoppedEarly": false,
         "withInfobox": 3,
         "dominanceShare": 0.6666666666666666,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox officeholder",
+          "share": 0.6666666666666666,
+          "count": 2,
+          "boxed": 3,
+          "candidates": [
+            {
+              "template": "Infobox officeholder",
+              "count": 2
+            },
+            {
+              "template": "Infobox person",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox officeholder": 2,
           "Infobox person": 1
@@ -2715,6 +3689,29 @@
         "stoppedEarly": false,
         "withInfobox": 105,
         "dominanceShare": 0.6952380952380952,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox civilian attack",
+          "share": 0.6952380952380952,
+          "count": 73,
+          "boxed": 105,
+          "candidates": [
+            {
+              "template": "Infobox civilian attack",
+              "count": 73
+            },
+            {
+              "template": "Infobox military conflict",
+              "count": 10
+            },
+            {
+              "template": "Infobox Holocaust event",
+              "count": 4
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox civilian attack": 73,
           "Infobox military conflict": 10,
@@ -2783,6 +3780,29 @@
         "stoppedEarly": false,
         "withInfobox": 29,
         "dominanceShare": 0.5862068965517241,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox person",
+          "share": 0.5862068965517241,
+          "count": 17,
+          "boxed": 29,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 17
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 4
+            },
+            {
+              "template": "Infobox artist",
+              "count": 3
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox person": 17,
           "Infobox officeholder": 4,
@@ -2818,12 +3838,12 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "weak-signal",
+      "verdict": "recommend",
       "template": "Infobox person",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "pass",
       "axes": {
-        "whether": "abstain",
+        "whether": "pass",
         "template": "exact"
       },
       "evidence": {
@@ -2838,6 +3858,29 @@
         "stoppedEarly": false,
         "withInfobox": 108,
         "dominanceShare": 0.4074074074074074,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox person",
+          "share": 0.4074074074074074,
+          "count": 44,
+          "boxed": 108,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 44
+            },
+            {
+              "template": "Infobox scientist",
+              "count": 16
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 9
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox person": 44,
           "Infobox scientist": 16,
@@ -2897,6 +3940,29 @@
         "stoppedEarly": false,
         "withInfobox": 145,
         "dominanceShare": 0.9379310344827586,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox officeholder",
+          "share": 0.9379310344827586,
+          "count": 136,
+          "boxed": 145,
+          "candidates": [
+            {
+              "template": "Infobox officeholder",
+              "count": 136
+            },
+            {
+              "template": "Infobox person",
+              "count": 4
+            },
+            {
+              "template": "Infobox military person",
+              "count": 3
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox officeholder": 136,
           "Infobox person": 4,
@@ -2933,12 +3999,12 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox person",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "exact"
       },
       "evidence": {
@@ -2953,6 +4019,29 @@
         "stoppedEarly": false,
         "withInfobox": 93,
         "dominanceShare": 0.8172043010752689,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox person",
+          "share": 0.8172043010752689,
+          "count": 76,
+          "boxed": 93,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 76
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 5
+            },
+            {
+              "template": "Infobox film",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox person": 76,
           "Infobox officeholder": 5,
@@ -3012,6 +4101,29 @@
         "stoppedEarly": false,
         "withInfobox": 77,
         "dominanceShare": 0.7402597402597403,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox U.S. legislation",
+          "share": 0.7402597402597403,
+          "count": 57,
+          "boxed": 77,
+          "candidates": [
+            {
+              "template": "Infobox U.S. legislation",
+              "count": 57
+            },
+            {
+              "template": "Infobox book",
+              "count": 5
+            },
+            {
+              "template": "Infobox legislation",
+              "count": 4
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox U.S. legislation": 57,
           "Infobox book": 5,
@@ -3053,7 +4165,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox restaurant",
-      "confidence": "medium",
+      "confidence": "high",
       "outcome": "pass",
       "axes": {
         "whether": "pass",
@@ -3071,6 +4183,29 @@
         "stoppedEarly": false,
         "withInfobox": 107,
         "dominanceShare": 0.6915887850467289,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox restaurant",
+          "share": 0.6915887850467289,
+          "count": 74,
+          "boxed": 107,
+          "candidates": [
+            {
+              "template": "Infobox restaurant",
+              "count": 74
+            },
+            {
+              "template": "Infobox company",
+              "count": 27
+            },
+            {
+              "template": "Infobox NRHP",
+              "count": 3
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox restaurant": 74,
           "Infobox company": 27,
@@ -3128,6 +4263,25 @@
         "stoppedEarly": false,
         "withInfobox": 105,
         "dominanceShare": 0.9904761904761905,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox book",
+          "share": 0.9904761904761905,
+          "count": 104,
+          "boxed": 105,
+          "candidates": [
+            {
+              "template": "Infobox book",
+              "count": 104
+            },
+            {
+              "template": "Infobox graphic novel",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox book": 104,
           "Infobox graphic novel": 1
@@ -3161,12 +4315,12 @@
         "expected": "Infobox company",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox publisher",
       "confidence": "medium",
-      "outcome": "fail",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "other"
       },
       "evidence": {
@@ -3181,6 +4335,29 @@
         "stoppedEarly": false,
         "withInfobox": 20,
         "dominanceShare": 0.55,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox publisher",
+          "share": 0.55,
+          "count": 11,
+          "boxed": 20,
+          "candidates": [
+            {
+              "template": "Infobox publisher",
+              "count": 11
+            },
+            {
+              "template": "Infobox company",
+              "count": 6
+            },
+            {
+              "template": "Infobox military conflict",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox publisher": 11,
           "Infobox company": 6,
@@ -3218,7 +4395,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox restaurant",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "axes": {
         "whether": "pass",
@@ -3236,6 +4413,31 @@
         "stoppedEarly": false,
         "withInfobox": 113,
         "dominanceShare": 0.4690265486725664,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox restaurant",
+          "share": 0.875,
+          "count": 14,
+          "boxed": 16,
+          "candidates": [
+            {
+              "template": "Infobox company",
+              "count": 53
+            },
+            {
+              "template": "Infobox restaurant",
+              "count": 48
+            },
+            {
+              "template": "Infobox food",
+              "count": 4
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 1,
+          "poolShare": 0.4690265486725664,
+          "poolTemplate": "Infobox company"
+        },
         "distribution": {
           "Infobox company": 53,
           "Infobox restaurant": 48,
@@ -3275,12 +4477,12 @@
         "expected": "Infobox person",
         "labelSource": "editor-choice (stale tag)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox person",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "exact"
       },
       "evidence": {
@@ -3295,6 +4497,29 @@
         "stoppedEarly": false,
         "withInfobox": 70,
         "dominanceShare": 0.7571428571428571,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox person",
+          "share": 0.7571428571428571,
+          "count": 53,
+          "boxed": 70,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 53
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 9
+            },
+            {
+              "template": "Infobox royalty",
+              "count": 3
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox person": 53,
           "Infobox officeholder": 9,
@@ -3354,6 +4579,29 @@
         "stoppedEarly": false,
         "withInfobox": 10,
         "dominanceShare": 0.5,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox company",
+          "share": 0.5,
+          "count": 5,
+          "boxed": 10,
+          "candidates": [
+            {
+              "template": "Infobox company",
+              "count": 5
+            },
+            {
+              "template": "Infobox organization",
+              "count": 4
+            },
+            {
+              "template": "Infobox government agency",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox company": 5,
           "Infobox organization": 4,
@@ -3405,6 +4653,31 @@
         "stoppedEarly": false,
         "withInfobox": 89,
         "dominanceShare": 0.47191011235955055,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox person",
+          "share": 0.7727272727272727,
+          "count": 17,
+          "boxed": 22,
+          "candidates": [
+            {
+              "template": "Infobox person",
+              "count": 42
+            },
+            {
+              "template": "Infobox officeholder",
+              "count": 30
+            },
+            {
+              "template": "Infobox musical artist",
+              "count": 3
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 2,
+          "poolShare": 0.47191011235955055,
+          "poolTemplate": "Infobox person"
+        },
         "distribution": {
           "Infobox person": 42,
           "Infobox officeholder": 30,
@@ -3446,7 +4719,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox election",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "axes": {
         "whether": "pass",
@@ -3464,6 +4737,29 @@
         "stoppedEarly": false,
         "withInfobox": 54,
         "dominanceShare": 0.5555555555555556,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox election",
+          "share": 0.5555555555555556,
+          "count": 30,
+          "boxed": 54,
+          "candidates": [
+            {
+              "template": "Infobox election",
+              "count": 30
+            },
+            {
+              "template": "Infobox papal conclave",
+              "count": 10
+            },
+            {
+              "template": "Infobox military conflict",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox election": 30,
           "Infobox papal conclave": 10,
@@ -3514,7 +4810,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox election",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "axes": {
         "whether": "pass",
@@ -3532,6 +4828,29 @@
         "stoppedEarly": false,
         "withInfobox": 46,
         "dominanceShare": 0.6521739130434783,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox election",
+          "share": 0.6521739130434783,
+          "count": 30,
+          "boxed": 46,
+          "candidates": [
+            {
+              "template": "Infobox election",
+              "count": 30
+            },
+            {
+              "template": "Infobox papal conclave",
+              "count": 10
+            },
+            {
+              "template": "Infobox military conflict",
+              "count": 3
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox election": 30,
           "Infobox papal conclave": 10,
@@ -3598,6 +4917,31 @@
         "stoppedEarly": false,
         "withInfobox": 11,
         "dominanceShare": 0.36363636363636365,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox document",
+          "share": 1,
+          "count": 1,
+          "boxed": 1,
+          "candidates": [
+            {
+              "template": "Infobox document",
+              "count": 4
+            },
+            {
+              "template": "Infobox military conflict",
+              "count": 2
+            },
+            {
+              "template": "Infobox earthquake",
+              "count": 1
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 2,
+          "poolShare": 0.36363636363636365,
+          "poolTemplate": "Infobox document"
+        },
         "distribution": {
           "Infobox document": 4,
           "Infobox military conflict": 2,
@@ -3638,7 +4982,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox church",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "axes": {
         "whether": "pass",
@@ -3656,6 +5000,25 @@
         "stoppedEarly": false,
         "withInfobox": 25,
         "dominanceShare": 0.92,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox church",
+          "share": 0.92,
+          "count": 23,
+          "boxed": 25,
+          "candidates": [
+            {
+              "template": "Infobox church",
+              "count": 23
+            },
+            {
+              "template": "Infobox religious building",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox church": 23,
           "Infobox religious building": 2
@@ -3709,6 +5072,31 @@
         "stoppedEarly": false,
         "withInfobox": 18,
         "dominanceShare": 0.16666666666666666,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox royalty",
+          "share": 1,
+          "count": 3,
+          "boxed": 3,
+          "candidates": [
+            {
+              "template": "Infobox royalty",
+              "count": 3
+            },
+            {
+              "template": "Infobox legislature",
+              "count": 3
+            },
+            {
+              "template": "Infobox European Parliament constituency",
+              "count": 3
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 2,
+          "poolShare": 0.16666666666666666,
+          "poolTemplate": "Infobox royalty"
+        },
         "distribution": {
           "Infobox royalty": 3,
           "Infobox legislature": 3,
@@ -3749,7 +5137,7 @@
         "labelSource": "doc-demo (institution, 0/7 boxed)"
       },
       "verdict": "weak-signal",
-      "template": "Infobox election",
+      "template": "Infobox military conflict",
       "confidence": "medium",
       "outcome": "abstain",
       "axes": {
@@ -3768,6 +5156,31 @@
         "stoppedEarly": false,
         "withInfobox": 82,
         "dominanceShare": 0.3170731707317073,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox military conflict",
+          "share": 0.5833333333333334,
+          "count": 7,
+          "boxed": 12,
+          "candidates": [
+            {
+              "template": "Infobox election",
+              "count": 26
+            },
+            {
+              "template": "Infobox summit meeting",
+              "count": 14
+            },
+            {
+              "template": "Infobox event",
+              "count": 11
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 3,
+          "poolShare": 0.3170731707317073,
+          "poolTemplate": "Infobox election"
+        },
         "distribution": {
           "Infobox election": 26,
           "Infobox summit meeting": 14,
@@ -3817,7 +5230,7 @@
         "labelSource": "doc-demo (institution, 0/7 boxed)"
       },
       "verdict": "weak-signal",
-      "template": "Infobox election",
+      "template": "Infobox country",
       "confidence": "medium",
       "outcome": "abstain",
       "axes": {
@@ -3836,6 +5249,31 @@
         "stoppedEarly": false,
         "withInfobox": 54,
         "dominanceShare": 0.48148148148148145,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox country",
+          "share": 0.75,
+          "count": 6,
+          "boxed": 8,
+          "candidates": [
+            {
+              "template": "Infobox election",
+              "count": 26
+            },
+            {
+              "template": "Infobox Christian leader",
+              "count": 7
+            },
+            {
+              "template": "Infobox country",
+              "count": 6
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 2,
+          "poolShare": 0.48148148148148145,
+          "poolTemplate": "Infobox election"
+        },
         "distribution": {
           "Infobox election": 26,
           "Infobox Christian leader": 7,
@@ -3895,6 +5333,29 @@
         "stoppedEarly": false,
         "withInfobox": 138,
         "dominanceShare": 0.8695652173913043,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox officeholder",
+          "share": 0.8695652173913043,
+          "count": 120,
+          "boxed": 138,
+          "candidates": [
+            {
+              "template": "Infobox officeholder",
+              "count": 120
+            },
+            {
+              "template": "Infobox military person",
+              "count": 4
+            },
+            {
+              "template": "Infobox person",
+              "count": 3
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox officeholder": 120,
           "Infobox military person": 4,
@@ -3954,6 +5415,29 @@
         "stoppedEarly": false,
         "withInfobox": 137,
         "dominanceShare": 0.5401459854014599,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox officeholder",
+          "share": 0.5401459854014599,
+          "count": 74,
+          "boxed": 137,
+          "candidates": [
+            {
+              "template": "Infobox officeholder",
+              "count": 74
+            },
+            {
+              "template": "Infobox person",
+              "count": 19
+            },
+            {
+              "template": "Infobox scientist",
+              "count": 14
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox officeholder": 74,
           "Infobox person": 19,
@@ -3995,7 +5479,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox U.S. state",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "axes": {
         "whether": "validate",
@@ -4013,6 +5497,29 @@
         "stoppedEarly": false,
         "withInfobox": 65,
         "dominanceShare": 0.7230769230769231,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox U.S. state",
+          "share": 0.7230769230769231,
+          "count": 47,
+          "boxed": 65,
+          "candidates": [
+            {
+              "template": "Infobox U.S. state",
+              "count": 47
+            },
+            {
+              "template": "Infobox settlement",
+              "count": 4
+            },
+            {
+              "template": "Infobox network service provider",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox U.S. state": 47,
           "Infobox settlement": 4,
@@ -4063,7 +5570,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox U.S. state",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "axes": {
         "whether": "validate",
@@ -4081,6 +5588,29 @@
         "stoppedEarly": false,
         "withInfobox": 67,
         "dominanceShare": 0.7014925373134329,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox U.S. state",
+          "share": 0.7014925373134329,
+          "count": 47,
+          "boxed": 67,
+          "candidates": [
+            {
+              "template": "Infobox U.S. state",
+              "count": 47
+            },
+            {
+              "template": "Infobox settlement",
+              "count": 4
+            },
+            {
+              "template": "Infobox network service provider",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox U.S. state": 47,
           "Infobox settlement": 4,
@@ -4149,6 +5679,29 @@
         "stoppedEarly": false,
         "withInfobox": 58,
         "dominanceShare": 0.8275862068965517,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox food",
+          "share": 0.8275862068965517,
+          "count": 48,
+          "boxed": 58,
+          "candidates": [
+            {
+              "template": "Infobox food",
+              "count": 48
+            },
+            {
+              "template": "Infobox restaurant",
+              "count": 4
+            },
+            {
+              "template": "Infobox company",
+              "count": 4
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox food": 48,
           "Infobox restaurant": 4,
@@ -4187,7 +5740,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox food",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "axes": {
         "whether": "validate",
@@ -4205,6 +5758,29 @@
         "stoppedEarly": false,
         "withInfobox": 117,
         "dominanceShare": 0.8034188034188035,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox food",
+          "share": 0.8034188034188035,
+          "count": 94,
+          "boxed": 117,
+          "candidates": [
+            {
+              "template": "Infobox food",
+              "count": 94
+            },
+            {
+              "template": "Infobox nutritional value",
+              "count": 5
+            },
+            {
+              "template": "Infobox brand",
+              "count": 4
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox food": 94,
           "Infobox nutritional value": 5,
@@ -4255,7 +5831,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox musical artist",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "axes": {
         "whether": "validate",
@@ -4273,6 +5849,29 @@
         "stoppedEarly": false,
         "withInfobox": 55,
         "dominanceShare": 0.7272727272727273,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox musical artist",
+          "share": 0.7272727272727273,
+          "count": 40,
+          "boxed": 55,
+          "candidates": [
+            {
+              "template": "Infobox musical artist",
+              "count": 40
+            },
+            {
+              "template": "Infobox person",
+              "count": 8
+            },
+            {
+              "template": "Infobox company",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox musical artist": 40,
           "Infobox person": 8,
@@ -4331,6 +5930,29 @@
         "stoppedEarly": false,
         "withInfobox": 63,
         "dominanceShare": 0.5238095238095238,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox mountain",
+          "share": 0.5238095238095238,
+          "count": 33,
+          "boxed": 63,
+          "candidates": [
+            {
+              "template": "Infobox mountain",
+              "count": 33
+            },
+            {
+              "template": "Infobox settlement",
+              "count": 8
+            },
+            {
+              "template": "Infobox body of water",
+              "count": 7
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox mountain": 33,
           "Infobox settlement": 8,
@@ -4390,6 +6012,29 @@
         "stoppedEarly": false,
         "withInfobox": 36,
         "dominanceShare": 0.6111111111111112,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox river",
+          "share": 0.6111111111111112,
+          "count": 22,
+          "boxed": 36,
+          "candidates": [
+            {
+              "template": "Infobox river",
+              "count": 22
+            },
+            {
+              "template": "Infobox protected area",
+              "count": 5
+            },
+            {
+              "template": "Infobox settlement",
+              "count": 4
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox river": 22,
           "Infobox protected area": 5,
@@ -4428,10 +6073,10 @@
         "expected": "consistent:Infobox planet",
         "labelSource": "canonical-validate (user-proposed ground truth)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox planet",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "axes": {
         "whether": "validate",
         "template": null
@@ -4448,6 +6093,29 @@
         "stoppedEarly": false,
         "withInfobox": 66,
         "dominanceShare": 0.5757575757575758,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox planet",
+          "share": 0.5757575757575758,
+          "count": 38,
+          "boxed": 66,
+          "candidates": [
+            {
+              "template": "Infobox planet",
+              "count": 38
+            },
+            {
+              "template": "Infobox open cluster",
+              "count": 8
+            },
+            {
+              "template": "Infobox galaxy",
+              "count": 4
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox planet": 38,
           "Infobox open cluster": 8,
@@ -4496,10 +6164,10 @@
         "expected": "consistent:Infobox element",
         "labelSource": "canonical-validate (user-proposed ground truth)"
       },
-      "verdict": "weak-signal",
+      "verdict": "recommend",
       "template": "Infobox element",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "pass",
       "axes": {
         "whether": "validate",
         "template": null
@@ -4516,6 +6184,29 @@
         "stoppedEarly": false,
         "withInfobox": 111,
         "dominanceShare": 0.2972972972972973,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox element",
+          "share": 0.2972972972972973,
+          "count": 33,
+          "boxed": 111,
+          "candidates": [
+            {
+              "template": "Infobox element",
+              "count": 33
+            },
+            {
+              "template": "Infobox drug",
+              "count": 28
+            },
+            {
+              "template": "Infobox hydrogen",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox element": 33,
           "Infobox drug": 28,
@@ -4583,6 +6274,29 @@
         "stoppedEarly": false,
         "withInfobox": 109,
         "dominanceShare": 0.6238532110091743,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox drink",
+          "share": 0.6238532110091743,
+          "count": 68,
+          "boxed": 109,
+          "candidates": [
+            {
+              "template": "Infobox drink",
+              "count": 68
+            },
+            {
+              "template": "Infobox brand",
+              "count": 11
+            },
+            {
+              "template": "Infobox company",
+              "count": 11
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox drink": 68,
           "Infobox brand": 11,
@@ -4651,6 +6365,29 @@
         "stoppedEarly": false,
         "withInfobox": 99,
         "dominanceShare": 0.9292929292929293,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox television episode",
+          "share": 0.9292929292929293,
+          "count": 92,
+          "boxed": 99,
+          "candidates": [
+            {
+              "template": "Infobox television episode",
+              "count": 92
+            },
+            {
+              "template": "Infobox television season",
+              "count": 3
+            },
+            {
+              "template": "Infobox television",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox television episode": 92,
           "Infobox television season": 3,
@@ -4686,7 +6423,7 @@
       },
       "verdict": "recommend",
       "template": "Automatic taxobox",
-      "confidence": "medium",
+      "confidence": "high",
       "outcome": "pass",
       "axes": {
         "whether": "validate",
@@ -4704,6 +6441,29 @@
         "stoppedEarly": false,
         "withInfobox": 82,
         "dominanceShare": 0.6219512195121951,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Automatic taxobox",
+          "share": 0.6219512195121951,
+          "count": 51,
+          "boxed": 82,
+          "candidates": [
+            {
+              "template": "Automatic taxobox",
+              "count": 51
+            },
+            {
+              "template": "Speciesbox",
+              "count": 14
+            },
+            {
+              "template": "Infobox fossil",
+              "count": 7
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Automatic taxobox": 51,
           "Speciesbox": 14,
@@ -4762,6 +6522,29 @@
         "stoppedEarly": false,
         "withInfobox": 145,
         "dominanceShare": 0.9724137931034482,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox country",
+          "share": 0.9724137931034482,
+          "count": 141,
+          "boxed": 145,
+          "candidates": [
+            {
+              "template": "Infobox country",
+              "count": 141
+            },
+            {
+              "template": "Infobox political division",
+              "count": 2
+            },
+            {
+              "template": "Infobox UK legislation",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox country": 141,
           "Infobox political division": 2,
@@ -4798,7 +6581,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox settlement",
-      "confidence": "medium",
+      "confidence": "high",
       "outcome": "pass",
       "axes": {
         "whether": "validate",
@@ -4816,6 +6599,29 @@
         "stoppedEarly": false,
         "withInfobox": 141,
         "dominanceShare": 0.7304964539007093,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox settlement",
+          "share": 0.7304964539007093,
+          "count": 103,
+          "boxed": 141,
+          "candidates": [
+            {
+              "template": "Infobox settlement",
+              "count": 103
+            },
+            {
+              "template": "Infobox Russian inhabited locality",
+              "count": 13
+            },
+            {
+              "template": "Infobox Chinese",
+              "count": 4
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox settlement": 103,
           "Infobox Russian inhabited locality": 13,
@@ -4855,10 +6661,10 @@
         "expected": "consistent:Infobox MLB",
         "labelSource": "canonical-validate (user-proposed ground truth)"
       },
-      "verdict": "weak-signal",
+      "verdict": "recommend",
       "template": "Infobox MLB",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "pass",
       "axes": {
         "whether": "validate",
         "template": null
@@ -4875,6 +6681,31 @@
         "stoppedEarly": false,
         "withInfobox": 52,
         "dominanceShare": 0.25,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox MLB",
+          "share": 0.5909090909090909,
+          "count": 13,
+          "boxed": 22,
+          "candidates": [
+            {
+              "template": "Infobox MLB",
+              "count": 13
+            },
+            {
+              "template": "Infobox college sports team season",
+              "count": 8
+            },
+            {
+              "template": "Infobox football club",
+              "count": 4
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 3,
+          "poolShare": 0.25,
+          "poolTemplate": "Infobox MLB"
+        },
         "distribution": {
           "Infobox MLB": 13,
           "Infobox college sports team season": 8,
@@ -4934,6 +6765,29 @@
         "stoppedEarly": false,
         "withInfobox": 86,
         "dominanceShare": 0.8372093023255814,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox film",
+          "share": 0.8372093023255814,
+          "count": 72,
+          "boxed": 86,
+          "candidates": [
+            {
+              "template": "Infobox film",
+              "count": 72
+            },
+            {
+              "template": "Infobox album",
+              "count": 6
+            },
+            {
+              "template": "Infobox television",
+              "count": 3
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox film": 72,
           "Infobox album": 6,
@@ -4992,6 +6846,21 @@
         "stoppedEarly": false,
         "withInfobox": 39,
         "dominanceShare": 1,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox video game",
+          "share": 1,
+          "count": 39,
+          "boxed": 39,
+          "candidates": [
+            {
+              "template": "Infobox video game",
+              "count": 39
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox video game": 39
         },
@@ -5022,7 +6891,7 @@
       },
       "verdict": "recommend",
       "template": "Infobox artwork",
-      "confidence": "high",
+      "confidence": "medium",
       "outcome": "pass",
       "axes": {
         "whether": "validate",
@@ -5040,6 +6909,29 @@
         "stoppedEarly": false,
         "withInfobox": 117,
         "dominanceShare": 0.8376068376068376,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox artwork",
+          "share": 0.8376068376068376,
+          "count": 98,
+          "boxed": 117,
+          "candidates": [
+            {
+              "template": "Infobox artwork",
+              "count": 98
+            },
+            {
+              "template": "Infobox film",
+              "count": 4
+            },
+            {
+              "template": "Infobox book",
+              "count": 3
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox artwork": 98,
           "Infobox film": 4,
@@ -5079,10 +6971,10 @@
         "expected": "consistent:Infobox settlement",
         "labelSource": "canonical-validate (user-proposed ground truth)"
       },
-      "verdict": "weak-signal",
-      "template": "Infobox settlement",
+      "verdict": "recommend",
+      "template": "Infobox UK place",
       "confidence": "medium",
-      "outcome": "abstain",
+      "outcome": "fail",
       "axes": {
         "whether": "validate",
         "template": null
@@ -5099,6 +6991,31 @@
         "stoppedEarly": false,
         "withInfobox": 145,
         "dominanceShare": 0.3103448275862069,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox UK place",
+          "share": 0.6274509803921569,
+          "count": 32,
+          "boxed": 51,
+          "candidates": [
+            {
+              "template": "Infobox settlement",
+              "count": 45
+            },
+            {
+              "template": "Infobox German place",
+              "count": 43
+            },
+            {
+              "template": "Infobox UK place",
+              "count": 34
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 6,
+          "poolShare": 0.3103448275862069,
+          "poolTemplate": "Infobox settlement"
+        },
         "distribution": {
           "Infobox settlement": 45,
           "Infobox German place": 43,
@@ -5167,6 +7084,29 @@
         "stoppedEarly": false,
         "withInfobox": 142,
         "dominanceShare": 0.9577464788732394,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox country",
+          "share": 0.9577464788732394,
+          "count": 136,
+          "boxed": 142,
+          "candidates": [
+            {
+              "template": "Infobox country",
+              "count": 136
+            },
+            {
+              "template": "Infobox UK legislation",
+              "count": 2
+            },
+            {
+              "template": "Infobox political division",
+              "count": 2
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox country": 136,
           "Infobox UK legislation": 2,
@@ -5223,6 +7163,31 @@
         "stoppedEarly": false,
         "withInfobox": 112,
         "dominanceShare": 0.36607142857142855,
+        "templateAdvice": {
+          "status": "split",
+          "template": "Infobox football tournament",
+          "share": 0.875,
+          "count": 7,
+          "boxed": 8,
+          "candidates": [
+            {
+              "template": "Infobox football tournament",
+              "count": 41
+            },
+            {
+              "template": "Infobox athletics race",
+              "count": 16
+            },
+            {
+              "template": "Infobox recurring event",
+              "count": 15
+            }
+          ],
+          "basis": "tightest-tier",
+          "tier": 2,
+          "poolShare": 0.36607142857142855,
+          "poolTemplate": "Infobox football tournament"
+        },
         "distribution": {
           "Infobox football tournament": 41,
           "Infobox athletics race": 16,
@@ -5271,12 +7236,12 @@
         "expected": "Infobox university",
         "labelSource": "manual-2026-08-28 (peer census 9/10 Infobox university; subsidiary rankings-box regression case)"
       },
-      "verdict": "recommend",
+      "verdict": "weak-signal",
       "template": "Infobox university",
       "confidence": "medium",
-      "outcome": "pass",
+      "outcome": "abstain",
       "axes": {
-        "whether": "pass",
+        "whether": "abstain",
         "template": "exact"
       },
       "evidence": {
@@ -5291,6 +7256,25 @@
         "stoppedEarly": false,
         "withInfobox": 10,
         "dominanceShare": 0.9,
+        "templateAdvice": {
+          "status": "dominant",
+          "template": "Infobox university",
+          "share": 0.9,
+          "count": 9,
+          "boxed": 10,
+          "candidates": [
+            {
+              "template": "Infobox university",
+              "count": 9
+            },
+            {
+              "template": "Infobox company",
+              "count": 1
+            }
+          ],
+          "basis": "whole-pool",
+          "tier": null
+        },
         "distribution": {
           "Infobox university": 9,
           "Infobox company": 1

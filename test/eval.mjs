@@ -219,6 +219,11 @@ axes.whether.accuracy = wDecisive ? Math.round((100 * axes.whether.pass) / wDeci
 const tTotal = axes.template.exact + axes.template.other;
 axes.template.rate = tTotal ? Math.round((100 * axes.template.exact) / tTotal) : null;
 
+const envFlag = (name, fallback) => {
+  const raw = process.env[name];
+  if (raw == null || raw === '') return fallback;
+  return /^(1|true|yes|on)$/i.test(String(raw));
+};
 const result = {
   meta: {
     date: stamp,
@@ -226,8 +231,8 @@ const result = {
     cases: cases.length,
     limit,
     pipeline: 'infobox-recommender POC',
-    twoAxis: process.env.TWO_AXIS === '1' || /^(1|true|yes|on)$/i.test(process.env.TWO_AXIS ?? ''),
-    earlyStop: /^(1|true|yes|on)$/i.test(process.env.EARLY_STOP ?? ''),
+    twoAxis: envFlag('TWO_AXIS', true),
+    earlyStop: envFlag('EARLY_STOP', false),
   },
   summary: { ...stats, decisive, accuracy },
   axes,

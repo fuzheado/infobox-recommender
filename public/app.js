@@ -227,19 +227,30 @@ function skippedNote(ev) {
   return `<p class="muted small">${sk.length} peers excluded from the census (${parts.join(', ')})</p>`;
 }
 
-function weakSignalNote(r, ev) {
-  if (r.verdict !== 'weak-signal') return '';
-  const few = (ev.total ?? 0) < 5;
-  const cov = Math.round((ev.coverage ?? 0) * 100);
-  const dom = ev.dominant;
-  const domShare = dom ? Math.round((dom.count / (ev.withInfobox || 1)) * 100) : 0;
-  if (few) {
-    return `<p class="note weak-note">Only ${ev.total} evaluable peers — too few for a reliable census. The article's Wikidata class may be too broad or its categories too sparse.</p>`;
+// The template axis, stated as its own line. The coverage axis is the bar above;
+// the engine's `reason` explains the case in prose; this names the second axis
+// explicitly (dominant vs best candidate) instead of leaving it implicit. It
+// replaces the old weak-signal note, which described the same fact in prose and
+// only for one verdict.
+function templateAdviceNote(ev) {
+  const a = ev?.templateAdvice;
+  if (!a || !a.template) return '';
+  const pct = (x) => Math.round((x ?? 0) * 100);
+  if (a.status === 'dominant') {
+    return `<p class="muted small">Template: <strong>${tplLink(a.template)}</strong> — ${a.count} of ${a.boxed} boxed peers (${pct(a.share)}%).</p>`;
   }
-  if (cov >= 50 && domShare < 50) {
-    return `<p class="note weak-note">Most peers have an infobox, but no single template dominates (best candidate: ${tplLink(dom.template)} at ${domShare}% of boxed peers). The genre may be mixed — a WikiProject banner may point to the standardized infobox for this subject.</p>`;
-  }
-  return `<p class="note weak-note">Peer signals are mixed (coverage ${cov}% in the ambiguous band). The evidence below shows what exists; a WikiProject banner may point to the standardized infobox for this subject.</p>`;
+  const basis =
+    a.basis === 'tightest-tier'
+      ? ` in the closest peers${
+          a.poolTemplate && a.poolTemplate !== a.template
+            ? `; the whole pool leans ${tplLink(a.poolTemplate)} (${pct(a.poolShare)}%)`
+            : ''
+        }`
+      : ' across the pool';
+  return (
+    `<p class="muted small">No dominant template. Best candidate: <strong>${tplLink(a.template)}</strong> — ` +
+    `${a.count} of ${a.boxed} boxed peers (${pct(a.share)}%)${basis}. The distribution below lists the rest.</p>`
+  );
 }
 
 // Comparison card (validate mode): the article already has an infobox and
@@ -306,15 +317,11 @@ function renderReport(r) {
   }
 
   // validate mode: the comparison card replaces the plain verdict card
-  const splitHint = ev?.templateAdvice?.status === 'split'
-    ? `<p class="muted small">No single template dominates across the peer pool — the distribution below lists the templates peers use, in order.</p>`
-    : '';
   const verdictHtml = r.comparison ? comparisonCard(r.comparison) : `
     <div class="verdict ${cardClass}">
       <div class="verdict-title">${verdictTitle} ${badge}</div>
       <div class="verdict-reason">${esc(r.reason ?? '')}</div>
-      ${splitHint}
-      ${weakSignalNote(r, ev)}
+      ${templateAdviceNote(ev)}
     </div>`;
 
   $view.innerHTML = `

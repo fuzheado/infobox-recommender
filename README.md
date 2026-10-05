@@ -21,13 +21,13 @@ recorded in [`usage-history.md`](usage-history.md).
 
 ## What it tells you
 
-Three verdicts, always with the evidence:
+Two questions, with separate evidence — an infobox can be customary in a genre
+even when peers disagree about which template to use:
 
-| Verdict | What it means |
-|---|---|
-| **Recommend {{Infobox X}}** | A strong majority of peers use that specific template — e.g. 30 of 30 class-boxed imperial elections use {{Infobox election}} |
-| **No infobox customary** | Peers are overwhelmingly bare; adding one would make this article the outlier (e.g. 1% of trace-fossil articles are boxed) |
-| **Weak signal** | The evidence is mixed or too thin, so it abstains and points you to the WikiProject banner instead of guessing |
+| Question | Answer | Evidence |
+|---|---|---|
+| **Should it have an infobox?** | **Recommend an infobox** (most peers have one) · **No infobox customary** (peers are overwhelmingly bare) · **Weak / mixed** (15–70% carry one — not decisive) | peer *coverage* |
+| **Which template?** | the template peers use most, labelled **dominant** (≥ half of the boxed peers) or as a **best candidate** when no template dominates | template *dominance* |
 
 Every report shows the peer count, how many peers carry an infobox, the
 template distribution, neighborhood tiers, and examples of boxed and bare

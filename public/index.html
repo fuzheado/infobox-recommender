@@ -55,22 +55,30 @@
         shipped with its evidence.</li>
     </ol>
 
-    <h3>The three verdicts</h3>
+    <h3>Two questions, two answers</h3>
+    <p class="muted small">The tool answers two separate questions, because they have
+    separate evidence: <em>should this article have an infobox at all?</em> (its peers'
+    coverage) and <em>if so, which template?</em> (whether one template dominates).
+    A split vote on the second question no longer hides a clear answer to the first.</p>
     <div class="verdict-chips">
-      <span class="chip verdict-recommend">Recommend: {{Infobox election}}</span>
+      <span class="chip verdict-recommend">Recommend an infobox</span>
       <span class="chip verdict-none">No infobox customary</span>
-      <span class="chip verdict-weak">Weak signal</span>
+      <span class="chip verdict-weak">Weak / mixed</span>
     </div>
     <ul>
-      <li><strong class="c-ok">Recommend</strong> — a strong majority of same-class
-        peers use this specific template (e.g. 30 of 31 imperial-election articles
-        use {{Infobox election}}).</li>
+      <li><strong class="c-ok">Recommend an infobox</strong> — most peers have one
+        (70% or more of the peer pool). The template line then names the dominant box
+        when one dominates (&ge; half of the boxed peers); when none does, it names a
+        best candidate and says so (e.g. <em>best candidate {{Infobox artwork}}, 74% of
+        the closest peers</em>).</li>
       <li><strong class="c-none">No infobox customary</strong> — peers are
         overwhelmingly bare; adding one would make the article the outlier (trace
         fossils: 1% of peers boxed).</li>
-      <li><strong class="c-weak">Weak signal</strong> — evidence is mixed or too
-        thin; the tool abstains rather than guesses and points you to the
-        WikiProject banner for the standardized answer.</li>
+      <li><strong class="c-weak">Weak / mixed</strong> — 15–70% of peers carry an
+        infobox, which is not decisive genre-wide. The report still names the dominant
+        template, so "if you do add one, this is what peers use" is available; the
+        tool just does not present it as a recommendation. A WikiProject banner may
+        point to the standardized answer.</li>
     </ul>
 
     <h3>Reading the report</h3>

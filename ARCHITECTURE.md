@@ -64,7 +64,7 @@ Then a **tiered rescue** for abstentions: a tight circle (≥ 80% coverage,
 ≥ 70% dominance) confirmed by the wider pool can still recommend.
 Every verdict ships its evidence + tier strata.
 
-#### Two-axis decision (`TWO_AXIS=1`, opt-in — measured, not yet default)
+#### Two-axis decision (**default since 2026-10-05**; `TWO_AXIS=0` reverts)
 
 The legacy rule above makes dominance (which template) able to **veto** coverage
 (whether a genre uses infoboxes at all). Measured on the 88-case corpus
@@ -72,7 +72,7 @@ The legacy rule above makes dominance (which template) able to **veto** coverage
 ≥ 70% band produced 9 abstentions — one at 97%. A genre where 76% of peers are
 boxed abstained; a 56% genre whose templates happened to agree was recommended.
 
-`TWO_AXIS=1` splits the two questions the tool answers:
+The two-axis model splits the two questions the tool answers:
 
 | axis | driven by | bands |
 |---|---|---|
@@ -105,9 +105,14 @@ construction for the 14 cases it moves from "recommended" to "weak/mixed + here
 is the dominant template". The axes are the comparable metrics, and the two
 `whether` failures are the same two low-coverage cases the legacy model fails
 (Noronha 12%, Piscichnus 7% — editors who chose a box in a bare genre).
-Switching the default is a product decision: it trades decisiveness for honesty
-about the second axis, and it makes the four template-*family* confusions show up
-as advice quality rather than as wrong verdicts.
+
+The two-axis model became the **default on 2026-10-05**: it trades decisiveness
+for honesty about the second axis, and it makes the four template-*family*
+confusions show up as advice quality rather than as wrong verdicts.
+`TWO_AXIS=0` restores the legacy single verdict if a consumer needs it (the
+Legacy row above is what it returns). Downstream impact is documented in
+`HANDOFF.md` §7 — additive fields only, but a change in *which* verdicts are
+emitted, so the Lead Balancer userscript sees more (and different) suggestions.
 
 ---
 
