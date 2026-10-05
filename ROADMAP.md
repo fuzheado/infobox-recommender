@@ -64,6 +64,12 @@ templates`' subcategory tree.
   ⊂ person, UK place ⊂ settlement, company ⊂ restaurant). Counting dominance over
   families rather than exact templates attacks both problems — and would relax
   the pressure that currently argues for a large pool (see §7a item 3).
+- **Third reason (2026-10-05 two-axis measurement):** with `TWO_AXIS=1` the
+  template axis is reported explicitly (82% exact against the labels), and what
+  it misses is *precisely this ladder's pairs* — officeholder ⊂ person,
+  publisher ⊂ company, taxobox ⊂ fossil, name ⊂ family. Those four are today's
+  template-verdict failures; under the two-axis model they become advice-quality
+  misses, and the ladder is what converts them back into exact matches.
 
 ### 2. Semantic sub-clustering via LiftWing topics (Track A · effort: medium · converts abstains)
 

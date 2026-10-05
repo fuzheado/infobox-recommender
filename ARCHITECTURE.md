@@ -64,6 +64,51 @@ Then a **tiered rescue** for abstentions: a tight circle (≥ 80% coverage,
 ≥ 70% dominance) confirmed by the wider pool can still recommend.
 Every verdict ships its evidence + tier strata.
 
+#### Two-axis decision (`TWO_AXIS=1`, opt-in — measured, not yet default)
+
+The legacy rule above makes dominance (which template) able to **veto** coverage
+(whether a genre uses infoboxes at all). Measured on the 88-case corpus
+(2026-10-05): the 50–70% coverage band produced 14 recommendations while the
+≥ 70% band produced 9 abstentions — one at 97%. A genre where 76% of peers are
+boxed abstained; a 56% genre whose templates happened to agree was recommended.
+
+`TWO_AXIS=1` splits the two questions the tool answers:
+
+| axis | driven by | bands |
+|---|---|---|
+| **whether** | coverage alone | ≥ 70% recommend · ≤ 15% none customary · between = weak/mixed |
+| **which** | dominance, as **advice only** | `dominant` (≥ 50% of boxed peers share a template) or `split` (a best candidate is still named) |
+
+- `templateAdvice` (in the result and in `evidence`) carries the second axis:
+  `{status, template, share, count, boxed, candidates, basis, tier}`, where
+  `basis` is `whole-pool` or `tightest-tier`. When a pool is split, the tightest
+  neighbourhood that *does* agree is preferred, and if it disagrees with the
+  whole-pool plurality the reason says both (measured: the preference is neutral
+  for label-exactness, 8 vs 9 of 18 cases, and the differences are usually
+  specificity — artist vs person, UK place vs settlement).
+- The tier machinery is no longer a *verdict* rescue in this mode (the coverage
+  rule subsumes it: all four cases the rescue produced sit at ≥ 83% coverage); it
+  feeds the template advice instead.
+- `verdict`/`template`/`confidence` keep their meaning, so the Lead Balancer
+  contract is untouched (the addition is additive).
+
+Measured (`npm run eval`, 2026-10-05; detail in `test/results/two-axis-study.json`):
+
+| model | combined | whether axis | template axis |
+|---|---|---|---|
+| legacy (default) | 57 / 6 / 25 — 90% | 41 / 2 / 22 — 95% | 53/60 exact — 88% |
+| `TWO_AXIS=1` | 50 / 7 / 31 — 88% | **33 / 2 / 30 — 94%** | 51/62 exact — 82% |
+
+The combined number is not comparable across models: it grades a
+*recommendation* on its **template**, so the new model is penalised by
+construction for the 14 cases it moves from "recommended" to "weak/mixed + here
+is the dominant template". The axes are the comparable metrics, and the two
+`whether` failures are the same two low-coverage cases the legacy model fails
+(Noronha 12%, Piscichnus 7% — editors who chose a box in a bare genre).
+Switching the default is a product decision: it trades decisiveness for honesty
+about the second axis, and it makes the four template-*family* confusions show up
+as advice quality rather than as wrong verdicts.
+
 ---
 
 ## Primary-infobox selection rules

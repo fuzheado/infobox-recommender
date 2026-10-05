@@ -1,0 +1,68 @@
+{
+ "generatedAt": "2026-10-05",
+ "corpus": "test/fixtures.json (88 labelled cases), cap 150",
+ "model": "TWO_AXIS=1 vs legacy default",
+ "legacy": {
+  "combined": {
+   "pass": 57,
+   "fail": 6,
+   "abstain": 25,
+   "excluded": 0,
+   "decisive": 63,
+   "accuracy": 90
+  },
+  "axes": {
+   "whether": {
+    "pass": 41,
+    "fail": 2,
+    "abstain": 22,
+    "validate": 23,
+    "accuracy": 95
+   },
+   "template": {
+    "exact": 53,
+    "other": 7,
+    "rate": 88
+   }
+  }
+ },
+ "twoAxis": {
+  "combined": {
+   "pass": 50,
+   "fail": 7,
+   "abstain": 31,
+   "excluded": 0,
+   "decisive": 57,
+   "accuracy": 88
+  },
+  "axes": {
+   "whether": {
+    "pass": 33,
+    "fail": 2,
+    "abstain": 30,
+    "validate": 23,
+    "accuracy": 94
+   },
+   "template": {
+    "exact": 51,
+    "other": 11,
+    "rate": 82
+   }
+  }
+ },
+ "verdictClassChanges": {
+  "weak-signal -> recommend": 8,
+  "recommend -> weak-signal": 14
+ },
+ "thresholds": {
+  "COVERAGE_RECOMMEND": 0.7,
+  "COVERAGE_NONE": 0.15,
+  "DOMINANCE_DOMINANT": 0.5
+ },
+ "whetherFailures": [
+  "Noronha",
+  "Piscichnus"
+ ],
+ "templateAdviceTierVsPool": "tier preference net-neutral for label-exactness (8 vs 9 of 18 overriding cases); 2 cases where legacy hint matched the label and tier advice did not (Brooke Hodge artist/person, Felix Greissle person/musical artist) \u2014 both specificity-family differences; disagreement is now shown in the reason rather than hidden.",
+ "note": "The combined pass/fail is graded on TEMPLATE match, so it under-counts the new model by construction: the 50-70% band moved from recommend to weak/mixed (14 cases, no longer decisive) while 8 high-coverage abstentions became recommendations. The axes are the comparable metrics."
+}

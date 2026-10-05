@@ -42,6 +42,12 @@ function evidenceSummary(r) {
     peerPool: ev.peerPool,
     censusPeers: ev.censusPeers,
     stoppedEarly: ev.stoppedEarly,
+    // The dominance ratio belongs in the record: offline analysis otherwise has
+    // to re-derive ``boxed'' from the distribution to check a decision, which is
+    // how a re-implementation silently drifts from the engine.
+    withInfobox: ev.withInfobox,
+    dominanceShare: ev.dominanceShare,
+    templateAdvice: ev.templateAdvice,
     distribution: Object.fromEntries(
       Object.entries(ev.distribution ?? {}).sort((a, b) => b[1] - a[1]).slice(0, 8)
     ),
@@ -49,6 +55,22 @@ function evidenceSummary(r) {
     bareCluster: (ev.bareCluster ?? []).slice(0, 3),
     bare: (ev.bare ?? []).slice(0, 5),
   };
+}
+
+// Two-axis scoring (independent of which decision path produced the verdict, so
+// legacy and TWO_AXIS runs are directly comparable):
+//   whether — should the article have an infobox at all? (coverage axis)
+//   template — when a template is offered, is it the labelled one? (dominance axis)
+function twoAxisScore(r, expected) {
+  const exp = expected ?? '';
+  if (String(exp).startsWith('consistent')) return { whether: 'validate', template: null };
+  const shouldHave = exp !== 'none';
+  let whether = 'abstain';
+  if (r.verdict === 'recommend') whether = shouldHave ? 'pass' : 'fail';
+  else if (r.verdict === 'none-warranted') whether = shouldHave ? 'fail' : 'pass';
+  const offered = r.template ?? r.evidence?.templateAdvice?.template ?? null;
+  const template = shouldHave && offered ? (offered === exp ? 'exact' : 'other') : null;
+  return { whether, template };
 }
 
 for (const c of cases) {
@@ -108,6 +130,7 @@ for (const c of cases) {
     template: r.template ?? null,
     confidence: r.confidence ?? null,
     outcome,
+    axes: twoAxisScore(r, c.expected),
     evidence: evidenceSummary(r),
   });
 
@@ -130,6 +153,28 @@ console.log(
 console.log(
   `accuracy on decisive verdicts: ${accuracy === null ? 'n/a' : accuracy + '%'} (${stats.pass}/${decisive})`
 );
+{
+  const w = { pass: 0, fail: 0, abstain: 0 };
+  const t = { exact: 0, other: 0 };
+  for (const r of rows) {
+    const a = r.axes ?? {};
+    if (a.whether === 'pass') w.pass++;
+    else if (a.whether === 'fail') w.fail++;
+    else if (a.whether !== 'validate') w.abstain++;
+    if (a.template === 'exact') t.exact++;
+    else if (a.template === 'other') t.other++;
+  }
+  const wd = w.pass + w.fail;
+  const tt = t.exact + t.other;
+  console.log(
+    `  whether (coverage axis): ${w.pass} pass / ${w.fail} fail / ${w.abstain} abstain — ` +
+      `${wd ? Math.round((100 * w.pass) / wd) : 'n/a'}% of decisive`
+  );
+  console.log(
+    `  template (dominance axis): ${t.exact}/${tt} exact — ${tt ? Math.round((100 * t.exact) / tt) : 'n/a'}% ` +
+      `(of cases where a template is offered and the label names one)`
+  );
+}
 
 if (failures.length && details) {
   console.log('\n--- failures ---');
@@ -152,6 +197,28 @@ if (failures.length && details) {
 
 // --- persist results ---
 const stamp = new Date().toISOString().slice(0, 10);
+
+// Two-axis summary: the combined pass/fail above scores a recommendation on its
+// TEMPLATE, so a correct "yes, this genre uses infoboxes" answer is counted as a
+// failure when no single template dominates. These two lines separate the axes.
+const axes = {
+  whether: { pass: 0, fail: 0, abstain: 0, validate: 0, accuracy: null },
+  template: { exact: 0, other: 0, rate: null },
+};
+for (const r of rows) {
+  const a = r.axes ?? {};
+  if (a.whether === 'pass') axes.whether.pass++;
+  else if (a.whether === 'fail') axes.whether.fail++;
+  else if (a.whether === 'validate') axes.whether.validate++;
+  else axes.whether.abstain++;
+  if (a.template === 'exact') axes.template.exact++;
+  else if (a.template === 'other') axes.template.other++;
+}
+const wDecisive = axes.whether.pass + axes.whether.fail;
+axes.whether.accuracy = wDecisive ? Math.round((100 * axes.whether.pass) / wDecisive) : null;
+const tTotal = axes.template.exact + axes.template.other;
+axes.template.rate = tTotal ? Math.round((100 * axes.template.exact) / tTotal) : null;
+
 const result = {
   meta: {
     date: stamp,
@@ -159,8 +226,11 @@ const result = {
     cases: cases.length,
     limit,
     pipeline: 'infobox-recommender POC',
+    twoAxis: process.env.TWO_AXIS === '1' || /^(1|true|yes|on)$/i.test(process.env.TWO_AXIS ?? ''),
+    earlyStop: /^(1|true|yes|on)$/i.test(process.env.EARLY_STOP ?? ''),
   },
   summary: { ...stats, decisive, accuracy },
+  axes,
   results: rows,
 };
 mkdirSync(new URL('./results/', import.meta.url), { recursive: true });
@@ -172,6 +242,10 @@ const md = [
   `# Eval results — ${stamp} (${cases.length} cases)`,
   '',
   `Summary: **${stats.pass} pass / ${stats.fail} fail / ${stats.abstain} abstain** — accuracy on decisive verdicts: **${accuracy}%** (${stats.pass}/${decisive})`,
+  '',
+  `Two axes — **whether**: ${axes.whether.pass} pass / ${axes.whether.fail} fail / ${axes.whether.abstain} abstain ` +
+    `(${axes.whether.accuracy}% on decisive, ${axes.whether.validate} validate cases excluded) · ` +
+    `**template**: ${axes.template.exact}/${tTotal} exact (${axes.template.rate}%)`,
   '',
   '| outcome | title | expected | verdict | confidence |',
   '|---|---|---|---|---|',
