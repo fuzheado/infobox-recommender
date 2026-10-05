@@ -1,23 +1,12 @@
 {
- "generatedAt": "2026-10-05T10:11:45.776Z",
+ "generatedAt": "2026-10-05T12:02:13.509Z",
  "fixtures": 88,
  "byBucket": {
-  "stable": 86,
-  "label-invalid": 2
+  "stable": 87,
+  "unlabelled": 1
  },
  "tagCleared": 85,
- "labelInvalid": [
-  {
-   "title": "Fountain of Wealth",
-   "expected": "Infobox",
-   "articleNow": "Infobox artwork"
-  },
-  {
-   "title": "Sayfo",
-   "expected": "Infobox",
-   "articleNow": "Infobox"
-  }
- ],
+ "labelInvalid": [],
  "rows": [
   {
    "title": "Brooke Hodge",
@@ -161,12 +150,12 @@
   },
   {
    "title": "Fountain of Wealth",
-   "expected": "Infobox",
-   "labelSource": "editor-choice (stale tag)",
+   "expected": "Infobox artwork",
+   "labelSource": "editor-choice (stale tag); label corrected 2026-10-05 — the article carries {{Infobox artwork}} and {{Infobox fountain}}, and the latter is a REDIRECT to the former, so Infobox artwork is the canonical primary (the recorded label was the generic {{Infobox}} meta-template, which no run can satisfy)",
    "labelKind": "observed",
    "primary": "Infobox artwork",
    "tags": [],
-   "bucket": "label-invalid",
+   "bucket": "stable",
    "tagNote": "tag-cleared"
   },
   {
@@ -461,14 +450,14 @@
   },
   {
    "title": "Sayfo",
-   "expected": "Infobox",
-   "labelSource": "editor-choice (stale tag)",
-   "labelKind": "observed",
+   "expected": null,
+   "labelSource": "unlabelled 2026-10-05 — the article transcludes only the generic {{Infobox}} meta-template, which isSupportingInfobox() deliberately never treats as a primary, so no answer can satisfy it (see test/results/fixture-drift.json)",
+   "labelKind": "expected",
    "primary": "Infobox",
    "tags": [
     "Infobox requested"
    ],
-   "bucket": "label-invalid",
+   "bucket": "unlabelled",
    "tagNote": null
   },
   {

@@ -19,7 +19,7 @@ WikiProject banners), census what infoboxes they carry, and recommend a template
 
 | | |
 |---|---|
-| **Evaluation** | **57 pass · 6 near-miss disagreements · 25 honest abstentions — 90% on decisive verdicts** (88-case corpus: 57 backlog-derived stale-tag labels + 31 manual/canonical). 4 of the 6 disagreements are cases where peer evidence arguably beats one editor's choice (`test/EVALUATION.md`) |
+| **Evaluation** | **57 pass · 5 near-miss disagreements · 25 abstentions · 1 unlabelled — 90% on decisive verdicts** (88-case corpus: 57 backlog-derived stale-tag labels + 31 manual/canonical; **frozen 2026-08-28, labels audited 2026-10-05**). 4 of the 5 disagreements are cases where peer evidence arguably beats one editor's choice (`test/EVALUATION.md`). Corpus health: `scripts/research/check-fixture-drift.mjs` → `test/results/fixture-drift.json` (87 labels stable, 85/88 backlog tags since cleared — this is a frozen sample, not the live backlog) |
 | **Unit tests** | 25 (`npm test`): primary-infobox selection, usage-log privacy/retention, rate limiting, random-article picker |
 | **Cold / warm speed** | ~10–25s cold for a heavy article (≈150 peers), instant warm — measured with `scripts/bench-analysis.mjs` |
 | **Live** | <https://infobox-recommender.toolforge.org> · usage stats at [`/stats`](https://infobox-recommender.toolforge.org/stats) |
@@ -308,6 +308,8 @@ distribution). Currently next in line:
    peer cap — ROADMAP 7a), phantom-box coverage (7b), child-box auto-detection,
    per-element wrapper merge, backlog batch scanner, Diff writeup + a note at
    WikiProject Infoboxes `/assistance`.
+
+| 2026-10-05 | 3a — corpus health: `scripts/research/check-fixture-drift.mjs` + `test/results/fixture-drift.json`. The labels are stable (87/88) but the corpus is a **frozen sample** (85/88 backlog tags since cleared), and two labels named the generic `{{Infobox}}` meta-template, which no run can satisfy — one corrected (`Fountain of Wealth` → `Infobox artwork`, its canonical primary after redirect normalisation) and one unlabelled on purpose (`Sayfo`). Legacy eval 6 → 5 failures, template-exactness 88% → 90%; `test/fixture-labels.test.mjs` + `meta.drift`/`meta.cacheFingerprint` prevent a repeat |
 
 ## 10. Change log (ops + engine)
 

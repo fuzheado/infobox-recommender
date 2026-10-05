@@ -22,6 +22,27 @@ cases whose outcome changed between campaigns.
 
 ## 1. Test set construction
 
+### 1.0 Corpus provenance and health (added 2026-10-05)
+
+The corpus is a **frozen labelled sample**: built on 2026-08-28 from
+`Category:Wikipedia articles with an infobox request`, and since then **85 of its
+88 articles have had their {{Infobox requested}} tag cleared** — so it is the
+backlog as it stood in August 2026, not the live one. That is deliberate: labels
+that do not move are what make two eval runs comparable.
+
+Its health is checkable, not assumed: `scripts/research/check-fixture-drift.mjs`
+re-reads every fixture's article and talk page and reports the state in
+`test/results/fixture-drift.json`. The 2026-10-05 audit found **87 labels stable**
+and 1 case unlabelled on purpose (*Sayfo* — the article transcludes only the
+generic `{{Infobox}}` meta-template, which the engine deliberately never treats as
+a primary, so no answer can satisfy it). It also caught two labels that named that
+same meta-template; both are fixed, and `test/fixture-labels.test.mjs` now fails
+the build if a label is ever something the engine cannot produce again.
+
+Every eval run records the corpus context in its JSON (`meta.drift`,
+`meta.cacheFingerprint`) so a score is never quoted without knowing which corpus
+and which cached inputs produced it.
+
 ### 1.1 Source: the infobox-request backlog
 
 `Category:Wikipedia articles with an infobox request` holds talk pages of

@@ -11,7 +11,8 @@
 // Persists results to test/results/<date>.json + <date>.md (and latest.*),
 // so every evaluation is reproducible and reviewable.
 
-import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, mkdirSync, writeFileSync, readdirSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { createApi } from '../lib/api.js';
 import { analyze } from '../lib/analyze.js';
 
@@ -63,6 +64,7 @@ function evidenceSummary(r) {
 //   template — when a template is offered, is it the labelled one? (dominance axis)
 function twoAxisScore(r, expected) {
   const exp = expected ?? '';
+  if (expected == null || String(exp).trim() === '') return { whether: 'unlabelled', template: null };
   if (String(exp).startsWith('consistent')) return { whether: 'validate', template: null };
   const shouldHave = exp !== 'none';
   let whether = 'abstain';
@@ -78,7 +80,12 @@ for (const c of cases) {
   const expected = c.expected;
   let outcome;
 
-  if (r.verdict === 'error' || r.verdict === 'excluded') {
+  if (expected == null) {
+    // Unlabelled on purpose (no answer can satisfy the label — see
+    // test/results/fixture-drift.json). Counted as excluded, never as a failure.
+    outcome = 'excluded';
+    stats.excluded++;
+  } else if (r.verdict === 'error' || r.verdict === 'excluded') {
     outcome = 'excluded';
     stats.excluded++;
   } else if (r.verdict === 'weak-signal') {
@@ -174,6 +181,9 @@ console.log(
     `  template (dominance axis): ${t.exact}/${tt} exact — ${tt ? Math.round((100 * t.exact) / tt) : 'n/a'}% ` +
       `(of cases where a template is offered and the label names one)`
   );
+  if (axes.whether.unlabelled) {
+    console.log(`  (${axes.whether.unlabelled} unlabelled case excluded — no answer can satisfy its label)`);
+  }
 }
 
 if (failures.length && details) {
@@ -195,6 +205,40 @@ if (failures.length && details) {
   }
 }
 
+// Corpus context, recorded with every run so a score is never quoted without it:
+//   drift  — the state of the labels (scripts/research/check-fixture-drift.mjs)
+//   fingerprint — a hash of the cache's URL set, so two runs can show whether they
+//                 measured the same inputs at all (labels are stable; peer sets move)
+function corpusContext() {
+  let drift = null;
+  try {
+    const d = JSON.parse(readFileSync('test/results/fixture-drift.json', 'utf8'));
+    drift = { checkedAt: d.generatedAt?.slice(0, 10), byBucket: d.byBucket, tagCleared: d.tagCleared };
+  } catch {
+    /* no drift report yet */
+  }
+  const h = createHash('sha1');
+  let files = 0;
+  for (const dir of ['cache', 'cache/templates']) {
+    let names = [];
+    try {
+      names = readdirSync(dir).sort();
+    } catch {
+      continue;
+    }
+    for (const n of names) {
+      h.update(`${dir}/${n}`);
+      files++;
+      try {
+        statSync(`${dir}/${n}`);
+      } catch {
+        /* raced with the writer */
+      }
+    }
+  }
+  return { drift, cacheFingerprint: { files, sha1: h.digest('hex').slice(0, 16) } };
+}
+
 // --- persist results ---
 const stamp = new Date().toISOString().slice(0, 10);
 
@@ -202,7 +246,7 @@ const stamp = new Date().toISOString().slice(0, 10);
 // TEMPLATE, so a correct "yes, this genre uses infoboxes" answer is counted as a
 // failure when no single template dominates. These two lines separate the axes.
 const axes = {
-  whether: { pass: 0, fail: 0, abstain: 0, validate: 0, accuracy: null },
+  whether: { pass: 0, fail: 0, abstain: 0, validate: 0, unlabelled: 0, accuracy: null },
   template: { exact: 0, other: 0, rate: null },
 };
 for (const r of rows) {
@@ -210,6 +254,7 @@ for (const r of rows) {
   if (a.whether === 'pass') axes.whether.pass++;
   else if (a.whether === 'fail') axes.whether.fail++;
   else if (a.whether === 'validate') axes.whether.validate++;
+  else if (a.whether === 'unlabelled') axes.whether.unlabelled++;
   else axes.whether.abstain++;
   if (a.template === 'exact') axes.template.exact++;
   else if (a.template === 'other') axes.template.other++;
@@ -224,6 +269,7 @@ const envFlag = (name, fallback) => {
   if (raw == null || raw === '') return fallback;
   return /^(1|true|yes|on)$/i.test(String(raw));
 };
+const context = corpusContext();
 const result = {
   meta: {
     date: stamp,
@@ -233,6 +279,7 @@ const result = {
     pipeline: 'infobox-recommender POC',
     twoAxis: envFlag('TWO_AXIS', true),
     earlyStop: envFlag('EARLY_STOP', false),
+    ...context,
   },
   summary: { ...stats, decisive, accuracy },
   axes,

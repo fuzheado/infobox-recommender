@@ -133,7 +133,10 @@ for (const c of cases) {
       : null;
 
   let bucket;
-  if (labelInvalid(expected)) {
+  if (String(expected ?? '').trim() === '') {
+    // Deliberately unlabelled (see fixtures.meta.provenance): not drift, not a bug.
+    bucket = 'unlabelled';
+  } else if (labelInvalid(expected)) {
     bucket = 'label-invalid';
   } else if (kind === 'expected') {
     // The label is the answer we expect, not a box we observed: bare is the
@@ -183,7 +186,7 @@ console.log(`  ${'tag-cleared'.padEnd(15)} ${tagCleared}  ({{Infobox requested}}
 const kindCount = {};
 for (const r of rows) kindCount[r.labelKind] = (kindCount[r.labelKind] ?? 0) + 1;
 console.log(`\n  label kinds: ${JSON.stringify(kindCount)}`);
-for (const r of rows.filter((r) => r.bucket !== 'stable' && r.labelKind !== 'expected')) {
+for (const r of rows.filter((r) => r.bucket !== 'stable' && r.bucket !== 'unlabelled' && r.labelKind !== 'expected')) {
   console.log(`\n  [${r.bucket} · ${r.labelKind}] ${r.title}\n      expected: ${r.expected}\n      article now: ${r.primary ?? '(no infobox)'}`);
 }
 const expectedDrift = rows.filter((r) => r.labelKind === 'expected' && r.bucket === 'box-added');

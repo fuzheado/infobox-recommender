@@ -84,7 +84,7 @@ much faster (usually instant).
 
 ## How well does it work?
 
-Evaluated on an **88-case corpus** — 57 articles from the infobox-request
+Evaluated on an **88-case corpus** (frozen 2026-08-28, labels audited 2026-10-05) — 57 articles from the infobox-request
 backlog whose editor-chosen infobox is the gold label, plus 31 curated cases
 (doc-backed demos and canonical sets such as presidents, states, foods, and
 TV episodes):
