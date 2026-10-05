@@ -125,6 +125,16 @@ peer's template list is fetched and counted; a decision layer then applies
 coverage and dominance thresholds, with a tiered rescue for thin evidence and
 honest abstention in the middle band.
 
+The candidate pool is capped at **150 peers** — a cost bound, not a tuned
+parameter. Measured across the 88-case corpus (2026-10-05): verdicts are
+identical with the cap and with the uncapped pool, while a *smaller* pool is
+worse, because the tightest peers form the most specific group and specificity
+is not typicality — a 25-peer pool recommends {{Infobox badminton player}}
+where editors of the wider genre chose {{Infobox person}}. What the added peers
+do dilute is agreement on a *single* template, which is the real abstention
+driver. The analysis and the levers that remain are in
+[`ROADMAP.md`](ROADMAP.md#7a-analysis-latency--done-2026-10-04-with-the-next-levers-measured).
+
 Technical detail — peer discovery, census batching, the primary-infobox
 selection rules, dual-runtime design, and the web service — is in
 **[`ARCHITECTURE.md`](ARCHITECTURE.md)**. API gotchas are in

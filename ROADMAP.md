@@ -1,6 +1,6 @@
 # ROADMAP — infobox-recommender
 
-**Last updated:** 2026-08-28 · Complements `HANDOFF.md` (status), `status-quo.md`
+**Last updated:** 2026-10-05 · Complements `HANDOFF.md` (status), `status-quo.md`
 (why it exists), `test/EVALUATION.md` (what the engine gets wrong), and
 `signals.md` (signal hypotheses). This doc is the *what's next* — prioritized
 with effort estimates and the eval targets each item should move.
@@ -57,6 +57,13 @@ templates`' subcategory tree.
 - **Eval target:** Strengholt Holding (publisher/company) passes;
   person/officeholder/musical-artist near-misses resolve; 57 → 59+ pass,
   or fails shrink to the true judgment-call set.
+- **Second reason to do this (2026-10-05 peer-cap study):** the decision is about
+  **twice as sensitive to dominance as to coverage** (17 cases sit within ±0.05
+  of the 0.5 dominance threshold, against 9 for coverage), and every failure a
+  *small* peer pool produces is a template-**family** confusion (badminton player
+  ⊂ person, UK place ⊂ settlement, company ⊂ restaurant). Counting dominance over
+  families rather than exact templates attacks both problems — and would relax
+  the pressure that currently argues for a large pool (see §7a item 3).
 
 ### 2. Semantic sub-clustering via LiftWing topics (Track A · effort: medium · converts abstains)
 
@@ -156,8 +163,39 @@ Remaining measured levers, in order of expected value:
    formalises that signal; this would make big peer sets ~2× cheaper again.
    Trade-off: the *published evidence* would cover fewer peers, so the report
    must say so.
-3. **Peer-set cap tuning** (currently 150) — fewer peers, fewer requests, more
-   variance; the eval should decide.
+   *Supporting measurement (2026-10-05, peer-cap study):* **0 of 88** verdicts
+   change between a 150-peer pool and the **uncapped** pool, and only 1 changes
+   at 125 — so for the 27% of articles where the cap binds at all, the census
+   tail carries almost no verdict information. Stopping when the verdict is
+   already decisive is the cheap lever; shrinking the cap is not (see next item).
+3. **Peer-set size — measured 2026-10-05: keep 150.** The cap binds for **24 of
+   88** articles (median candidate pool 100, max 350); for the rest it is inert.
+   `scripts/research/peer-cap-study.mjs` sweeps it and re-runs the real pipeline
+   (validated: at 150 it reproduces `test/results/latest.json` case-for-case —
+   57/6/25, 90%). Findings:
+   - accuracy by cap: **81% (25) · 81% (50) · 85% (75) · 90% (100) · 89% (125) ·
+     90% (150) · 89% (uncapped)**. A small pool is not "safer": the tightest
+     circle is the *most specific* group, and specificity ≠ typicality — at cap
+     25 the tool recommends {{Infobox badminton player}} / {{Infobox UK place}}
+     / {{Infobox company}} where the genre's editors chose person / settlement /
+     restaurant. Wrong decisive calls: 11 at cap 25 vs 6 at 150.
+   - **no dilution:** boxed rate *rises* with discovery rank (72% at ranks 1–25 →
+     84% at 201+), median coverage is flat (0.756 at 150 vs 0.761 uncapped), and
+     per-article coverage moves both ways (36 down >2pts, 32 up >2pts, median
+     delta 0.000). The tail is dominated by same-type pointer peers, mostly boxed.
+   - what extra peers dilute is **dominance** (template agreement): median 0.739
+     at cap 25 → 0.655 at 150. 17 cases sit within ±0.05 of the 0.5 dominance
+     threshold vs 9 near coverage — the decision is ~2× more dominance-sensitive.
+   - verdict changes vs the uncapped pool: **0 (150)**, 1 (125), 5 (100), 8 (75),
+     11 (50), 20 (25). Cap 100 is the accuracy plateau and defensible **only** as
+     a cost trade (5/88 verdicts change, direction mixed) — needs a bigger corpus
+     before adopting.
+   - design smell, low urgency: truncation happens in *signal* order (all P31-class
+     peers → categories → pointer peers last), so the cap cuts the highest-precision
+     cohort first — 449 pointer peers across the 24 binding articles (Abraham
+     Lincoln loses 101 of its 227). Verdict-neutral today (150 vs uncapped = 0
+     verdict changes); it would matter only if one huge class flooded the cap.
+   Numbers: `test/results/peer-cap-study.json`.
 
 ### 7b. Phantom-box coverage inflation (Track A · accuracy · measured)
 
