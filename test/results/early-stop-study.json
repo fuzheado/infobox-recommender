@@ -1,0 +1,64 @@
+{
+ "generatedAt": "2026-10-05",
+ "corpus": "test/fixtures.json (88 cases)",
+ "method": "npm run eval with and without EARLY_STOP",
+ "variants": [
+  {
+   "env": "EARLY_STOP unset",
+   "summary": {
+    "pass": 57,
+    "fail": 6,
+    "abstain": 25,
+    "excluded": 0,
+    "decisive": 63,
+    "accuracy": 90
+   },
+   "peersCensused": 8352,
+   "peersSaved": 0,
+   "casesStoppedEarly": 0
+  },
+  {
+   "env": "EARLY_STOP=1 (EARLY_STOP_MIN=100 default)",
+   "summary": {
+    "pass": 57,
+    "fail": 6,
+    "abstain": 25,
+    "excluded": 0,
+    "decisive": 63,
+    "accuracy": 90
+   },
+   "peersCensused": 7855,
+   "peersSaved": 497,
+   "casesStoppedEarly": 12,
+   "verdictChanges": 0
+  },
+  {
+   "env": "EARLY_STOP=1 EARLY_STOP_MIN=25",
+   "summary": {
+    "pass": 56,
+    "fail": 9,
+    "abstain": 23,
+    "excluded": 0,
+    "decisive": 65,
+    "accuracy": 86
+   },
+   "peersCensused": 5240,
+   "peersSaved": 3112,
+   "casesStoppedEarly": 35,
+   "verdictChanges": [
+    {
+     "title": "Guy Markizano",
+     "baseline": "weak-signal/Infobox musical artist",
+     "aggressive": "recommend/Infobox musical artist"
+    },
+    {
+     "title": "Oxford",
+     "baseline": "weak-signal/Infobox settlement",
+     "aggressive": "recommend/Infobox UK place"
+    }
+   ]
+  }
+ ],
+ "pool": 8352,
+ "note": "EARLY_STOP_MIN=100 is verdict-identical to the baseline; 25 trades 4 accuracy points (90%->86%) for more savings, and the cases it breaks are the over-specific failures the 2026-10-05 cap study predicted."
+}

@@ -246,6 +246,49 @@ Repeat analyses remain instant (URL cache); the per-page cache extends that to
 *overlapping* analyses — an article whose peers were already censused skips
 those fetches entirely.
 
+### `EARLY_STOP` — census less when more cannot help (opt-in)
+
+Off by default. `EARLY_STOP=1` censuses a *prefix* of the peer pool and stops as
+soon as the verdict is already decisive, on the reasoning that the tail of a big
+pool carries almost no verdict information (measured 2026-10-05: **0 of 88**
+verdicts change between a 150-peer pool and the uncapped pool).
+
+- **The rule** is `isDecisiveStop()` in `lib/decide.js` — a strong recommend
+  (coverage ≥ 0.8 **and** dominance ≥ 0.7) or a strong negative (coverage
+  ≤ 0.15), always with `n ≥ 20`. The ambiguous middle never stops: that is
+  where extra peers carry information.
+- **The stages** are `censusStages()` in `lib/census.js` — 25, 50, 75, … up to
+  the pool. Multiples of the 25-title first-pass batch on purpose: with the
+  per-page cache each page is fetched once either way, so a staged run costs the
+  *same* number of requests as a single pass when no stop fires, and fewer when
+  one does. A stop adds no requests; it avoids them.
+- **`EARLY_STOP_MIN`** (default **100**) is the smallest pool that may be stopped
+  early, and it is the important knob. A small pool is not a small version of the
+  full pool — it is the *most specific* slice of it, and specificity is not
+  typicality. The 2026-10-05 cap study measured the cost of ignoring that: a
+  25-peer pool recommends {{Infobox badminton player}} / {{Infobox UK place}}
+  where the genre's editors chose person / settlement. So the floor defaults to
+  the measured accuracy plateau rather than to the smallest decisive sample.
+- **Transparency:** the result carries `evidence.peerPool`,
+  `evidence.censusPeers` and `evidence.stoppedEarly`, and `test/eval.mjs`
+  records all three, so a run with early stopping is comparable to one without
+  instead of being silently cheaper.
+
+Measured on the 88-case corpus (`npm run eval`, 2026-10-05) — the full detail is
+in `test/results/early-stop-study.json`:
+
+| Setting | pass / fail / abstain | Accuracy | Peers censused | Stops |
+|---|---|---|---|---|
+| unset (baseline) | 57 / 6 / 25 | 90% | 8,352 | 0 |
+| `EARLY_STOP=1` (floor 100) | 57 / 6 / 25 | **90%** | 7,855 (−6%) | 12 |
+| `EARLY_STOP=1 EARLY_STOP_MIN=25` | 56 / 9 / 23 | 86% | 5,240 (−37%) | 35 |
+
+So the default floor is free (identical verdicts, case for case) and the
+aggressive setting is not: it saves 37% of the census by locking in small-pool
+verdicts, and the cases it breaks are exactly the over-specific ones the cap
+study predicted. Because the saving is concentrated in the longest analyses, it
+is worth more in latency than that 6% suggests.
+
 ## Known limitations
 
 - **Noisy categories** need stronger sub-clustering; the P31-class split plus

@@ -157,17 +157,20 @@ Remaining measured levers, in order of expected value:
 1. **Category-member fan-out** (5 requests on a typical article, one per
    candidate category, in one wave) — could be cut by fetching members for
    fewer/merged categories; needs an accuracy check.
-2. **Adaptive early stop** — census the tightest tier first and stop when it is
-   already decisive (≥80% coverage, ≥70% dominance, n ≥ 20), falling back to the
-   full pool otherwise. The tiered-rescue logic in `lib/decide.js` already
-   formalises that signal; this would make big peer sets ~2× cheaper again.
-   Trade-off: the *published evidence* would cover fewer peers, so the report
-   must say so.
-   *Supporting measurement (2026-10-05, peer-cap study):* **0 of 88** verdicts
-   change between a 150-peer pool and the **uncapped** pool, and only 1 changes
-   at 125 — so for the 27% of articles where the cap binds at all, the census
-   tail carries almost no verdict information. Stopping when the verdict is
-   already decisive is the cheap lever; shrinking the cap is not (see next item).
+2. ~~**Adaptive early stop**~~ — **implemented 2026-10-05, opt-in**. `EARLY_STOP=1`
+   censuses in 25-peer stages and stops once the evidence is already decisive
+   (coverage ≥ 80% and dominance ≥ 70%, or coverage ≤ 15%, always with n ≥ 20 —
+   `isDecisiveStop()` in `lib/decide.js`). Staging costs no extra requests: the
+   per-page cache means each peer page is fetched once either way.
+   Measured trade-off (`npm run eval`, `test/results/early-stop-study.json`):
+   with the default floor (`EARLY_STOP_MIN=100`) it is **verdict-identical**
+   (57/6/25, 90%) while censusing **6% fewer peers** (12 of 88 articles stopped
+   early); a floor of 25 saves **37%** and costs **4 accuracy points** (86%),
+   breaking exactly the over-specific cases the cap study predicted. Left **off
+   by default**: the saving is modest and the failure mode is silent.
+   Next refinement, if the saving is ever worth chasing: stop on a **tier**
+   boundary (tightest group first) instead of a peer count — same savings,
+   better-aligned evidence — and model the report as "N of M peers".
 3. **Peer-set size — measured 2026-10-05: keep 150.** The cap binds for **24 of
    88** articles (median candidate pool 100, max 350); for the rest it is inert.
    `scripts/research/peer-cap-study.mjs` sweeps it and re-runs the real pipeline

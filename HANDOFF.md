@@ -128,7 +128,9 @@ template data into `cache/templates/`).
   request, so `public/` changes take effect without a restart; **`server.mjs` and
   `lib/` changes need the restart**.
 - Env knobs (all optional): `RATE_MAX`, `RATE_WINDOW_MS`, `BURST_MAX`,
-  `BURST_WINDOW_MS`, `MAX_QUEUE`, `USAGE_DIR`.
+  `BURST_WINDOW_MS`, `MAX_QUEUE`, `USAGE_DIR`, `EARLY_STOP`, `EARLY_STOP_MIN`
+  (the last two: opt-in census early stop — off by default, **keep the floor at
+  100** if you turn it on; measured trade-off in `ARCHITECTURE.md#early_stop--census-less-when-more-cannot-help-opt-in`).
 
 **Redeploy** (package → scp → extract into both copies → chown → restart):
 
@@ -276,6 +278,7 @@ section-box detection + unit tests** (2026-08-28). 11% → 90%.
 | 2026-10-04 | Added `/random` (one-click analysis of a random infobox-request article) with a home-page 🎲 button; `lib/random-pick.js` + tests |
 | 2026-10-04 | Performance audit + fixes: pacing made explicit and **per host** (was one global gate that let parallel calls burst), parallel census batches, 25-title census chain, one Wikidata request instead of seven, one WDQS query per pointer property instead of one per value, per-page cache that survives batch-shape changes. Cold runs: Canut revolts 20.4s → 6.6s, Abraham Lincoln 26.8s → 13.7s; eval unchanged at 57/6/25 |
 | 2026-10-04 | Deploy recipe hardened: `mktemp` names instead of fixed `/tmp/ibr.tgz`, deploy script piped over stdin (no remote script file), payload temp created **by the tool user** so it is private yet readable under `sudo -niu` — verified by running it |
+| 2026-10-05 | Peer-cap study (`scripts/research/peer-cap-study.mjs`, `test/results/peer-cap-study.json`): cap 150 kept; the decision is dominance-sensitive, not coverage-diluted. Implemented the census early stop it pointed at: `EARLY_STOP=1` (+ `EARLY_STOP_MIN`, default 100) — verdict-identical on the corpus, −6% peers censused; floor 25 costs 4 accuracy points (`test/results/early-stop-study.json`) |
 
 ## 11. Working conventions
 

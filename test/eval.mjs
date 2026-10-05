@@ -36,6 +36,12 @@ function evidenceSummary(r) {
     total: ev.total,
     coverage: ev.coverage,
     dominant: ev.dominant,
+    // EARLY_STOP: how much of the pool the verdict was actually based on. Kept in
+    // the recorded results so a run with early stopping is comparable to one
+    // without, rather than silently cheaper and unverifiable.
+    peerPool: ev.peerPool,
+    censusPeers: ev.censusPeers,
+    stoppedEarly: ev.stoppedEarly,
     distribution: Object.fromEntries(
       Object.entries(ev.distribution ?? {}).sort((a, b) => b[1] - a[1]).slice(0, 8)
     ),
