@@ -20,7 +20,7 @@ WikiProject banners), census what infoboxes they carry, and recommend a template
 | | |
 |---|---|
 | **Evaluation** | **57 pass · 5 near-miss disagreements · 25 abstentions · 1 unlabelled — 90% on decisive verdicts** (88-case corpus: 57 backlog-derived stale-tag labels + 31 manual/canonical; **frozen 2026-08-28, labels audited 2026-10-05**). 4 of the 5 disagreements are cases where peer evidence arguably beats one editor's choice (`test/EVALUATION.md`). Corpus health: `scripts/research/check-fixture-drift.mjs` → `test/results/fixture-drift.json` (87 labels stable, 85/88 backlog tags since cleared — this is a frozen sample, not the live backlog) |
-| **Unit tests** | 25 (`npm test`): primary-infobox selection, usage-log privacy/retention, rate limiting, random-article picker |
+| **Unit tests** | 72 (`npm test`): primary-infobox selection, template families (ladder), two-axis decision, EARLY_STOP, fixture labels, usage-log privacy/retention, rate limiting, random-article picker |
 | **Cold / warm speed** | ~10–25s cold for a heavy article (≈150 peers), instant warm — measured with `scripts/bench-analysis.mjs` |
 | **Live** | <https://infobox-recommender.toolforge.org> · usage stats at [`/stats`](https://infobox-recommender.toolforge.org/stats) |
 | **Repo** | <https://github.com/fuzheado/infobox-recommender> — **public** since 2026-08-28, MIT; homepage set to the tool, topics `wikipedia/wikidata/infobox/mediawiki/toolforge` |
@@ -57,7 +57,8 @@ service, and a future userscript):
 | `lib/api.js` | Action API + WDQS client — etiquette, pacing, retries, disk cache |
 | `lib/peers.js` | Stage A: P31 siblings, same-type pointers (P39/P179/P361/P155/P156), member-count category selection, banners; tier groups |
 | `lib/census.js` | Stage B: batched template census (continuation + re-queue), redirect normalization, transclusion facts, **primary-infobox selection**, sub-cluster split |
-| `lib/decide.js` | Stage C: flat decision + tiered rescue; evidence builder |
+| `lib/decide.js` | Stage C: two-axis decision (coverage = whether, dominance = which) + legacy path, template advice, evidence builder |
+| `lib/families.js` | The specificity ladder: template → family (member/base), hand-curated from the peer-frequency table |
 | `lib/analyze.js` | Whole pipeline for one title; validate comparison |
 | `lib/usage.js` · `lib/stats-page.js` · `lib/rate-limit.js` · `lib/random-pick.js` | Usage log, `/stats` renderer, per-client limiter, random-article picker |
 | `cli.js` · `server.mjs` · `public/` | CLI harness, zero-dep web service, report UI |
@@ -65,7 +66,7 @@ service, and a future userscript):
 
 **Tests & evaluation:** `test/eval.mjs` (harness → `test/results/<date>.*`),
 `test/census.test.mjs`, `test/usage.test.mjs`, `test/rate-limit.test.mjs`,
-`test/random-pick.test.mjs`,
+`test/random-pick.test.mjs`, `test/families.test.mjs`, `test/fixture-labels.test.mjs`,
 `test/fixtures.json` (corpus), `scripts/manual-cases.json` + `scripts/fetch-queue.mjs`
 (how the corpus is built), `test/EVALUATION.md` (writeup).
 

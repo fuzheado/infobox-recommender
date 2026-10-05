@@ -98,7 +98,10 @@ test('the bare-cluster rule still produces none-warranted in the middle band', (
 
 test('dominance never vetoes the whether axis (the bug this fixes)', () => {
   // 76% coverage, templates split → the legacy path abstains, two-axis recommends.
-  const census = pool(100, 76, ['Infobox artwork', 'Infobox building', 'Infobox venue', 'Infobox bridge']);
+  // Cross-family mix on purpose: artwork (artwork), company (organization), galaxy
+  // (astronomical), person (person) — no family reaches half, so this exercises the
+  // whole-pool path rather than the family path (see families.test.mjs for that).
+  const census = pool(100, 76, ['Infobox artwork', 'Infobox company', 'Infobox galaxy', 'Infobox person']);
   const legacy = decide({ title: 'Example', page, census, banners: [], bareCluster: [] });
   const twoAxis = run(census);
   assert.equal(legacy.verdict, 'weak-signal');
@@ -122,8 +125,8 @@ test('advice is "dominant" when one template holds half the boxed peers', () => 
 test('advice is "split" below the dominance bar and still names a candidate', () => {
   const census = censusOf([
     ...Array.from({ length: 4 }, () => ({ box: 'Infobox artwork' })),
-    ...Array.from({ length: 3 }, () => ({ box: 'Infobox building' })),
-    ...Array.from({ length: 3 }, () => ({ box: 'Infobox venue' })),
+    ...Array.from({ length: 3 }, () => ({ box: 'Infobox company' })),
+    ...Array.from({ length: 3 }, () => ({ box: 'Infobox galaxy' })),
     ...Array.from({ length: 2 }, () => ({ box: null })),
   ]);
   const a = templateAdvice(census);
@@ -132,8 +135,8 @@ test('advice is "split" below the dominance bar and still names a candidate', ()
   assert.equal(a.share, 0.4);
   assert.deepEqual(a.candidates.slice(0, 3).map((c) => c.template), [
     'Infobox artwork',
-    'Infobox building',
-    'Infobox venue',
+    'Infobox company',
+    'Infobox galaxy',
   ]);
 });
 
@@ -149,10 +152,13 @@ test('a split pool prefers the tightest neighbourhood that agrees', () => {
   // Tight tiers: 12 peers, 10 boxed, all {{Infobox artwork}} (100% of that tier's
   // boxed). Wide pool: 48 more peers, 12 building + 4 venue boxed, so the
   // whole-pool plurality is {{Infobox building}} at 12/26 = 46% (< half) — split.
+  // The wide pool mixes FAMILIES (organization + astronomical) on purpose: with
+  // building/venue it would be one structure family and the family branch — which
+  // now has precedence — would answer instead of the tier branch under test.
   const peers = [
     ...Array.from({ length: 12 }, (_, i) => ({ box: i < 10 ? 'Infobox artwork' : null, tier: i < 6 ? 1 : 2 })),
     ...Array.from({ length: 48 }, (_, i) => ({
-      box: i < 12 ? 'Infobox building' : i < 16 ? 'Infobox venue' : null,
+      box: i < 12 ? 'Infobox company' : i < 16 ? 'Infobox galaxy' : null,
       tier: 3,
     })),
   ];
@@ -163,7 +169,7 @@ test('a split pool prefers the tightest neighbourhood that agrees', () => {
   assert.equal(wide.basis, 'tightest-tier');
   assert.equal(wide.template, 'Infobox artwork');
   assert.equal(wide.tier, 2);
-  assert.equal(wide.poolTemplate, 'Infobox building'); // what the whole pool would have said
+  assert.equal(wide.poolTemplate, 'Infobox company'); // what the whole pool would have said
   assert.ok(wide.share > wide.poolShare);
 });
 
@@ -184,7 +190,7 @@ test('a split pool with no coherent tier stays with the whole-pool plurality', (
 // --- wording + contract -----------------------------------------------------
 
 test('a split recommendation names the candidate without UI instructions', () => {
-  const r = run(pool(100, 80, ['Infobox artwork', 'Infobox building', 'Infobox venue', 'Infobox bridge']));
+  const r = run(pool(100, 80, ['Infobox artwork', 'Infobox company', 'Infobox galaxy', 'Infobox person']));
   assert.equal(r.verdict, 'recommend');
   assert.match(r.reason, /best candidate Infobox artwork/);
   // `reason` is an API field: the Lead Balancer userscript shows it as its summary
@@ -201,6 +207,7 @@ test('reasons stay short enough for a downstream 400-char clip', () => {
     pool(20, 3),
     pool(200, 30),
     pool(4, 4),
+    pool(100, 80, 'Infobox officeholder'), // dominant + family general option
   ]) {
     const r = run(census);
     assert.ok(r.reason.length <= 360, `reason is ${r.reason.length} chars: ${r.reason}`);
@@ -228,7 +235,7 @@ test('the verdict vocabulary and the Lead Balancer fields are unchanged', () => 
 
 test('advice rides in the evidence so the report can render it', () => {
   // Four templates over 80 boxed peers = 25% each, genuinely split.
-  const r = run(pool(100, 80, ['Infobox artwork', 'Infobox building', 'Infobox venue', 'Infobox bridge']));
+  const r = run(pool(100, 80, ['Infobox artwork', 'Infobox company', 'Infobox galaxy', 'Infobox person']));
   assert.equal(r.verdict, 'recommend');
   assert.equal(r.evidence.templateAdvice.status, 'split');
   assert.equal(r.evidence.templateAdvice.template, 'Infobox artwork');

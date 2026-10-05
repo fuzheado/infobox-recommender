@@ -27,7 +27,7 @@ even when peers disagree about which template to use:
 | Question | Answer | Evidence |
 |---|---|---|
 | **Should it have an infobox?** | **Recommend an infobox** (most peers have one) · **No infobox customary** (peers are overwhelmingly bare) · **Weak / mixed** (15–70% carry one — not decisive) | peer *coverage* |
-| **Which template?** | the template peers use most, labelled **dominant** (≥ half of the boxed peers) or as a **best candidate** when no template dominates | template *dominance* |
+| **Which template?** | the template peers use most, labelled **dominant** (≥ half of the boxed peers) or as a **best candidate** when no template dominates. Since 2026-10-05 it also states the *kind* and the general option — e.g. *"most used {{Infobox officeholder}}, general option {{Infobox person}}"* — because peers choosing a variant of the same box is agreement, not disagreement | template *dominance* + the [specificity ladder](ARCHITECTURE.md#specificity-ladder-libfamiliesjs--the-template-axiss-vocabulary) |
 
 Every report shows the peer count, how many peers carry an infobox, the
 template distribution, neighborhood tiers, and examples of boxed and bare
@@ -161,7 +161,7 @@ selection rules, dual-runtime design, and the web service — is in
 ## Tests
 
 ```sh
-npm test          # 25 unit tests: primary-infobox selection, usage-log privacy
+npm test          # 72 unit tests: primary-infobox selection, template families, decision
                   # and retention, rate limiting, random-article picker
 npm run eval       # full evaluation over the corpus (warm cache: <1s)
 npm run fixtures   # rebuild test/fixtures.json from the live backlog

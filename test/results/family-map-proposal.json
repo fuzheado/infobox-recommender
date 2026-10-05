@@ -1,0 +1,1032 @@
+{
+ "generatedAt": "2026-10-05T12:03:13.955Z",
+ "topN": 120,
+ "groups": [
+  {
+   "category": "Infobox templates",
+   "members": [
+    {
+     "name": "Infobox person",
+     "instances": 2129,
+     "allTopical": [
+      "Infobox templates",
+      "People and person infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox officeholder",
+     "instances": 1479,
+     "allTopical": [
+      "Infobox templates",
+      "People and person infobox templates",
+      "Politics and government infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox settlement",
+     "instances": 712,
+     "allTopical": [
+      "Infobox templates",
+      "Place infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox galaxy",
+     "instances": 345,
+     "allTopical": [
+      "Infobox templates",
+      "Astronomy infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox country",
+     "instances": 315,
+     "allTopical": [
+      "Infobox templates",
+      "Country infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox writer",
+     "instances": 236,
+     "allTopical": [
+      "Infobox templates",
+      "Publishing infobox templates",
+      "People and person infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox song",
+     "instances": 218,
+     "allTopical": [
+      "Infobox templates",
+      "Music infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox company",
+     "instances": 215,
+     "allTopical": [
+      "Infobox templates",
+      "Company infobox templates",
+      "Business infobox templates",
+      "Organization infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox book",
+     "instances": 203,
+     "allTopical": [
+      "Infobox templates",
+      "Book infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox military person",
+     "instances": 197,
+     "allTopical": [
+      "Infobox templates",
+      "Military infobox templates",
+      "People and person infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox artwork",
+     "instances": 185,
+     "allTopical": [
+      "Infobox templates",
+      "Arts and culture infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox television",
+     "instances": 182,
+     "allTopical": [
+      "Infobox templates",
+      "Television infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox restaurant",
+     "instances": 166,
+     "allTopical": [
+      "Infobox templates",
+      "Foodservice infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox military unit",
+     "instances": 147,
+     "allTopical": [
+      "Infobox templates",
+      "Military infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox food",
+     "instances": 134,
+     "allTopical": [
+      "Infobox templates",
+      "Food infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox television episode",
+     "instances": 118,
+     "allTopical": [
+      "Infobox templates",
+      "Television infobox templates",
+      "Television episode infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox film",
+     "instances": 115,
+     "allTopical": [
+      "Infobox templates",
+      "Film infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox artist",
+     "instances": 110,
+     "allTopical": [
+      "Infobox templates",
+      "Arts and culture infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox scientist",
+     "instances": 108,
+     "allTopical": [
+      "Infobox templates",
+      "Science and nature infobox templates",
+      "Technology and applied science infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox sportsperson",
+     "instances": 103,
+     "allTopical": [
+      "Infobox templates",
+      "Sportsperson infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox element",
+     "instances": 91,
+     "allTopical": [
+      "Infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox building",
+     "instances": 88,
+     "allTopical": [
+      "Infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox drink",
+     "instances": 82,
+     "allTopical": [
+      "Infobox templates",
+      "Drink infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox academic",
+     "instances": 78,
+     "allTopical": [
+      "Infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox U.S. legislation",
+     "instances": 69,
+     "allTopical": [
+      "Infobox templates",
+      "Law infobox templates",
+      "United States government infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox German place",
+     "instances": 67,
+     "allTopical": [
+      "Infobox templates",
+      "Germany subdivision infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox organization",
+     "instances": 66,
+     "allTopical": [
+      "Infobox templates",
+      "Organization infobox templates",
+      "Society and social science infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox station",
+     "instances": 66,
+     "allTopical": [
+      "Infobox templates",
+      "Railway station infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox album",
+     "instances": 64,
+     "allTopical": [
+      "Infobox templates",
+      "Music infobox templates"
+     ]
+    },
+    {
+     "name": "Automatic taxobox",
+     "instances": 61,
+     "allTopical": [
+      "Infobox templates",
+      "Biology infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox requested",
+     "instances": 61,
+     "allTopical": [
+      "Infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox royalty",
+     "instances": 60,
+     "allTopical": [
+      "Infobox templates",
+      "Royalty and nobility infobox templates",
+      "Politics and government infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox church",
+     "instances": 59,
+     "allTopical": [
+      "Infobox templates",
+      "Christian infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox U.S. state",
+     "instances": 51,
+     "allTopical": [
+      "Infobox templates",
+      "United States subdivision infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox Chinese",
+     "instances": 50,
+     "allTopical": [
+      "Infobox templates",
+      "Language infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox hereditary title",
+     "instances": 50,
+     "allTopical": [
+      "Infobox templates",
+      "People and person infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox football tournament",
+     "instances": 45,
+     "allTopical": [
+      "Infobox templates",
+      "Association football infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox UK place",
+     "instances": 44,
+     "allTopical": [
+      "Infobox templates",
+      "United Kingdom place infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox mountain",
+     "instances": 44,
+     "allTopical": [
+      "Infobox templates",
+      "Place infobox templates",
+      "Geology infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox Italian comune",
+     "instances": 44,
+     "allTopical": [
+      "Infobox templates",
+      "Italy subdivision infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox football biography",
+     "instances": 43,
+     "allTopical": [
+      "Infobox templates",
+      "Sportsperson infobox templates",
+      "Association football infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox drug",
+     "instances": 42,
+     "allTopical": [
+      "Infobox templates",
+      "Medicine infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox urban feature",
+     "instances": 38,
+     "allTopical": [
+      "Infobox templates",
+      "Place infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox venue",
+     "instances": 38,
+     "allTopical": [
+      "Infobox templates",
+      "Music infobox templates",
+      "Sports infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Chembox",
+     "instances": 38,
+     "allTopical": [
+      "Infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox government agency",
+     "instances": 38,
+     "allTopical": [
+      "Infobox templates",
+      "Organization infobox templates",
+      "Politics and government infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox college sports team season",
+     "instances": 37,
+     "allTopical": [
+      "Infobox templates",
+      "American college sports infobox templates",
+      "American college football infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox Australian electorate",
+     "instances": 37,
+     "allTopical": [
+      "Infobox templates",
+      "Australia infobox templates",
+      "Constituency infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox incumbency",
+     "instances": 36,
+     "allTopical": [
+      "Infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox Christian leader",
+     "instances": 29,
+     "allTopical": [
+      "Infobox templates",
+      "Christian infobox templates",
+      "People and person infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox university",
+     "instances": 28,
+     "allTopical": [
+      "Infobox templates",
+      "Organization infobox templates",
+      "Universities and colleges infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox criminal",
+     "instances": 28,
+     "allTopical": [
+      "Infobox templates",
+      "Law infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox recurring event",
+     "instances": 28,
+     "allTopical": [
+      "Infobox templates",
+      "Events infobox templates",
+      "Arts and culture infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox political party",
+     "instances": 27,
+     "allTopical": [
+      "Infobox templates",
+      "Organization infobox templates",
+      "Political party infobox templates"
+     ]
+    },
+    {
+     "name": "Speciesbox",
+     "instances": 27,
+     "allTopical": [
+      "Infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox river",
+     "instances": 27,
+     "allTopical": [
+      "Infobox templates",
+      "Place infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox bridge",
+     "instances": 27,
+     "allTopical": [
+      "Infobox templates",
+      "Transport infobox templates",
+      "Water transport infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox professional wrestling event",
+     "instances": 26,
+     "allTopical": [
+      "Infobox templates",
+      "Professional wrestling infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox historic site",
+     "instances": 25,
+     "allTopical": [
+      "Infobox templates",
+      "Place infobox templates",
+      "History and events infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox firearm cartridge",
+     "instances": 25,
+     "allTopical": [
+      "Infobox templates",
+      "Weapon infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox street",
+     "instances": 24,
+     "allTopical": [
+      "Infobox templates",
+      "Highway infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox comics creator",
+     "instances": 24,
+     "allTopical": [
+      "Infobox templates",
+      "Comic book infobox templates",
+      "People and person infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox quasar",
+     "instances": 23,
+     "allTopical": [
+      "Infobox templates",
+      "Astronomy infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox saint",
+     "instances": 22,
+     "allTopical": [
+      "Infobox templates",
+      "Catholic infobox templates",
+      "Christian infobox templates",
+      "People and person infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox road",
+     "instances": 22,
+     "allTopical": [
+      "Infobox templates",
+      "Highway infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox rail",
+     "instances": 21,
+     "allTopical": [
+      "Infobox templates",
+      "Rail transport infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox brand",
+     "instances": 21,
+     "allTopical": [
+      "Infobox templates",
+      "Business infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox UK legislation",
+     "instances": 20,
+     "allTopical": [
+      "Infobox templates",
+      "Law infobox templates",
+      "United Kingdom government infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox NRHP",
+     "instances": 19,
+     "allTopical": [
+      "Infobox templates",
+      "United States government infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox museum",
+     "instances": 19,
+     "allTopical": [
+      "Infobox templates",
+      "Organization infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox football match",
+     "instances": 17,
+     "allTopical": [
+      "Infobox templates",
+      "Association football infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox enzyme",
+     "instances": 17,
+     "allTopical": [
+      "Infobox templates",
+      "Biology infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox athletics race",
+     "instances": 17,
+     "allTopical": [
+      "Infobox templates",
+      "Sport of athletics infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox laboratory",
+     "instances": 17,
+     "allTopical": [
+      "Infobox templates",
+      "Education infobox templates",
+      "Organization infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox animal breed",
+     "instances": 16,
+     "allTopical": [
+      "Infobox templates",
+      "Animal infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox monument",
+     "instances": 16,
+     "allTopical": [
+      "Infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox legislature",
+     "instances": 16,
+     "allTopical": [
+      "Infobox templates",
+      "Politics and government infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox publisher",
+     "instances": 16,
+     "allTopical": [
+      "Infobox templates",
+      "Publishing infobox templates",
+      "Organization infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox body of water",
+     "instances": 16,
+     "allTopical": [
+      "Infobox templates",
+      "Place infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox MLB",
+     "instances": 15,
+     "allTopical": [
+      "Infobox templates",
+      "Baseball infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox summit meeting",
+     "instances": 14,
+     "allTopical": [
+      "Infobox templates",
+      "Politics and government infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox religious building",
+     "instances": 14,
+     "allTopical": [
+      "Infobox templates",
+      "Religion and belief infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox papal conclave",
+     "instances": 14,
+     "allTopical": [
+      "Infobox templates",
+      "Catholic infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox nutritional value",
+     "instances": 14,
+     "allTopical": [
+      "Infobox templates",
+      "Food infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox open cluster",
+     "instances": 13,
+     "allTopical": [
+      "Infobox templates",
+      "Astronomy infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox protected area",
+     "instances": 13,
+     "allTopical": [
+      "Infobox templates",
+      "Place infobox templates",
+      "IUCN Protected Area infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox cricketer",
+     "instances": 12,
+     "allTopical": [
+      "Infobox templates",
+      "Cricket infobox templates",
+      "Sportsperson infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox former subdivision",
+     "instances": 12,
+     "allTopical": [
+      "Infobox templates",
+      "Country subdivision infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox social media personality",
+     "instances": 12,
+     "allTopical": [
+      "Infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox military installation",
+     "instances": 12,
+     "allTopical": [
+      "Infobox templates",
+      "Military infobox templates",
+      "Buildings and structures infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox weapon",
+     "instances": 12,
+     "allTopical": [
+      "Infobox templates",
+      "Weapon infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox badminton player",
+     "instances": 12,
+     "allTopical": [
+      "Infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox noble",
+     "instances": 12,
+     "allTopical": [
+      "Infobox templates",
+      "People and person infobox templates",
+      "Royalty and nobility infobox templates"
+     ]
+    },
+    {
+     "name": "Infobox military memorial",
+     "instances": 11,
+     "allTopical": [
+      "Infobox templates"
+     ]
+    }
+   ],
+   "instances": 9856
+  },
+  {
+   "category": "(uncategorised)",
+   "members": [
+    {
+     "name": "Infobox tracking categories",
+     "instances": 85,
+     "allTopical": []
+    },
+    {
+     "name": "Infobox Galaxy",
+     "instances": 53,
+     "allTopical": []
+    },
+    {
+     "name": "Infobox prepared food",
+     "instances": 39,
+     "allTopical": []
+    },
+    {
+     "name": "Infobox nobility title",
+     "instances": 38,
+     "allTopical": []
+    },
+    {
+     "name": "Infobox former country",
+     "instances": 37,
+     "allTopical": []
+    },
+    {
+     "name": "Infobox tracking cats",
+     "instances": 35,
+     "allTopical": []
+    },
+    {
+     "name": "Infobox beverage",
+     "instances": 34,
+     "allTopical": []
+    },
+    {
+     "name": "Infobox Australian Electorate",
+     "instances": 33,
+     "allTopical": []
+    },
+    {
+     "name": "Infobox premiership",
+     "instances": 32,
+     "allTopical": []
+    },
+    {
+     "name": "Infobox COA wide",
+     "instances": 29,
+     "allTopical": []
+    },
+    {
+     "name": "Infobox Beverage",
+     "instances": 27,
+     "allTopical": []
+    },
+    {
+     "name": "Infobox Artwork",
+     "instances": 18,
+     "allTopical": []
+    },
+    {
+     "name": "Infobox missing",
+     "instances": 17,
+     "allTopical": []
+    },
+    {
+     "name": "Drugbox",
+     "instances": 11,
+     "allTopical": []
+    }
+   ],
+   "instances": 488
+  },
+  {
+   "category": "Music infobox templates",
+   "members": [
+    {
+     "name": "Infobox musical artist",
+     "instances": 295,
+     "allTopical": [
+      "Music infobox templates",
+      "People and person infobox templates"
+     ]
+    }
+   ],
+   "instances": 295
+  },
+  {
+   "category": "Law infobox templates",
+   "members": [
+    {
+     "name": "Infobox civilian attack",
+     "instances": 126,
+     "allTopical": [
+      "Law infobox templates",
+      "Events infobox templates"
+     ]
+    }
+   ],
+   "instances": 126
+  },
+  {
+   "category": "Election and referendum infobox templates",
+   "members": [
+    {
+     "name": "Infobox election",
+     "instances": 71,
+     "allTopical": [
+      "Election and referendum infobox templates",
+      "Politics and government infobox templates"
+     ]
+    }
+   ],
+   "instances": 71
+  },
+  {
+   "category": "War and conflict infobox templates",
+   "members": [
+    {
+     "name": "Infobox military conflict",
+     "instances": 66,
+     "allTopical": [
+      "War and conflict infobox templates"
+     ]
+    }
+   ],
+   "instances": 66
+  },
+  {
+   "category": "Events infobox templates",
+   "members": [
+    {
+     "name": "Infobox event",
+     "instances": 56,
+     "allTopical": [
+      "Events infobox templates"
+     ]
+    }
+   ],
+   "instances": 56
+  },
+  {
+   "category": "Video game infobox templates",
+   "members": [
+    {
+     "name": "Infobox video game",
+     "instances": 51,
+     "allTopical": [
+      "Video game infobox templates"
+     ]
+    }
+   ],
+   "instances": 51
+  },
+  {
+   "category": "Astronomy infobox templates",
+   "members": [
+    {
+     "name": "Infobox planet",
+     "instances": 50,
+     "allTopical": [
+      "Astronomy infobox templates"
+     ]
+    }
+   ],
+   "instances": 50
+  },
+  {
+   "category": "Rail transport infobox templates",
+   "members": [
+    {
+     "name": "Infobox rail line",
+     "instances": 16,
+     "allTopical": [
+      "Rail transport infobox templates"
+     ]
+    }
+   ],
+   "instances": 16
+  },
+  {
+   "category": "Russia place infobox templates",
+   "members": [
+    {
+     "name": "Infobox Russian inhabited locality",
+     "instances": 15,
+     "allTopical": [
+      "Russia place infobox templates"
+     ]
+    }
+   ],
+   "instances": 15
+  },
+  {
+   "category": "United States government infobox templates",
+   "members": [
+    {
+     "name": "Infobox U.S. Cabinet",
+     "instances": 15,
+     "allTopical": [
+      "United States government infobox templates"
+     ]
+    }
+   ],
+   "instances": 15
+  },
+  {
+   "category": "Society and social science infobox templates",
+   "members": [
+    {
+     "name": "Infobox ethnic group",
+     "instances": 13,
+     "allTopical": [
+      "Society and social science infobox templates"
+     ]
+    }
+   ],
+   "instances": 13
+  },
+  {
+   "category": "Association football infobox templates",
+   "members": [
+    {
+     "name": "Infobox football club season",
+     "instances": 13,
+     "allTopical": [
+      "Association football infobox templates"
+     ]
+    }
+   ],
+   "instances": 13
+  }
+ ]
+}

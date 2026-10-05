@@ -5,34 +5,52 @@
       "source": "Category:Wikipedia articles with an infobox request",
       "fetched": "2026-08-28",
       "queueSize": 601,
-      "staleCount": 57
+      "staleCount": 57,
+      "builtAt": "2026-08-28",
+      "labelAudit": "2026-10-05 (scripts/research/check-fixture-drift.mjs)",
+      "provenance": "Frozen labelled sample: 85/88 of these articles no longer carry {{Infobox requested}}, so this is the backlog as it stood in Aug 2026, not the live one. Labels audited 2026-10-05: 86 stable, 2 corrected (Fountain of Wealth, Sayfo)."
     },
     "cases": 88,
     "limit": null,
     "pipeline": "infobox-recommender POC",
     "twoAxis": true,
-    "earlyStop": false
+    "earlyStop": false,
+    "drift": {
+      "checkedAt": "2026-10-05",
+      "byBucket": {
+        "stable": 87,
+        "unlabelled": 1
+      },
+      "tagCleared": 85
+    },
+    "cacheFingerprint": {
+      "files": 23740,
+      "sha1": "8f532f568301e0f2"
+    }
   },
   "summary": {
     "pass": 50,
-    "fail": 7,
+    "fail": 6,
     "abstain": 31,
-    "excluded": 0,
-    "decisive": 57,
-    "accuracy": 88
+    "excluded": 1,
+    "decisive": 56,
+    "accuracy": 89
   },
   "axes": {
     "whether": {
-      "pass": 33,
+      "pass": 32,
       "fail": 2,
       "abstain": 30,
       "validate": 23,
+      "unlabelled": 1,
       "accuracy": 94
     },
     "template": {
       "exact": 51,
-      "other": 11,
-      "rate": 82
+      "family": 8,
+      "other": 2,
+      "rate": 84,
+      "relatedRate": 97
     }
   },
   "results": [
@@ -48,7 +66,7 @@
       "outcome": "abstain",
       "axes": {
         "whether": "abstain",
-        "template": "other"
+        "template": "family"
       },
       "evidence": {
         "total": 150,
@@ -167,7 +185,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox person": 65,
@@ -334,7 +353,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox landform"
         },
         "distribution": {
           "Infobox urban feature": 8
@@ -410,7 +430,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox landform"
         },
         "distribution": {
           "Infobox urban feature": 8
@@ -486,7 +507,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox landform"
         },
         "distribution": {
           "Infobox urban feature": 8
@@ -570,7 +592,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox settlement": 52,
@@ -715,7 +738,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox settlement": 8
@@ -784,7 +808,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox person": 50,
@@ -866,7 +891,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox organization"
         },
         "distribution": {
           "Infobox company": 6,
@@ -910,7 +936,7 @@
       "outcome": "abstain",
       "axes": {
         "whether": "abstain",
-        "template": "other"
+        "template": "family"
       },
       "evidence": {
         "total": 67,
@@ -1027,7 +1053,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox album"
         },
         "distribution": {
           "Infobox song": 121,
@@ -1071,7 +1098,7 @@
       "outcome": "abstain",
       "axes": {
         "whether": "abstain",
-        "template": "other"
+        "template": "family"
       },
       "evidence": {
         "total": 150,
@@ -1146,8 +1173,8 @@
     {
       "case": {
         "title": "Fountain of Wealth",
-        "expected": "Infobox",
-        "labelSource": "editor-choice (stale tag)"
+        "expected": "Infobox artwork",
+        "labelSource": "editor-choice (stale tag); label corrected 2026-10-05 — the article carries {{Infobox artwork}} and {{Infobox fountain}}, and the latter is a REDIRECT to the former, so Infobox artwork is the canonical primary (the recorded label was the generic {{Infobox}} meta-template, which no run can satisfy)"
       },
       "verdict": "recommend",
       "template": "Infobox building",
@@ -1323,7 +1350,7 @@
       "outcome": "fail",
       "axes": {
         "whether": "pass",
-        "template": "other"
+        "template": "family"
       },
       "evidence": {
         "total": 99,
@@ -1439,7 +1466,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox television": 101,
@@ -1517,7 +1545,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox person": 35,
@@ -1683,7 +1712,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox person"
         },
         "distribution": {
           "Infobox officeholder": 81,
@@ -1765,7 +1795,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox person": 44,
@@ -1809,7 +1840,7 @@
       "outcome": "abstain",
       "axes": {
         "whether": "abstain",
-        "template": "other"
+        "template": "family"
       },
       "evidence": {
         "total": 113,
@@ -1844,7 +1875,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox person"
         },
         "distribution": {
           "Infobox officeholder": 59,
@@ -1923,7 +1955,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox person": 118,
@@ -2003,7 +2036,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox landform"
         },
         "distribution": {
           "Infobox street": 15,
@@ -2084,7 +2118,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox landform"
         },
         "distribution": {
           "Infobox street": 15
@@ -2151,7 +2186,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox landform"
         },
         "distribution": {
           "Infobox street": 15
@@ -2232,7 +2268,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox person": 7,
@@ -2308,7 +2345,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox organization"
         },
         "distribution": {
           "Infobox company": 20,
@@ -2353,7 +2391,7 @@
       "outcome": "fail",
       "axes": {
         "whether": "pass",
-        "template": "other"
+        "template": "family"
       },
       "evidence": {
         "total": 149,
@@ -2388,7 +2426,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox person": 78,
@@ -2470,7 +2509,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox person": 41,
@@ -2552,7 +2592,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox astronomical object"
         },
         "distribution": {
           "Infobox galaxy": 91,
@@ -2629,7 +2670,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox name": 3,
@@ -2788,7 +2830,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox astronomical object"
         },
         "distribution": {
           "Infobox galaxy": 53,
@@ -2866,7 +2909,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox astronomical object"
         },
         "distribution": {
           "Infobox galaxy": 58,
@@ -2946,7 +2990,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox astronomical object"
         },
         "distribution": {
           "Infobox galaxy": 40,
@@ -3026,7 +3071,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox landform"
         },
         "distribution": {
           "Infobox urban feature": 26,
@@ -3070,7 +3116,7 @@
       "outcome": "fail",
       "axes": {
         "whether": "fail",
-        "template": "other"
+        "template": "family"
       },
       "evidence": {
         "total": 139,
@@ -3105,7 +3151,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Taxobox"
         },
         "distribution": {
           "Automatic taxobox": 7,
@@ -3234,7 +3281,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox landform"
         },
         "distribution": {
           "Infobox urban feature": 8,
@@ -3316,7 +3364,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox organization"
         },
         "distribution": {
           "Infobox company": 10,
@@ -3477,7 +3526,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox person"
         },
         "distribution": {
           "Infobox officeholder": 58,
@@ -3638,7 +3688,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox person"
         },
         "distribution": {
           "Infobox officeholder": 2,
@@ -3666,16 +3717,16 @@
     {
       "case": {
         "title": "Sayfo",
-        "expected": "Infobox",
-        "labelSource": "editor-choice (stale tag)"
+        "expected": null,
+        "labelSource": "unlabelled 2026-10-05 — the article transcludes only the generic {{Infobox}} meta-template, which isSupportingInfobox() deliberately never treats as a primary, so no answer can satisfy it (see test/results/fixture-drift.json)"
       },
       "verdict": "recommend",
       "template": "Infobox civilian attack",
       "confidence": "high",
-      "outcome": "fail",
+      "outcome": "excluded",
       "axes": {
-        "whether": "pass",
-        "template": "other"
+        "whether": "unlabelled",
+        "template": null
       },
       "evidence": {
         "total": 117,
@@ -3710,7 +3761,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox military conflict"
         },
         "distribution": {
           "Infobox civilian attack": 73,
@@ -3801,7 +3853,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox person": 17,
@@ -3961,7 +4014,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox person"
         },
         "distribution": {
           "Infobox officeholder": 136,
@@ -4040,7 +4094,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox person": 76,
@@ -4122,7 +4177,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox U.S. legislation": 57,
@@ -4204,7 +4260,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox organization"
         },
         "distribution": {
           "Infobox restaurant": 74,
@@ -4280,7 +4337,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox book": 104,
@@ -4321,7 +4379,7 @@
       "outcome": "abstain",
       "axes": {
         "whether": "abstain",
-        "template": "other"
+        "template": "family"
       },
       "evidence": {
         "total": 30,
@@ -4356,7 +4414,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox organization"
         },
         "distribution": {
           "Infobox publisher": 11,
@@ -4518,7 +4577,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox person": 53,
@@ -4600,7 +4660,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox organization"
         },
         "distribution": {
           "Infobox company": 5,
@@ -4758,7 +4819,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox election": 30,
@@ -4849,7 +4911,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox election": 30,
@@ -5017,7 +5080,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox building"
         },
         "distribution": {
           "Infobox church": 23,
@@ -5354,7 +5418,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox person"
         },
         "distribution": {
           "Infobox officeholder": 120,
@@ -5436,7 +5501,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox person"
         },
         "distribution": {
           "Infobox officeholder": 74,
@@ -5518,7 +5584,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox settlement"
         },
         "distribution": {
           "Infobox U.S. state": 47,
@@ -5609,7 +5676,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox settlement"
         },
         "distribution": {
           "Infobox U.S. state": 47,
@@ -5700,7 +5768,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox food": 48,
@@ -5779,7 +5848,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox food": 94,
@@ -5870,7 +5940,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox person"
         },
         "distribution": {
           "Infobox musical artist": 40,
@@ -5951,7 +6022,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox landform"
         },
         "distribution": {
           "Infobox mountain": 33,
@@ -6033,7 +6105,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox landform"
         },
         "distribution": {
           "Infobox river": 22,
@@ -6114,7 +6187,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox astronomical object"
         },
         "distribution": {
           "Infobox planet": 38,
@@ -6295,7 +6369,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox food"
         },
         "distribution": {
           "Infobox drink": 68,
@@ -6386,7 +6461,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox television"
         },
         "distribution": {
           "Infobox television episode": 92,
@@ -6462,7 +6538,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Taxobox"
         },
         "distribution": {
           "Automatic taxobox": 51,
@@ -6543,7 +6620,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox country": 141,
@@ -6620,7 +6698,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox settlement": 103,
@@ -6786,7 +6865,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox television"
         },
         "distribution": {
           "Infobox film": 72,
@@ -6859,7 +6939,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox video game": 39
@@ -6930,7 +7011,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox artwork": 98,
@@ -7105,7 +7187,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": null
         },
         "distribution": {
           "Infobox country": 136,
@@ -7273,7 +7356,8 @@
             }
           ],
           "basis": "whole-pool",
-          "tier": null
+          "tier": null,
+          "base": "Infobox organization"
         },
         "distribution": {
           "Infobox university": 9,

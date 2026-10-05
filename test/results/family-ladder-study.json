@@ -1,0 +1,111 @@
+{
+ "generatedAt": "2026-10-05",
+ "corpus": "test/fixtures.json (88 cases; 1 unlabelled, 23 validate)",
+ "model": "two-axis default + specificity ladder (lib/families.js)",
+ "templateAxis": {
+  "exact": 51,
+  "family": 8,
+  "other": 2,
+  "rate": 84,
+  "relatedRate": 97
+ },
+ "whetherAxis": {
+  "pass": 32,
+  "fail": 2,
+  "abstain": 30,
+  "validate": 23,
+  "unlabelled": 1,
+  "accuracy": 94
+ },
+ "before": {
+  "note": "measured immediately before the ladder (same corpus, same two-axis model)",
+  "exact": 51,
+  "total": 61,
+  "rate": 84,
+  "unrelated": 11
+ },
+ "after": {
+  "note": "after the ladder: the same 51 exact, 8 reclassified as same-family, 2 still unrelated",
+  "exact": 51,
+  "family": 8,
+  "other": 2,
+  "rate": 84,
+  "relatedRate": 97
+ },
+ "resolvedAsSameFamily": [
+  {
+   "title": "Brooke Hodge",
+   "expected": "Infobox person",
+   "offered": "Infobox artist",
+   "basis": "tightest-tier"
+  },
+  {
+   "title": "Convictolitavis",
+   "expected": "Infobox officeholder",
+   "offered": "Infobox military person",
+   "basis": "tightest-tier"
+  },
+  {
+   "title": "Felix Greissle",
+   "expected": "Infobox musical artist",
+   "offered": "Infobox person",
+   "basis": "tightest-tier"
+  },
+  {
+   "title": "Guy Markizano",
+   "expected": "Infobox person",
+   "offered": "Infobox musical artist",
+   "basis": "whole-pool"
+  },
+  {
+   "title": "Jos\u00e9 Ignacio Ustar\u00e1n",
+   "expected": "Infobox person",
+   "offered": "Infobox officeholder",
+   "basis": "whole-pool"
+  },
+  {
+   "title": "Mercy Faith Lakisa",
+   "expected": "Infobox officeholder",
+   "offered": "Infobox person",
+   "basis": "whole-pool"
+  },
+  {
+   "title": "Piscichnus",
+   "expected": "Infobox fossil",
+   "offered": "Automatic taxobox",
+   "basis": "whole-pool"
+  },
+  {
+   "title": "Strengholt Holding",
+   "expected": "Infobox company",
+   "offered": "Infobox publisher",
+   "basis": "whole-pool"
+  }
+ ],
+ "stillUnrelated": [
+  {
+   "title": "Fountain of Wealth",
+   "expected": "Infobox artwork",
+   "offered": "Infobox building",
+   "verdict": "recommend"
+  },
+  {
+   "title": "Noronha",
+   "expected": "Infobox family",
+   "offered": null,
+   "verdict": "none-warranted"
+  }
+ ],
+ "engineFixFoundByThisWork": {
+  "what": "INFOBOX() did not recognise box-style templates (Speciesbox, Subspeciesbox, Infraspeciesbox, Hybridbox, Virusbox)",
+  "impact": "pages whose infobox was one of those counted as BARE, inflating coverage-down verdicts for virus/subspecies articles",
+  "fix": "extended the explicit list in lib/census.js, cross-checked against the Lead Balancer userscript INFOBOX_LIKE regex",
+  "verdictImpact": "one corpus case moved (pass\u2192abstain on the whether axis); failures 7\u21926"
+ },
+ "familyMap": {
+  "families": 17,
+  "templates": 120,
+  "withBase": 16,
+  "note": "hand-curated, bounded by the peer-frequency table (top 100 templates ~90% of instances); every base verified to exist"
+ }
+}

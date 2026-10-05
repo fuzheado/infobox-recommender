@@ -14,6 +14,7 @@
 import { readFileSync, mkdirSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { createApi } from '../lib/api.js';
+import { sameFamily } from '../lib/families.js';
 import { analyze } from '../lib/analyze.js';
 
 const fixtures = JSON.parse(
@@ -71,7 +72,13 @@ function twoAxisScore(r, expected) {
   if (r.verdict === 'recommend') whether = shouldHave ? 'pass' : 'fail';
   else if (r.verdict === 'none-warranted') whether = shouldHave ? 'fail' : 'pass';
   const offered = r.template ?? r.evidence?.templateAdvice?.template ?? null;
-  const template = shouldHave && offered ? (offered === exp ? 'exact' : 'other') : null;
+  // Three outcomes now, because a family match is not the same as a miss: the
+  // specificity ladder (lib/families.js) means {{Infobox officeholder}} where an
+  // editor chose {{Infobox person}} is a defensible choice, not a wrong template.
+  let template = null;
+  if (shouldHave && offered) {
+    template = offered === exp ? 'exact' : sameFamily(offered, exp) ? 'family' : 'other';
+  }
   return { whether, template };
 }
 
@@ -162,27 +169,33 @@ console.log(
 );
 {
   const w = { pass: 0, fail: 0, abstain: 0 };
-  const t = { exact: 0, other: 0 };
+  const t = { exact: 0, family: 0, other: 0 };
   for (const r of rows) {
     const a = r.axes ?? {};
     if (a.whether === 'pass') w.pass++;
     else if (a.whether === 'fail') w.fail++;
     else if (a.whether !== 'validate') w.abstain++;
     if (a.template === 'exact') t.exact++;
+    else if (a.template === 'family') t.family++;
     else if (a.template === 'other') t.other++;
   }
   const wd = w.pass + w.fail;
-  const tt = t.exact + t.other;
+  const tt = t.exact + t.family + t.other;
   console.log(
     `  whether (coverage axis): ${w.pass} pass / ${w.fail} fail / ${w.abstain} abstain — ` +
       `${wd ? Math.round((100 * w.pass) / wd) : 'n/a'}% of decisive`
   );
   console.log(
-    `  template (dominance axis): ${t.exact}/${tt} exact — ${tt ? Math.round((100 * t.exact) / tt) : 'n/a'}% ` +
-      `(of cases where a template is offered and the label names one)`
+    `  template axis: ${t.exact}/${tt} exact (${tt ? Math.round((100 * t.exact) / tt) : 'n/a'}%), ` +
+      `+${t.family} same-family (${tt ? Math.round((100 * (t.exact + t.family)) / tt) : 'n/a'}% related), ` +
+      `${t.other} unrelated`
   );
-  if (axes.whether.unlabelled) {
-    console.log(`  (${axes.whether.unlabelled} unlabelled case excluded — no answer can satisfy its label)`);
+  const unlabelled = rows.filter((r) => (r.axes ?? {}).whether === 'unlabelled').length;
+  if (unlabelled) {
+    // NB: computed locally — this block runs before `axes` is declared below, and
+    // referring to it here threw a ReferenceError that killed the run *after* the
+    // summary printed, so the JSON was silently never written (2026-10-05).
+    console.log(`  (${unlabelled} unlabelled case excluded — no answer can satisfy its label)`);
   }
 }
 
@@ -247,7 +260,7 @@ const stamp = new Date().toISOString().slice(0, 10);
 // failure when no single template dominates. These two lines separate the axes.
 const axes = {
   whether: { pass: 0, fail: 0, abstain: 0, validate: 0, unlabelled: 0, accuracy: null },
-  template: { exact: 0, other: 0, rate: null },
+  template: { exact: 0, family: 0, other: 0, rate: null, relatedRate: null },
 };
 for (const r of rows) {
   const a = r.axes ?? {};
@@ -257,12 +270,16 @@ for (const r of rows) {
   else if (a.whether === 'unlabelled') axes.whether.unlabelled++;
   else axes.whether.abstain++;
   if (a.template === 'exact') axes.template.exact++;
+  else if (a.template === 'family') axes.template.family++;
   else if (a.template === 'other') axes.template.other++;
 }
 const wDecisive = axes.whether.pass + axes.whether.fail;
 axes.whether.accuracy = wDecisive ? Math.round((100 * axes.whether.pass) / wDecisive) : null;
-const tTotal = axes.template.exact + axes.template.other;
+const tTotal = axes.template.exact + axes.template.family + axes.template.other;
 axes.template.rate = tTotal ? Math.round((100 * axes.template.exact) / tTotal) : null;
+axes.template.relatedRate = tTotal
+  ? Math.round((100 * (axes.template.exact + axes.template.family)) / tTotal)
+  : null;
 
 const envFlag = (name, fallback) => {
   const raw = process.env[name];
@@ -296,8 +313,9 @@ const md = [
   `Summary: **${stats.pass} pass / ${stats.fail} fail / ${stats.abstain} abstain** — accuracy on decisive verdicts: **${accuracy}%** (${stats.pass}/${decisive})`,
   '',
   `Two axes — **whether**: ${axes.whether.pass} pass / ${axes.whether.fail} fail / ${axes.whether.abstain} abstain ` +
-    `(${axes.whether.accuracy}% on decisive, ${axes.whether.validate} validate cases excluded) · ` +
-    `**template**: ${axes.template.exact}/${tTotal} exact (${axes.template.rate}%)`,
+    `(${axes.whether.accuracy}% on decisive, ${axes.whether.validate} validate + ${axes.whether.unlabelled} unlabelled excluded) · ` +
+    `**template**: ${axes.template.exact} exact + ${axes.template.family} same-family of ${tTotal} ` +
+    `(${axes.template.rate}% exact, ${axes.template.relatedRate}% related)`,
   '',
   '| outcome | title | expected | verdict | confidence |',
   '|---|---|---|---|---|',

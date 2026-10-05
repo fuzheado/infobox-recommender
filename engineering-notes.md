@@ -150,6 +150,17 @@ per-value queries return clean sets (all presidents, not a mix of
 Lincoln's five positions) and the URL — and thus the disk cache — is shared
 by every item with that value (one POTUS query for all 46 presidents).
 
+### 1.13a Box-style templates do not start with "Infobox"
+
+`{{Speciesbox}}`, `{{Subspeciesbox}}`, `{{Infraspeciesbox}}`, `{{Hybridbox}}` and
+`{{Virusbox}}` are infoboxes whose names never contain the string "Infobox", so a
+naive `name.startsWith('Infobox')` filter counts a page using one as **bare** —
+which inflates "no infobox customary" verdicts for virus and subspecies articles.
+`INFOBOX()` in `lib/census.js` therefore carries an explicit list; it is
+cross-checked against the Lead Balancer userscript's own `INFOBOX_LIKE` regex
+(an independent, editor-maintained statement of the same set) and should be
+extended whenever a new box-style template family appears (2026-10-05).
+
 ### 1.13 `rvlimit` cannot be combined with multiple titles
 
 `prop=revisions&rvlimit=1&titles=A|B|C` is an error, not a shortcut:

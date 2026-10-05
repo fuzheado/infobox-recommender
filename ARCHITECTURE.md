@@ -60,6 +60,48 @@ Flat logic first:
   ≤ 15% — or structural cases (thin pool + very low coverage).
 - **weak-signal** in the ambiguous middle band (the designed honest answer).
 
+#### Specificity ladder (`lib/families.js`) — the template axis's vocabulary
+
+Exact template names split in ways that are not disagreements: peers using
+{{Infobox officeholder}} while an editor chose {{Infobox person}} agree about the
+*kind* of box, and the four legacy eval failures were all of that shape
+(officeholder/person ×2, publisher/company, taxobox/fossil). The ladder groups
+templates into families with a **member** (what editors in a genre actually use)
+and a **base** (the general option):
+
+- **Curation, not recall:** 17 families / ~130 templates, bounded by the
+  peer-frequency table (`scripts/research/build-family-map.mjs` counts how often
+  each template appears in peer pages — the top 100 cover ≈90% of instances) and by
+  every `base` being verified to exist. The Wikipedia category tree is *not* a
+  source: 94 of the top 120 templates sit in the catch-all `Category:Infobox
+  templates`.
+- **Advice policy (approved 2026-10-05): name the member, state the base** — e.g.
+  *"the biographical family covers 78% of boxed peers — most used
+  {{Infobox officeholder}}, general option {{Infobox person}}"*. When one template
+  dominates outright the general option is still stated, so the reader can choose
+  either.
+- **Precedence:** exact dominance (≥ half of boxed peers) → family dominance
+  (≥ half, pooled) → tightest coherent tier → whole-pool plurality. Families never
+  change the verdict; they change which template is named and how the metric
+  scores it.
+- **The eval scores three outcomes** for the template axis: `exact`, `family`
+  (same family, different member — a defensible specificity choice, not a miss),
+  and `other`.
+
+Measured 2026-10-05 (`test/results/family-ladder-study.json`): the template axis
+went from **51/61 exact with 11 unrelated** to **51 exact + 8 same-family = 97%
+related, 2 unrelated** — verdicts unchanged (whether axis 32/2/30, 94%), which is
+the point: this buys vocabulary, not new claims. The 2 remaining are honest
+disagreements (artwork vs building), plus one `none-warranted` case where no
+template is offered at all.
+
+The same work surfaced a **coverage bug**: `INFOBOX()` did not recognise box-style
+templates (`Speciesbox`, `Subspeciesbox`, `Infraspeciesbox`, `Hybridbox`,
+`Virusbox`), so a peer page using one counted as *bare* — inflating
+"no infobox customary" for virus and subspecies articles. Fixed in
+`lib/census.js`, cross-checked against the Lead Balancer userscript's own
+`INFOBOX_LIKE` list.
+
 Then a **tiered rescue** for abstentions: a tight circle (≥ 80% coverage,
 ≥ 70% dominance) confirmed by the wider pool can still recommend.
 Every verdict ships its evidence + tier strata.

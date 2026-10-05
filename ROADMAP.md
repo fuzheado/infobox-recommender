@@ -42,7 +42,18 @@ Two tracks, run in parallel:
 
 ## Tier 1 — do next (highest leverage)
 
-### 1. Template specificity ladder (Track A · effort: small · fixes 2/6 fails)
+### 1. Template specificity ladder — **implemented 2026-10-05** (`lib/families.js`)
+
+> **Done:** 17 families / 120 templates (hand-curated, bounded by the
+> peer-frequency table; every base verified to exist). Advice policy: name the
+> member, state the base. Eval scores `exact` / `same-family` / `other`. Measured:
+> template axis **51/61 exact with 11 unrelated → 51 exact + 8 same-family = 97%
+> related**, verdicts unchanged (`test/results/family-ladder-study.json`). The work
+> also fixed a coverage bug: box-style templates (Speciesbox, Virusbox,
+> Subspeciesbox…) were not recognised, so those peers counted as bare.
+> What is left of this item is the *template-category* half — deriving families
+> automatically instead of by hand — which only matters if the map needs to grow
+> beyond the templates that actually appear in peer sets.
 
 Pick the *most specific* template via a template ⊂ template map
 (publisher ⊂ company, officeholder ⊂ person, astronaut ⊂ person). Seeds

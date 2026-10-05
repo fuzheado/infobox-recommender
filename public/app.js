@@ -236,7 +236,19 @@ function templateAdviceNote(ev) {
   if (!a || !a.template) return '';
   const pct = (x) => Math.round((x ?? 0) * 100);
   if (a.status === 'dominant') {
-    return `<p class="muted small">Template: <strong>${tplLink(a.template)}</strong> — ${a.count}/${a.boxed} boxed peers (${pct(a.share)}%).</p>`;
+    return (
+      `<p class="muted small">Template: <strong>${tplLink(a.template)}</strong> — ${a.count}/${a.boxed} boxed peers (${pct(a.share)}%)` +
+      `${a.base ? `; general option ${tplLink(a.base)}` : ''}.</p>`
+    );
+  }
+  // Family-level advice (lib/families.js): exact templates split, but one KIND of
+  // box dominates. Name the most-used member, state the family's general option.
+  if (a.family) {
+    return (
+      `<p class="muted small">Template: no dominant one — the ${esc(a.family.label)} family covers ` +
+      `${pct(a.family.share)}% of boxed peers: most used <strong>${tplLink(a.template)}</strong>` +
+      `${a.family.base ? `, general option ${tplLink(a.family.base)}` : ''} · distribution below.</p>`
+    );
   }
   const where = a.basis === 'tightest-tier' ? 'closest peers' : 'pool';
   const also =
