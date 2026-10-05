@@ -148,6 +148,7 @@ selection rules, dual-runtime design, and the web service — is in
 | `test/EVALUATION.md` | Evaluation — corpus construction, scoring, per-case results, failure analysis |
 | `status-quo.md` | The documented need — how editors add infoboxes today, friction, prior art, market assessment |
 | `usage-history.md` | Early usage & adoption record — the first 70 analyses (Aug–Oct 2026), how the traffic arrived, and what happened next |
+| `outreach.md` | Where to announce the tool — venue research with live activity checks, etiquette per venue, and draft text |
 | `ROADMAP.md` | What's next, prioritized, with effort estimates and eval targets |
 | `PRIVACY.md` | What usage data is collected, what is never collected, and retention |
 | `HANDOFF.md` | Status, quick start, deployment recipe, open threads |

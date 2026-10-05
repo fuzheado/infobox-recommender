@@ -238,12 +238,14 @@ WikiProject Infoboxes.
 ## Tier 3 — visibility & polish
 
 10. ~~**Repo public**~~ (**done 2026-08-28**) **+ Diff post + WikiProject
-    outreach** — a Diff writeup fits the project's research lineage; the
-    WikiProject Infoboxes /assistance page exists for exactly this.
+    outreach** — a Diff writeup fits the project's research lineage. Venue
+    research with live activity checks is in **[`outreach.md`](outreach.md)**;
+    the highest-leverage item is not a post at all, it is the item below.
 11. **Microtask Generator integration** — their "add an infobox" task ends
     at "find similar articles to copy template structure"; a link to
     `/?title=X` is the natural handoff (their Diff post invites
-    collaboration).
+    collaboration). Contact path and the two relevant Phabricator tasks
+    (T360489, T362579) are in [`outreach.md`](outreach.md).
 12. **UI polish** — analysis-freshness note ("cached as of …"),
     dark theme, confidence tooltips ("why medium?"), keyboard shortcut for
     the search box.

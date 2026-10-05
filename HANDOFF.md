@@ -85,6 +85,7 @@ template data into `cache/templates/`).
 | How does the pipeline work, and why these rules? | [`ARCHITECTURE.md`](ARCHITECTURE.md) |
 | Is this tool actually needed? What do editors do today? | [`status-quo.md`](status-quo.md) |
 | What did real usage look like, and did anyone act on it? | [`usage-history.md`](usage-history.md) (+ `.json`) |
+| Where do I tell people this exists? | [`outreach.md`](outreach.md) |
 | What should I build next? | [`ROADMAP.md`](ROADMAP.md) |
 | What does the engine get wrong? | [`test/EVALUATION.md`](test/EVALUATION.md) |
 | What data is logged, and for how long? | [`PRIVACY.md`](PRIVACY.md) |

@@ -150,6 +150,23 @@ per-value queries return clean sets (all presidents, not a mix of
 Lincoln's five positions) and the URL — and thus the disk cache — is shared
 by every item with that value (one POTUS query for all 46 presidents).
 
+### 1.13 `rvlimit` cannot be combined with multiple titles
+
+`prop=revisions&rvlimit=1&titles=A|B|C` is an error, not a shortcut:
+
+```
+invalidparammix: "titles", "pageids" or a generator was used to supply multiple
+pages, but the "rvlimit", "rvstartid", "rvendid", "rvdir", "rvuser",
+"rvexcludeuser", "rvstart", and "rvend" parameters may only be used on a single page.
+```
+
+With several titles the API **already** returns exactly one revision per page, so
+**omit `rvlimit`** and batch as many titles as you like — that is the correct way to
+get "last edited" for a list of pages in one request (used for the venue-activity
+checks behind `outreach.md`). `rvlimit=1` plus a per-title loop also "works", at N
+requests instead of one; it cost two failed calls on 2026-10-05 before the error text
+was read properly (`engineering-notes.md` §2 exists because of this habit).
+
 ## 2. Methodology lessons
 
 ### 2.1 Cache staleness on a live corpus masquerades as regressions
