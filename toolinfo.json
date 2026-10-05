@@ -1,0 +1,55 @@
+{
+    "$schema": "/toolinfo/1.2.2",
+    "name": "infobox-recommender",
+    "title": "Infobox Recommender",
+    "subtitle": "Peer-census evidence for whether an article should have an infobox — and which template",
+    "description": "For an English Wikipedia article that has no infobox, infobox-recommender discovers the article's peers (Wikidata P31 class siblings, same-type pointers such as position held, part of the series, part of and preceded/succeeded by, and the article's most specific categories), censuses which infoboxes those peers actually use, and reports the recommended template together with its evidence: peer count, coverage, the template distribution, neighbourhood tiers and example peers. It abstains when the evidence is mixed, and it never edits articles. Evaluated on an 88-case labelled corpus: 57 pass, 6 near-miss or defensible disagreements, 25 abstentions — 90% accuracy on decisive verdicts.",
+    "url": "https://infobox-recommender.toolforge.org",
+    "keywords": "wikipedia, infobox, templates, wikidata, consensus, peer comparison, citation needed",
+    "author": [
+        {
+            "name": "Andrew Lih",
+            "wiki_username": "Fuzheado",
+            "developer_username": "alih"
+        }
+    ],
+    "repository": "https://github.com/fuzheado/infobox-recommender",
+    "license": "MIT",
+    "tool_type": "web app",
+    "for_wikis": [
+        "en.wikipedia.org"
+    ],
+    "available_ui_languages": [
+        "en"
+    ],
+    "technology_used": [
+        "Node.js"
+    ],
+    "api_url": "https://infobox-recommender.toolforge.org/analyze?title=Abraham+Lincoln&output=json",
+    "user_docs_url": [
+        {
+            "url": "https://github.com/fuzheado/infobox-recommender/blob/main/README.md",
+            "language": "en"
+        }
+    ],
+    "developer_docs_url": [
+        {
+            "url": "https://github.com/fuzheado/infobox-recommender/blob/main/ARCHITECTURE.md",
+            "language": "en"
+        }
+    ],
+    "privacy_policy_url": [
+        {
+            "url": "https://github.com/fuzheado/infobox-recommender/blob/main/PRIVACY.md",
+            "language": "en"
+        }
+    ],
+    "feedback_url": [
+        {
+            "url": "https://github.com/fuzheado/infobox-recommender/issues",
+            "language": "en"
+        }
+    ],
+    "bugtracker_url": "https://github.com/fuzheado/infobox-recommender/issues",
+    "experimental": false
+}

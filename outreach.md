@@ -40,10 +40,13 @@ whole job of this tool, and it is the honest way to describe it anywhere below.
      [toolsadmin](https://toolsadmin.wikimedia.org) — Toolhub (and Hay's
      Directory) import Toolforge toolinfo records automatically.
    - **Or register a `toolinfo.json` with the crawler:**
-     <https://toolhub.wikimedia.org/add-or-remove-tools?tab=urls>. Commit the
-     file to this repo (repo root, as CitationHunt and Adiutor do) so volunteers
-     can PR corrections, and register its raw URL; the crawler re-checks about
-     hourly.
+     <https://toolhub.wikimedia.org/add-or-remove-tools?tab=urls>. The file is
+     drafted at [`toolinfo.json`](toolinfo.json) in this repo (validated against
+     the toolinfo **1.2.2** schema — five deliberate errors were rejected by the
+     same validator, so the check discriminates); register the raw URL
+     `https://raw.githubusercontent.com/fuzheado/infobox-recommender/main/toolinfo.json`
+     and the crawler re-checks it about hourly. Keeping it in the repo (as
+     CitationHunt and Adiutor do) is what lets volunteers PR corrections.
    - **Or create the record in the UI:**
      <https://toolhub.wikimedia.org/add-or-remove-tools?tab=tool-create>, or
      `POST /api/tools/` with an OAuth token.
