@@ -1,0 +1,909 @@
+{
+ "generatedAt": "2026-10-05T10:11:45.776Z",
+ "fixtures": 88,
+ "byBucket": {
+  "stable": 86,
+  "label-invalid": 2
+ },
+ "tagCleared": 85,
+ "labelInvalid": [
+  {
+   "title": "Fountain of Wealth",
+   "expected": "Infobox",
+   "articleNow": "Infobox artwork"
+  },
+  {
+   "title": "Sayfo",
+   "expected": "Infobox",
+   "articleNow": "Infobox"
+  }
+ ],
+ "rows": [
+  {
+   "title": "Brooke Hodge",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Brad Gilmore",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Campo San Barnaba",
+   "expected": "Infobox urban feature",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox urban feature",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Campo della Salute",
+   "expected": "Infobox urban feature",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox urban feature",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Campo del Ghetto Novo",
+   "expected": "Infobox urban feature",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox urban feature",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Campo Santo Stefano",
+   "expected": "Infobox urban feature",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox urban feature",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Casco (town), Wisconsin",
+   "expected": "Infobox settlement",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox settlement",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Cashew Research Station, Madakkathara",
+   "expected": "Infobox laboratory",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox laboratory",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Chilton (town), Wisconsin",
+   "expected": "Infobox settlement",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox settlement",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Christopher Edwards (businessman)",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "ClueQuest",
+   "expected": "Infobox company",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox company",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Convictolitavis",
+   "expected": "Infobox officeholder",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox officeholder",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Cowboys Are Frequently, Secretly Fond of Each Other",
+   "expected": "Infobox song",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox song",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Felix Greissle",
+   "expected": "Infobox musical artist",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox musical artist",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Fountain of Wealth",
+   "expected": "Infobox",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox artwork",
+   "tags": [],
+   "bucket": "label-invalid",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Ferdinand P. Earle",
+   "expected": "Infobox military person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox military person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Guy Markizano",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "In the Making (TV series)",
+   "expected": "Infobox television",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox television",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Izabella Pawelczynska",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Jeremiah Clarke",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Jesús González Ortega",
+   "expected": "Infobox officeholder",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox officeholder",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "John Darrenkamp",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "José Ignacio Ustarán",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Levi David Addai",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Lungotevere di Pietra Papa",
+   "expected": "Infobox street",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox street",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Lungotevere Prati",
+   "expected": "Infobox street",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox street",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Lungotevere Gianicolense",
+   "expected": "Infobox street",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox street",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Maani Petgar",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Melbourne, Mount Alexander and Murray River Railway Company",
+   "expected": "Infobox company",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox company",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Mercy Faith Lakisa",
+   "expected": "Infobox officeholder",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox officeholder",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Miko Kongstad",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "NGC 5475",
+   "expected": "Infobox galaxy",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox galaxy",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Noronha",
+   "expected": "Infobox family",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox family",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "NGC 5642",
+   "expected": "Infobox galaxy",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox galaxy",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "NGC 7706",
+   "expected": "Infobox galaxy",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox galaxy",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "NGC 7311",
+   "expected": "Infobox galaxy",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox galaxy",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Piazza dell'Esquilino",
+   "expected": "Infobox urban feature",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox urban feature",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Piscichnus",
+   "expected": "Infobox fossil",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox fossil",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Piazzale Roma",
+   "expected": "Infobox urban feature",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox urban feature",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Playadito",
+   "expected": "Infobox company",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox company",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Robert N. Charrette",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Roberta Gropper",
+   "expected": "Infobox officeholder",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox officeholder",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "RuPaul's Drag Race: Corona Can't Keep a Good Queen Down",
+   "expected": "Infobox television",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox television",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Sabrina Dallafior",
+   "expected": "Infobox officeholder",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox officeholder",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Sayfo",
+   "expected": "Infobox",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox",
+   "tags": [
+    "Infobox requested"
+   ],
+   "bucket": "label-invalid",
+   "tagNote": null
+  },
+  {
+   "title": "Serena Morena",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Shari McMahan",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Shigeru Yoshida",
+   "expected": "Infobox officeholder",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox officeholder",
+   "tags": [
+    "Infobox requested"
+   ],
+   "bucket": "stable",
+   "tagNote": null
+  },
+  {
+   "title": "Simon de Waal",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Small Business Liability Relief and Brownfields Revitalization Act",
+   "expected": "Infobox U.S. legislation",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox U.S. legislation",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Solly's Grille",
+   "expected": "Infobox restaurant",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox restaurant",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Strait Is the Gate",
+   "expected": "Infobox book",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox book",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Strengholt Holding",
+   "expected": "Infobox company",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox company",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Sushirrito",
+   "expected": "Infobox restaurant",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox restaurant",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Svend Foyn",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Trans-Ocean News Service",
+   "expected": "Infobox company",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox company",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Tony Greenstein",
+   "expected": "Infobox person",
+   "labelSource": "editor-choice (stale tag)",
+   "labelKind": "observed",
+   "primary": "Infobox person",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "1346 imperial election",
+   "expected": "Infobox election",
+   "labelSource": "doc-demo (26/26 peers boxed)",
+   "labelKind": "expected",
+   "primary": "Infobox election",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "May 1400 imperial election",
+   "expected": "Infobox election",
+   "labelSource": "doc-demo (orphaned sibling)",
+   "labelKind": "expected",
+   "primary": "Infobox election",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Golden Bull of 1356",
+   "expected": "Infobox document",
+   "labelSource": "doc-demo (specialized neighbor)",
+   "labelKind": "expected",
+   "primary": "Infobox document",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Frankfurt Cathedral",
+   "expected": "Infobox church",
+   "labelSource": "doc-demo (specialized neighbor)",
+   "labelKind": "expected",
+   "primary": "Infobox church",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Prince-elector",
+   "expected": "none",
+   "labelSource": "doc-demo (institution, 0/7 boxed)",
+   "labelKind": "expected",
+   "primary": null,
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Declaration of Rhense",
+   "expected": "none",
+   "labelSource": "doc-demo (institution, 0/7 boxed)",
+   "labelKind": "expected",
+   "primary": null,
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Coronation of the Holy Roman Emperor",
+   "expected": "none",
+   "labelSource": "doc-demo (institution, 0/7 boxed)",
+   "labelKind": "expected",
+   "primary": null,
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Abraham Lincoln",
+   "expected": "consistent:Infobox officeholder",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox officeholder",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "George Washington",
+   "expected": "consistent:Infobox officeholder",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox officeholder",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Wyoming",
+   "expected": "consistent:Infobox U.S. state",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox U.S. state",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "California",
+   "expected": "consistent:Infobox U.S. state",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox U.S. state",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Hot dog",
+   "expected": "consistent:Infobox food",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox food",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Hamburger",
+   "expected": "consistent:Infobox food",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox food",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "The Beatles",
+   "expected": "consistent:Infobox musical artist",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox musical artist",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Mount Everest",
+   "expected": "consistent:Infobox mountain",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox mountain",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Nile",
+   "expected": "consistent:Infobox river",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox river",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Venus",
+   "expected": "consistent:Infobox planet",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox planet",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Oxygen",
+   "expected": "consistent:Infobox element",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox element",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Coca-Cola",
+   "expected": "consistent:Infobox drink",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox drink",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "The Naked Now",
+   "expected": "consistent:Infobox television episode",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox television episode",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Tyrannosaurus",
+   "expected": "consistent:Automatic taxobox",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Automatic taxobox",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "France",
+   "expected": "consistent:Infobox country",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox country",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "New York City",
+   "expected": "consistent:Infobox settlement",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox settlement",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "New York Yankees",
+   "expected": "consistent:Infobox MLB",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox MLB",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Star Wars (film)",
+   "expected": "consistent:Infobox film",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox film",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Minecraft",
+   "expected": "consistent:Infobox video game",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox video game",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Mona Lisa",
+   "expected": "consistent:Infobox artwork",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox artwork",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Oxford",
+   "expected": "consistent:Infobox settlement",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox settlement",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "United States",
+   "expected": "consistent:Infobox country",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox country",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "FIFA World Cup",
+   "expected": "consistent:Infobox football tournament",
+   "labelSource": "canonical-validate (user-proposed ground truth)",
+   "labelKind": "expected",
+   "primary": "Infobox football tournament",
+   "tags": [],
+   "bucket": "stable",
+   "tagNote": "tag-cleared"
+  },
+  {
+   "title": "Icelandic College of Art and Crafts",
+   "expected": "Infobox university",
+   "labelSource": "manual-2026-08-28 (peer census 9/10 Infobox university; subsidiary rankings-box regression case)",
+   "labelKind": "expected",
+   "primary": null,
+   "tags": [
+    "Infobox requested"
+   ],
+   "bucket": "stable",
+   "tagNote": null
+  }
+ ]
+}
