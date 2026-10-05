@@ -12,7 +12,7 @@ argument and the Microtask Generator recommendation).
 ## The pitch, in one line
 
 The community has asked for this **three times** — the
-[2017 wishlist "Infobox wizard"](https://meta.wikimedia.org/wiki/2017_Community_Wishlist_Survey/Miscellaneous/Infobox_wizard)
+[2017 wishlist "Infobox wizard"](https://meta.wikimedia.org/wiki/2017_Community_Wishlist_Survey/Editing/Infobox_wizard)
 (#5, 106 votes), [2023 "Quickly add infobox"](https://meta.wikimedia.org/wiki/Community_Wishlist_Survey_2023/Editing/Quickly_add_infobox),
 and the current [Community Wishlist **W3** "Quickly Add Infobox"](https://meta.wikimedia.org/wiki/Community_Wishlist/W3)
 (closed `status=done`) — and **what shipped each time was insertion**: templates
