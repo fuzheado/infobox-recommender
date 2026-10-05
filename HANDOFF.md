@@ -97,11 +97,13 @@ template data into `cache/templates/`).
 1. **Resolve** the article (redirects, QID, own templates, REST summary for the
    digest). Already has an infobox → "already-has-infobox", or `validate` to
    compare its choice against peer practice.
-2. **Discover peers** — five signals, each a *tier group* ranked tightest first:
-   P31 siblings (classes >500 instances dropped as too heterogeneous);
-   same-type pointers (per-VALUE queries, capped at 60); categories ranked by
-   member count (`categoryinfo`, smallest non-trivial = sharpest genre pointer,
-   intersections/maintenance excluded); WikiProject banners (informational).
+2. **Discover peers** — three peer sources, each a *tier group* ranked tightest
+   first: P31 siblings (classes >500 instances dropped as too heterogeneous);
+   same-type pointers (per-VALUE `P39`/`P179`/`P361` sets plus `P155`/`P156`
+   chains, capped at 60); categories ranked by member count (`categoryinfo`,
+   smallest non-trivial = sharpest genre pointer, intersections/maintenance
+   excluded). WikiProject banners are fetched as *informational* evidence, not
+   peers, and `SHORTDESC_EXCLUDE` drops list/set-index pages from the pool.
 3. **Census** peers' templates in batches with `tltitle`/`tlcontinue`
    continuation rounds plus suspect-only re-queue passes; redirects normalized;
    one **PRIMARY** infobox per peer (supporting/child/meta boxes excluded;
@@ -243,7 +245,7 @@ distribution). Currently next in line:
 
 1. **Specificity ladder** — template-taxonomy walk (publisher ⊂ company,
    officeholder ⊂ person) to convert the remaining near-miss disagreements.
-2. **Semantic sub-clustering** — LiftWing `articletopics` over the peer set; the
+2. **Semantic sub-clustering** — LiftWing `outlink-topic-model` over the peer set; the
    main lever for the 25 abstains (`signals.md` H3).
 3. **Stage D draft preview** — Wikidata fill-rate draft infobox (a *draft*, which
    enwiki norms allow, unlike the auto-rendered boxes rejected in 2018).

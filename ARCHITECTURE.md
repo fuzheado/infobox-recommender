@@ -17,15 +17,16 @@ against the existing choice.
 
 ### Stage A — peer discovery (`lib/peers.js`)
 
-Five signals, each becoming a *tier group* ranked by size, tightest first:
+Three peer sources, each becoming a *tier group* ranked by size, tightest first
+— plus one informational signal and one structural filter:
 
-| Signal | Notes |
+| Source | Notes |
 |---|---|
 | **P31 (instance-of) siblings** | Per-class cached WDQS samples; classes with >500 instances are dropped as too heterogeneous (a huge class like Q5 "human" would drown the census). |
 | **Same-type pointers** | P39 position held, P179 part of the series, P361 part of, P155/P156 preceded/succeeded — queried **per value** (clean sets, cache well), capped at 60, appended after category peers. |
 | **Categories** | Ranked by member count via `categoryinfo` — the smallest non-trivial category is the sharpest genre pointer. Intersection + maintenance categories excluded, hidden categories excluded via `clshow=!hidden`. |
-| **WikiProject banners** | Informational evidence (the project that standardizes the subject's infobox). |
-| **Structural filters** | `SHORTDESC_EXCLUDE` drops set-index/"list of" pages — bare *by convention* — so they don't drag coverage down or create fake bare clusters. |
+| **WikiProject banners** *(informational)* | Not a peer source — evidence about the project that standardizes the subject's infobox. |
+| **Structural filters** *(not a source — a filter)* | `SHORTDESC_EXCLUDE` drops set-index/"list of" pages — bare *by convention* — so they don't drag coverage down or create fake bare clusters. |
 
 ### Stage B — the census (`lib/census.js`)
 

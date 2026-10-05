@@ -65,7 +65,8 @@ Venice campos sets, the mixed spa genre around Blue Lagoon) and (b) split
 event-vs-concept for the institution/"none" cases — the doc's stated next
 step (`EVALUATION.md` §6.3, `signals.md` H3).
 
-- **Approach:** the `articletopics` LiftWing model is proven infra — the
+- **Approach:** the `outlink-topic-model` LiftWing model (it replaced the older
+  `articletopic`; ORES-style alias `{wiki}-articletopic`) is proven infra — the
   WMF Microtask Generator uses it today (same endpoint, skill:
   `wikimedia-ml-services`). Batch-fetch topic vectors for the peer set at
   census time, cluster, and feed a sub-cluster split into `lib/decide.js`.

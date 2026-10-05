@@ -117,8 +117,10 @@ The evidence, user stories, and prior-art check are in
 
 ## How it works
 
-Peers come from three signals: Wikidata **P31 (instance-of) siblings**, the
-article's **most specific categories**, and **WikiProject banners**. Every
+Peers come from three sources: Wikidata **P31 (instance-of) siblings**,
+**same-type pointers** (P39 position held, P179 part of the series, P361 part
+of, P155/P156 preceded/succeeded), and the article's **most specific
+categories** — plus **WikiProject banners** as informational evidence. Every
 peer's template list is fetched and counted; a decision layer then applies
 coverage and dominance thresholds, with a tiered rescue for thin evidence and
 honest abstention in the middle band.
