@@ -15,7 +15,7 @@ script whose infobox tab calls this service for articles that lack an infobox
 first ~70 analyses and 2 subsequent infobox additions by named editors are
 recorded in [`usage-history.md`](usage-history.md).
 
-[![Example report for "May 1400 imperial election": Recommend Infobox election (confidence: high) — 97% of 31 same-class peers use an infobox, with the peer census, template distribution, neighborhood tiers, and example peers](images/report.png)](https://infobox-recommender.toolforge.org/?title=May+1400+imperial+election)
+[![Example report for "May 1400 imperial election": Recommend: Infobox election (confidence: medium) — most peers have an infobox (77% of 61) and Infobox election dominates (31/47 boxed), above the peer census, the template distribution and the neighborhood tiers](images/report.png)](https://infobox-recommender.toolforge.org/?title=May+1400+imperial+election)
 
 *(Screenshot: a live report — click to open it.)*
 
@@ -47,7 +47,7 @@ existing choice matches peer practice: **consistent**, **atypical**
 **Web** — <https://infobox-recommender.toolforge.org> — type any article
 title, or start from a one-click example.
 
-<img src="images/home.png" alt="The home page: a title search box, the two questions explained, and one-click examples" width="700">
+<img src="images/home.png" alt="The home page: a title search box, the two questions and their bands explained, and a list of one-click examples" width="700">
 
 The home page also links the live
 [Category:Wikipedia articles with an infobox request](https://en.wikipedia.org/wiki/Category:Wikipedia_articles_with_an_infobox_request)

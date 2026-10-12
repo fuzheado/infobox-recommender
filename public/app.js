@@ -7,8 +7,8 @@ const $form = document.getElementById('search');
 const $input = document.getElementById('title');
 
 const EXAMPLES = [
-  ['1346 imperial election', 'recommend — high confidence'],
-  ['May 1400 imperial election', 'recommend — high confidence'],
+  ['Bulbous Betty', 'recommend — peers are boxed, no single template dominates'],
+  ['May 1400 imperial election', 'recommend — Infobox election dominates'],
   ['Secular equilibrium', 'no infobox customary'],
   ['Small-signal model', 'weak signal — too few peers'],
   ['Prince-elector', 'weak signal — concept genre'],
@@ -470,11 +470,13 @@ function renderHome() {
   $view.innerHTML = `
     <section class="panel intro">
       <p>For a Wikipedia article without an infobox, this tool runs a <strong>census over its peers</strong> —
-      articles of the same Wikidata class and category — and reports what infobox practice looks like there:</p>
+      articles of the same Wikidata class and category — and answers two questions, separately:</p>
       <ul class="intro-list">
-        <li><strong>Recommend</strong> a specific template when a strong majority of same-class peers use it (with evidence)</li>
-        <li><strong>No infobox customary</strong> when peers are overwhelmingly bare</li>
-        <li><strong>Weak signal</strong> when the evidence is mixed — abstention instead of guessing</li>
+        <li><strong>Should it have an infobox?</strong> — from how many peers have one: ≥70% recommend,
+        ≤15% no infobox customary, in between weak/mixed (an honest abstention)</li>
+        <li><strong>Which template?</strong> — the box peers use most, named as <em>dominant</em> when one holds
+        half of the boxed peers, or as a <em>best candidate</em> when they are split — plus the general
+        option where there is one ({{Infobox officeholder}} → {{Infobox person}})</li>
       </ul>
     </section>
     <section class="panel">
