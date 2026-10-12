@@ -1,12 +1,13 @@
 # HANDOFF — infobox-recommender
 
-**Last updated:** 2026-10-04 · **For:** whoever continues this project (probably
+**Last updated:** 2026-10-05 · **For:** whoever continues this project (probably
 Andrew, after a break).
 
-**How to use this doc:** §1–2 to know where things stand and run it; §4–5 if you
-have to deploy or debug the live service; §6 if you are about to touch the API
-layer; §8–9 for what is open. Deeper material lives in the other docs — this one
-tells you which.
+**How to use this doc:** §1–2 to know where things stand and run it; §4 for how the
+engine decides today; §5–6 to deploy or debug the live service; §7 (and §7b) before
+changing anything the Lead Balancer script consumes or the peer samples it displays;
+§8–9 for the lessons and what is open. Deeper material lives in the other docs — this
+one tells you which.
 
 ---
 
@@ -19,14 +20,15 @@ WikiProject banners), census what infoboxes they carry, and recommend a template
 
 | | |
 |---|---|
-| **Evaluation** | **57 pass · 5 near-miss disagreements · 25 abstentions · 1 unlabelled — 90% on decisive verdicts** (88-case corpus: 57 backlog-derived stale-tag labels + 31 manual/canonical; **frozen 2026-08-28, labels audited 2026-10-05**). 4 of the 5 disagreements are cases where peer evidence arguably beats one editor's choice (`test/EVALUATION.md`). Corpus health: `scripts/research/check-fixture-drift.mjs` → `test/results/fixture-drift.json` (87 labels stable, 85/88 backlog tags since cleared — this is a frozen sample, not the live backlog) |
+| **Evaluation** | Scored on two axes (`test/results/latest.json`): **whether an infobox is customary — 32 correct · 2 wrong · 30 abstentions (94% of decisive)**; **which template — 51 exact + 8 same-family = 97% related, 2 unrelated**. Scored the legacy single-verdict way the same corpus reads 50 pass · 6 fail · 31 abstain · 1 unlabelled (`TWO_AXIS=0`: 57 · 5 · 25). Corpus: 88 cases (57 backlog-derived stale-tag labels + 31 manual/canonical), **frozen 2026-08-28, labels audited 2026-10-05**; health in `scripts/research/check-fixture-drift.mjs` → `test/results/fixture-drift.json` (87 labels stable, 85/88 backlog tags since cleared — a frozen sample, not the live backlog) |
 | **Unit tests** | 80 (`npm test`): primary-infobox selection, template families (ladder), two-axis decision, peer-sample ordering, EARLY_STOP, fixture labels, usage-log privacy/retention, rate limiting, random-article picker |
 | **Cold / warm speed** | ~10–25s cold for a heavy article (≈150 peers), instant warm — measured with `scripts/bench-analysis.mjs` |
 | **Live** | <https://infobox-recommender.toolforge.org> · usage stats at [`/stats`](https://infobox-recommender.toolforge.org/stats) |
 | **Repo** | <https://github.com/fuzheado/infobox-recommender> — **public** since 2026-08-28, MIT; homepage set to the tool, topics `wikipedia/wikidata/infobox/mediawiki/toolforge` |
 | **External consumer** | **Lead Balancer** (`User:Sadads/LeadBalancer-core.js`) calls `/analyze?output=json` for infobox-less articles — see §7. It is the main traffic source; mind the contract |
 | **Observed use** | 70 analyses in the pre-logging era (2026-08-27 → 10-02), 2 infobox additions by named editors, 1 census artifact found — `usage-history.md`. Counts since 2026-10-03 come from the usage log: see the live `/stats` |
-| **Engine trajectory** | 11% → 83% → 71% → 73% → 75% → 84% → 85% → 84% → 85% → 86% → **90%** over seven campaigns (`test/EVALUATION.md`) |
+| **Decision model** | Two-axis by default since 2026-10-05 (`TWO_AXIS=0` reverts): coverage decides *whether* an infobox is customary, dominance only advises *which* template, and the template-family ladder states the member plus its general option. See §4 and `ARCHITECTURE.md` |
+| **Engine trajectory** | 11% → 83% → 71% → 73% → 75% → 84% → 85% → 84% → 85% → 86% → **90%** over seven campaigns, on the legacy combined metric (`test/EVALUATION.md`); the two axis numbers above are the current scorecard |
 
 ## 2. Quick start (local)
 
@@ -35,11 +37,12 @@ node cli.js "1346 imperial election"       # full pipeline, human summary
 node cli.js "Abraham Lincoln" --validate   # check an existing infobox choice
 node cli.js "X" "Y" --json                 # machine-readable
 npm run serve                              # web UI on http://localhost:3000
-npm test                                   # 25 unit tests
+npm test                                   # 80 unit tests
 node scripts/bench-analysis.mjs "X" --full # request-level timing audit (cold)
 npm run eval                               # full evaluation (warm cache: <1s)
 npm run fixtures                           # rebuild test/fixtures.json from the live backlog
 node scripts/usage-report.mjs --days 30    # maintainer usage report (needs a usage/ dir)
+node scripts/research/check-fixture-drift.mjs  # has the labelled corpus drifted? (cheap, cached)
 ```
 
 Etiquette is baked into `lib/api.js`: descriptive UA, per-host request waves
@@ -66,13 +69,16 @@ service, and a future userscript):
 
 **Tests & evaluation:** `test/eval.mjs` (harness → `test/results/<date>.*`),
 `test/census.test.mjs`, `test/usage.test.mjs`, `test/rate-limit.test.mjs`,
-`test/random-pick.test.mjs`, `test/families.test.mjs`, `test/fixture-labels.test.mjs`,
+`test/random-pick.test.mjs`, `test/families.test.mjs`, `test/two-axis.test.mjs`,
+`test/peer-order.test.mjs`, `test/early-stop.test.mjs`, `test/fixture-labels.test.mjs`,
 `test/fixtures.json` (corpus), `scripts/manual-cases.json` + `scripts/fetch-queue.mjs`
 (how the corpus is built), `test/EVALUATION.md` (writeup).
 
 **Research & tooling:** `scripts/research/` — `extract-cache-inventory.py`,
 `adoption-analysis.mjs`, `phantom-box-check.mjs`, `build-usage-history.mjs`
-(usage/adoption), plus the cross-edition pipeline (steps 1–4) behind
+(usage/adoption), `peer-cap-study.mjs` (the 150-peer cap), `check-fixture-drift.mjs`
+(corpus health), `build-family-map.mjs` (a proposal for the template families),
+plus the cross-edition pipeline (steps 1–4) behind
 `infobox-naming.md` / `wikiprojects-and-i18n.md`. Also
 `scripts/bench-analysis.mjs` (request-level timing audit — the tool behind the
 2026-10-04 speedups) and `scripts/migrate-census-cache.mjs` (harvests per-page
@@ -111,11 +117,22 @@ template data into `cache/templates/`).
    one **PRIMARY** infobox per peer (supporting/child/meta boxes excluded;
    generic-place penalty; subsidiary section boxes — university rankings, medal
    records, career statistics — lose to the subject box).
-4. **Decide:** coverage ≥50% + dominant ≥50% of boxed peers → recommend (with a
-   `byClass` override for tight classes); meaningful pool with ≤15% coverage →
-   none-warranted; otherwise weak-signal, with a tiered rescue for abstentions
-   (tight circle ≥80% coverage / ≥70% dominance, confirmed by the wider pool).
-   Every verdict ships its evidence and tier strata.
+4. **Decide — two questions, separately** (the default since 2026-10-05):
+
+   - **whether**: coverage ≥70% → recommend an infobox; ≤15% (≥10 peers), a thin
+     and bare pool, or a coherent bare sub-cluster → no infobox customary; between
+     → weak/mixed. The verdict vocabulary is unchanged
+     (`recommend`/`weak-signal`/`none-warranted`), so consumers are unaffected.
+   - **which**: the template advice — a template holding ≥half of the boxed peers,
+     else the most-used member of the dominant *family* plus that family's general
+     option (`lib/families.js`), else the tightest coherent tier, else the
+     whole-pool plurality. Advice only: it never changes the verdict.
+   - **escape hatch**: `TWO_AXIS=0` restores the legacy single rule (coverage ≥50%
+     **and** dominance ≥50% of boxed peers, plus a tiered rescue), which let
+     dominance veto coverage.
+
+   Every verdict ships its evidence, tier strata, and the ordered, annotated peer
+   samples (§7b).
 
 ## 5. Deployment (Toolforge)
 
@@ -129,14 +146,15 @@ template data into `cache/templates/`).
 - Port comes from `PORT` (8000 in the pod). Static assets are read from disk per
   request, so `public/` changes take effect without a restart; **`server.mjs` and
   `lib/` changes need the restart**.
-- Env knobs (all optional): `RATE_MAX`, `RATE_WINDOW_MS`, `BURST_MAX`,
-  `BURST_WINDOW_MS`, `MAX_QUEUE`, `USAGE_DIR`, `EARLY_STOP`, `EARLY_STOP_MIN`,
-  `TWO_AXIS` (the last: the two-axis decision is **default on since 2026-10-05** —
-  coverage decides *whether*, dominance only advises *which*; set `TWO_AXIS=0` to
-  revert to the legacy single verdict. Measured trade in
-  `ARCHITECTURE.md#two-axis-decision-default-since-2026-10-05-two_axis0-reverts`)
-  (the last two: opt-in census early stop — off by default, **keep the floor at
-  100** if you turn it on; measured trade-off in `ARCHITECTURE.md#early_stop--census-less-when-more-cannot-help-opt-in`).
+- Env knobs (all optional):
+  * limits + log: `RATE_MAX`, `RATE_WINDOW_MS`, `BURST_MAX`, `BURST_WINDOW_MS`,
+    `MAX_QUEUE`, `USAGE_DIR`.
+  * `TWO_AXIS` — **default on since 2026-10-05**; `TWO_AXIS=0` reverts to the legacy
+    single verdict. Measured trade:
+    `ARCHITECTURE.md#two-axis-decision-default-since-2026-10-05-two_axis0-reverts`.
+  * `EARLY_STOP=1` (off by default) stops censusing once the evidence is decisive;
+    `EARLY_STOP_MIN` is the floor — **keep it at 100** if you enable it. Measured
+    trade: `ARCHITECTURE.md#early_stop--census-less-when-more-cannot-help-opt-in`.
 
 **Redeploy** (package → scp → extract into both copies → chown → restart):
 
@@ -168,14 +186,32 @@ ssh $H "sudo -niu tools.infobox-recommender bash -s $r_pkg" < "$deploy"
 rm -f "$pkg" "$deploy"
 ```
 
-**Verify a deploy** (all four, every time):
+**Caveat:** this is a `tar` **overwrite** — it updates and adds files but never
+*deletes* ones removed from the repo, so a deleted module would linger in
+`~/www/js` (the same class of bug as the stale `server.js` in §8). Nothing has been
+removed yet; when that changes, delete the affected paths first, or switch to
+`rsync --delete` for `lib/`, `public/` and `server.mjs`.
+
+**Verify a deploy** (all three, every time):
 
 ```sh
+# 1) the entry point is the current file, not a stale one
 ssh alih@dev.toolforge.org "sudo -niu tools.infobox-recommender bash -lc \
   'webservice --backend=kubernetes node20 logs -l 5'"     # expect: > node server.mjs
+
+# 2) endpoints answer
 curl -s -o /dev/null -w '%{http_code}\n' https://infobox-recommender.toolforge.org/
 curl -s "https://infobox-recommender.toolforge.org/analyze?title=Abraham+Lincoln&output=json" | head -c 200
 curl -s -o /dev/null -w '%{http_code}\n' https://infobox-recommender.toolforge.org/stats
+
+# 3) the deployed files ARE the commit you think they are (hashes, not vibes).
+#    macOS prints md5, the pod prints md5sum — the hex strings must match, and a
+#    static asset must also match what the service serves.
+F="server.mjs lib/families.js lib/decide.js lib/census.js lib/analyze.js public/app.js"
+for f in $F; do printf '%s  %s\n' "$(md5 -q $f)" "$f"; done
+ssh alih@dev.toolforge.org "sudo -niu tools.infobox-recommender bash -lc \
+  'cd /data/project/infobox-recommender/www/js && md5sum $F'"
+curl -s https://infobox-recommender.toolforge.org/app.js | md5 -q   # == local public/app.js
 ```
 
 ## 6. Debugging the deployment
@@ -214,7 +250,7 @@ it does means the practical contract is narrow and checkable:
 |---|---|
 | `VERDICTS = [recommend, weak-signal, none-warranted, already-has-infobox, excluded]` via `VERDICTS.includes(json.verdict)` | an unknown verdict string collapses to `""` (no advice shown) — **never invent a verdict value** |
 | `RECOMMEND = {recommend: true, 'none-warranted': false}` | every other verdict, including `weak-signal`, maps to `null` = "no call either way", so moving a case *to* weak-signal degrades to neutral rather than wrong |
-| `json.template`, used **only when `verdict === 'recommend'`** | a recommendation with a weak/plurality template is surfaced as a suggested template — worth telling them when that starts happening |
+| `json.template`, used **only when `verdict === 'recommend'`** | a recommendation with a weak/plurality template is surfaced as a suggested template — **this is happening now**: the two-axis default can recommend an infobox when no single template dominates, so their tab offers a *best candidate* where it previously showed nothing. The note for their talk page is drafted and the patch below lets them label it |
 | `json.confidence`, accepted only if `low`/`medium`/`high` | keep the vocabulary |
 | `json.reason`, shown verbatim as the tab's summary, **clipped at 400 chars** | keep it self-contained: no pointers to this tool's own UI, and comfortably under the clip |
 | evidence keys `total`, `withInfobox`, `distribution`, `boxedPeers`, `bare`, `bareCluster` | additive fields are ignored, so `dominanceShare`/`templateAdvice` are safe to add |
@@ -344,12 +380,15 @@ distribution). Currently next in line:
    enwiki norms allow, unlike the auto-rendered boxes rejected in 2018).
 4. **Userscript / gadget** — the tool is already reached through an editor
    script; owning that experience is the highest-leverage reach item.
-5. Smaller measured items: latency levers (category fan-out, adaptive early stop,
-   peer cap — ROADMAP 7a), phantom-box coverage (7b), child-box auto-detection,
-   per-element wrapper merge, backlog batch scanner, Diff writeup + a note at
-   WikiProject Infoboxes `/assistance`.
-
-| 2026-10-05 | 3a — corpus health: `scripts/research/check-fixture-drift.mjs` + `test/results/fixture-drift.json`. The labels are stable (87/88) but the corpus is a **frozen sample** (85/88 backlog tags since cleared), and two labels named the generic `{{Infobox}}` meta-template, which no run can satisfy — one corrected (`Fountain of Wealth` → `Infobox artwork`, its canonical primary after redirect normalisation) and one unlabelled on purpose (`Sayfo`). Legacy eval 6 → 5 failures, template-exactness 88% → 90%; `test/fixture-labels.test.mjs` + `meta.drift`/`meta.cacheFingerprint` prevent a repeat |
+4. **Post the Lead Balancer note** (§7) — the two-axis default changes which
+   verdicts their tab receives: the draft is written, the tab patch is ready, and
+   nothing is posted yet.
+5. Smaller measured items: **tier spread** in the peer samples when the tiers
+   disagree, and 30-day `pageviews` as an optional annotation (§7b); the deploy's
+   missing *delete* step (§5); deriving the template-family map instead of
+   hand-curating it (ROADMAP §1 remainder); phantom-box coverage (7b); child-box
+   auto-detection; per-element wrapper merge; backlog batch scanner; Diff writeup +
+   a note at WikiProject Infoboxes.
 
 ## 10. Change log (ops + engine)
 
@@ -372,6 +411,9 @@ section-box detection + unit tests** (2026-08-28). 11% → 90%.
 | 2026-10-04 | Performance audit + fixes: pacing made explicit and **per host** (was one global gate that let parallel calls burst), parallel census batches, 25-title census chain, one Wikidata request instead of seven, one WDQS query per pointer property instead of one per value, per-page cache that survives batch-shape changes. Cold runs: Canut revolts 20.4s → 6.6s, Abraham Lincoln 26.8s → 13.7s; eval unchanged at 57/6/25 |
 | 2026-10-04 | Deploy recipe hardened: `mktemp` names instead of fixed `/tmp/ibr.tgz`, deploy script piped over stdin (no remote script file), payload temp created **by the tool user** so it is private yet readable under `sudo -niu` — verified by running it |
 | 2026-10-05 | Peer-cap study (`scripts/research/peer-cap-study.mjs`, `test/results/peer-cap-study.json`): cap 150 kept; the decision is dominance-sensitive, not coverage-diluted. Implemented the census early stop it pointed at: `EARLY_STOP=1` (+ `EARLY_STOP_MIN`, default 100) — verdict-identical on the corpus, −6% peers censused; floor 25 costs 4 accuracy points (`test/results/early-stop-study.json`) |
+| 2026-10-05 | 3a — corpus health: `scripts/research/check-fixture-drift.mjs` + `test/results/fixture-drift.json`. Labels are stable (87/88) but the corpus is a **frozen sample** (85/88 backlog tags since cleared), and two labels named the generic `{{Infobox}}` meta-template, which no run can satisfy — one corrected (`Fountain of Wealth` → `Infobox artwork`, its canonical primary after redirect normalisation) and one unlabelled on purpose (`Sayfo`). `test/fixture-labels.test.mjs` guards labels; every eval now records `meta.drift` + `meta.cacheFingerprint` |
+| 2026-10-05 | 3b — **specificity ladder** (`lib/families.js`: 17 families / 120 templates, hand-curated but bounded by the peer-frequency table): advice names the most-used *member* and states the family's general option; the eval scores exact / same-family / other, so a defensible variant stops counting as a miss — template axis **51 exact + 8 same-family = 97% related, 2 unrelated** (11 unrelated before), verdicts unchanged. Also fixed a coverage bug the work exposed: box-style templates (`Speciesbox`, `Subspeciesbox`, `Infraspeciesbox`, `Hybridbox`, `Virusbox`) were not recognised as infoboxes, so those peers counted as *bare* |
+| 2026-10-05 | **Peer samples ordered + annotated** (§7b): boxed peers by tier → recommended template → family → A–Z, bare peers by tier → A–Z (before: census order — cache hits then batch-completion order, so the samples could reorder between runs); each peer shows its tier (with the group's name) and WikiProject review class, and the block is labelled "8 of N closest". Popularity/quality are annotations, never sort keys; article age and ever-had-a-box were rejected outright |
 | 2026-10-05 | Two-axis decision implemented, measured, then **made the default** (`TWO_AXIS=0` reverts): coverage decides *whether* an infobox is customary, dominance only advises *which* template (`templateAdvice`). Fixes a report that said "coverage 76% is in the ambiguous band" when the blocked gate was dominance. Measured (`test/results/two-axis-study.json`): whether-axis 94% of decisive with the same 2 failures, template advice 82% exact; 14 cases move from recommend → weak/mixed (dominant template kept as advice), 8 high-coverage abstentions become recommendations with a *best candidate*. Report card + About text rewritten for the two axes; `reason` strings made API-safe for the Lead Balancer script (no UI instructions, <380 chars) |
 
 ## 11. Working conventions
@@ -389,3 +431,7 @@ section-box detection + unit tests** (2026-08-28). 11% → 90%.
 - **Temp files use `mktemp`**, never a fixed `/tmp/name` — the bastion is multi-user, and
   a predictable `/tmp/foo.sh` is world-readable and collides with other runs. The rule
   (and the addressable traps) live in `~/.pi/agent/AGENTS.md` §"Shell arguments".
+- **"Is it live?" is a measurement, not a memory.** Query the remote
+  (`gh api repos/…/commits/main`, `git ls-remote`) and compare hashes of the deployed
+  files against the commit (§5 verify step 3). A deploy has looked successful while
+  production served a stale asset before §8.1.

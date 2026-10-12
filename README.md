@@ -47,7 +47,7 @@ existing choice matches peer practice: **consistent**, **atypical**
 **Web** — <https://infobox-recommender.toolforge.org> — type any article
 title, or start from a one-click example.
 
-<img src="images/home.png" alt="The home page: a title search box, the three verdicts explained, and one-click examples" width="700">
+<img src="images/home.png" alt="The home page: a title search box, the two questions explained, and one-click examples" width="700">
 
 The home page also links the live
 [Category:Wikipedia articles with an infobox request](https://en.wikipedia.org/wiki/Category:Wikipedia_articles_with_an_infobox_request)
@@ -69,7 +69,9 @@ npm run serve                               # web UI at localhost:3000
 ```
 
 **JSON API:** `GET /analyze?title=ARTICLE&output=json` — CORS-enabled, no
-tokens or keys, full evidence (missing title → 400). Per-client limits are
+tokens or keys, full evidence (missing title → 400). The response carries
+`verdict`, `template`, `confidence` and `evidence`, plus `templateAdvice` for the
+template axis. Per-client limits are
 generous (150 analyses / 15 min, 40/min burst) and throttled requests come back
 as 429 with `Retry-After`; see [`ARCHITECTURE.md`](ARCHITECTURE.md#web-service).
 
@@ -85,22 +87,34 @@ much faster (usually instant).
 
 ## How well does it work?
 
-Evaluated on an **88-case corpus** (frozen 2026-08-28, labels audited 2026-10-05) — 57 articles from the infobox-request
-backlog whose editor-chosen infobox is the gold label, plus 31 curated cases
-(doc-backed demos and canonical sets such as presidents, states, foods, and
-TV episodes):
+Evaluated on an **88-case corpus** (frozen 2026-08-28, labels audited 2026-10-05;
+one case is deliberately unlabelled) — 57 articles from the infobox-request backlog
+whose editor-chosen infobox is the gold label, plus 31 curated cases (doc-backed
+demos and canonical sets such as presidents, states, foods, and TV episodes).
 
-> **57 pass · 6 near-miss or defensible disagreements · 25 honest abstentions
-> — 90% accuracy on decisive verdicts.**
+The tool answers two questions, so it is scored on two:
 
-Abstention is the designed answer in the ambiguous middle band, not a
-failure. Four of the six disagreements are cases where the peer evidence
-arguably outweighs a single editor's choice. Per-case results, corpus
-construction, and failure analysis: **[`test/EVALUATION.md`](test/EVALUATION.md)**.
+| axis | result |
+|---|---|
+| **Should it have an infobox?** | 32 correct · **2 wrong** · 30 honest abstentions — **94% of decisive** (23 validate cases + 1 unlabelled excluded) |
+| **Which template?** | 51 exact + 8 same-family = **97% related**; 2 unrelated |
+
+Scored the older way — one verdict, judged on its template alone — the same corpus
+reads 50 pass · 6 fail · 31 abstain, which is why the axes are quoted instead: that
+single number penalises a correct "yes, this genre uses infoboxes" answer for naming
+a *variant* of the box ({{Infobox officeholder}} where an editor chose
+{{Infobox person}}).
+
+Abstention is the designed answer in the ambiguous middle band, not a failure. The
+2 wrong answers on the first axis are sparsely-boxed genres where an editor chose a
+box anyway; the 2 unrelated templates are honest disagreements, and 8 more template
+disagreements are family-level (a member vs the general option). Per-case results,
+corpus construction, and failure analysis:
+**[`test/EVALUATION.md`](test/EVALUATION.md)**.
 
 Honest caveats: this is a research-grade POC, not an authority. Known gaps
-(no template specificity ladder, noisy categories, no draft-preview yet) are
-listed under *Known limitations* in [`ARCHITECTURE.md`](ARCHITECTURE.md#known-limitations),
+(noisy categories, no draft-preview yet, and a template-family map that is
+hand-curated rather than derived) are listed under *Known limitations* in [`ARCHITECTURE.md`](ARCHITECTURE.md#known-limitations),
 with priorities in [`ROADMAP.md`](ROADMAP.md).
 
 ## Why this tool exists
@@ -122,9 +136,13 @@ Peers come from three sources: Wikidata **P31 (instance-of) siblings**,
 **same-type pointers** (P39 position held, P179 part of the series, P361 part
 of, P155/P156 preceded/succeeded), and the article's **most specific
 categories** — plus **WikiProject banners** as informational evidence. Every
-peer's template list is fetched and counted; a decision layer then applies
-coverage and dominance thresholds, with a tiered rescue for thin evidence and
-honest abstention in the middle band.
+peer's template list is fetched and counted, and the two questions are decided
+separately: **coverage** decides whether an infobox is customary (≥70% recommend,
+≤15% no, in between weak/mixed), and **dominance** decides which template is named
+— including, when exact names split, the *family* of box peers agree on ("most used
+{{Infobox officeholder}}, general option {{Infobox person}}"). `TWO_AXIS=0`
+restores the legacy single verdict, in which one template had to hold half of the
+boxed peers before anything was recommended.
 
 The candidate pool is capped at **150 peers** — a cost bound, not a tuned
 parameter. Measured across the 88-case corpus (2026-10-05): verdicts are
@@ -162,15 +180,18 @@ selection rules, dual-runtime design, and the web service — is in
 ## Tests
 
 ```sh
-npm test          # 80 unit tests: primary-infobox selection, template families, decision,
-                  # peer-sample ordering
-                  # and retention, rate limiting, random-article picker
+npm test          # 80 unit tests: primary-infobox selection, the template-family
+                  # ladder, the two-axis decision, peer-sample ordering, the census
+                  # early stop, corpus labels, usage-log privacy/retention, rate
+                  # limiting, random-article picker
 npm run eval       # full evaluation over the corpus (warm cache: <1s)
 npm run fixtures   # rebuild test/fixtures.json from the live backlog
 ```
 
 Research scripts (cross-edition infobox naming, the early-usage/adoption
-analysis, and the `prop=templates` phantom-box audit) live in
+analysis, the `prop=templates` phantom-box audit, the **peer-cap study**, the
+**corpus drift check** and the **family-map builder** — the measurements behind
+`ROADMAP.md` §1 and §7a) live in
 [`scripts/research/`](scripts/research/), documented in
 [`usage-history.md`](usage-history.md) and [`infobox-naming.md`](infobox-naming.md).
 Latency is measured per request with `scripts/bench-analysis.mjs`
